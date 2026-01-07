@@ -10,8 +10,8 @@ import { MapPin, Phone, Mail, MessageCircle, Clock } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Контакты YappiX — связаться с нами | IT-студия",
-  description:
-    "Свяжитесь с YappiX: телефон, email, Telegram. Офисы в Москве, Delaware, Istanbul, Belgrade. Бесплатная консультация по вашему проекту.",
+    description:
+      "Свяжитесь с YappiX: телефон, email, Telegram. Офисы в Москве, Delaware, Istanbul, Belgrade, Казахстане. Бесплатная консультация по вашему проекту.",
   keywords: ["контакты YappiX", "связаться с веб-студией", "заказать разработку", "консультация по разработке"],
   alternates: {
     canonical: "https://yappix.ru/kontakty",
@@ -22,30 +22,37 @@ const offices = [
   {
     city: "Москва, Россия",
     address: "Инновационный центр Сколково, Большой бульвар 42, стр. 1",
-    phone: "+7 800 123-45-67",
-    email: "moscow@yappix.ru",
+    phone: "+7 995 095 5593",
+    email: "sales@yappix.ru",
     timezone: "UTC+3",
   },
   {
     city: "Delaware, США",
     address: "1209 Orange Street, Wilmington, DE 19801",
     phone: "+1 302 123-4567",
-    email: "usa@yappix.ru",
+    email: "contact@yappix.studio",
     timezone: "UTC-5",
   },
   {
     city: "Istanbul, Турция",
     address: "Maslak Mahallesi, Büyükdere Caddesi, No: 255",
-    phone: "+90 212 123-4567",
-    email: "turkey@yappix.ru",
+    phone: "+90 534 087 59 56",
+    email: "contact@yappix.studio",
     timezone: "UTC+3",
   },
   {
     city: "Belgrade, Сербия",
     address: "Bulevar Mihajla Pupina 10a, Novi Beograd",
-    phone: "+381 11 123-4567",
-    email: "serbia@yappix.ru",
+    phone: "+381 63 1780824",
+    email: "contact@yappix.studio",
     timezone: "UTC+1",
+  },
+  {
+    city: "Казахстан",
+    address: "Алматы",
+    phone: "+7 995 095 5593",
+    email: "contact@yappix.studio",
+    timezone: "UTC+6",
   },
 ]
 
@@ -285,7 +292,7 @@ export default function ContactsPage() {
                 },
                 {
                   q: "Работаете ли с небольшими бюджетами?",
-                  a: "Да, минимальный проект — от 100 000 ₽. Для стартапов есть специальные условия.",
+                  a: "Да, минимальный проект — от 62 500 ₽. Для стартапов есть специальные условия.",
                 },
                 {
                   q: "Есть ли NDA?",
@@ -312,7 +319,7 @@ export default function ContactsPage() {
             "@type": "LocalBusiness",
             name: "YappiX",
             image: "https://yappix.ru/logo.png",
-            telephone: "+7-800-123-45-67",
+            telephone: "+7-995-095-5593",
             email: "sales@yappix.ru",
             address: {
               "@type": "PostalAddress",

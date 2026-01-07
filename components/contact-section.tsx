@@ -17,6 +17,7 @@ const offices = [
   { country: "🇺🇸 США", city: "Delaware" },
   { country: "🇹🇷 Турция", city: "Стамбул" },
   { country: "🇷🇸 Сербия", city: "Белград" },
+  { country: "🇰🇿 Казахстан", city: "Алматы" },
 ]
 
 export function ContactSection() {

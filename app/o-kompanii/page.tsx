@@ -9,7 +9,7 @@ import { Award, Users, Rocket, Globe, CheckCircle } from "lucide-react"
 export const metadata: Metadata = {
   title: "О компании YappiX — резиденты Сколково | IT-студия",
   description:
-    "YappiX — IT-студия полного цикла. Резиденты Сколково с 2020. Офисы в России, США, Турции, Сербии. 100+ проектов, 50+ специалистов.",
+    "YappiX — IT-студия полного цикла. Резиденты Сколково с 2020. Офисы в России, США, Турции, Сербии, Казахстане. 250+ проектов, 50+ специалистов.",
   keywords: ["YappiX", "IT компания", "Сколково", "веб-студия", "разработка на заказ", "аутсорсинг"],
   alternates: {
     canonical: "https://yappix.ru/o-kompanii",
@@ -17,19 +17,19 @@ export const metadata: Metadata = {
 }
 
 const stats = [
-  { value: "100+", label: "Проектов", icon: Rocket },
+  { value: "250+", label: "Проектов", icon: Rocket },
   { value: "50+", label: "Специалистов", icon: Users },
-  { value: "4", label: "Офиса", icon: Globe },
-  { value: "5", label: "Лет опыта", icon: Award },
+  { value: "5", label: "Офисов", icon: Globe },
+  { value: "10+", label: "Лет опыта", icon: Award },
 ]
 
 const milestones = [
-  { year: "2020", title: "Основание", description: "Запуск студии, первые проекты на React и Node.js" },
-  { year: "2021", title: "Сколково", description: "Получили статус резидента Сколково, первый грант" },
-  { year: "2022", title: "Международная экспансия", description: "Открыли офисы в США и Турции" },
-  { year: "2023", title: "AI-трансформация", description: "Внедрили AI-инструменты, ускорили разработку в 3 раза" },
-  { year: "2024", title: "100 проектов", description: "Запустили сотый проект, открыли офис в Сербии" },
-  { year: "2025", title: "Сегодня", description: "Развиваем AI-направление, масштабируем команду" },
+  { year: "2015", title: "Основание", description: "Запуск студии, первые проекты на PhoneGap и Angular" },
+  { year: "2017", title: "Гранты", description: "Получение грантов от ФСИ и патентов" },
+  { year: "2019", title: "Инвестиции", description: "Привлечение 1-го раунда инвестиций на YappiX CMS" },
+  { year: "2021", title: "Сколково и рост", description: "Получили статус резидента Сколково, привлекли 2-й раунд инвестиций для масштабирования" },
+  { year: "2022", title: "Международная экспансия", description: "Выход на международный рынок, открытие офисов в США и Турции" },
+  { year: "2025", title: "AI-трансформация", description: "Внедрение AI-инструментов, офисы в 5 локациях, обход санкций, масштабирование команды" },
 ]
 
 const values = [
@@ -52,18 +52,18 @@ const values = [
 ]
 
 const clients = [
-  "Сбер",
-  "Яндекс",
-  "VK",
-  "Тинькофф",
-  "МТС",
-  "Ozon",
-  "Wildberries",
-  "Ростелеком",
-  "РЖД",
-  "Газпром",
-  "Росатом",
-  "X5 Group",
+  { name: "Сбер", logo: "/Logos/001.svg" },
+  { name: "Яндекс", logo: "/Logos/002.svg" },
+  { name: "VK", logo: "/Logos/003.svg" },
+  { name: "Тинькофф", logo: "/Logos/004.svg" },
+  { name: "МТС", logo: "/Logos/005.svg" },
+  { name: "Ozon", logo: "/Logos/006.svg" },
+  { name: "Wildberries", logo: "/Logos/007.svg" },
+  { name: "Ростелеком", logo: "/Logos/008.svg" },
+  { name: "РЖД", logo: "/Logos/009.svg" },
+  { name: "Газпром", logo: "/Logos/010.svg" },
+  { name: "Росатом", logo: "/Logos/001.svg" },
+  { name: "X5 Group", logo: "/Logos/002.svg" },
 ]
 
 export default function AboutPage() {
@@ -141,37 +141,84 @@ export default function AboutPage() {
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Наш путь</h2>
-            <div className="relative">
-              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border" />
-              <div className="space-y-12">
-                {milestones.map((milestone, idx) => (
-                  <div
-                    key={milestone.year}
-                    className={`relative flex flex-col md:flex-row gap-4 md:gap-8 ${idx % 2 === 0 ? "md:flex-row-reverse" : ""}`}
-                  >
-                    <div className="md:w-1/2 md:text-right">
-                      {idx % 2 === 0 && (
-                        <div className="pl-12 md:pl-0 md:pr-8">
-                          <span className="text-2xl font-bold text-primary">{milestone.year}</span>
-                          <h3 className="text-xl font-semibold text-foreground mt-1">{milestone.title}</h3>
-                          <p className="text-muted-foreground mt-2">{milestone.description}</p>
-                        </div>
-                      )}
-                    </div>
-                    <div className="absolute left-0 md:left-1/2 w-8 h-8 bg-primary rounded-full -translate-x-0 md:-translate-x-1/2 flex items-center justify-center">
-                      <div className="w-3 h-3 bg-background rounded-full" />
-                    </div>
-                    <div className="md:w-1/2">
-                      {idx % 2 !== 0 && (
-                        <div className="pl-12 md:pl-8">
-                          <span className="text-2xl font-bold text-primary">{milestone.year}</span>
-                          <h3 className="text-xl font-semibold text-foreground mt-1">{milestone.title}</h3>
-                          <p className="text-muted-foreground mt-2">{milestone.description}</p>
-                        </div>
-                      )}
-                    </div>
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              {/* Left side - Fixed video and description */}
+              <div className="md:sticky md:top-24 md:self-start">
+                <div className="space-y-6">
+                  <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://www.youtube.com/embed/LQTnA8tP2B4"
+                      title="YAPPIX CMS - Runa Capital"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full"
+                    />
                   </div>
-                ))}
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-semibold text-foreground">YAPPIX CMS и Runa Capital</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      YAPPIX CMS прошла первую экспертную комиссию международного венчурного фонда Runa Capital. Команда программистов из Набережных Челнов разработала конструктор нативных мобильных приложений в связке с системой управления контентом. Также поддерживает технологии AR и распознавание речи. Не требует от пользователя знания языков программирования.
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Продукт показался представителям фонда очень перспективным. Они отметили, что у него есть большой шанс выхода на мировой рынок. Рената Усманова (основатель проекта YAPPIX CMS) была приглашена в штаб-квартиру Runa Capital, расположенную в Кремниевой долине, для личной встречи. На которой планируется обсудить детали возможного сотрудничества.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right side - Scrollable timeline */}
+              <div className="relative">
+                <div className="absolute left-4 top-0 bottom-0 w-px bg-border" />
+                <div className="space-y-12">
+                  {milestones.map((milestone, idx) => (
+                    <div
+                      key={milestone.year}
+                      className="relative"
+                    >
+                      <div className="absolute left-0 w-8 h-8 bg-primary rounded-full -translate-x-1/2 flex items-center justify-center">
+                        <div className="w-3 h-3 bg-background rounded-full" />
+                      </div>
+                      <div className="pl-12">
+                        <span className="text-2xl font-bold text-primary">{milestone.year}</span>
+                        <h3 className="text-xl font-semibold text-foreground mt-1">{milestone.title}</h3>
+                        <p className="text-muted-foreground mt-2">{milestone.description}</p>
+                        {milestone.year === "2017" && (
+                          <div className="relative w-full mt-4 rounded-lg overflow-hidden">
+                            <Image
+                              src="/sk_it/Banner – 2.png"
+                              alt="Гранты и патенты"
+                              width={1200}
+                              height={300}
+                              className="w-full h-auto object-contain"
+                            />
+                          </div>
+                        )}
+                        {milestone.year === "2021" && (
+                          <div className="relative w-full mt-4 rounded-lg overflow-hidden">
+                            <Image
+                              src="/sk_it/Banner – 1.png"
+                              alt="Сколково и инвестиции"
+                              width={1200}
+                              height={300}
+                              className="w-full h-auto object-contain"
+                            />
+                          </div>
+                        )}
+                        {milestone.year === "2022" && (
+                          <div className="relative w-full mt-4 rounded-lg overflow-hidden">
+                            <Image
+                              src="/sk_it/Banner.png"
+                              alt="Международная экспансия"
+                              width={1200}
+                              height={300}
+                              className="w-full h-auto object-contain"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -187,10 +234,16 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {clients.map((client) => (
                 <div
-                  key={client}
-                  className="flex items-center justify-center h-20 bg-card border border-border rounded-lg"
+                  key={client.name}
+                  className="flex items-center justify-center h-20 bg-card border border-border rounded-lg p-4"
                 >
-                  <span className="text-muted-foreground font-medium">{client}</span>
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    width={120}
+                    height={40}
+                    className="object-contain max-w-full max-h-full"
+                  />
                 </div>
               ))}
             </div>
@@ -203,12 +256,12 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Почему YappiX</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                "Резиденты Сколково — налоговые льготы, гранты",
-                "AI-инструменты — разработка в 3 раза быстрее",
+                "10+ лет опыта — многолетний опыт разработки и проверенные решения",
+                "AI-инструменты — разработка в 10-15 раз быстрее и дешевле",
                 "MVP за 7 дней — тестовая неделя с гарантией возврата",
-                "Офисы в 4 странах — удобные часовые пояса",
+                "Офисы в 5 странах — удобные часовые пояса",
                 "Все способы оплаты — включая крипто",
-                "100+ проектов — опыт в любой отрасли",
+                "250+ проектов — опыт в любой отрасли",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 p-4 bg-background border border-border rounded-lg">
                   <CheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />

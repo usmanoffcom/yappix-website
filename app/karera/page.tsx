@@ -8,7 +8,7 @@ import { MapPin, Briefcase, Clock, Users, Zap, Heart, Globe, GraduationCap } fro
 export const metadata: Metadata = {
   title: "Карьера в YappiX — вакансии IT-студии",
   description:
-    "Вакансии в YappiX: разработчики, дизайнеры, менеджеры. Работа в Сколково, удалённо или из офисов в США, Турции, Сербии.",
+    "Вакансии в YappiX: разработчики, дизайнеры, менеджеры. Работа в Сколково, удалённо или из офисов в США, Турции, Сербии, Казахстане.",
   keywords: ["вакансии разработчик", "работа в IT", "вакансии Сколково", "удалённая работа программист"],
   alternates: {
     canonical: "https://yappix.ru/karera",
@@ -19,7 +19,7 @@ const benefits = [
   {
     icon: Globe,
     title: "Удалёнка или офис",
-    description: "Работайте откуда удобно: дом, коворкинг или офис в 4 странах",
+    description: "Работайте откуда удобно: дом, коворкинг или офис в 5 странах",
   },
   { icon: Zap, title: "AI-инструменты", description: "Cursor, v0, ChatGPT — работаем с передовыми технологиями" },
   { icon: GraduationCap, title: "Обучение", description: "Бюджет на конференции, курсы, книги. Внутренние митапы" },

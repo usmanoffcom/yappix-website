@@ -102,26 +102,26 @@ export function Header() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            <NavigationMenu>
+            <NavigationMenu viewport={false}>
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="bg-transparent text-muted-foreground hover:text-foreground px-4 py-2">
                     Услуги
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent className="bg-popover text-popover-foreground border shadow-lg rounded-md mt-1.5">
                     <ul className="grid w-[540px] gap-2 p-5 md:grid-cols-2">
                       {services.map((service) => (
                         <li key={service.href}>
                           <NavigationMenuLink asChild>
                             <Link
                               href={service.href}
-                              className="flex items-start gap-3 select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-muted/50 group"
+                              className="flex items-start gap-3 select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-muted/50 group [&_svg]:text-primary"
                             >
                               <service.icon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                               <div>
-                                <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                                <span className="text-sm font-medium block" style={{ color: 'white' }}>
                                   {service.label}
-                                </div>
+                                </span>
                                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{service.desc}</p>
                               </div>
                             </Link>

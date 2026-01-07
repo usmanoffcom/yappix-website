@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Logo } from "./logo"
 
 const footerLinks = {
@@ -44,7 +45,36 @@ export function Footer() {
             <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
               IT-студия полного цикла. Разрабатываем сложные продукты быстрее с AI.
             </p>
-            <p className="text-[10px] sm:text-xs text-muted-foreground">Резиденты Сколково с 2020</p>
+            <div className="flex items-center gap-3 mt-3">
+              <Link
+                href="https://sk.ru/news/kak-chelninskij-dizajner-privlek-amerikanskih-investorov-opyt-yappix/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+              >
+                <Image
+                  src="/sk_it/sk.png"
+                  alt="Сколково"
+                  width={64}
+                  height={64}
+                  className="h-auto max-h-[64px] w-auto"
+                />
+              </Link>
+              <Link
+                href="https://bi.itpark.tech/graduates/yappix-cms/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+              >
+                <Image
+                  src="/sk_it/it-park.png"
+                  alt="ИТ-парк"
+                  width={64}
+                  height={64}
+                  className="h-auto max-h-[64px] w-auto"
+                />
+              </Link>
+            </div>
           </div>
 
           {/* Services */}
