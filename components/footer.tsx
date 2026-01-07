@@ -25,7 +25,7 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { label: "Telegram", href: "https://t.me/yappix" },
+  { label: "Telegram", href: "https://t.me/yappix_bot" },
   { label: "VK", href: "https://vk.com/yappix" },
   { label: "LinkedIn", href: "https://linkedin.com/company/yappix" },
   { label: "GitHub", href: "https://github.com/yappix" },

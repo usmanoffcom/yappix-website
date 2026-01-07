@@ -1,7 +1,6 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
-import { motion } from "framer-motion"
 
 const techCategories = [
   {
@@ -51,14 +50,12 @@ export function TechStack() {
         {/* Tech Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {techCategories.map((category, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="p-6 rounded-2xl bg-card border border-border"
-            >
+            <div key={index}
+              
+              
+              
+              
+              className="p-6 rounded-2xl bg-card border border-border animate-in fade-in slide-in-from-bottom-4 duration-500">
               <h3 className="text-lg font-semibold text-foreground mb-4">{category.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.techs.map((tech, tIndex) => (
@@ -71,7 +68,7 @@ export function TechStack() {
                   </Badge>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

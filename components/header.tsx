@@ -148,11 +148,11 @@ export function Header() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
             <Link
-              href="tel:+78001234567"
+              href="tel:+79950955593"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span className="hidden xl:inline">8 800 123-45-67</span>
+              <span className="hidden xl:inline">+7 995 095 55 93</span>
             </Link>
             <Button asChild className="rounded-full px-6">
               <Link href="/kontakty">
@@ -226,7 +226,7 @@ export function Header() {
               {/* Footer мобильного меню */}
               <div className="border-t border-border/50 px-6 py-5 space-y-4 bg-muted/30">
                 <Link
-                  href="tel:+78001234567"
+                  href="tel:+79950955593"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -234,7 +234,7 @@ export function Header() {
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Бесплатно по России</div>
-                    <div className="text-sm font-semibold text-foreground">8 800 123-45-67</div>
+                    <div className="text-sm font-semibold text-foreground">+7 995 095 55 93</div>
                   </div>
                 </Link>
                 <Button asChild className="w-full rounded-full h-12" onClick={() => setIsOpen(false)}>

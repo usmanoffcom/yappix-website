@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ArrowUpRight } from "lucide-react"
-import { motion } from "framer-motion"
 import Link from "next/link"
 
 const cases = [
@@ -63,13 +62,7 @@ export function CasesSection() {
         {/* Cases Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {cases.map((caseItem, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
+            <div key={index} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
               <Card className="overflow-hidden bg-card border-border hover:border-primary/30 transition-colors group">
                 {/* Image */}
                 <div className="relative aspect-video overflow-hidden bg-secondary">
@@ -112,7 +105,7 @@ export function CasesSection() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
 

@@ -53,23 +53,23 @@ const contactMethods = [
   {
     icon: Phone,
     title: "Телефон",
-    value: "8 800 123-45-67",
+    value: "+7 995 095 55 93",
     description: "Бесплатно по России",
-    href: "tel:+78001234567",
+    href: "tel:+79950955593",
   },
   {
     icon: Mail,
     title: "Email",
-    value: "hello@yappix.ru",
+    value: "sales@yappix.ru",
     description: "Ответим в течение 2 часов",
-    href: "mailto:hello@yappix.ru",
+    href: "mailto:sales@yappix.ru",
   },
   {
     icon: MessageCircle,
     title: "Telegram",
     value: "@yappix_support",
     description: "Быстрые ответы",
-    href: "https://t.me/yappix_support",
+    href: "https://t.me/yappix_bot",
   },
   {
     icon: Clock,
@@ -213,7 +213,7 @@ export default function ContactsPage() {
                   </Button>
                   <p className="text-sm text-muted-foreground text-center">
                     Или напишите нам в{" "}
-                    <Link href="https://t.me/yappix_support" className="text-primary hover:underline">
+                    <Link href="https://t.me/yappix_bot" className="text-primary hover:underline">
                       Telegram
                     </Link>{" "}
                     — ответим быстрее
@@ -313,7 +313,7 @@ export default function ContactsPage() {
             name: "YappiX",
             image: "https://yappix.ru/logo.png",
             telephone: "+7-800-123-45-67",
-            email: "hello@yappix.ru",
+            email: "sales@yappix.ru",
             address: {
               "@type": "PostalAddress",
               streetAddress: "Инновационный центр Сколково, Большой бульвар 42",

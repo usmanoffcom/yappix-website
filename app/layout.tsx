@@ -1,16 +1,20 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Onest, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+import { Onest, JetBrains_Mono } from "next/font/google"
+import { ChatWidgetWrapper } from "@/components/chat-widget-wrapper"
 import "./globals.css"
+
+// Suppress hydration warnings from browser extensions
+const suppressHydrationWarning = true
 
 const _onest = Onest({
   subsets: ["latin", "cyrillic"],
   variable: "--font-onest",
 })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const _geistMono = JetBrains_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://yappix.ru'),
   title: "YappiX — Разработка сайтов, приложений и AI-решений | Резиденты Сколково",
   description:
     "YappiX — IT-студия полного цикла. Разработка веб-сайтов, мобильных приложений, AI-чатов, SaaS, FinTech решений. Резиденты Сколково. MVP за 7 дней с гарантией возврата. Офисы в США, России, Турции, Сербии.",
@@ -155,7 +159,7 @@ export default function RootLayout({
       </head>
       <body className={`${_onest.variable} font-sans antialiased`}>
         {children}
-        <Analytics />
+        <ChatWidgetWrapper />
       </body>
     </html>
   )

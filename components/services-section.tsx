@@ -16,7 +16,6 @@ import {
   Palette,
   ShieldCheck,
 } from "lucide-react"
-import { motion } from "framer-motion"
 
 const services = [
   {
@@ -122,13 +121,7 @@ export function ServicesSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              viewport={{ once: true }}
-            >
+            <div key={index} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
               <Card className="h-full bg-card hover:bg-secondary/50 transition-colors border-border group cursor-pointer">
                 <CardHeader className="pb-3 sm:pb-4">
                   <div className="flex items-start justify-between gap-2">
@@ -162,7 +155,7 @@ export function ServicesSection() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

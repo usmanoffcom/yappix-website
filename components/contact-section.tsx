@@ -10,7 +10,6 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, Send, MessageCircle, Calendar } from "lucide-react"
-import { motion } from "framer-motion"
 import Link from "next/link"
 
 const offices = [
@@ -22,14 +21,38 @@ const offices = [
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: "",
+  })
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    alert("Спасибо! Мы свяжемся с вами в ближайшее время.")
+    setSubmitStatus("idle")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({ name: "", company: "", email: "", phone: "", message: "" })
+      } else {
+        setSubmitStatus("error")
+      }
+    } catch {
+      setSubmitStatus("error")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -50,12 +73,7 @@ export function ContactSection() {
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
-          >
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <Card className="bg-card border-border">
               <CardHeader>
                 <CardTitle className="text-foreground">Оставить заявку</CardTitle>
@@ -64,84 +82,111 @@ export function ContactSection() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-foreground">
-                        Имя *
-                      </Label>
-                      <Input id="name" placeholder="Ваше имя" required className="bg-input border-border" />
+                {submitStatus === "success" ? (
+                  <div className="text-center py-8">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
+                      <Send className="w-8 h-8 text-green-500" />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="company" className="text-foreground">
-                        Компания
-                      </Label>
-                      <Input id="company" placeholder="Название компании" className="bg-input border-border" />
-                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Заявка отправлена!</h3>
+                    <p className="text-muted-foreground">Мы свяжемся с вами в ближайшее время</p>
                   </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="name" className="text-foreground">
+                          Имя *
+                        </Label>
+                        <Input 
+                          id="name" 
+                          placeholder="Ваше имя" 
+                          required 
+                          className="bg-input border-border"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="company" className="text-foreground">
+                          Компания
+                        </Label>
+                        <Input 
+                          id="company" 
+                          placeholder="Название компании" 
+                          className="bg-input border-border"
+                          value={formData.company}
+                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        />
+                      </div>
+                    </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-foreground">
+                          Email *
+                        </Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="email@company.com"
+                          required
+                          className="bg-input border-border"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-foreground">
+                          Телефон
+                        </Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          placeholder="+7 (___) ___-__-__"
+                          className="bg-input border-border"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        />
+                      </div>
+                    </div>
+
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-foreground">
-                        Email *
+                      <Label htmlFor="message" className="text-foreground">
+                        Расскажите о проекте *
                       </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="email@company.com"
+                      <Textarea
+                        id="message"
+                        placeholder="Опишите вашу идею, задачи и примерные сроки..."
+                        rows={4}
                         required
-                        className="bg-input border-border"
+                        className="bg-input border-border resize-none"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-foreground">
-                        Телефон
-                      </Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        placeholder="+7 (___) ___-__-__"
-                        className="bg-input border-border"
-                      />
-                    </div>
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-foreground">
-                      Расскажите о проекте *
-                    </Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Опишите вашу идею, задачи и примерные сроки..."
-                      rows={4}
-                      required
-                      className="bg-input border-border resize-none"
-                    />
-                  </div>
+                    {submitStatus === "error" && (
+                      <p className="text-sm text-red-500">Ошибка отправки. Попробуйте позже или свяжитесь по телефону.</p>
+                    )}
 
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Отправка..." : "Отправить заявку"}
-                    <Send className="w-4 h-4 ml-2" />
-                  </Button>
-                </form>
+                    <Button type="submit" className="w-full" disabled={isSubmitting}>
+                      {isSubmitting ? "Отправка..." : "Отправить заявку"}
+                      <Send className="w-4 h-4 ml-2" />
+                    </Button>
+                  </form>
+                )}
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* Quick Contact */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-foreground">Быстрая связь</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <Button variant="outline" size="lg" asChild className="justify-start h-auto py-4 bg-transparent">
-                  <Link href="https://t.me/yappix" target="_blank">
+                  <Link href="https://t.me/yappix_bot" target="_blank">
                     <MessageCircle className="w-5 h-5 mr-3 text-primary" />
                     <div className="text-left">
                       <div className="font-semibold text-foreground">Telegram</div>
@@ -150,11 +195,11 @@ export function ContactSection() {
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="justify-start h-auto py-4 bg-transparent">
-                  <Link href="tel:+78001234567">
+                  <Link href="tel:+79950955593">
                     <Phone className="w-5 h-5 mr-3 text-primary" />
                     <div className="text-left">
                       <div className="font-semibold text-foreground">Позвонить</div>
-                      <div className="text-xs text-muted-foreground">8 800 123-45-67</div>
+                      <div className="text-xs text-muted-foreground">+7 995 095 55 93</div>
                     </div>
                   </Link>
                 </Button>
@@ -167,8 +212,8 @@ export function ContactSection() {
                 <Mail className="w-5 h-5 text-primary" />
                 <div>
                   <div className="text-sm text-muted-foreground">Email</div>
-                  <Link href="mailto:hello@yappix.ru" className="text-foreground hover:text-primary transition-colors">
-                    hello@yappix.ru
+                  <Link href="mailto:sales@yappix.ru" className="text-foreground hover:text-primary transition-colors">
+                    sales@yappix.ru
                   </Link>
                 </div>
               </div>
@@ -205,7 +250,7 @@ export function ContactSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

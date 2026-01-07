@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Check, Sparkles, ArrowRight } from "lucide-react"
-import { motion } from "framer-motion"
 import Link from "next/link"
 
 const plans = [
@@ -78,13 +77,7 @@ export function PricingSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
+            <div key={index} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
               <Card
                 className={`h-full flex flex-col ${plan.popular ? "border-primary bg-primary/5 relative" : "border-border bg-card"}`}
               >
@@ -131,7 +124,7 @@ export function PricingSection() {
                   </Button>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
 
