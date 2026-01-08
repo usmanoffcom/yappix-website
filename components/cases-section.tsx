@@ -9,6 +9,7 @@ import { useRef, useState } from "react"
 
 const cases = [
   {
+    slug: "fintech-marketplace",
     title: "Card2Card — MVP мобильного приложения",
     category: "FinTech / Mobile",
     description: "Мобильное приложение для переводов с карты на карту по всему миру. Автоматическая комиссия, простой перевод и ничего лишнего.",
@@ -17,6 +18,7 @@ const cases = [
     image: "/images/05f1e332931093.589da5ec81ead.gif",
   },
   {
+    slug: "ai-food-assistant",
     title: "Ассистент заявок — голосовой заказ еды",
     category: "AI / Voice",
     description: "Голосовой AI-ассистент для заказа еды без касания экрана. Идеально для водителей за рулём.",
@@ -25,6 +27,7 @@ const cases = [
     video: "/images/checkout_ai_2.mp4",
   },
   {
+    slug: "myunion-platform",
     title: "MyUnion Pro — платформа управления профсоюзами",
     category: "SaaS / AI",
     description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ и автоматическим созданием документов",
@@ -33,6 +36,7 @@ const cases = [
     image: "/images/image.png",
   },
   {
+    slug: "global-olive-corporation",
     title: "Global Olive Corporation",
     category: "E-commerce / FinTech",
     description: "Полнофункциональная e-commerce платформа для инвестирования в оливковые деревья. Пользователи могут покупать деревья, получать сертификаты владения, дарить деревья другим и отслеживать активы. Включает админ-панель для управления инвентарем, заказами и пользователями.",
@@ -102,8 +106,8 @@ export function CasesSection() {
         {/* Cases Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {cases.map((caseItem, index) => (
-            <div key={index} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <Card className="overflow-hidden bg-card border-border hover:border-primary/30 transition-colors group !p-0 !gap-0">
+            <Link key={index} href={`/kejsy/${caseItem.slug}`} className="animate-in fade-in slide-in-from-bottom-4 duration-500 block">
+              <Card className="overflow-hidden bg-card border-border hover:border-primary/30 transition-colors group !p-0 !gap-0 cursor-pointer h-full">
                 {/* Image or Video */}
                 {caseItem.video ? (
                   <VideoCard src={caseItem.video} title={caseItem.title} />
@@ -149,7 +153,7 @@ export function CasesSection() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </Link>
           ))}
         </div>
 
