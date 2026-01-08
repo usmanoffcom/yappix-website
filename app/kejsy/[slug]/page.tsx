@@ -119,18 +119,44 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Main Image */}
+        {/* Main Videos/Image */}
         <section className="pb-12 sm:pb-16 md:pb-20">
-          <div className="container mx-auto">
-            <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
-              <Image
-                src={caseStudy.image || "/placeholder.svg"}
-                alt={caseStudy.title}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
+          <div className="container mx-auto space-y-6">
+            {caseStudy.videos && caseStudy.videos.length > 0 ? (
+              caseStudy.videos.map((video, index) => (
+                <div key={index} className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
+                  <video
+                    src={video}
+                    autoPlay={index === 0}
+                    loop
+                    playsInline
+                    controls
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
+                {caseStudy.image?.endsWith('.mp4') ? (
+                  <video
+                    src={caseStudy.image}
+                    autoPlay
+                    loop
+                    playsInline
+                    controls
+                    className="object-cover w-full h-full"
+                  />
+                ) : (
+                  <Image
+                    src={caseStudy.image || "/placeholder.svg"}
+                    alt={caseStudy.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                )}
+              </div>
+            )}
           </div>
         </section>
 
@@ -169,26 +195,39 @@ export default async function CaseStudyPage({ params }: Props) {
         </section>
 
         {/* Gallery */}
-        <section className="pb-12 sm:pb-16 md:pb-20">
-          <div className="container mx-auto">
-            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8">Галерея проекта</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {caseStudy.gallery.map((image, index) => (
-                <div
-                  key={index}
-                  className="relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden bg-card border border-border"
-                >
-                  <Image
-                    src={image || "/placeholder.svg"}
-                    alt={`${caseStudy.title} — скриншот ${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+        {caseStudy.gallery.length > 0 && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8">Галерея проекта</h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                {caseStudy.gallery.map((media, index) => (
+                  <div
+                    key={index}
+                    className="relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden bg-card border border-border"
+                  >
+                    {media?.endsWith('.mp4') ? (
+                      <video
+                        src={media}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="object-cover w-full h-full"
+                      />
+                    ) : (
+                      <Image
+                        src={media || "/placeholder.svg"}
+                        alt={`${caseStudy.title} — скриншот ${index + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Tech Stack */}
         <section className="pb-12 sm:pb-16 md:pb-20">

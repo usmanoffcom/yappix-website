@@ -3,43 +3,83 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Volume2, VolumeX } from "lucide-react"
 import Link from "next/link"
+import { useRef, useState } from "react"
 
 const cases = [
   {
-    title: "FinTech платформа",
-    category: "FinTech / SaaS",
-    description: "Платёжная платформа с интеграцией банковских API, KYC/AML верификацией и real-time аналитикой",
-    metrics: ["$2M привлечено", "50K пользователей", "99.9% uptime"],
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    image: "/placeholder.svg?height=400&width=600",
+    title: "Card2Card — MVP мобильного приложения",
+    category: "FinTech / Mobile",
+    description: "Мобильное приложение для переводов с карты на карту по всему миру. Автоматическая комиссия, простой перевод и ничего лишнего.",
+    metrics: ["14 разработчиков", "VISA, MC, USDT", "EU, US, Asia, Africa"],
+    tags: ["React Native", "Node.js", "VISA API", "Mastercard"],
+    image: "/images/05f1e332931093.589da5ec81ead.gif",
   },
   {
-    title: "AI-ассистент для e-commerce",
-    category: "AI / Чат-бот",
-    description: "Умный консультант на базе GPT с RAG-системой для интернет-магазина косметики",
-    metrics: ["+40% конверсия", "-60% нагрузка на поддержку", "24/7 работа"],
-    tags: ["ChatGPT", "LangChain", "Pinecone", "Next.js"],
-    image: "/placeholder.svg?height=400&width=600",
+    title: "Ассистент заявок — голосовой заказ еды",
+    category: "AI / Voice",
+    description: "Голосовой AI-ассистент для заказа еды без касания экрана. Идеально для водителей за рулём.",
+    metrics: ["+40% конверсия", "100% hands-free", "30 сек заказ"],
+    tags: ["GPT-4", "Voice AI", "Speech Recognition", "Stripe"],
+    video: "/images/checkout_ai_2.mp4",
   },
   {
-    title: "Маркетплейс услуг",
-    category: "Веб-платформа",
-    description: "Агрегатор локальных услуг с системой бронирования, отзывами и интеграцией платежей",
-    metrics: ["100K MAU", "15K бизнесов", "4.8★ рейтинг"],
-    tags: ["Next.js", "Supabase", "React Native"],
-    image: "/placeholder.svg?height=400&width=600",
+    title: "MyUnion Pro — платформа управления профсоюзами",
+    category: "SaaS / AI",
+    description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ и автоматическим созданием документов",
+    metrics: ["1 человек", "3 месяца", "50K+ пользователей"],
+    tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain"],
+    image: "/images/image.png",
   },
   {
-    title: "DevOps автоматизация",
-    category: "DevOps / Инфраструктура",
-    description: "Полная автоматизация CI/CD для крупного e-commerce с микросервисной архитектурой",
-    metrics: ["10x быстрее деплой", "-70% затрат на инфру", "0 даунтайм"],
-    tags: ["Kubernetes", "Terraform", "GitLab CI", "AWS"],
-    image: "/placeholder.svg?height=400&width=600",
+    title: "Global Olive Corporation",
+    category: "E-commerce / FinTech",
+    description: "Полнофункциональная e-commerce платформа для инвестирования в оливковые деревья. Пользователи могут покупать деревья, получать сертификаты владения, дарить деревья другим и отслеживать активы. Включает админ-панель для управления инвентарем, заказами и пользователями.",
+    metrics: ["$500K+ инвестиций", "1000+ деревьев", "Сертификаты NFT"],
+    tags: ["Next.js", "Stripe", "PostgreSQL", "AWS"],
+    image: "/images/image copy.png",
   },
 ]
+
+function VideoCard({ src, title }: { src: string; title: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isMuted, setIsMuted] = useState(true)
+  const [isHovered, setIsHovered] = useState(false)
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted
+      setIsMuted(videoRef.current.muted)
+    }
+  }
+
+  return (
+    <div 
+      className="relative aspect-video overflow-hidden bg-black"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+      {/* Unmute button */}
+      <button
+        onClick={toggleMute}
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-white transition-opacity duration-300 hover:bg-black/80 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+      >
+        {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+      </button>
+    </div>
+  )
+}
 
 export function CasesSection() {
   return (
@@ -63,16 +103,20 @@ export function CasesSection() {
         <div className="grid md:grid-cols-2 gap-8">
           {cases.map((caseItem, index) => (
             <div key={index} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <Card className="overflow-hidden bg-card border-border hover:border-primary/30 transition-colors group">
-                {/* Image */}
-                <div className="relative aspect-video overflow-hidden bg-secondary">
-                  <img
-                    src={caseItem.image || "/placeholder.svg"}
-                    alt={caseItem.title}
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
-                </div>
+              <Card className="overflow-hidden bg-card border-border hover:border-primary/30 transition-colors group !p-0 !gap-0">
+                {/* Image or Video */}
+                {caseItem.video ? (
+                  <VideoCard src={caseItem.video} title={caseItem.title} />
+                ) : (
+                  <div className="relative aspect-video overflow-hidden bg-black">
+                    <img
+                      src={caseItem.image || "/placeholder.svg"}
+                      alt={caseItem.title}
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+                  </div>
+                )}
 
                 <CardContent className="p-6">
                   {/* Category */}
@@ -110,7 +154,13 @@ export function CasesSection() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div className="flex justify-center gap-4 mt-12">
+          <Button variant="default" size="lg" asChild>
+            <Link href="/kejsy">
+              Все кейсы
+              <ArrowUpRight className="w-5 h-5 ml-2" />
+            </Link>
+          </Button>
           <Button variant="outline" size="lg" asChild>
             <Link href="#contact">
               Обсудить ваш проект

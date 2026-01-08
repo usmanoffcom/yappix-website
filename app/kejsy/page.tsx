@@ -19,59 +19,59 @@ export const metadata: Metadata = {
 const cases = [
   {
     slug: "fintech-marketplace",
-    title: "Финансовый маркетплейс",
-    client: "FinHub",
+    title: "Card2Card — MVP мобильного приложения",
+    client: "NDA",
     category: "FinTech",
-    description: "Платформа для сравнения и оформления финансовых продуктов: кредиты, вклады, страховки.",
-    image: "/placeholder.svg?height=600&width=800",
+    description: "Мобильное приложение для переводов с карты на карту по всему миру. Автоматическая комиссия, простой перевод и ничего лишнего.",
+    image: "/images/05f1e332931093.589da5ec81ead.gif",
     results: [
-      { label: "Рост конверсии", value: "+340%" },
-      { label: "Срок разработки", value: "4 мес" },
-      { label: "MAU", value: "500K" },
+      { label: "Разработчиков", value: "14" },
+      { label: "Шлюзы", value: "VISA, MC, USDT" },
+      { label: "Регионы", value: "4" },
     ],
-    tags: ["Next.js", "PostgreSQL", "Stripe", "Kubernetes"],
+    tags: ["React Native", "Node.js", "VISA API", "Mastercard"],
   },
   {
-    slug: "ai-support-bot",
-    title: "AI-ассистент для банка",
-    client: "Топ-10 банк РФ",
+    slug: "ai-food-assistant",
+    title: "Ассистент заявок — голосовой заказ еды",
+    client: "Food Delivery",
     category: "AI",
-    description: "Интеллектуальный чат-бот для службы поддержки: отвечает на 80% вопросов без оператора.",
-    image: "/placeholder.svg?height=600&width=800",
+    description: "Голосовой AI-ассистент для заказа еды без касания экрана. Идеально для водителей за рулём.",
+    image: "/images/checkout_ai_2.mp4",
     results: [
-      { label: "Автоматизация", value: "82%" },
-      { label: "Экономия", value: "₽15M/год" },
-      { label: "NPS", value: "+25 п.п." },
+      { label: "Конверсия", value: "+40%" },
+      { label: "Hands-free", value: "100%" },
+      { label: "Время заказа", value: "30 сек" },
     ],
-    tags: ["GPT-4", "LangChain", "RAG", "Python"],
+    tags: ["GPT-4", "Voice AI", "Speech Recognition", "Stripe"],
   },
   {
-    slug: "ecommerce-platform",
-    title: "Маркетплейс электроники",
-    client: "TechStore",
-    category: "E-commerce",
-    description: "Полный редизайн и миграция интернет-магазина с 1С-Битрикс на современный стек.",
-    image: "/placeholder.svg?height=600&width=800",
-    results: [
-      { label: "Скорость", value: "+400%" },
-      { label: "Конверсия", value: "+65%" },
-      { label: "SEO трафик", value: "+180%" },
-    ],
-    tags: ["Next.js", "Medusa", "Algolia", "Vercel"],
-  },
-  {
-    slug: "saas-hr-platform",
-    title: "HR-платформа",
-    client: "PeopleFirst",
+    slug: "myunion-platform",
+    title: "MyUnion Pro — платформа управления профсоюзами",
+    client: "MyUnion",
     category: "SaaS",
-    description: "SaaS-платформа для управления персоналом: найм, онбординг, оценка, аналитика.",
-    image: "/placeholder.svg?height=600&width=800",
+    description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ.",
+    image: "/images/image.png",
     results: [
-      { label: "B2B клиентов", value: "200+" },
-      { label: "ARR", value: "$2M" },
-      { label: "Retention", value: "94%" },
+      { label: "Команда", value: "1 чел" },
+      { label: "Срок", value: "3 мес" },
+      { label: "Пользователей", value: "50K+" },
     ],
-    tags: ["React", "Node.js", "PostgreSQL", "AWS"],
+    tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain"],
+  },
+  {
+    slug: "global-olive-corporation",
+    title: "Global Olive Corporation",
+    client: "Global Olive",
+    category: "E-commerce",
+    description: "E-commerce платформа для инвестирования в оливковые деревья с сертификатами владения.",
+    image: "/images/image copy.png",
+    results: [
+      { label: "Инвестиций", value: "$500K+" },
+      { label: "Деревьев", value: "1000+" },
+      { label: "Конверсия", value: "8%" },
+    ],
+    tags: ["Next.js", "Stripe", "PostgreSQL", "AWS"],
   },
   {
     slug: "mobile-delivery-app",
@@ -148,13 +148,24 @@ export default function CasesPage() {
               {cases.map((caseItem) => (
                 <Link key={caseItem.slug} href={`/kejsy/${caseItem.slug}`} className="group">
                   <article className="h-full bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors">
-                    <div className="relative aspect-video bg-muted">
-                      <Image
-                        src={caseItem.image || "/placeholder.svg"}
-                        alt={caseItem.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                    <div className="relative aspect-video bg-black overflow-hidden">
+                      {caseItem.image?.endsWith('.mp4') ? (
+                        <video
+                          src={caseItem.image}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <Image
+                          src={caseItem.image || "/placeholder.svg"}
+                          alt={caseItem.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      )}
                       <span className="absolute top-4 left-4 px-3 py-1 text-xs font-medium bg-primary text-primary-foreground rounded-full">
                         {caseItem.category}
                       </span>
