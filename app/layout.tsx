@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Onest, JetBrains_Mono } from "next/font/google"
 import { ChatWidgetWrapper } from "@/components/chat-widget-wrapper"
+import { RecaptchaProvider } from "@/components/recaptcha-provider"
 import "./globals.css"
 
 // Suppress hydration warnings from browser extensions
@@ -197,8 +198,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${_onest.variable} font-sans antialiased`}>
-        {children}
-        <ChatWidgetWrapper />
+        <RecaptchaProvider>
+          {children}
+          <ChatWidgetWrapper />
+        </RecaptchaProvider>
       </body>
     </html>
   )

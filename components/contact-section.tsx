@@ -1,17 +1,19 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useCallback } from "react"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { MapPin, Phone, Mail, Send, MessageCircle, Calendar } from "lucide-react"
+import { MapPin, Phone, Mail, Send, MessageCircle, Calendar, AlertCircle } from "lucide-react"
 import Link from "next/link"
 import { BookingCalendar } from "@/components/booking-calendar"
+import { PhoneInputField } from "@/components/phone-input"
+import { validateName, validateEmail, validateCompany, validateMessage } from "@/lib/validation"
 
 const offices = [
   { country: "🇷🇺 Россия", city: "Москва, Сколково" },
@@ -22,6 +24,7 @@ const offices = [
 ]
 
 export function ContactSection() {
+  const { executeRecaptcha } = useGoogleReCaptcha()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isBookingOpen, setIsBookingOpen] = useState(false)
   const [formData, setFormData] = useState({
@@ -31,32 +34,102 @@ export function ContactSection() {
     phone: "",
     message: "",
   })
+  const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [submitError, setSubmitError] = useState("")
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Валидация поля при потере фокуса
+  const validateField = (field: string, value: string) => {
+    let validation: { valid: boolean; error?: string }
+    
+    switch (field) {
+      case "name":
+        validation = validateName(value)
+        break
+      case "email":
+        validation = validateEmail(value)
+        break
+      case "company":
+        validation = validateCompany(value)
+        break
+      case "message":
+        validation = validateMessage(value)
+        break
+      default:
+        return
+    }
+
+    setErrors(prev => ({
+      ...prev,
+      [field]: validation.valid ? "" : (validation.error || "")
+    }))
+  }
+
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus("idle")
+    setSubmitError("")
+
+    // Клиентская валидация
+    const newErrors: Record<string, string> = {}
+    
+    const nameVal = validateName(formData.name)
+    if (!nameVal.valid) newErrors.name = nameVal.error!
+    
+    const emailVal = validateEmail(formData.email)
+    if (!emailVal.valid) newErrors.email = emailVal.error!
+    
+    if (formData.company) {
+      const companyVal = validateCompany(formData.company)
+      if (!companyVal.valid) newErrors.company = companyVal.error!
+    }
+    
+    const messageVal = validateMessage(formData.message)
+    if (!messageVal.valid) newErrors.message = messageVal.error!
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      setIsSubmitting(false)
+      return
+    }
 
     try {
+      // Получаем токен reCAPTCHA
+      let recaptchaToken = ""
+      if (executeRecaptcha) {
+        recaptchaToken = await executeRecaptcha("contact_form")
+      }
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken,
+        }),
       })
+
+      const data = await response.json()
 
       if (response.ok) {
         setSubmitStatus("success")
         setFormData({ name: "", company: "", email: "", phone: "", message: "" })
+        setErrors({})
       } else {
         setSubmitStatus("error")
+        setSubmitError(data.error || "Ошибка отправки")
+        if (data.field) {
+          setErrors({ [data.field]: data.error })
+        }
       }
     } catch {
       setSubmitStatus("error")
+      setSubmitError("Ошибка сети. Попробуйте позже.")
     } finally {
       setIsSubmitting(false)
     }
-  }
+  }, [formData, executeRecaptcha])
 
   return (
     <section id="contact" className="py-20 md:py-32 bg-card/30">
@@ -104,10 +177,17 @@ export function ContactSection() {
                           id="name" 
                           placeholder="Ваше имя" 
                           required 
-                          className="bg-input border-border"
+                          className={`bg-input border-border ${errors.name ? "border-red-500" : ""}`}
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          onBlur={() => validateField("name", formData.name)}
                         />
+                        {errors.name && (
+                          <p className="text-xs text-red-500 flex items-center gap-1">
+                            <AlertCircle className="w-3 h-3" />
+                            {errors.name}
+                          </p>
+                        )}
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="company" className="text-foreground">
@@ -116,10 +196,17 @@ export function ContactSection() {
                         <Input 
                           id="company" 
                           placeholder="Название компании" 
-                          className="bg-input border-border"
+                          className={`bg-input border-border ${errors.company ? "border-red-500" : ""}`}
                           value={formData.company}
                           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                          onBlur={() => validateField("company", formData.company)}
                         />
+                        {errors.company && (
+                          <p className="text-xs text-red-500 flex items-center gap-1">
+                            <AlertCircle className="w-3 h-3" />
+                            {errors.company}
+                          </p>
+                        )}
                       </div>
                     </div>
 
@@ -133,22 +220,27 @@ export function ContactSection() {
                           type="email"
                           placeholder="email@company.com"
                           required
-                          className="bg-input border-border"
+                          className={`bg-input border-border ${errors.email ? "border-red-500" : ""}`}
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          onBlur={() => validateField("email", formData.email)}
                         />
+                        {errors.email && (
+                          <p className="text-xs text-red-500 flex items-center gap-1">
+                            <AlertCircle className="w-3 h-3" />
+                            {errors.email}
+                          </p>
+                        )}
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-foreground">
                           Телефон
                         </Label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          placeholder="+7 (___) ___-__-__"
-                          className="bg-input border-border"
+                        <PhoneInputField
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          onChange={(value) => setFormData({ ...formData, phone: value })}
+                          error={errors.phone}
+                          className="bg-input"
                         />
                       </div>
                     </div>
@@ -162,20 +254,40 @@ export function ContactSection() {
                         placeholder="Опишите вашу идею, задачи и примерные сроки..."
                         rows={4}
                         required
-                        className="bg-input border-border resize-none"
+                        className={`bg-input border-border resize-none ${errors.message ? "border-red-500" : ""}`}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        onBlur={() => validateField("message", formData.message)}
                       />
+                      {errors.message && (
+                        <p className="text-xs text-red-500 flex items-center gap-1">
+                          <AlertCircle className="w-3 h-3" />
+                          {errors.message}
+                        </p>
+                      )}
                     </div>
 
                     {submitStatus === "error" && (
-                      <p className="text-sm text-red-500">Ошибка отправки. Попробуйте позже или свяжитесь по телефону.</p>
+                      <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
+                        <p className="text-sm text-red-500 flex items-center gap-2">
+                          <AlertCircle className="w-4 h-4" />
+                          {submitError || "Ошибка отправки. Попробуйте позже или свяжитесь по телефону."}
+                        </p>
+                      </div>
                     )}
 
                     <Button type="submit" className="w-full" disabled={isSubmitting}>
                       {isSubmitting ? "Отправка..." : "Отправить заявку"}
                       <Send className="w-4 h-4 ml-2" />
                     </Button>
+
+                    <p className="text-xs text-muted-foreground text-center">
+                      Нажимая кнопку, вы соглашаетесь с{" "}
+                      <Link href="/politika-konfidencialnosti" className="text-primary hover:underline">
+                        политикой конфиденциальности
+                      </Link>
+                      . Защищено reCAPTCHA.
+                    </p>
                   </form>
                 )}
               </CardContent>

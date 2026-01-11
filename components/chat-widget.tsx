@@ -1,10 +1,12 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
-import { MessageCircle, X, Send, Bot, User, Loader2, Phone, Mail, Sparkles } from "lucide-react"
+import { useState, useRef, useEffect, useCallback } from "react"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
+import { MessageCircle, X, Send, Bot, User, Loader2, Phone, Mail, Sparkles, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { validateName, validateEmail, formatRussianPhone } from "@/lib/validation"
 
 interface Message {
   role: "user" | "assistant"
@@ -21,6 +23,7 @@ const INITIAL_MESSAGE = `👋 Привет! Я AI-ассистент YappiX.
 Напишите ваш вопрос!`
 
 export function ChatWidget() {
+  const { executeRecaptcha } = useGoogleReCaptcha()
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: INITIAL_MESSAGE }
@@ -29,6 +32,7 @@ export function ChatWidget() {
   const [isLoading, setIsLoading] = useState(false)
   const [showLeadForm, setShowLeadForm] = useState(false)
   const [leadData, setLeadData] = useState({ name: "", contact: "", message: "" })
+  const [leadErrors, setLeadErrors] = useState<Record<string, string>>({})
   const [leadSent, setLeadSent] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -101,33 +105,85 @@ export function ChatWidget() {
     }
   }
 
-  const submitLead = async () => {
+  const submitLead = useCallback(async () => {
     if (!leadData.name || !leadData.contact) return
 
+    // Валидация
+    const errors: Record<string, string> = {}
+    
+    const nameValidation = validateName(leadData.name)
+    if (!nameValidation.valid) {
+      errors.name = nameValidation.error!
+    }
+    
+    const isEmail = leadData.contact.includes("@")
+    if (isEmail) {
+      const emailValidation = validateEmail(leadData.contact)
+      if (!emailValidation.valid) {
+        errors.contact = emailValidation.error!
+      }
+    } else {
+      // Проверка телефона - минимум 10 цифр
+      const digits = leadData.contact.replace(/\D/g, "")
+      if (digits.length < 10) {
+        errors.contact = "Некорректный номер телефона"
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setLeadErrors(errors)
+      return
+    }
+
     setIsLoading(true)
+    setLeadErrors({})
+    
     try {
-      await fetch("/api/contact", {
+      // Получаем токен reCAPTCHA
+      let recaptchaToken = ""
+      if (executeRecaptcha) {
+        recaptchaToken = await executeRecaptcha("chat_lead")
+      }
+
+      const formattedContact = isEmail 
+        ? leadData.contact 
+        : formatRussianPhone(leadData.contact)
+
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: leadData.name,
-          email: leadData.contact.includes("@") ? leadData.contact : "",
-          phone: !leadData.contact.includes("@") ? leadData.contact : "",
+          email: isEmail ? leadData.contact : "",
+          phone: !isEmail ? formattedContact : "",
           message: leadData.message || "Заявка из чата",
+          recaptchaToken,
         }),
       })
-      setLeadSent(true)
+
+      if (response.ok) {
+        setLeadSent(true)
+        setMessages(prev => [...prev, { 
+          role: "assistant", 
+          content: "✅ Спасибо! Мы получили ваши контакты и скоро свяжемся с вами!" 
+        }])
+      } else {
+        const data = await response.json()
+        setMessages(prev => [...prev, { 
+          role: "assistant", 
+          content: `❌ ${data.error || "Ошибка отправки. Попробуйте позже."}` 
+        }])
+      }
+    } catch {
       setMessages(prev => [...prev, { 
         role: "assistant", 
-        content: "✅ Спасибо! Мы получили ваши контакты и скоро свяжемся с вами!" 
+        content: "❌ Ошибка сети. Позвоните: +7 995 095 55 93" 
       }])
-    } catch {
-      // ignore
     } finally {
       setIsLoading(false)
       setShowLeadForm(false)
     }
-  }
+  }, [leadData, executeRecaptcha])
 
   const handleClose = () => {
     setIsOpen(false)
@@ -220,18 +276,40 @@ export function ChatWidget() {
                 <div className="text-sm font-medium text-foreground">
                   📝 Оставьте контакты — мы перезвоним!
                 </div>
-                <Input
-                  placeholder="Ваше имя"
-                  value={leadData.name}
-                  onChange={(e) => setLeadData({ ...leadData, name: e.target.value })}
-                  className="bg-background/50"
-                />
-                <Input
-                  placeholder="Телефон или Email"
-                  value={leadData.contact}
-                  onChange={(e) => setLeadData({ ...leadData, contact: e.target.value })}
-                  className="bg-background/50"
-                />
+                <div>
+                  <Input
+                    placeholder="Ваше имя"
+                    value={leadData.name}
+                    onChange={(e) => {
+                      setLeadData({ ...leadData, name: e.target.value })
+                      setLeadErrors(prev => ({ ...prev, name: "" }))
+                    }}
+                    className={`bg-background/50 ${leadErrors.name ? "border-red-500" : ""}`}
+                  />
+                  {leadErrors.name && (
+                    <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+                      <AlertCircle className="w-3 h-3" />
+                      {leadErrors.name}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <Input
+                    placeholder="Телефон или Email"
+                    value={leadData.contact}
+                    onChange={(e) => {
+                      setLeadData({ ...leadData, contact: e.target.value })
+                      setLeadErrors(prev => ({ ...prev, contact: "" }))
+                    }}
+                    className={`bg-background/50 ${leadErrors.contact ? "border-red-500" : ""}`}
+                  />
+                  {leadErrors.contact && (
+                    <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+                      <AlertCircle className="w-3 h-3" />
+                      {leadErrors.contact}
+                    </p>
+                  )}
+                </div>
                 <Textarea
                   placeholder="Кратко о проекте (опционально)"
                   value={leadData.message}

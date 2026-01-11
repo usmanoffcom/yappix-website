@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from "next/server"
 import nodemailer from "nodemailer"
+import { 
+  verifyRecaptcha, 
+  validateContactForm, 
+  formatRussianPhone,
+  validateName,
+  validateEmail as validateEmailFn,
+  validatePhone
+} from "@/lib/validation"
 
 // Telegram Bot Config
 const TELEGRAM_BOT_TOKEN = "8317760178:AAEUGZWwyAWBaHVW-umTrV29V3FcCTCIRyQ"
-const TELEGRAM_CHAT_ID = "-1002757127968" // Личный чат Renat
+const TELEGRAM_CHAT_ID = "-1002757127968"
 
 // SMTP Config for Mail.ru
 const transporter = nodemailer.createTransport({
@@ -73,11 +81,67 @@ async function sendEmail(data: {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
-    const { name, email, phone, company, message } = data
+    const { name, email, phone, company, message, recaptchaToken } = data
 
+    // 1. Проверка reCAPTCHA (если токен передан)
+    if (recaptchaToken) {
+      const recaptchaResult = await verifyRecaptcha(recaptchaToken)
+      if (!recaptchaResult.success) {
+        console.log("reCAPTCHA failed:", recaptchaResult)
+        return NextResponse.json(
+          { error: recaptchaResult.error || "Проверка безопасности не пройдена" },
+          { status: 403 }
+        )
+      }
+      console.log("reCAPTCHA score:", recaptchaResult.score)
+    }
+
+    // 2. Валидация обязательных полей
     if (!name || (!email && !phone) || !message) {
       return NextResponse.json(
         { error: "Заполните обязательные поля" },
+        { status: 400 }
+      )
+    }
+
+    // 3. Валидация имени
+    const nameValidation = validateName(name)
+    if (!nameValidation.valid) {
+      return NextResponse.json(
+        { error: nameValidation.error, field: "name" },
+        { status: 400 }
+      )
+    }
+
+    // 4. Валидация email
+    if (email) {
+      const emailValidation = validateEmailFn(email)
+      if (!emailValidation.valid) {
+        return NextResponse.json(
+          { error: emailValidation.error, field: "email" },
+          { status: 400 }
+        )
+      }
+    }
+
+    // 5. Форматирование и валидация телефона
+    let formattedPhone = phone
+    if (phone) {
+      formattedPhone = formatRussianPhone(phone)
+      const phoneValidation = validatePhone(formattedPhone)
+      if (!phoneValidation.valid) {
+        return NextResponse.json(
+          { error: phoneValidation.error, field: "phone" },
+          { status: 400 }
+        )
+      }
+      formattedPhone = phoneValidation.formatted || formattedPhone
+    }
+
+    // 6. Проверка сообщения на спам
+    if (message.length < 10) {
+      return NextResponse.json(
+        { error: "Сообщение слишком короткое", field: "message" },
         { status: 400 }
       )
     }
@@ -88,7 +152,7 @@ export async function POST(request: NextRequest) {
 
 👤 <b>Имя:</b> ${name}
 ${email ? `📧 <b>Email:</b> ${email}` : ""}
-${phone ? `📱 <b>Телефон:</b> ${phone}` : ""}
+${formattedPhone ? `📱 <b>Телефон:</b> ${formattedPhone}` : ""}
 ${company ? `🏢 <b>Компания:</b> ${company}` : ""}
 
 💬 <b>Сообщение:</b>
@@ -96,6 +160,7 @@ ${message}
 
 🌐 Источник: yappix.ru
 📅 ${new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" })}
+${recaptchaToken ? "✅ reCAPTCHA пройдена" : "⚠️ Без reCAPTCHA"}
     `.trim()
 
     // Send to Telegram first (most reliable)
@@ -105,7 +170,7 @@ ${message}
     // Try email (may fail)
     let emailResult = false
     if (email) {
-      emailResult = await sendEmail({ name, email, phone, company, message })
+      emailResult = await sendEmail({ name, email, phone: formattedPhone, company, message })
       console.log("Email sent:", emailResult)
     }
 

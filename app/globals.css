@@ -203,6 +203,57 @@ html {
   display: none;
 }
 
+/* Phone Input Styles */
+.phone-input-custom {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.phone-input-custom .PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.phone-input-custom .PhoneInputCountryIcon {
+  width: 1.25rem;
+  height: 1rem;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.phone-input-custom .PhoneInputCountrySelectArrow {
+  margin-left: 0.25rem;
+  color: var(--muted-foreground);
+}
+
+.phone-input-custom select {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+}
+
+.phone-input-custom input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  flex: 1;
+  color: var(--foreground);
+}
+
+.phone-input-custom input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* reCAPTCHA Badge - скрыть но оставить функционал */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
 /* Blog Content Styles */
 .blog-content {
   @apply text-foreground;
