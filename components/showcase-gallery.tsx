@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useRef, useEffect, useState } from "react"
+import { useRef } from "react"
 
 const showcaseItems = [
   { src: "/images/4cc28332931093.5c18cb73b0830.gif", alt: "UI/UX Animation 1" },
@@ -13,74 +13,10 @@ const showcaseItems = [
 ]
 
 export function ShowcaseGallery() {
-  const sectionRef = useRef<HTMLElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [isActive, setIsActive] = useState(false)
-
-  useEffect(() => {
-    const section = sectionRef.current
-    const scrollContainer = scrollRef.current
-    if (!section || !scrollContainer) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setIsActive(entry.isIntersecting)
-        })
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px",
-      }
-    )
-
-    observer.observe(section)
-
-    const handleWheel = (e: WheelEvent) => {
-      if (!isActive || !scrollContainer) return
-
-      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth
-      const currentScroll = scrollContainer.scrollLeft
-      const scrollDelta = e.deltaY * 0.8
-      
-      // Проверяем, достигли ли мы границ с небольшим допуском
-      const isAtEnd = currentScroll >= maxScroll - 10
-      const isAtStart = currentScroll <= 10
-
-      // Если прокрутка вниз (вправо по галерее)
-      if (e.deltaY > 0) {
-        if (!isAtEnd) {
-          // Блокируем скролл страницы и прокручиваем галерею
-          e.preventDefault()
-          e.stopPropagation()
-          scrollContainer.scrollLeft = Math.min(currentScroll + scrollDelta, maxScroll)
-        }
-        return
-      }
-
-      // Если прокрутка вверх (влево по галерее)
-      if (e.deltaY < 0) {
-        if (!isAtStart) {
-          // Блокируем скролл страницы и прокручиваем галерею
-          e.preventDefault()
-          e.stopPropagation()
-          scrollContainer.scrollLeft = Math.max(currentScroll + scrollDelta, 0)
-        }
-        return
-      }
-    }
-
-    // Добавляем обработчик с passive: false для возможности preventDefault
-    window.addEventListener("wheel", handleWheel, { passive: false })
-
-    return () => {
-      observer.disconnect()
-      window.removeEventListener("wheel", handleWheel)
-    }
-  }, [isActive])
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-card overflow-hidden">
+    <section className="py-16 md:py-24 bg-card overflow-hidden">
       <div className="container mx-auto px-4 mb-12">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -94,7 +30,7 @@ export function ShowcaseGallery() {
       
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-scroll scrollbar-hide"
+        className="flex gap-4 overflow-x-auto scrollbar-hide px-4"
         style={{
           scrollBehavior: "smooth",
           scrollbarWidth: "none",
