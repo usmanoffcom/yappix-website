@@ -6,6 +6,7 @@ import { ProcessSection } from "@/components/process-section"
 import { CasesSection } from "@/components/cases-section"
 import { TechStack } from "@/components/tech-stack"
 import { PricingSection } from "@/components/pricing-section"
+import { ShowcaseGallery } from "@/components/showcase-gallery"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 
@@ -20,6 +21,7 @@ export default function HomePage() {
       <CasesSection />
       <TechStack />
       <PricingSection />
+      <ShowcaseGallery />
       <ContactSection />
       <Footer />
     </main>
