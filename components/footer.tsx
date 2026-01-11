@@ -153,7 +153,7 @@ export function Footer() {
           <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground text-center sm:text-left">
             © {new Date().getFullYear()} YappiX. Все права защищены.
           </p>
-          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">ИНН 7733123456 • ОГРН 1234567890123</p>
+          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">YAPPIX, LLC • EIN: 38-4161656</p>
         </div>
       </div>
     </footer>
