@@ -185,6 +185,7 @@ export const casesData: CaseStudy[] = [
     gallery: [
       "/images/priboy001.mp4",
       "/images/priboy_gal1.avif",
+      "/images/Screenshot 2026-01-11 at 11.57.15.png",
     ],
     results: [
       { label: "Рост трафика", value: "+180%" },
