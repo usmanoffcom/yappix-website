@@ -88,18 +88,18 @@ const cases = [
     tags: ["Next.js", "SEO", "SMM", "VK Ads"],
   },
   {
-    slug: "corporate-portal",
-    title: "Корпоративный портал",
-    client: "Крупный ритейлер",
-    category: "Enterprise",
-    description: "Внутренний портал для 15 000 сотрудников: новости, документы, заявки, аналитика.",
-    image: "/placeholder.svg?height=600&width=800",
+    slug: "yappix-cms",
+    title: "YappiX CMS — конструктор мобильных приложений",
+    client: "YappiX (собственный продукт)",
+    category: "SaaS",
+    description: "No-code конструктор нативных мобильных приложений с CMS. Поддержан Microsoft for Startups.",
+    image: "/images/yappix.png",
     results: [
-      { label: "Пользователей", value: "15K" },
-      { label: "DAU", value: "8K" },
-      { label: "Интеграций", value: "12" },
+      { label: "Гранты", value: "ФСИ + MS" },
+      { label: "Инвестиции", value: "2 раунда" },
+      { label: "Резидент", value: "Сколково" },
     ],
-    tags: ["Next.js", "SharePoint", "MS Graph", "Azure"],
+    tags: ["React", "Node.js", "Swift", "Kotlin", "No-code"],
   },
 ]
 
