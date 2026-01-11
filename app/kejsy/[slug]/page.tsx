@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, ArrowRight, Clock, Users, Calendar, Quote } from "lucide-react"
 import { getCaseBySlug, getAllCaseSlugs, casesData } from "@/lib/cases-data"
+import { GalleryWithLightbox } from "@/components/gallery-lightbox"
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -199,32 +200,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <section className="pb-12 sm:pb-16 md:pb-20">
             <div className="container mx-auto">
               <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8">Галерея проекта</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                {caseStudy.gallery.map((media, index) => (
-                  <div
-                    key={index}
-                    className="relative aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden bg-card border border-border"
-                  >
-                    {media?.endsWith('.mp4') ? (
-                      <video
-                        src={media}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="object-cover w-full h-full"
-                      />
-                    ) : (
-                      <Image
-                        src={media || "/placeholder.svg"}
-                        alt={`${caseStudy.title} — скриншот ${index + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
+              <GalleryWithLightbox images={caseStudy.gallery} title={caseStudy.title} />
             </div>
           </section>
         )}
