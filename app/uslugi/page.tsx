@@ -6,16 +6,17 @@ import { Button } from "@/components/ui/button"
 import { Globe, Smartphone, Bot, Cloud, CreditCard, Server, Search, Share2, ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Услуги — Разработка сайтов, приложений, AI | YappiX",
+  title: "IT-услуги с AI-first подходом — Разработка, SEO, DevOps | YappiX",
   description:
-    "Полный спектр IT-услуг: веб-разработка, мобильные приложения, AI чат-боты, SaaS, FinTech, DevOps, SEO, SMM. MVP за 7 дней с гарантией возврата.",
+    "Полный спектр IT-услуг с AI-ускорением: веб-разработка, мобильные приложения, AI чат-боты, SaaS, FinTech, DevOps, SEO, SMM. Сроки в 3-5 раз быстрее рынка. 10+ лет опыта.",
   keywords: [
-    "разработка сайтов цена",
-    "создание мобильного приложения",
-    "AI чат-бот разработка",
-    "SaaS разработка",
-    "DevOps услуги",
-    "SEO продвижение сайта",
+    "разработка сайтов AI",
+    "создание мобильного приложения цена",
+    "AI чат-бот разработка GPT",
+    "SaaS разработка под ключ",
+    "DevOps услуги Kubernetes",
+    "SEO продвижение AI",
+    "AI-first разработка",
   ],
   alternates: {
     canonical: "https://yappix.ru/uslugi",
@@ -28,72 +29,72 @@ const services = [
     title: "Разработка сайтов",
     slug: "razrabotka-sajtov",
     description:
-      "Корпоративные сайты, лендинги, интернет-магазины, порталы. Адаптивный дизайн, высокая производительность, SEO-оптимизация из коробки.",
-    tags: ["Next.js", "React", "WordPress", "Shopify"],
-    price: "от 150 000 ₽",
+      "AI-first разработка: лендинги, корпоративные сайты, интернет-магазины. Cursor AI + v0.dev = сроки в 3-5 раз быстрее. SEO из коробки.",
+    tags: ["Next.js", "React", "Cursor AI", "v0.dev"],
+    price: "от 62 500 ₽",
   },
   {
     icon: Smartphone,
     title: "Мобильные приложения",
     slug: "mobilnye-prilozheniya",
     description:
-      "Нативные и кроссплатформенные приложения для iOS и Android. От идеи до публикации в App Store и Google Play.",
-    tags: ["React Native", "Flutter", "Swift", "Kotlin"],
-    price: "от 500 000 ₽",
+      "Кроссплатформенные приложения iOS и Android с AI-ускорением. MVP за 3-4 недели. Публикация в App Store и Google Play.",
+    tags: ["React Native", "Flutter", "Cursor AI", "Expo"],
+    price: "от 250 000 ₽",
   },
   {
     icon: Bot,
     title: "AI чат-боты",
     slug: "ai-chat-boty",
     description:
-      "Интеллектуальные ассистенты на базе GPT, Claude, собственных LLM. Интеграция с CRM, базами знаний, автоматизация поддержки.",
-    tags: ["OpenAI", "LangChain", "RAG", "Fine-tuning"],
-    price: "от 200 000 ₽",
+      "Интеллектуальные ассистенты на GPT-4o, Claude 3.5. RAG-системы, fine-tuning. Автоматизация 60-80% запросов в поддержке.",
+    tags: ["GPT-4o", "Claude", "RAG", "LangChain"],
+    price: "от 100 000 ₽",
   },
   {
     icon: Cloud,
     title: "SaaS / PaaS",
     slug: "saas-paas",
     description:
-      "Разработка облачных продуктов и платформ. Мультитенантность, биллинг, масштабирование, безопасность корпоративного уровня.",
-    tags: ["AWS", "GCP", "Kubernetes", "Terraform"],
-    price: "от 1 000 000 ₽",
+      "Облачные продукты с AI-first подходом. MVP за 6-8 недель. Мультитенантность, биллинг Stripe, масштабирование на Kubernetes.",
+    tags: ["Kubernetes", "Stripe", "GraphQL", "Cursor AI"],
+    price: "от 500 000 ₽",
   },
   {
     icon: CreditCard,
     title: "FinTech решения",
     slug: "fintech",
     description:
-      "Платёжные системы, банковские интеграции, криптокошельки, инвестиционные платформы. Соответствие PCI DSS, 152-ФЗ.",
-    tags: ["Stripe", "Тинькофф API", "Blockchain", "PCI DSS"],
-    price: "от 2 000 000 ₽",
+      "Платёжные системы, необанки, криптокошельки. AI fraud detection, KYC-автоматизация. PCI DSS, 152-ФЗ, 115-ФЗ.",
+    tags: ["PCI DSS", "AI Fraud", "Blockchain", "Open Banking"],
+    price: "от 300 000 ₽",
   },
   {
     icon: Server,
     title: "DevOps",
     slug: "devops",
     description:
-      "CI/CD пайплайны, контейнеризация, оркестрация, мониторинг, автоскейлинг. Снижение time-to-market и операционных затрат.",
-    tags: ["Docker", "Kubernetes", "GitLab CI", "Prometheus"],
-    price: "от 100 000 ₽/мес",
+      "CI/CD, Kubernetes, Terraform с AI-автоматизацией. Предиктивный мониторинг, оптимизация облачных затрат на 40%.",
+    tags: ["Kubernetes", "Terraform", "Prometheus", "AI Ops"],
+    price: "от 62 500 ₽",
   },
   {
     icon: Search,
     title: "SEO продвижение",
     slug: "seo-prodvizhenie",
     description:
-      "Комплексное SEO: техническая оптимизация, контент-стратегия, линкбилдинг, локальное SEO. Рост трафика и конверсий.",
-    tags: ["Яндекс", "Google", "Аналитика", "Ahrefs"],
-    price: "от 80 000 ₽/мес",
+      "AI-first SEO: автоматический сбор семантики, AI-контент, анализ конкурентов. Рост органического трафика от 200%.",
+    tags: ["AI SEO", "Ahrefs", "SurferSEO", "SGE"],
+    price: "от 50 000 ₽/мес",
   },
   {
     icon: Share2,
     title: "SMM",
     slug: "smm",
     description:
-      "Стратегия присутствия в соцсетях, контент-план, таргетированная реклама, работа с блогерами, аналитика эффективности.",
-    tags: ["VK", "Telegram", "TikTok", "YouTube"],
-    price: "от 60 000 ₽/мес",
+      "SMM с AI-контентом: генерация идей, тексты, визуалы. VK, Telegram, TikTok, YouTube. Таргет и работа с блогерами.",
+    tags: ["VK Ads", "Telegram", "TikTok", "AI-контент"],
+    price: "от 40 000 ₽/мес",
   },
 ]
 
@@ -106,12 +107,18 @@ export default function UslugiPage() {
         <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-6">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                AI-First подход
+              </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
-                Услуги IT-разработки
+                IT-услуги с AI-ускорением
               </h1>
               <p className="text-xl text-muted-foreground mb-8 text-pretty">
-                Полный цикл разработки цифровых продуктов: от идеи до масштабирования. Работаем с AI-инструментами —
-                делаем быстрее и качественнее конкурентов.
+                Полный цикл разработки цифровых продуктов с AI-first подходом. Используем Cursor AI, v0.dev, ChatGPT — 
+                разрабатываем в 3-5 раз быстрее при том же качестве. 10+ лет опыта, 250+ проектов.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
