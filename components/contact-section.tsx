@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, Send, MessageCircle, Calendar } from "lucide-react"
 import Link from "next/link"
+import { BookingCalendar } from "@/components/booking-calendar"
 
 const offices = [
   { country: "🇷🇺 Россия", city: "Москва, Сколково" },
@@ -22,6 +23,7 @@ const offices = [
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isBookingOpen, setIsBookingOpen] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -245,7 +247,7 @@ export function ContactSection() {
                   <p className="text-sm text-muted-foreground mb-4">
                     Выберите удобное время для 30-минутной консультации с нашим экспертом
                   </p>
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" onClick={() => setIsBookingOpen(true)}>
                     Выбрать время
                   </Button>
                 </div>
@@ -254,6 +256,8 @@ export function ContactSection() {
           </div>
         </div>
       </div>
+
+      <BookingCalendar isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </section>
   )
 }
