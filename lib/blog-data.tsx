@@ -61,7 +61,7 @@ export const blogPosts: BlogPost[] = [
         <li><a href="https://tatcenter.ru/news/proektom-programmistov-iz-tatarstana-zainteresovalis-v-kremnievoj-doline/" target="_blank">TatCenter: Проектом программистов из Татарстана заинтересовались в Кремниевой долине</a></li>
       </ul>
     `,
-    image: "/images/yappix.png",
+    image: "/images/1765791715753-akppqeDKMhBDLRyBcnGi33oLFx8_width_2880_height_1800.avif",
     category: "Новости",
     tags: ["YappiX CMS", "Runa Capital", "Инвестиции", "Сколково", "Стартап"],
     author: "YappiX Team",
