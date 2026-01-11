@@ -5,10 +5,11 @@ import { notFound } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { getBlogPostBySlug, blogPosts } from "@/lib/blog-data"
-import { Calendar, Clock, ArrowLeft, Share2, ArrowRight, Globe, Smartphone, Bot, Server, Search, CreditCard, Rocket, Palette } from "lucide-react"
+import { Calendar, Clock, ArrowLeft, Share2, ArrowRight, Globe, Smartphone, Bot, Server, Search, CreditCard, Rocket } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 // Маппинг категорий и тегов статей к услугам для перелинковки
+// Доступные услуги: razrabotka-sajtov, mobilnye-prilozheniya, ai-chat-boty, saas-paas, seo-prodvizhenie
 const relatedServicesMap: Record<string, { slug: string; title: string; icon: any; description: string }[]> = {
   "Разработка": [
     { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "Лендинги, корпоративные сайты, e-commerce" },
@@ -16,12 +17,15 @@ const relatedServicesMap: Record<string, { slug: string; title: string; icon: an
   ],
   "AI и ML": [
     { slug: "ai-chat-boty", title: "AI-чат-боты", icon: Bot, description: "GPT, RAG, автоматизация поддержки" },
+    { slug: "saas-paas", title: "SaaS / PaaS разработка", icon: Server, description: "Облачные платформы и сервисы" },
   ],
   "DevOps": [
-    { slug: "devops-uslugi", title: "DevOps услуги", icon: Server, description: "CI/CD, Kubernetes, мониторинг" },
+    { slug: "saas-paas", title: "SaaS / PaaS разработка", icon: Server, description: "CI/CD, облачная инфраструктура" },
+    { slug: "razrabotka-sajtov", title: "Веб-разработка", icon: Globe, description: "Highload, масштабируемые системы" },
   ],
   "SEO": [
     { slug: "seo-prodvizhenie", title: "SEO-продвижение", icon: Search, description: "Яндекс, Google, техническое SEO" },
+    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "SEO-ready сайты на Next.js" },
   ],
   "Бизнес": [
     { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "Лендинги, корпоративные сайты" },
@@ -34,17 +38,17 @@ const relatedServicesMap: Record<string, { slug: string; title: string; icon: an
 }
 
 function getRelatedServices(category: string, tags: string[]) {
-  const services = relatedServicesMap[category] || []
+  const services = [...(relatedServicesMap[category] || [])]
   
   // Добавляем услуги по тегам
   if (tags.includes("FinTech") || tags.includes("Платежи")) {
-    services.push({ slug: "fintech-resheniya", title: "FinTech решения", icon: CreditCard, description: "Платёжные системы, KYC/AML" })
+    services.push({ slug: "saas-paas", title: "SaaS / PaaS решения", icon: CreditCard, description: "Платёжные системы, финтех" })
   }
   if (tags.includes("MVP") || tags.includes("Стартапы")) {
     services.push({ slug: "mobilnye-prilozheniya", title: "MVP за 7 дней", icon: Rocket, description: "Быстрый запуск продукта" })
   }
-  if (tags.includes("UI/UX") || tags.includes("Дизайн")) {
-    services.push({ slug: "ui-ux-dizajn", title: "UI/UX дизайн", icon: Palette, description: "Прототипы, интерфейсы" })
+  if (tags.includes("SaaS") || tags.includes("Архитектура")) {
+    services.push({ slug: "saas-paas", title: "SaaS разработка", icon: Server, description: "Облачные продукты" })
   }
   
   // Убираем дубликаты
