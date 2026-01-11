@@ -13,38 +13,74 @@ const showcaseItems = [
 ]
 
 export function ShowcaseGallery() {
+  const sectionRef = useRef<HTMLElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [isHovered, setIsHovered] = useState(false)
+  const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
+    const section = sectionRef.current
     const scrollContainer = scrollRef.current
-    if (!scrollContainer) return
+    if (!section || !scrollContainer) return
 
-    let animationId: number
-    let scrollPosition = 0
-    const scrollSpeed = 0.5
-
-    const animate = () => {
-      if (!isHovered && scrollContainer) {
-        scrollPosition += scrollSpeed
-        if (scrollPosition >= scrollContainer.scrollWidth / 2) {
-          scrollPosition = 0
-        }
-        scrollContainer.scrollLeft = scrollPosition
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsActive(entry.isIntersecting)
+        })
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px",
       }
-      animationId = requestAnimationFrame(animate)
+    )
+
+    observer.observe(section)
+
+    const handleWheel = (e: WheelEvent) => {
+      if (!isActive || !scrollContainer) return
+
+      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth
+      const currentScroll = scrollContainer.scrollLeft
+      const scrollDelta = e.deltaY * 0.8
+      
+      // Проверяем, достигли ли мы границ с небольшим допуском
+      const isAtEnd = currentScroll >= maxScroll - 10
+      const isAtStart = currentScroll <= 10
+
+      // Если прокрутка вниз (вправо по галерее)
+      if (e.deltaY > 0) {
+        if (!isAtEnd) {
+          // Блокируем скролл страницы и прокручиваем галерею
+          e.preventDefault()
+          e.stopPropagation()
+          scrollContainer.scrollLeft = Math.min(currentScroll + scrollDelta, maxScroll)
+        }
+        return
+      }
+
+      // Если прокрутка вверх (влево по галерее)
+      if (e.deltaY < 0) {
+        if (!isAtStart) {
+          // Блокируем скролл страницы и прокручиваем галерею
+          e.preventDefault()
+          e.stopPropagation()
+          scrollContainer.scrollLeft = Math.max(currentScroll + scrollDelta, 0)
+        }
+        return
+      }
     }
 
-    animationId = requestAnimationFrame(animate)
+    // Добавляем обработчик с passive: false для возможности preventDefault
+    window.addEventListener("wheel", handleWheel, { passive: false })
 
-    return () => cancelAnimationFrame(animationId)
-  }, [isHovered])
-
-  // Дублируем элементы для бесконечной прокрутки
-  const duplicatedItems = [...showcaseItems, ...showcaseItems]
+    return () => {
+      observer.disconnect()
+      window.removeEventListener("wheel", handleWheel)
+    }
+  }, [isActive])
 
   return (
-    <section className="py-16 md:py-24 bg-card overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-card overflow-hidden">
       <div className="container mx-auto px-4 mb-12">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -58,11 +94,14 @@ export function ShowcaseGallery() {
       
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-hidden cursor-grab active:cursor-grabbing"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        className="flex gap-4 overflow-x-scroll scrollbar-hide"
+        style={{
+          scrollBehavior: "smooth",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
       >
-        {duplicatedItems.map((item, index) => (
+        {showcaseItems.map((item, index) => (
           <div
             key={index}
             className="flex-shrink-0 relative rounded-xl overflow-hidden bg-background border border-border hover:border-primary/50 transition-colors group"

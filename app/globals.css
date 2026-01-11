@@ -192,3 +192,13 @@ html {
 .section-padding-sm {
   @apply py-12 sm:py-16 md:py-20;
 }
+
+/* Скрытие скроллбара */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
