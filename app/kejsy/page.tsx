@@ -60,18 +60,18 @@ const cases = [
     tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain"],
   },
   {
-    slug: "priboy-hotels",
-    title: "Grand Hotels & SPA Priboy",
-    client: "Группа отелей Прибой",
-    category: "Hospitality / Marketing",
-    description: "Комплексная разработка, поддержка, SEO и SMM для сети премиальных отелей на Черноморском побережье.",
-    image: "/images/priboy.avif",
+    slug: "global-olive-corporation",
+    title: "Global Olive Corporation",
+    client: "Global Olive",
+    category: "E-commerce",
+    description: "E-commerce платформа для инвестирования в оливковые деревья с сертификатами владения.",
+    image: "/images/image copy.png",
     results: [
-      { label: "Трафик", value: "+180%" },
-      { label: "Прямые брони", value: "+65%" },
-      { label: "VK подписчики", value: "12K+" },
+      { label: "Инвестиций", value: "$500K+" },
+      { label: "Деревьев", value: "1000+" },
+      { label: "Конверсия", value: "8%" },
     ],
-    tags: ["Next.js", "SEO", "SMM", "VK Ads"],
+    tags: ["Next.js", "Stripe", "PostgreSQL", "AWS"],
   },
   {
     slug: "mobile-delivery-app",
@@ -159,12 +159,12 @@ export default function CasesPage() {
                           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <Image
-                          src={caseItem.image || "/placeholder.svg"}
-                          alt={caseItem.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
+                      <Image
+                        src={caseItem.image || "/placeholder.svg"}
+                        alt={caseItem.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                       )}
                       <span className="absolute top-4 left-4 px-3 py-1 text-xs font-medium bg-primary text-primary-foreground rounded-full">
                         {caseItem.category}

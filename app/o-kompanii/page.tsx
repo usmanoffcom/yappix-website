@@ -167,21 +167,21 @@ export default function AboutPage() {
               </div>
 
               {/* Right side - Scrollable timeline */}
-              <div className="relative">
+            <div className="relative">
                 <div className="absolute left-4 top-0 bottom-0 w-px bg-border" />
-                <div className="space-y-12">
-                  {milestones.map((milestone, idx) => (
-                    <div
-                      key={milestone.year}
+              <div className="space-y-12">
+                {milestones.map((milestone, idx) => (
+                  <div
+                    key={milestone.year}
                       className="relative"
-                    >
+                  >
                       <div className="absolute left-0 w-8 h-8 bg-primary rounded-full -translate-x-1/2 flex items-center justify-center">
                         <div className="w-3 h-3 bg-background rounded-full" />
                       </div>
                       <div className="pl-12">
-                        <span className="text-2xl font-bold text-primary">{milestone.year}</span>
-                        <h3 className="text-xl font-semibold text-foreground mt-1">{milestone.title}</h3>
-                        <p className="text-muted-foreground mt-2">{milestone.description}</p>
+                          <span className="text-2xl font-bold text-primary">{milestone.year}</span>
+                          <h3 className="text-xl font-semibold text-foreground mt-1">{milestone.title}</h3>
+                          <p className="text-muted-foreground mt-2">{milestone.description}</p>
                         {milestone.year === "2017" && (
                           <div className="relative w-full mt-4 rounded-lg overflow-hidden">
                             <Image
@@ -191,8 +191,8 @@ export default function AboutPage() {
                               height={300}
                               className="w-full h-auto object-contain"
                             />
-                          </div>
-                        )}
+                        </div>
+                      )}
                         {milestone.year === "2021" && (
                           <div className="relative w-full mt-4 rounded-lg overflow-hidden">
                             <Image
@@ -202,7 +202,7 @@ export default function AboutPage() {
                               height={300}
                               className="w-full h-auto object-contain"
                             />
-                          </div>
+                    </div>
                         )}
                         {milestone.year === "2022" && (
                           <div className="relative w-full mt-4 rounded-lg overflow-hidden">
@@ -213,11 +213,11 @@ export default function AboutPage() {
                               height={300}
                               className="w-full h-auto object-contain"
                             />
-                          </div>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
-                  ))}
+                  </div>
+                ))}
                 </div>
               </div>
             </div>

@@ -10,7 +10,7 @@ import { MapPin, Phone, Mail, MessageCircle, Clock } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Контакты YappiX — связаться с нами | IT-студия",
-    description:
+  description:
       "Свяжитесь с YappiX: телефон, email, Telegram. Офисы в Москве, Delaware, Istanbul, Belgrade, Казахстане. Бесплатная консультация по вашему проекту.",
   keywords: ["контакты YappiX", "связаться с веб-студией", "заказать разработку", "консультация по разработке"],
   alternates: {

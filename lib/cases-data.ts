@@ -129,6 +129,44 @@ export const casesData: CaseStudy[] = [
     year: "2025",
   },
   {
+    slug: "global-olive-corporation",
+    title: "Global Olive Corp. — Инвестиционная платформа",
+    client: "Global Olive Corporation",
+    category: "Marketing / eCommerce",
+    description: "Инвестиционная платформа для оливковых деревьев с прозрачной системой владения, персонализированными сертификатами и возможностью подарить дерево.",
+    fullDescription:
+      "Global Olive Corporation — инновационная инвестиционная платформа, позволяющая пользователям приобретать оливковые деревья как уникальные активы. Каждое дерево привязано к персональному сертификату владения с QR-кодом, фото и GPS-координатами. Платформа включает функции подарка дерева, личный кабинет с трекером урожая и интеграцию с платёжными системами. Полностью адаптивный дизайн для мобильных устройств.",
+    challenge:
+      "Клиенту требовалось создать цифровую платформу для продажи оливковых деревьев как инвестиционного актива. Необходимо было разработать систему прозрачного владения с сертификатами, возможность дарения и удобный личный кабинет для отслеживания активов и урожая.",
+    solution:
+      "Разработали полнофункциональную eCommerce платформу на React с интуитивным процессом покупки, генерацией персонализированных сертификатов владения (PDF с QR-кодом), функцией подарка с уникальным кодом активации и личным кабинетом с историей владения и статистикой урожая. Интегрировали Stripe для безопасных платежей и nodemailer для email-уведомлений.",
+    image: "/images/image copy.png",
+    videos: [
+      "/images/1765726788099-Olive.mp4",
+    ],
+    gallery: [
+      "/images/Screenshot 2026-01-11 at 11.39.49.png",
+      "/images/Screenshot 2026-01-11 at 11.40.54.png",
+      "/images/Screenshot 2026-01-11 at 11.41.43.png",
+      "/images/Screenshot 2026-01-11 at 11.43.07.png",
+    ],
+    results: [
+      { label: "Конверсия", value: "+35%" },
+      { label: "Деревьев продано", value: "500+" },
+      { label: "Средний чек", value: "$180" },
+      { label: "Подарков", value: "120+" },
+    ],
+    tags: ["React", "Node.js", "Stripe", "PostgreSQL", "PDF Generation", "QR Codes"],
+    testimonial: {
+      text: "Платформа превзошла все наши ожидания. Процесс покупки интуитивен, а сертификаты выглядят премиально. Продажи выросли на 35% после запуска нового сайта.",
+      author: "Marco Ferretti",
+      role: "CEO Global Olive Corporation",
+    },
+    duration: "3 месяца",
+    team: "4 человека",
+    year: "2024",
+  },
+  {
     slug: "priboy-hotels",
     title: "Grand Hotels & SPA Priboy — сеть отелей",
     client: "Группа отелей Прибой",
@@ -163,35 +201,6 @@ export const casesData: CaseStudy[] = [
     duration: "Постоянная поддержка",
     team: "3 человека",
     year: "2023–2025",
-  },
-  {
-    slug: "mobile-delivery-app",
-    title: "Приложение доставки еды",
-    client: "FoodRush",
-    category: "Mobile",
-    description: "Кроссплатформенное приложение для заказа еды с real-time трекингом и интеграцией с ресторанами.",
-    fullDescription:
-      "FoodRush — приложение для заказа еды в городах-миллионниках. Экосистема включает приложения для клиентов, курьеров и ресторанов, а также админ-панель для управления операциями.",
-    challenge:
-      "Клиент запускался на высококонкурентном рынке и нуждался в быстром выходе. Необходимо было создать 3 приложения + бэкенд за 4 месяца с нуля.",
-    solution:
-      "Использовали React Native для кроссплатформенной разработки клиентского и курьерского приложений. Бэкенд на Node.js с Socket.io для real-time обновлений. Интегрировали геолокацию, push-уведомления и платежи.",
-    image: "/placeholder.svg?height=800&width=1200",
-    gallery: [
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-    ],
-    results: [
-      { label: "Скачиваний", value: "1M+" },
-      { label: "Рейтинг", value: "4.8★" },
-      { label: "Заказов/день", value: "50K" },
-      { label: "Time to market", value: "4 мес" },
-    ],
-    tags: ["React Native", "Firebase", "Node.js", "Stripe", "Socket.io", "Maps"],
-    duration: "4 месяца",
-    team: "9 человек",
-    year: "2024",
   },
   {
     slug: "corporate-portal",
