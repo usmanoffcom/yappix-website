@@ -899,7 +899,7 @@ export default async function ServicePage({ params }: { params: Params }) {
           <section className="py-16 md:py-24 bg-card">
             <div className="container mx-auto px-4">
               <div 
-                className="prose prose-lg dark:prose-invert max-w-4xl mx-auto prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground"
+                className="max-w-4xl mx-auto space-y-8 [&>h2]:text-2xl [&>h2]:md:text-3xl [&>h2]:font-bold [&>h2]:text-foreground [&>h2]:mb-4 [&>h3]:text-xl [&>h3]:md:text-2xl [&>h3]:font-semibold [&>h3]:text-foreground [&>h3]:mt-8 [&>h3]:mb-4 [&>p]:text-base [&>p]:md:text-lg [&>p]:text-muted-foreground [&>p]:leading-relaxed [&>p]:mb-4 [&>ul]:space-y-3 [&>ul]:my-6 [&>ul>li]:text-base [&>ul>li]:md:text-lg [&>ul>li]:text-muted-foreground [&>ul>li]:leading-relaxed [&>ul>li>strong]:text-foreground"
                 dangerouslySetInnerHTML={{ __html: service.seoContent }}
               />
             </div>
