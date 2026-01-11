@@ -360,7 +360,7 @@ export const blogPosts: BlogPost[] = [
       <h2>С чего начать</h2>
       <p>Начните с пилота на ограниченном scope: один канал коммуникации, одна категория вопросов. Соберите метрики, докажите ROI, масштабируйте. Типичный пилот занимает 4-6 недель.</p>
     `,
-    image: "/images/1765791715753-akppqeDKMhBDLRyBcnGi33oLFx8_width_2880_height_1800.avif",
+    image: "/images/mediamodifier_image.png",
     category: "AI и ML",
     tags: ["AI", "Автоматизация", "LLM", "Чат-боты", "ROI"],
     author: "YappiX Team",
