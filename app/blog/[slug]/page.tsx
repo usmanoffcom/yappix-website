@@ -5,8 +5,53 @@ import { notFound } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { getBlogPostBySlug, blogPosts } from "@/lib/blog-data"
-import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react"
+import { Calendar, Clock, ArrowLeft, Share2, ArrowRight, Globe, Smartphone, Bot, Server, Search, CreditCard, Rocket, Palette } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+// Маппинг категорий и тегов статей к услугам для перелинковки
+const relatedServicesMap: Record<string, { slug: string; title: string; icon: any; description: string }[]> = {
+  "Разработка": [
+    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "Лендинги, корпоративные сайты, e-commerce" },
+    { slug: "mobilnye-prilozheniya", title: "Мобильные приложения", icon: Smartphone, description: "iOS, Android, кроссплатформа" },
+  ],
+  "AI и ML": [
+    { slug: "ai-chat-boty", title: "AI-чат-боты", icon: Bot, description: "GPT, RAG, автоматизация поддержки" },
+  ],
+  "DevOps": [
+    { slug: "devops-uslugi", title: "DevOps услуги", icon: Server, description: "CI/CD, Kubernetes, мониторинг" },
+  ],
+  "SEO": [
+    { slug: "seo-prodvizhenie", title: "SEO-продвижение", icon: Search, description: "Яндекс, Google, техническое SEO" },
+  ],
+  "Бизнес": [
+    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "Лендинги, корпоративные сайты" },
+    { slug: "mobilnye-prilozheniya", title: "Мобильные приложения", icon: Smartphone, description: "MVP за 2-4 недели" },
+  ],
+  "Новости": [
+    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "AI-first подход, 7x-12x быстрее" },
+    { slug: "ai-chat-boty", title: "AI-решения", icon: Bot, description: "Чат-боты, автоматизация" },
+  ],
+}
+
+function getRelatedServices(category: string, tags: string[]) {
+  const services = relatedServicesMap[category] || []
+  
+  // Добавляем услуги по тегам
+  if (tags.includes("FinTech") || tags.includes("Платежи")) {
+    services.push({ slug: "fintech-resheniya", title: "FinTech решения", icon: CreditCard, description: "Платёжные системы, KYC/AML" })
+  }
+  if (tags.includes("MVP") || tags.includes("Стартапы")) {
+    services.push({ slug: "mobilnye-prilozheniya", title: "MVP за 7 дней", icon: Rocket, description: "Быстрый запуск продукта" })
+  }
+  if (tags.includes("UI/UX") || tags.includes("Дизайн")) {
+    services.push({ slug: "ui-ux-dizajn", title: "UI/UX дизайн", icon: Palette, description: "Прототипы, интерфейсы" })
+  }
+  
+  // Убираем дубликаты
+  return services.filter((service, index, self) => 
+    index === self.findIndex(s => s.slug === service.slug)
+  ).slice(0, 3)
+}
 
 type Params = Promise<{ slug: string }>
 
@@ -155,6 +200,40 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             </div>
           </div>
         </article>
+
+        {/* Related Services - Перелинковка */}
+        {(() => {
+          const services = getRelatedServices(post.category, post.tags)
+          return services.length > 0 ? (
+            <section className="py-12 md:py-16 bg-card/50">
+              <div className="container mx-auto px-4">
+                <div className="max-w-4xl mx-auto">
+                  <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Связанные услуги</h2>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {services.map((service) => (
+                      <Link
+                        key={service.slug}
+                        href={`/uslugi/${service.slug}`}
+                        className="group flex items-start gap-4 p-4 bg-background border border-border rounded-xl hover:border-primary/50 transition-all"
+                      >
+                        <div className="p-2 bg-primary/10 rounded-lg shrink-0">
+                          <service.icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-medium text-foreground group-hover:text-primary transition-colors flex items-center gap-1">
+                            {service.title}
+                            <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                          </h3>
+                          <p className="text-sm text-muted-foreground mt-1">{service.description}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+          ) : null
+        })()}
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
