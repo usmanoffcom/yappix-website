@@ -420,7 +420,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Наш опыт: проект Card2Card</h2>
       <p>При разработке международного платёжного приложения Card2Card мы реализовали все вышеперечисленные требования. Интеграция с VISA, Mastercard и USDT-шлюзами прошла аудит безопасности и соответствует стандартам всех четырёх регионов присутствия.</p>
     `,
-    image: "/images/05f1e332931093.589da5ec81ead.gif",
+    image: "/images/ezgif-7c88f3d1be0e62.gif",
     category: "Разработка",
     tags: ["FinTech", "Безопасность", "PCI DSS", "152-ФЗ", "Шифрование"],
     author: "YappiX Team",
