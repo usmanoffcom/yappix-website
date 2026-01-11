@@ -38,6 +38,26 @@ export const metadata: Metadata = {
   authors: [{ name: "YappiX" }],
   creator: "YappiX",
   publisher: "YappiX",
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'mask-icon', url: '/icon.svg', color: '#ec4899' },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'YappiX',
+  },
   robots: {
     index: true,
     follow: true,
@@ -58,9 +78,9 @@ export const metadata: Metadata = {
     description: "IT-студия полного цикла. Резиденты Сколково. MVP за 7 дней с гарантией возврата.",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
         alt: "YappiX - IT-студия",
       },
     ],
@@ -69,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "YappiX — Разработка сайтов и AI-решений",
     description: "IT-студия полного цикла. Резиденты Сколково. MVP за 7 дней.",
-    images: ["/og-image.png"],
+    images: ["/icon-512x512.png"],
   },
   alternates: {
     canonical: "https://yappix.ru",
@@ -82,7 +102,7 @@ export const metadata: Metadata = {
     google: "google-site-verification-code",
     yandex: "yandex-verification-code",
   },
-    generator: 'v0.app'
+  generator: 'v0.app'
 }
 
 export const viewport: Viewport = {
@@ -100,7 +120,6 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
