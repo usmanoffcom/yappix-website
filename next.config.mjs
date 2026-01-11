@@ -81,7 +81,17 @@ const nextConfig = {
         ],
       },
       {
-        // Кэширование статических ресурсов
+        // Кэширование _next/static (JS, CSS) - 1 год
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Кэширование изображений в /images/ - 1 год
         source: '/images/(.*)',
         headers: [
           {
@@ -91,7 +101,27 @@ const nextConfig = {
         ],
       },
       {
-        // Кэширование шрифтов
+        // Кэширование изображений в /Logos/ - 1 год
+        source: '/Logos/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Кэширование /sk_it/ - 1 год
+        source: '/sk_it/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Кэширование шрифтов - 1 год
         source: '/fonts/(.*)',
         headers: [
           {
@@ -101,8 +131,28 @@ const nextConfig = {
         ],
       },
       {
-        // Кэширование иконок
-        source: '/(.*\\.ico|.*\\.png|.*\\.svg)',
+        // Кэширование всех медиафайлов - 1 год
+        source: '/:path*.(ico|png|svg|jpg|jpeg|gif|webp|avif|mp4|webm)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Кэширование manifest и других статических файлов - 1 неделя
+        source: '/:path*.(webmanifest|xml|txt)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        // Кэширование grid.svg
+        source: '/grid.svg',
         headers: [
           {
             key: 'Cache-Control',
