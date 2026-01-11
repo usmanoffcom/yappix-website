@@ -50,7 +50,7 @@ export function HeroSection() {
             </h1>
             <p className="text-body-lg max-w-2xl xl:max-w-none mx-auto xl:mx-0 mb-8 sm:mb-10 text-pretty animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
               Веб-сайты, мобильные приложения, AI-решения, SaaS и FinTech продукты. Используем AI-агенты и deep coding для 7x-12x ускорения разработки.
-              Офисы в России, США, Турции и Сербии.
+              Офисы в России, США, Турции, Сербии и Казахстане.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center xl:justify-start animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
               <Button size="lg" asChild className="text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14">
@@ -82,7 +82,7 @@ export function HeroSection() {
             { value: "260+", label: "Проектов", icon: Briefcase, gradient: "from-violet-500 to-purple-600" },
             { value: "7x-12x", label: "Быстрее с AI", icon: Rocket, gradient: "from-pink-500 to-rose-600" },
             { value: "$2.1M+", label: "Инвестиций", icon: TrendingUp, gradient: "from-emerald-500 to-teal-600" },
-            { value: "4", label: "Страны", icon: Globe, gradient: "from-blue-500 to-cyan-600" },
+            { value: "5", label: "Страны уже", icon: Globe, gradient: "from-blue-500 to-cyan-600" },
           ].map((stat, index) => (
             <div
               key={index}
