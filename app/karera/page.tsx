@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { MapPin, Briefcase, Clock, Users, Zap, Heart, Globe, GraduationCap } from "lucide-react"
+import { MapPin, Briefcase, Clock, Users, Zap, Heart, Globe, GraduationCap, Calendar } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Карьера в YappiX — вакансии IT-студии",
@@ -35,8 +35,11 @@ const vacancies = [
     location: "Удалённо / Москва",
     type: "Полная занятость",
     salary: "от 350 000 ₽",
+    salaryValue: 350000,
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     description: "Разработка клиентской части SaaS-продуктов, работа с AI-инструментами, код-ревью.",
+    datePosted: "2025-01-06",
+    validThrough: "2025-03-31",
   },
   {
     title: "Middle/Senior Backend Developer",
@@ -44,8 +47,11 @@ const vacancies = [
     location: "Удалённо / Москва",
     type: "Полная занятость",
     salary: "от 300 000 ₽",
+    salaryValue: 300000,
     skills: ["Node.js", "Python", "PostgreSQL", "Redis"],
     description: "Разработка API, интеграции, оптимизация производительности.",
+    datePosted: "2025-01-06",
+    validThrough: "2025-03-31",
   },
   {
     title: "AI/ML Engineer",
@@ -53,8 +59,11 @@ const vacancies = [
     location: "Удалённо",
     type: "Полная занятость",
     salary: "от 400 000 ₽",
+    salaryValue: 400000,
     skills: ["Python", "LangChain", "RAG", "Fine-tuning"],
     description: "Разработка AI-агентов, интеграция LLM, построение RAG-систем.",
+    datePosted: "2025-01-08",
+    validThrough: "2025-03-31",
   },
   {
     title: "DevOps Engineer",
@@ -62,8 +71,11 @@ const vacancies = [
     location: "Удалённо",
     type: "Полная занятость",
     salary: "от 280 000 ₽",
+    salaryValue: 280000,
     skills: ["Kubernetes", "Terraform", "AWS/GCP", "GitLab CI"],
     description: "Настройка CI/CD, управление инфраструктурой, мониторинг.",
+    datePosted: "2025-01-05",
+    validThrough: "2025-03-31",
   },
   {
     title: "Product Designer",
@@ -71,8 +83,11 @@ const vacancies = [
     location: "Удалённо / Москва",
     type: "Полная занятость",
     salary: "от 250 000 ₽",
+    salaryValue: 250000,
     skills: ["Figma", "UI/UX", "Design Systems", "Prototyping"],
     description: "Проектирование интерфейсов SaaS-продуктов, работа с дизайн-системами.",
+    datePosted: "2025-01-03",
+    validThrough: "2025-03-31",
   },
   {
     title: "Project Manager",
@@ -80,8 +95,11 @@ const vacancies = [
     location: "Удалённо / Москва",
     type: "Полная занятость",
     salary: "от 200 000 ₽",
+    salaryValue: 200000,
     skills: ["Agile", "Jira", "Коммуникации", "Технический бэкграунд"],
     description: "Управление IT-проектами, коммуникация с клиентами, планирование.",
+    datePosted: "2025-01-02",
+    validThrough: "2025-03-31",
   },
 ]
 
@@ -157,6 +175,10 @@ export default function CareerPage() {
                           <Briefcase className="w-4 h-4" />
                           {vacancy.type}
                         </span>
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          {new Date(vacancy.datePosted).toLocaleDateString("ru-RU", { day: "numeric", month: "short", year: "numeric" })}
+                        </span>
                         <span className="font-medium text-primary">{vacancy.salary}</span>
                       </div>
                       <div className="flex flex-wrap gap-2">
@@ -230,24 +252,35 @@ export default function CareerPage() {
                 "@type": "JobPosting",
                 title: vacancy.title,
                 description: vacancy.description,
+                datePosted: vacancy.datePosted,
+                validThrough: vacancy.validThrough,
                 hiringOrganization: {
                   "@type": "Organization",
                   name: "YappiX",
                   sameAs: "https://yappix.ru",
+                  logo: "https://yappix.ru/images/logo.png",
                 },
                 jobLocation: {
                   "@type": "Place",
-                  address: vacancy.location,
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: vacancy.location.includes("Москва") ? "Москва" : "Удалённо",
+                    addressCountry: "RU",
+                  },
                 },
+                jobLocationType: vacancy.location.includes("Удалённо") ? "TELECOMMUTE" : undefined,
                 employmentType: "FULL_TIME",
                 baseSalary: {
                   "@type": "MonetaryAmount",
                   currency: "RUB",
                   value: {
                     "@type": "QuantitativeValue",
-                    value: vacancy.salary,
+                    value: vacancy.salaryValue,
+                    unitText: "MONTH",
                   },
                 },
+                skills: vacancy.skills.join(", "),
+                industry: "Information Technology",
               },
             })),
           }),
