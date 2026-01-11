@@ -5,12 +5,62 @@ import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { ArrowRight, Play, Sparkles, Zap, Shield, Rocket, Globe, TrendingUp, Briefcase } from "lucide-react"
 import dynamic from "next/dynamic"
-import { Suspense } from "react"
+import { useState, useEffect } from "react"
 
+// Lazy load Spline только когда страница полностью загружена и после задержки
 const Spline = dynamic(() => import('@splinetool/react-spline').then(m => m.default), {
   ssr: false,
-  loading: () => <div className="w-full h-full bg-gradient-to-br from-primary/5 to-transparent animate-pulse" />
+  loading: () => (
+    <div className="w-full h-full bg-gradient-to-br from-primary/5 via-primary/3 to-transparent flex items-center justify-center">
+      <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+    </div>
+  )
 })
+
+// Компонент для отложенной загрузки Spline
+function LazySpline({ scene, className }: { scene: string; className?: string }) {
+  const [shouldLoad, setShouldLoad] = useState(false)
+
+  useEffect(() => {
+    // Загружаем Spline только после полной загрузки страницы и задержки
+    const loadSpline = () => {
+      // Используем requestIdleCallback для загрузки в idle время
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(() => {
+          setShouldLoad(true)
+        }, { timeout: 5000 })
+      } else {
+        // Fallback: загружаем через 3 секунды
+        setTimeout(() => {
+          setShouldLoad(true)
+        }, 3000)
+      }
+    }
+
+    // Проверяем, загружена ли страница
+    if (document.readyState === 'complete') {
+      loadSpline()
+    } else {
+      window.addEventListener('load', loadSpline)
+      return () => window.removeEventListener('load', loadSpline)
+    }
+  }, [])
+
+  if (!shouldLoad) {
+    return (
+      <div className={`w-full h-full bg-gradient-to-br from-primary/5 via-primary/3 to-transparent ${className}`}>
+        {/* Animated gradient placeholder */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -inset-[100%] animate-[spin_20s_linear_infinite] opacity-30">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-gradient-conic from-primary/20 via-transparent to-primary/10" />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return <Spline scene={scene} />
+}
 
 export function HeroSection() {
   return (
@@ -18,10 +68,10 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
-      {/* Spline Background for Mobile/Tablet (< 1200px) */}
+      {/* Spline Background for Mobile/Tablet (< 1200px) - Lazy loaded */}
       <div className="absolute inset-0 xl:hidden pointer-events-none opacity-30 overflow-hidden">
         <div className="w-full h-[calc(100%+100px)] -mb-[100px]">
-          <Spline scene="https://prod.spline.design/YMKHOsTacHbgDg3g/scene.splinecode" />
+          <LazySpline scene="https://prod.spline.design/YMKHOsTacHbgDg3g/scene.splinecode" />
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </div>
@@ -68,10 +118,10 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Spline 3D Robot (Desktop >= 1200px) */}
+          {/* Right Column - Spline 3D Robot (Desktop >= 1200px) - Lazy loaded */}
           <div className="hidden xl:block relative w-full h-[600px] xl:h-[700px] 2xl:h-[800px]">
             <div className="absolute -inset-x-20 2xl:-inset-x-32 -top-10 -bottom-20 overflow-hidden animate-in fade-in zoom-in-90 duration-800 delay-200">
-              <Spline scene="https://prod.spline.design/YsrhGK1AHO4x8zaQ/scene.splinecode" />
+              <LazySpline scene="https://prod.spline.design/YsrhGK1AHO4x8zaQ/scene.splinecode" />
               <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-background to-transparent pointer-events-none" />
             </div>
           </div>

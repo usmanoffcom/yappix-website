@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ArrowUpRight, Volume2, VolumeX } from "lucide-react"
 import Link from "next/link"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 
 const cases = [
   {
@@ -46,10 +46,31 @@ const cases = [
   },
 ]
 
+// Lazy loading video component
 function VideoCard({ src, title }: { src: string; title: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [isMuted, setIsMuted] = useState(true)
   const [isHovered, setIsHovered] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: "100px", threshold: 0.1 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -60,27 +81,84 @@ function VideoCard({ src, title }: { src: string; title: string }) {
 
   return (
     <div 
-      className="relative aspect-video overflow-hidden bg-black"
+      ref={containerRef}
+      className="relative aspect-video overflow-hidden bg-muted"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <video
-        ref={videoRef}
-        src={src}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-      />
+      {isVisible ? (
+        <video
+          ref={videoRef}
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted-foreground/10 to-muted animate-pulse" />
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
       {/* Unmute button */}
-      <button
-        onClick={toggleMute}
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-white transition-opacity duration-300 hover:bg-black/80 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
-      >
-        {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
-      </button>
+      {isVisible && (
+        <button
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            toggleMute()
+          }}
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-white transition-opacity duration-300 hover:bg-black/80 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+        >
+          {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+        </button>
+      )}
+    </div>
+  )
+}
+
+// Lazy loading image component
+function LazyImage({ src, alt }: { src: string; alt: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: "100px", threshold: 0.1 }
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div ref={ref} className="relative aspect-video overflow-hidden bg-muted">
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted-foreground/10 to-muted animate-pulse" />
+      )}
+      {isVisible && (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          onLoad={() => setIsLoaded(true)}
+          className={`object-cover w-full h-full group-hover:scale-105 transition-all duration-500 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
     </div>
   )
 }
@@ -112,14 +190,7 @@ export function CasesSection() {
                 {caseItem.video ? (
                   <VideoCard src={caseItem.video} title={caseItem.title} />
                 ) : (
-                  <div className="relative aspect-video overflow-hidden bg-black">
-                  <img
-                    src={caseItem.image || "/placeholder.svg"}
-                    alt={caseItem.title}
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
-                </div>
+                  <LazyImage src={caseItem.image || "/placeholder.svg"} alt={caseItem.title} />
                 )}
 
                 <CardContent className="p-6">
