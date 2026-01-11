@@ -197,7 +197,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Результат</h2>
       <p>Клиент получил рабочий MVP, собрал первых 50 пользователей и привлёк pre-seed инвестиции на $200K. Общие затраты на разработку — в 5 раз меньше традиционного подхода.</p>
     `,
-    image: "/images/image.png",
+    image: "/images/IMG_0972.jpg",
     category: "Разработка",
     tags: ["MVP", "AI", "Стартапы", "v0.dev", "Cursor"],
     author: "YappiX Team",
