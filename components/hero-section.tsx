@@ -49,7 +49,7 @@ export function HeroSection() {
               <span className="text-foreground">быстрее с AI</span>
             </h1>
             <p className="text-body-lg max-w-2xl xl:max-w-none mx-auto xl:mx-0 mb-8 sm:mb-10 text-pretty animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
-              Веб-сайты, мобильные приложения, AI-решения, SaaS и FinTech продукты. Используем AI-агенты и deep coding для 10x ускорения разработки.
+              Веб-сайты, мобильные приложения, AI-решения, SaaS и FinTech продукты. Используем AI-агенты и deep coding для 7x-12x ускорения разработки.
               Офисы в России, США, Турции и Сербии.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center xl:justify-start animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
@@ -80,7 +80,7 @@ export function HeroSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-14 xl:mt-8">
           {[
             { value: "260+", label: "Проектов", icon: Briefcase, gradient: "from-violet-500 to-purple-600" },
-            { value: "10x", label: "Быстрее с AI", icon: Rocket, gradient: "from-pink-500 to-rose-600" },
+            { value: "7x-12x", label: "Быстрее с AI", icon: Rocket, gradient: "from-pink-500 to-rose-600" },
             { value: "$2.1M+", label: "Инвестиций", icon: TrendingUp, gradient: "from-emerald-500 to-teal-600" },
             { value: "4", label: "Страны", icon: Globe, gradient: "from-blue-500 to-cyan-600" },
           ].map((stat, index) => (

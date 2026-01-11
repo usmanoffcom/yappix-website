@@ -8,7 +8,7 @@ import { Globe, Smartphone, Bot, Cloud, CreditCard, Server, Search, Share2, Arro
 export const metadata: Metadata = {
   title: "IT-услуги с AI-first подходом — Разработка, SEO, DevOps | YappiX",
   description:
-    "Полный спектр IT-услуг с AI-ускорением: веб-разработка, мобильные приложения, AI чат-боты, SaaS, FinTech, DevOps, SEO, SMM. Сроки в 3-5 раз быстрее рынка. 10+ лет опыта.",
+    "Полный спектр IT-услуг с AI-ускорением: веб-разработка, мобильные приложения, AI чат-боты, SaaS, FinTech, DevOps, SEO, SMM. Сроки в 7-12 раз быстрее рынка. 10+ лет опыта.",
   keywords: [
     "разработка сайтов AI",
     "создание мобильного приложения цена",
@@ -29,7 +29,7 @@ const services = [
     title: "Разработка сайтов",
     slug: "razrabotka-sajtov",
     description:
-      "AI-first разработка: лендинги, корпоративные сайты, интернет-магазины. Cursor AI + v0.dev = сроки в 3-5 раз быстрее. SEO из коробки.",
+      "AI-first разработка: лендинги, корпоративные сайты, интернет-магазины. Cursor AI + v0.dev = сроки в 7-12 раз быстрее. SEO из коробки.",
     tags: ["Next.js", "React", "Cursor AI", "v0.dev"],
     price: "от 62 500 ₽",
   },
@@ -118,7 +118,7 @@ export default function UslugiPage() {
               </h1>
               <p className="text-xl text-muted-foreground mb-8 text-pretty">
                 Полный цикл разработки цифровых продуктов с AI-first подходом. Используем Cursor AI, v0.dev, ChatGPT — 
-                разрабатываем в 3-5 раз быстрее при том же качестве. 10+ лет опыта, 250+ проектов.
+                разрабатываем в 7-12 раз быстрее при том же качестве. 10+ лет опыта, 250+ проектов.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
