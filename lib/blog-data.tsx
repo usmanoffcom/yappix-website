@@ -303,7 +303,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Мониторинг и observability</h2>
       <p>С первого дня внедряйте: Sentry для ошибок, Posthog для аналитики, Grafana + Prometheus для метрик. Это сэкономит сотни часов при диагностике проблем.</p>
     `,
-    image: "/images/1765791581257-yJhYOoAv5rNuaqBK66Kdsw73Xg.avif",
+    image: "/images/Cover3 1.jpg",
     category: "Разработка",
     tags: ["SaaS", "Next.js", "PostgreSQL", "Kubernetes", "Архитектура"],
     author: "YappiX Team",
