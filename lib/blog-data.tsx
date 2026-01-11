@@ -254,7 +254,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Оптимизация для Яндекса</h2>
       <p>Яндекс имеет свои особенности индексации. Обязательно добавьте сайт в Яндекс.Вебмастер, создайте турбо-страницы для мобильных пользователей и настройте региональность, если работаете в конкретных городах.</p>
     `,
-    image: "/images/1765791666409-Qwl2eN6NaWQvwvcVj32lG6Vw_width_2880_height_1800.avif",
+    image: "/images/20191204193340-GettyImages-1056289958-crop.jpeg",
     category: "SEO",
     tags: ["Next.js", "SEO", "Яндекс", "Google", "Метатеги"],
     author: "YappiX Team",
