@@ -155,7 +155,7 @@ export const blogPosts: BlogPost[] = [
         <li><a href="https://tatcenter.ru/rubrics/narrative/kak-chelninskij-dizajner-privlek-amerikanskih-investorov/" target="_blank">TatCenter: История успеха YappiX</a></li>
       </ul>
     `,
-    image: "/images/1 phase YappiX CMS v1.0 .avif",
+    image: "/images/image1.png",
     category: "Бизнес",
     tags: ["YappiX", "Сколково", "Runa Capital", "Стартапы", "Инвестиции"],
     author: "YappiX Team",
