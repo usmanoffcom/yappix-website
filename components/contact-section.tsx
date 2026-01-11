@@ -188,24 +188,27 @@ export function ContactSection() {
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-foreground">Быстрая связь</h3>
               <div className="grid sm:grid-cols-2 gap-4">
-                <Button variant="outline" size="lg" asChild className="justify-start h-auto py-4 bg-transparent group">
-                  <Link href="https://t.me/yappix_bot" target="_blank">
-                    <MessageCircle className="w-5 h-5 mr-3 text-primary group-hover:text-primary-foreground transition-colors" />
-                    <div className="text-left">
-                      <div className="font-semibold text-foreground group-hover:text-primary-foreground transition-colors">Telegram</div>
-                      <div className="text-xs text-muted-foreground group-hover:text-primary-foreground/80 transition-colors">Ответим за 5 минут</div>
-                    </div>
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild className="justify-start h-auto py-4 bg-transparent group">
-                  <Link href="tel:+79950955593">
-                    <Phone className="w-5 h-5 mr-3 text-primary group-hover:text-primary-foreground transition-colors" />
-                    <div className="text-left">
-                      <div className="font-semibold text-foreground group-hover:text-primary-foreground transition-colors">Позвонить</div>
-                      <div className="text-xs text-muted-foreground group-hover:text-primary-foreground/80 transition-colors">+7 995 095 55 93</div>
-                    </div>
-                  </Link>
-                </Button>
+                <Link 
+                  href="https://t.me/yappix_bot" 
+                  target="_blank"
+                  className="group inline-flex items-center justify-start gap-3 whitespace-nowrap rounded-md text-sm font-medium transition-all border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground active:bg-accent/90 active:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 h-auto py-4 px-6"
+                >
+                  <MessageCircle className="w-5 h-5 text-primary group-hover:text-accent-foreground transition-colors shrink-0" />
+                  <div className="text-left">
+                    <div className="font-semibold text-foreground group-hover:text-accent-foreground transition-colors">Telegram</div>
+                    <div className="text-xs text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">Ответим за 5 минут</div>
+                  </div>
+                </Link>
+                <Link 
+                  href="tel:+79950955593"
+                  className="group inline-flex items-center justify-start gap-3 whitespace-nowrap rounded-md text-sm font-medium transition-all border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground active:bg-accent/90 active:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 h-auto py-4 px-6"
+                >
+                  <Phone className="w-5 h-5 text-primary group-hover:text-accent-foreground transition-colors shrink-0" />
+                  <div className="text-left">
+                    <div className="font-semibold text-foreground group-hover:text-accent-foreground transition-colors">Позвонить</div>
+                    <div className="text-xs text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">+7 995 095 55 93</div>
+                  </div>
+                </Link>
               </div>
             </div>
 
