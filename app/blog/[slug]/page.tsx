@@ -179,8 +179,8 @@ export default async function BlogPostPage({ params }: { params: Params }) {
           {/* Article Content */}
           <div className="py-12 md:py-16">
             <div className="container mx-auto px-4">
-              <div className="max-w-3xl mx-auto prose prose-invert prose-lg prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-code:text-primary prose-pre:bg-card prose-pre:border prose-pre:border-border">
-                <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, "<br />") }} />
+              <div className="max-w-3xl mx-auto blog-content">
+                <div dangerouslySetInnerHTML={{ __html: post.content }} />
               </div>
             </div>
           </div>

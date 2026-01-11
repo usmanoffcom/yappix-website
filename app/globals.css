@@ -202,3 +202,107 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Blog Content Styles */
+.blog-content {
+  @apply text-foreground;
+}
+
+.blog-content h2 {
+  @apply text-2xl sm:text-3xl font-bold text-foreground mt-12 mb-6 leading-tight;
+}
+
+.blog-content h3 {
+  @apply text-xl sm:text-2xl font-semibold text-foreground mt-10 mb-4 leading-tight;
+}
+
+.blog-content h4 {
+  @apply text-lg sm:text-xl font-semibold text-foreground mt-8 mb-3;
+}
+
+.blog-content p {
+  @apply text-base sm:text-lg text-muted-foreground leading-relaxed mb-6;
+}
+
+.blog-content ul,
+.blog-content ol {
+  @apply my-6 pl-6 space-y-3;
+}
+
+.blog-content ul {
+  @apply list-disc;
+}
+
+.blog-content ol {
+  @apply list-decimal;
+}
+
+.blog-content li {
+  @apply text-base sm:text-lg text-muted-foreground leading-relaxed;
+}
+
+.blog-content li strong {
+  @apply text-foreground;
+}
+
+.blog-content strong {
+  @apply font-semibold text-foreground;
+}
+
+.blog-content a {
+  @apply text-primary hover:underline transition-colors;
+}
+
+.blog-content code {
+  @apply px-1.5 py-0.5 text-sm bg-card border border-border rounded text-primary font-mono;
+}
+
+.blog-content pre {
+  @apply p-4 my-6 bg-card border border-border rounded-xl overflow-x-auto;
+}
+
+.blog-content pre code {
+  @apply p-0 bg-transparent border-0 text-foreground;
+}
+
+.blog-content blockquote {
+  @apply pl-6 my-8 border-l-4 border-primary/50 italic text-muted-foreground;
+}
+
+.blog-content table {
+  @apply w-full my-8 border-collapse bg-card rounded-xl overflow-hidden border border-border;
+}
+
+.blog-content thead {
+  @apply bg-secondary/50;
+}
+
+.blog-content th {
+  @apply px-4 py-3 text-left text-sm font-semibold text-foreground border-b border-border;
+}
+
+.blog-content td {
+  @apply px-4 py-3 text-sm text-muted-foreground border-b border-border last:border-b-0;
+}
+
+.blog-content tbody tr {
+  @apply hover:bg-secondary/20 transition-colors;
+}
+
+.blog-content tbody tr:last-child td {
+  @apply border-b-0;
+}
+
+.blog-content img {
+  @apply my-8 rounded-xl w-full;
+}
+
+.blog-content hr {
+  @apply my-12 border-border;
+}
+
+/* Первый заголовок без верхнего отступа */
+.blog-content > h2:first-child,
+.blog-content > h3:first-child {
+  @apply mt-0;
+}
