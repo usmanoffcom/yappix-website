@@ -36,13 +36,13 @@ const cases = [
     image: "/images/image.png",
   },
   {
-    slug: "global-olive-corporation",
-    title: "Global Olive Corporation",
-    category: "E-commerce / FinTech",
-    description: "Полнофункциональная e-commerce платформа для инвестирования в оливковые деревья. Пользователи могут покупать деревья, получать сертификаты владения, дарить деревья другим и отслеживать активы. Включает админ-панель для управления инвентарем, заказами и пользователями.",
-    metrics: ["$500K+ инвестиций", "1000+ деревьев", "Сертификаты NFT"],
-    tags: ["Next.js", "Stripe", "PostgreSQL", "AWS"],
-    image: "/images/image copy.png",
+    slug: "priboy-hotels",
+    title: "Grand Hotels & SPA Priboy — сеть отелей",
+    category: "Hospitality / Marketing",
+    description: "Комплексная разработка, техническая поддержка, SEO-продвижение и SMM для сети премиальных отелей на Черноморском побережье.",
+    metrics: ["+180% трафик", "+65% прямые брони", "ТОП-3 Яндекс"],
+    tags: ["Next.js", "SEO", "SMM", "VK Ads"],
+    image: "/images/priboy.avif",
   },
 ]
 

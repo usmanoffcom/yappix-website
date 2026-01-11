@@ -74,18 +74,18 @@ const cases = [
     tags: ["Next.js", "Stripe", "PostgreSQL", "AWS"],
   },
   {
-    slug: "mobile-delivery-app",
-    title: "Приложение доставки еды",
-    client: "FoodRush",
-    category: "Mobile",
-    description: "Кроссплатформенное приложение для заказа еды с real-time трекингом и интеграцией с ресторанами.",
-    image: "/placeholder.svg?height=600&width=800",
+    slug: "priboy-hotels",
+    title: "Grand Hotels & SPA Priboy — сеть отелей",
+    client: "Группа отелей Прибой",
+    category: "Marketing",
+    description: "Комплексная разработка, техническая поддержка, SEO-продвижение и SMM для сети премиальных отелей.",
+    image: "/images/priboy.avif",
     results: [
-      { label: "Скачиваний", value: "1M+" },
-      { label: "Рейтинг", value: "4.8★" },
-      { label: "Заказов/день", value: "50K" },
+      { label: "Рост трафика", value: "+180%" },
+      { label: "Прямые брони", value: "+65%" },
+      { label: "ТОП-3 Яндекс", value: "85%" },
     ],
-    tags: ["React Native", "Firebase", "Node.js", "Stripe"],
+    tags: ["Next.js", "SEO", "SMM", "VK Ads"],
   },
   {
     slug: "corporate-portal",
@@ -103,7 +103,7 @@ const cases = [
   },
 ]
 
-const categories = ["Все", "FinTech", "AI", "E-commerce", "SaaS", "Mobile", "Enterprise"]
+const categories = ["Все", "FinTech", "AI", "E-commerce", "SaaS", "Marketing", "Enterprise"]
 
 export default function CasesPage() {
   return (
