@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, MessageCircle, Clock } from "lucide-react"
+import { BookingCallBlock } from "@/components/booking-call-block"
 
 export const metadata: Metadata = {
   title: "Контакты YappiX — связаться с нами | IT-студия",
@@ -255,6 +256,11 @@ export default function ContactsPage() {
                       </div>
                     </div>
                   ))}
+                </div>
+
+                {/* Booking Call Block */}
+                <div className="mt-8">
+                  <BookingCallBlock />
                 </div>
 
                 {/* Payment Methods */}
