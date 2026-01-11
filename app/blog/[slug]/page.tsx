@@ -111,7 +111,18 @@ export default async function BlogPostPage({ params }: { params: Params }) {
           <div className="container mx-auto px-4 -mt-4">
             <div className="max-w-4xl mx-auto">
               <div className="relative aspect-video rounded-xl overflow-hidden bg-card">
-                <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" priority />
+                {post.image?.endsWith(".mp4") ? (
+                  <video
+                    src={post.image}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="object-cover w-full h-full"
+                  />
+                ) : (
+                  <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" priority />
+                )}
               </div>
             </div>
           </div>

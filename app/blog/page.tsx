@@ -67,12 +67,23 @@ export default function BlogPage() {
             <Link href={`/blog/${featuredPost.slug}`} className="group block">
               <article className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="relative aspect-video rounded-xl overflow-hidden bg-card">
-                  <Image
-                    src={featuredPost.image || "/placeholder.svg"}
-                    alt={featuredPost.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  {featuredPost.image?.endsWith(".mp4") ? (
+                    <video
+                      src={featuredPost.image}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <Image
+                      src={featuredPost.image || "/placeholder.svg"}
+                      alt={featuredPost.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
                 </div>
                 <div>
                   <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4">
@@ -111,12 +122,23 @@ export default function BlogPage() {
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
                   <article className="h-full bg-background border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors">
                     <div className="relative aspect-video bg-muted">
-                      <Image
-                        src={post.image || "/placeholder.svg"}
-                        alt={post.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                      {post.image?.endsWith(".mp4") ? (
+                        <video
+                          src={post.image}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <Image
+                          src={post.image || "/placeholder.svg"}
+                          alt={post.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      )}
                     </div>
                     <div className="p-6">
                       <span className="inline-block px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded mb-3">

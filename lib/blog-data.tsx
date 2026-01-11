@@ -470,7 +470,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Наш опыт в YappiX</h2>
       <p>Для проектов до 10K MAU начинаем с serverless (Vercel + Supabase). При росте мигрируем критичные сервисы на Kubernetes в AWS EKS. Такой путь минимизирует затраты на старте и обеспечивает масштабируемость при росте.</p>
     `,
-    image: "/images/yappix_content.png",
+    image: "/images/vviamyylrzvr3japyiye.mp4",
     category: "DevOps",
     tags: ["Kubernetes", "Serverless", "AWS", "DevOps", "Инфраструктура"],
     author: "YappiX Team",
