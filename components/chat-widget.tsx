@@ -23,7 +23,9 @@ const INITIAL_MESSAGE = `👋 Привет! Я AI-ассистент YappiX.
 Напишите ваш вопрос!`
 
 export function ChatWidget() {
-  const { executeRecaptcha } = useGoogleReCaptcha()
+  const recaptchaContext = useGoogleReCaptcha()
+  const executeRecaptcha = recaptchaContext?.executeRecaptcha
+  
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: INITIAL_MESSAGE }

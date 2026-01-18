@@ -24,7 +24,9 @@ const offices = [
 ]
 
 export function ContactSection() {
-  const { executeRecaptcha } = useGoogleReCaptcha()
+  const recaptchaContext = useGoogleReCaptcha()
+  const executeRecaptcha = recaptchaContext?.executeRecaptcha
+  
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isBookingOpen, setIsBookingOpen] = useState(false)
   const [formData, setFormData] = useState({
