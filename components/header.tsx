@@ -12,7 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import { Menu, Phone, ArrowRight, Globe, Code, Bot, Cloud, Landmark, Server, Search, Share2 } from "lucide-react"
+import { Menu, Phone, ArrowRight, Globe, Code, Bot, Cloud, Landmark, Server, Search, Share2, Store } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Logo } from "./logo"
 
@@ -74,6 +74,12 @@ const navItems = [
   { href: "/karera", label: "Карьера" },
   { href: "/kontakty", label: "Контакты" },
 ]
+
+const templatesLink = {
+  href: "https://yappix.lemonsqueezy.com/",
+  label: "Шаблоны",
+  external: true,
+}
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -143,6 +149,17 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            
+            <Link
+              href={templatesLink.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-muted/50 flex items-center gap-1.5"
+            >
+              <Store className="w-4 h-4" />
+              {templatesLink.label}
+              <ArrowRight className="w-3 h-3" />
+            </Link>
           </div>
 
           {/* CTA */}
@@ -219,6 +236,19 @@ export function Header() {
                         <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                       </Link>
                     ))}
+                    <Link
+                      href={templatesLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-between py-3 px-3 -mx-3 rounded-lg text-foreground hover:bg-muted/50 transition-colors group"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Store className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <span className="text-base font-medium">{templatesLink.label}</span>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                    </Link>
                   </div>
                 </div>
               </div>

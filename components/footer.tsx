@@ -15,6 +15,7 @@ const footerLinks = {
     { label: "О компании", href: "/o-kompanii" },
     { label: "Кейсы", href: "/kejsy" },
     { label: "Блог", href: "/blog" },
+    { label: "Шаблоны", href: "https://yappix.lemonsqueezy.com/", external: true },
     { label: "Карьера", href: "/karera" },
     { label: "Контакты", href: "/kontakty" },
   ],
@@ -102,9 +103,12 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
                     className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.label}
+                    {link.external && " ↗"}
                   </Link>
                 </li>
               ))}
