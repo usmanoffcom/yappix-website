@@ -56,6 +56,22 @@ export function ProcessSection() {
           </p>
         </div>
 
+        {/* Video Player */}
+        <div className="max-w-4xl mx-auto mb-10 sm:mb-12 lg:mb-16 px-4">
+          <div className="relative aspect-video rounded-2xl overflow-hidden border border-border/50 bg-black/50 shadow-2xl shadow-primary/5 animate-in fade-in slide-in-from-bottom-4 duration-500 hover:shadow-primary/10 transition-shadow">
+            <video
+              className="w-full h-full object-cover"
+              controls
+              preload="metadata"
+              playsInline
+            >
+              <source src="/video_yappix.MOV" type="video/mp4" />
+              <source src="/video_yappix.MOV" type="video/quicktime" />
+              Ваш браузер не поддерживает воспроизведение видео.
+            </video>
+          </div>
+        </div>
+
         <div className="max-w-3xl lg:max-w-4xl mx-auto">
           {steps.map((step, index) => (
             <div key={index}
