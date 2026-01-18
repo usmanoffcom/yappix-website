@@ -60,12 +60,15 @@ export function ProcessSection() {
         <div className="max-w-4xl mx-auto mb-10 sm:mb-12 lg:mb-16 px-4">
           <div className="relative aspect-video rounded-2xl overflow-hidden border border-border/50 bg-black/50 shadow-2xl shadow-primary/5 animate-in fade-in slide-in-from-bottom-4 duration-500 hover:shadow-primary/10 transition-shadow">
             <video
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
               controls
+              controlsList="nodownload"
               preload="metadata"
               playsInline
+              crossOrigin="anonymous"
             >
               <source src="/yappix_2026.mp4" type="video/mp4" />
+              <track kind="captions" />
               Ваш браузер не поддерживает воспроизведение видео.
             </video>
           </div>

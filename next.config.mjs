@@ -131,12 +131,66 @@ const nextConfig = {
         ],
       },
       {
-        // Кэширование всех медиафайлов - 1 год
-        source: '/:path*.(ico|png|svg|jpg|jpeg|gif|webp|avif|mp4|webm)',
+        // Кэширование изображений - 1 год
+        source: '/:path*.(ico|png|svg|jpg|jpeg|gif|webp|avif)',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Видео файлы - поддержка range requests для стриминга
+        source: '/:path*.mp4',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
+          },
+          {
+            key: 'Content-Type',
+            value: 'video/mp4',
+          },
+        ],
+      },
+      {
+        // Видео файлы QuickTime - поддержка range requests
+        source: '/:path*.MOV',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
+          },
+          {
+            key: 'Content-Type',
+            value: 'video/quicktime',
+          },
+        ],
+      },
+      {
+        // WebM видео
+        source: '/:path*.webm',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
+          },
+          {
+            key: 'Content-Type',
+            value: 'video/webm',
           },
         ],
       },
