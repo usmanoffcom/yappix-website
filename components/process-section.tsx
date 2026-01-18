@@ -65,8 +65,7 @@ export function ProcessSection() {
               preload="metadata"
               playsInline
             >
-              <source src="/video_yappix.MOV" type="video/mp4" />
-              <source src="/video_yappix.MOV" type="video/quicktime" />
+              <source src="/yappix_2026.mp4" type="video/mp4" />
               Ваш браузер не поддерживает воспроизведение видео.
             </video>
           </div>
