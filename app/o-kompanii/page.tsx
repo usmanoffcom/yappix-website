@@ -140,6 +140,53 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Founder */}
+        <section className="py-16 md:py-24 bg-card">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Основатель</h2>
+              <div className="grid md:grid-cols-[200px_1fr] gap-8 items-start">
+                <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted">
+                  <Image
+                    src="/placeholder.svg?height=200&width=200"
+                    alt="Ренат Усманов"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Ренат Усманов</h3>
+                  <p className="text-primary mb-4">CEO & Product Designer</p>
+                  <div className="space-y-4 text-muted-foreground">
+                    <p>
+                      Основатель YappiX и продуктовый дизайнер с 10+ годами опыта. Специализируюсь на полном цикле:
+                      от UX-исследований до дизайн-системы и фронтенда.
+                    </p>
+                    <p>
+                      В 2025 году перешел на модель "компании одного человека", используя AI-агентов для ускорения разработки.
+                      Мой подход: минимальная команда, максимум автоматизации, фокус на результат.
+                    </p>
+                    <p>
+                      <strong>Stack:</strong> Figma, Next.js, TypeScript, Framer, Cursor AI, Claude
+                    </p>
+                    <div className="flex gap-4 mt-6">
+                      <Link href="https://usmanoff.com" target="_blank" className="text-primary hover:underline">
+                        Portfolio →
+                      </Link>
+                      <Link href="https://linkedin.com/in/usmanoffcom" target="_blank" className="text-primary hover:underline">
+                        LinkedIn →
+                      </Link>
+                      <Link href="https://github.com/usmanoffcom" target="_blank" className="text-primary hover:underline">
+                        GitHub →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Values */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
