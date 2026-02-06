@@ -253,6 +253,17 @@ const nextConfig = {
         destination: '/kontakty',
         permanent: true,
       },
+      // Старые/альтернативные URL услуг → актуальные slug
+      {
+        source: '/uslugi/fintech-resheniya',
+        destination: '/uslugi/fintech',
+        permanent: true,
+      },
+      {
+        source: '/uslugi/devops-uslugi',
+        destination: '/uslugi/devops',
+        permanent: true,
+      },
     ]
   },
 }

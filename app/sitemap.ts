@@ -87,7 +87,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'mobilnye-prilozheniya',
     'ai-chat-boty',
     'saas-paas',
+    'fintech',
+    'devops',
     'seo-prodvizhenie',
+    'smm',
   ]
 
   const servicesPages: MetadataRoute.Sitemap = servicesSlugs.map((slug) => ({
