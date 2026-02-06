@@ -1,11 +1,12 @@
-import type { Metadata } from "next"
+"use client"
+
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Home, ArrowLeft, Search, MessageCircle } from "lucide-react"
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "404 — Страница не найдена | YappiX",
   description: "Запрашиваемая страница не найдена. Вернитесь на главную или воспользуйтесь навигацией.",
   robots: {
