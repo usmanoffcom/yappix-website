@@ -105,6 +105,7 @@ export const casesData: CaseStudy[] = [
       "Разработал единую платформу с AI-ассистентом для автоматической обработки обращений, генерации документов и персонализированных рекомендаций. Внедрил систему скидок от партнёров, новостную ленту и чаты для повышения вовлечённости членов профсоюза.",
     image: "/images/image.png",
     videos: [
+      "/images/usmanoff-cases/1765719152722-MyUnion.mp4",
       "/images/Презентация платформы MyUnion_ новые возможности для профсоюзов 🚀 (1).mp4",
     ],
     gallery: [
@@ -142,7 +143,7 @@ export const casesData: CaseStudy[] = [
       "Разработали полнофункциональную eCommerce платформу на React с интуитивным процессом покупки, генерацией персонализированных сертификатов владения (PDF с QR-кодом), функцией подарка с уникальным кодом активации и личным кабинетом с историей владения и статистикой урожая. Интегрировали Stripe для безопасных платежей и nodemailer для email-уведомлений.",
     image: "/images/image copy.png",
     videos: [
-      "/images/1765726788099-Olive.mp4",
+      "/images/usmanoff-cases/1765726788099-Olive.mp4",
     ],
     gallery: [
       "/images/Screenshot 2026-01-11 at 11.39.49.png",
@@ -181,11 +182,20 @@ export const casesData: CaseStudy[] = [
     image: "/images/priboy.avif",
     videos: [
       "/images/priboy_overview.mp4",
+      "/images/usmanoff-cases/1765792488847-pr1.mp4",
     ],
     gallery: [
       "/images/priboy001.mp4",
       "/images/priboy_gal1.avif",
       "/images/Screenshot 2026-01-11 at 11.57.15.png",
+      "/images/usmanoff-cases/1765792395288-bFI2IWilY7g4ukF9T80MrOrRVj8_width_600_height_1167.png",
+      "/images/usmanoff-cases/1765792429857-q8eUGGIY1BiO1oe8GScSU3ZJ3k_scale-down-to_1024_width_1920_height_1200.png",
+      "/images/usmanoff-cases/1765792638637-FoLlT7LSXYy6s5h8tjhFS1pN0U_scale-down-to_1024_width_1600_height_1200.png",
+      "/images/usmanoff-cases/1765792697728-UuUYkwEq1gwSBee31fsugTkw.png",
+      "/images/usmanoff-cases/1765792750119-77Q7f2uc7GRvOS3tyA3U6s7U_width_600_height_1298.png",
+      "/images/usmanoff-cases/1765792826028-Fp173n5obWlyvfQxnUzhJ1ymYk_scale-down-to_1024_width_600_height_1298.png",
+      "/images/usmanoff-cases/1765792906373-U43ZiD4bZrIOBvHCf2f54kMo_width_600_height_1298.png",
+      "/images/usmanoff-cases/1765792938372-mxGxicx7rf9opdoGjiSRrbYBo_width_600_height_1298.png",
     ],
     results: [
       { label: "Рост трафика", value: "+180%" },
@@ -224,6 +234,21 @@ export const casesData: CaseStudy[] = [
       "/images/1765791581257-yJhYOoAv5rNuaqBK66Kdsw73Xg.avif",
       "/images/1765791666409-Qwl2eN6NaWQvwvcVj32lG6Vw_width_2880_height_1800.avif",
       "/images/1765791715753-akppqeDKMhBDLRyBcnGi33oLFx8_width_2880_height_1800.avif",
+      "/images/usmanoff-cases/1765787233057-rFdekXNSoixQNGAjfoaAIBSb0.png",
+      "/images/usmanoff-cases/1765787506472-lBZIZHdBxCz8pA7aFPWvXLJgvU.png",
+      "/images/usmanoff-cases/1765788247874-QzyrAdflr3gbPGCk2rS1HaiYA.png",
+      "/images/usmanoff-cases/1765788398160-GoaF2xdIygf9WXiWkYDUZDXMc.png",
+      "/images/usmanoff-cases/1765788491990-aIcw6ESkFjkSVx0Vjh4PYrgIoYQ.png",
+      "/images/usmanoff-cases/1765788543335-JV8VcN4eOilzQSfaD4hnuAOc.png",
+      "/images/usmanoff-cases/1765788614061-FDreNuDLWqXyLKXfXtzImze8.png",
+      "/images/usmanoff-cases/1765789160330-WAbRi5ePcQxB4bll5Ikr32FXJg_width_2000_height_1125.png",
+      "/images/usmanoff-cases/1765789714843-Fvt84cokEFC0r2kXIbefpewpg_width_2118_height_1580.png",
+      "/images/usmanoff-cases/1765790107346-uiRr9WqzbrenYqWPyHmyLoCnQx8.png",
+      "/images/usmanoff-cases/1765790227649-ZmFmyAcAIUkD359pzmKQmImtUA.png",
+      "/images/usmanoff-cases/1765790450988-HclPXhcgoChAVy7gAkoviYHMQQ.png",
+      "/images/usmanoff-cases/1765790614933-t4qwNc2HIdIO2Xxht9R0nL3V6vQ_width_1400_height_788.png",
+      "/images/usmanoff-cases/1765791070641-eOI3HR0TuqLWnIGNqy0M18VtYA_width_1920_height_1080.png",
+      "/images/usmanoff-cases/1765791373675-tl7BJU51FE604QuglrLCUEysDA_width_1920_height_1080.png",
     ],
     results: [
       { label: "Гранты", value: "ФСИ + MS" },
