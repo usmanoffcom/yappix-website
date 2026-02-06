@@ -7,6 +7,7 @@ import { CasesSection } from "@/components/cases-section"
 import { TechStack } from "@/components/tech-stack"
 import { PricingSection } from "@/components/pricing-section"
 import { ShowcaseGallery } from "@/components/showcase-gallery"
+import { TemplatesSection } from "@/components/templates-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 
@@ -22,6 +23,7 @@ export default function HomePage() {
       <TechStack />
       <PricingSection />
       <ShowcaseGallery />
+      <TemplatesSection />
       <ContactSection />
       <Footer />
     </main>

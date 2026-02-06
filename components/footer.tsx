@@ -15,7 +15,7 @@ const footerLinks = {
     { label: "О компании", href: "/o-kompanii" },
     { label: "Кейсы", href: "/kejsy" },
     { label: "Блог", href: "/blog" },
-    { label: "Шаблоны", href: "https://yappix.lemonsqueezy.com/", external: true },
+    { label: "Шаблоны", href: "/shablony" },
     { label: "Карьера", href: "/karera" },
     { label: "Контакты", href: "/kontakty" },
   ],

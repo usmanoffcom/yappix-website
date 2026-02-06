@@ -24,6 +24,260 @@ export interface CaseStudy {
 
 export const casesData: CaseStudy[] = [
   {
+    slug: "myunion-platform",
+    title: "MyUnion Pro — платформа управления профсоюзами",
+    client: "MyUnion",
+    category: "SaaS / AI",
+    description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ, автоматическим созданием документов и функциями вовлечения членов.",
+    fullDescription:
+      "MyUnion Pro — это полнофункциональное веб-приложение для управления профсоюзом с чат-ботами на базе искусственного интеллекта, автоматическим созданием документов, отслеживанием обращений и функциями вовлечения членов. Живое приложение: myunion.pro. Версия: 1.6.1.",
+    challenge:
+      "Профсоюзы использовали разрозненные системы для учёта членов, документооборота и коммуникаций. Обработка заявлений занимала дни, а вовлечённость членов была минимальной. Нужна была единая платформа с современными технологиями.",
+    solution:
+      "Разработал единую платформу с AI-ассистентом для автоматической обработки обращений, генерации документов и персонализированных рекомендаций. Внедрил систему скидок от партнёров, новостную ленту и чаты для повышения вовлечённости членов профсоюза.",
+    image: "/images/image.png",
+    videos: [
+      "/images/usmanoff-cases/1765719152722-MyUnion.mp4",
+      "/images/Презентация платформы MyUnion_ новые возможности для профсоюзов 🚀 (1).mp4",
+    ],
+    gallery: [
+      "/images/Screenshot 2026-01-08 at 19.12.21.png",
+      "/images/Screenshot 2026-01-08 at 19.12.35.png",
+      "/images/Screenshot 2026-01-08 at 19.12.59.png",
+    ],
+    results: [
+      { label: "Пользователей", value: "50K+" },
+      { label: "AI-автоматизация", value: "80%" },
+      { label: "Время обработки", value: "-90%" },
+      { label: "Вовлечённость", value: "+150%" },
+    ],
+    tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain", "Redis", "AWS"],
+    testimonial: {
+      text: "Платформа MyUnion Pro полностью трансформировала работу нашего профсоюза. AI-ассистент закрывает 80% обращений автоматически.",
+      author: "Виталий Николаевич",
+      role: "Председатель профсоюза",
+    },
+    duration: "3 месяца",
+    team: "1 человек",
+    year: "2025",
+  },
+  {
+    slug: "reallaw-ai",
+    title: "realLaw AI — Legal Tech SaaS для ОАЭ",
+    client: "realLaw",
+    category: "SaaS / Legal Tech",
+    description: "Legal-tech SaaS для бизнеса и юристов ОАЭ. Полный цикл: исследование, бренд, дизайн-система, фронтенд на Next.js/Framer.",
+    fullDescription:
+      "realLaw AI — это legal-tech SaaS для бизнеса ОАЭ и юристов. Платформа объединяет базу знаний по законодательству ОАЭ, AI-ассистента для правовых консультаций и систему генерации документов. Я отвечал за полный цикл продукта: UX-исследования, бренд, дизайн-систему и фронтенд на Next.js/Framer.",
+    challenge:
+      "Юридические услуги в ОАЭ дороги и недоступны для малого бизнеса. Законодательство сложное, а поиск нужной информации занимает часы. Требовалась платформа, которая сделает юридические знания доступными и понятными для широкой аудитории.",
+    solution:
+      "Разработали AI-платформу с базой знаний по законодательству ОАЭ, интеллектуальным поиском и генератором документов. Создали интуитивную дизайн-систему и реализовали фронтенд на Next.js с интеграцией Framer для анимаций.",
+    image: "/images/usmanoff-cases/1765729581244-00001.avif",
+    videos: [
+      "/images/usmanoff-cases/1765730240971-rl01.mp4",
+      "/images/usmanoff-cases/1765730303289-rl02.mp4",
+      "/images/usmanoff-cases/1765730312497-rl03.mp4",
+    ],
+    gallery: [
+      "/images/usmanoff-cases/1765729581244-00001.avif",
+      "/images/usmanoff-cases/1765729597092-0002.avif",
+      "/images/usmanoff-cases/1765729610108-0003.avif",
+    ],
+    results: [
+      { label: "Год", value: "2025" },
+      { label: "Платформа", value: "Web" },
+      { label: "AI", value: "GPT-4" },
+      { label: "Регион", value: "UAE" },
+    ],
+    tags: ["Legal Tech", "SaaS", "Next.js", "Framer", "UAE", "AI"],
+    duration: "4 месяца",
+    team: "1 человек",
+    year: "2025",
+  },
+  {
+    slug: "jupid-platform",
+    title: "Jupid — AI бухгалтер для запуска LLC",
+    client: "Jupid",
+    category: "FinTech / AI",
+    description: "AI-бухгалтер для основателей из США. Создание и ведение LLC через чат. Продуктовые флоу, интерфейс, дизайн-система.",
+    fullDescription:
+      "Jupid — это AI-бухгалтер, который помогает основателям из США создавать и вести LLC через чат. Платформа автоматизирует регистрацию компании, налоговую отчётность, бухгалтерию и комплаенс. Я разработал продуктовые флоу, интерфейс и дизайн-систему, а также реализовал маркетинговый сайт в Framer.",
+    challenge:
+      "Открытие LLC в США — сложный процесс с десятками форм, налоговых деклараций и требований к комплаенсу. Услуги бухгалтеров дороги ($2000+/год), а основатели тратят время на рутину вместо развития бизнеса.",
+    solution:
+      "Создали AI-ассистента, который проводит через весь процесс регистрации LLC в чате, автоматически заполняет формы, подает документы и ведёт бухгалтерию. Разработал интуитивный интерфейс и дизайн-систему в Figma, реализовал маркетинговый сайт в Framer.",
+    image: "/images/usmanoff-cases/1765730706302-j1.png",
+    gallery: [
+      "/images/usmanoff-cases/1765730706302-j1.png",
+      "/images/usmanoff-cases/1765731172484-j2.png",
+      "/images/usmanoff-cases/1765731270134-j3.png",
+    ],
+    results: [
+      { label: "Год", value: "2025" },
+      { label: "Регион", value: "USA" },
+      { label: "AI", value: "GPT-4" },
+      { label: "Экономия", value: "$2K+/год" },
+    ],
+    tags: ["AI", "FinTech", "SaaS", "Accounting", "Framer", "USA"],
+    duration: "3 месяца",
+    team: "1 человек",
+    year: "2025",
+  },
+  {
+    slug: "priboy-hotels",
+    title: "Grand Hotels & SPA Priboy — сеть отелей",
+    client: "Группа отелей Прибой",
+    category: "Hospitality / Marketing",
+    description: "Комплексная разработка, техническая поддержка, SEO-продвижение и SMM для сети премиальных отелей на Черноморском побережье.",
+    fullDescription:
+      "Полный цикл digital-услуг для группы отелей Прибой: разработка и поддержка сайтов priboy-spa.ru (4*) и priboy1.ru (3*), SEO-оптимизация для высоких позиций в поисковой выдаче, ведение социальных сетей ВКонтакте с созданием контента и таргетированной рекламой. Отели расположены в Анапе и предлагают премиальный отдых с SPA-комплексами, бассейнами и ресторанами.",
+    challenge:
+      "Сеть отелей нуждалась в современном digital-присутствии: устаревшие сайты не конвертировали посетителей в бронирования, позиции в поиске были низкими, а социальные сети практически не велись. Требовалось комплексное решение для увеличения прямых бронирований и узнаваемости бренда.",
+    solution:
+      "Разработали современные адаптивные сайты с интеграцией систем бронирования, оптимизировали под SEO с фокусом на геозапросы «отель Анапа», «SPA отель Черное море». Запустили SMM-стратегию с регулярным контентом, сторис, reels и таргетированной рекламой во ВКонтакте. Настроили аналитику и сквозную отчётность.",
+    image: "/images/priboy.avif",
+    videos: [
+      "/images/priboy_overview.mp4",
+      "/images/usmanoff-cases/1765792488847-pr1.mp4",
+    ],
+    gallery: [
+      "/images/usmanoff-cases/1765792395288-bFI2IWilY7g4ukF9T80MrOrRVj8_width_600_height_1167.png",
+      "/images/usmanoff-cases/1765792429857-q8eUGGIY1BiO1oe8GScSU3ZJ3k_scale-down-to_1024_width_1920_height_1200.png",
+      "/images/usmanoff-cases/1765792638637-FoLlT7LSXYy6s5h8tjhFS1pN0U_scale-down-to_1024_width_1600_height_1200.png",
+      "/images/usmanoff-cases/1765792697728-UuUYkwEq1gwSBee31fsugTkw.png",
+      "/images/usmanoff-cases/1765792750119-77Q7f2uc7GRvOS3tyA3U6s7U_width_600_height_1298.png",
+      "/images/usmanoff-cases/1765792826028-Fp173n5obWlyvfQxnUzhJ1ymYk_scale-down-to_1024_width_600_height_1298.png",
+      "/images/usmanoff-cases/1765792906373-U43ZiD4bZrIOBvHCf2f54kMo_width_600_height_1298.png",
+      "/images/usmanoff-cases/1765792938372-mxGxicx7rf9opdoGjiSRrbYBo_width_600_height_1298.png",
+    ],
+    results: [
+      { label: "Рост трафика", value: "+180%" },
+      { label: "Прямые брони", value: "+65%" },
+      { label: "Подписчики VK", value: "12K+" },
+      { label: "ТОП-3 Яндекс", value: "85%" },
+    ],
+    tags: ["Next.js", "SEO", "SMM", "VK Ads", "Яндекс.Метрика", "TildaCMS"],
+    testimonial: {
+      text: "После редизайна сайтов и запуска SEO-продвижения количество прямых бронирований выросло на 65%. Наконец-то мы не зависим только от агрегаторов.",
+      author: "Администрация отеля",
+      role: "Grand Hotel & SPA Priboy",
+    },
+    duration: "Постоянная поддержка",
+    team: "3 человека",
+    year: "2023–2025",
+  },
+  {
+    slug: "bridgeinto-platform",
+    title: "BridgeInto — Приватная бизнес-платформа",
+    client: "BridgeInto",
+    category: "Enterprise / Blockchain",
+    description: "Безопасная бизнес-платформа для приватности и контроля данных. Бренд, UX/UI, дизайн-система, продуктовый сайт.",
+    fullDescription:
+      "BridgeInto — это безопасная бизнес-платформа для людей, которые ценят приватность и контроль над своими данными. Включает файловый менеджер на блокчейне, бухгалтерию, систему управления налогами и защищённые коммуникации. Я создал бренд, UX, UI, дизайн-систему и продуктовый сайт.",
+    challenge:
+      "Современные бизнес-платформы хранят данные на своих серверах, не давая полного контроля. Компании опасаются утечек конфиденциальной информации и зависимости от внешних сервисов.",
+    solution:
+      "Разработали платформу с хранением данных на блокчейне, где пользователи контролируют свои ключи шифрования. Создал самодостаточную систему с файловым менеджером, бухгалтерией и защищёнными коммуникациями. Разработал бренд и дизайн-систему, подчёркивающие безопасность и приватность.",
+    image: "/images/usmanoff-cases/1765731821927-b1.mp4",
+    videos: [
+      "/images/usmanoff-cases/1765731821927-b1.mp4",
+      "/images/usmanoff-cases/1765731899405-b2.mp4",
+      "/images/usmanoff-cases/1765733491723-b3.mp4",
+      "/images/usmanoff-cases/1765733531788-b4.mp4",
+    ],
+    gallery: [
+      "/images/usmanoff-cases/1765733642777-123Desktop.png",
+      "/images/usmanoff-cases/1765733704154-Desktop_1.png",
+      "/images/usmanoff-cases/1765733749734-Desktopqqwwee.png",
+      "/images/usmanoff-cases/1765733782837-Desktop_______.png",
+      "/images/usmanoff-cases/1765733815536-File_manager.png",
+      "/images/usmanoff-cases/1765733847173-Message-1.png",
+      "/images/usmanoff-cases/1765734002829-bb2.png",
+      "/images/usmanoff-cases/1765734179734-MS_Startups_FoundersHub_Celebration_Template_V1_1200x628.png",
+    ],
+    results: [
+      { label: "Год", value: "2024" },
+      { label: "Блокчейн", value: "Да" },
+      { label: "Шифрование", value: "E2E" },
+      { label: "Статус", value: "Продакшн" },
+    ],
+    tags: ["SaaS", "Blockchain", "Security", "File Manager", "E2E Encryption"],
+    duration: "5 месяцев",
+    team: "1 человек",
+    year: "2024",
+  },
+  {
+    slug: "global-olive-corporation",
+    title: "Global Olive Corp. — Инвестиционная платформа",
+    client: "Global Olive Corporation",
+    category: "Marketing / eCommerce",
+    description: "Инвестиционная платформа для оливковых деревьев с прозрачной системой владения, персонализированными сертификатами и возможностью подарить дерево.",
+    fullDescription:
+      "Global Olive Corporation — инновационная инвестиционная платформа, позволяющая пользователям приобретать оливковые деревья как уникальные активы. Каждое дерево привязано к персональному сертификату владения с QR-кодом, фото и GPS-координатами. Платформа включает функции подарка дерева, личный кабинет с трекером урожая и интеграцию с платёжными системами. Полностью адаптивный дизайн для мобильных устройств.",
+    challenge:
+      "Клиенту требовалось создать цифровую платформу для продажи оливковых деревьев как инвестиционного актива. Необходимо было разработать систему прозрачного владения с сертификатами, возможность дарения и удобный личный кабинет для отслеживания активов и урожая.",
+    solution:
+      "Разработали полнофункциональную eCommerce платформу на React с интуитивным процессом покупки, генерацией персонализированных сертификатов владения (PDF с QR-кодом), функцией подарка с уникальным кодом активации и личным кабинетом с историей владения и статистикой урожая. Интегрировали Stripe для безопасных платежей и nodemailer для email-уведомлений.",
+    image: "/images/image copy.png",
+    videos: [
+      "/images/usmanoff-cases/1765726788099-Olive.mp4",
+    ],
+    gallery: [
+      "/images/Screenshot 2026-01-11 at 11.39.49.png",
+      "/images/Screenshot 2026-01-11 at 11.40.54.png",
+      "/images/Screenshot 2026-01-11 at 11.41.43.png",
+      "/images/Screenshot 2026-01-11 at 11.43.07.png",
+    ],
+    results: [
+      { label: "Конверсия", value: "+35%" },
+      { label: "Деревьев продано", value: "500+" },
+      { label: "Средний чек", value: "$180" },
+      { label: "Подарков", value: "120+" },
+    ],
+    tags: ["React", "Node.js", "Stripe", "PostgreSQL", "PDF Generation", "QR Codes"],
+    testimonial: {
+      text: "Платформа превзошла все наши ожидания. Процесс покупки интуитивен, а сертификаты выглядят премиально. Продажи выросли на 35% после запуска нового сайта.",
+      author: "Marco Ferretti",
+      role: "CEO Global Olive Corporation",
+    },
+    duration: "3 месяца",
+    team: "4 человека",
+    year: "2024",
+  },
+  {
+    slug: "my-buyer-crm",
+    title: "MY BUYER — CRM для маркетплейсов",
+    client: "MY BUYER",
+    category: "E-commerce / CRM",
+    description: "CRM для работы с товарами с китайских и СНГ маркетплейсов. UX/UI для веб и мобильных приложений.",
+    fullDescription:
+      "MY BUYER — это CRM для покупателей, логистов и продавцов, работающих с товарами с китайских и СНГ маркетплейсов. Система управляет заказами, отслеживает поставки, автоматизирует взаиморасчёты и заменяет электронные таблицы на удобный интерфейс. Я руководил UX и UI дизайном для веб и мобильных приложений.",
+    challenge:
+      "Покупатели и логисты использовали десятки Excel-таблиц для учёта заказов, товаров, поставщиков и платежей. Это приводило к ошибкам, потере данных и невозможности масштабирования бизнеса.",
+    solution:
+      "Спроектировал CRM-систему с интуитивным интерфейсом, заменившую электронные таблицы на структурированную базу данных. Разработал UX/UI для веб и iOS приложений с фокусом на скорость работы и минимальное количество кликов.",
+    image: "/images/usmanoff-cases/1765752539773-m1.png",
+    gallery: [
+      "/images/usmanoff-cases/1765754612428-wWj0FiwYoA1e6yOrIDLQZ2Ym6k.png",
+      "/images/usmanoff-cases/1765754695893-m1.avif",
+      "/images/usmanoff-cases/1765754703662-m2.avif",
+      "/images/usmanoff-cases/1765754710650-m3.avif",
+      "/images/usmanoff-cases/1765754775451-e7yq4jvuHht7f44cakdX02GTc_width_1440_height_5525.png",
+      "/images/usmanoff-cases/1765754807044-2RojtmMnT2UiT2gBgzGdDHBOKTs.webp",
+    ],
+    results: [
+      { label: "Год", value: "2023" },
+      { label: "Платформы", value: "Web + iOS" },
+      { label: "Пользователей", value: "5K+" },
+      { label: "Экономия времени", value: "70%" },
+    ],
+    tags: ["CRM", "E-commerce", "iOS", "Web App", "Supply Chain"],
+    duration: "4 месяца",
+    team: "1 человек",
+    year: "2023",
+  },
+  {
     slug: "fintech-marketplace",
     title: "Card2Card — MVP мобильного приложения",
     client: "NDA",
@@ -92,128 +346,6 @@ export const casesData: CaseStudy[] = [
     year: "2021",
   },
   {
-    slug: "myunion-platform",
-    title: "MyUnion Pro — платформа управления профсоюзами",
-    client: "MyUnion",
-    category: "SaaS / AI",
-    description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ, автоматическим созданием документов и функциями вовлечения членов.",
-    fullDescription:
-      "MyUnion Pro — это полнофункциональное веб-приложение для управления профсоюзом с чат-ботами на базе искусственного интеллекта, автоматическим созданием документов, отслеживанием обращений и функциями вовлечения членов. Живое приложение: myunion.pro. Версия: 1.6.1.",
-    challenge:
-      "Профсоюзы использовали разрозненные системы для учёта членов, документооборота и коммуникаций. Обработка заявлений занимала дни, а вовлечённость членов была минимальной. Нужна была единая платформа с современными технологиями.",
-    solution:
-      "Разработал единую платформу с AI-ассистентом для автоматической обработки обращений, генерации документов и персонализированных рекомендаций. Внедрил систему скидок от партнёров, новостную ленту и чаты для повышения вовлечённости членов профсоюза.",
-    image: "/images/image.png",
-    videos: [
-      "/images/usmanoff-cases/1765719152722-MyUnion.mp4",
-      "/images/Презентация платформы MyUnion_ новые возможности для профсоюзов 🚀 (1).mp4",
-    ],
-    gallery: [
-      "/images/Screenshot 2026-01-08 at 19.12.21.png",
-      "/images/Screenshot 2026-01-08 at 19.12.35.png",
-      "/images/Screenshot 2026-01-08 at 19.12.59.png",
-    ],
-    results: [
-      { label: "Пользователей", value: "50K+" },
-      { label: "AI-автоматизация", value: "80%" },
-      { label: "Время обработки", value: "-90%" },
-      { label: "Вовлечённость", value: "+150%" },
-    ],
-    tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain", "Redis", "AWS"],
-    testimonial: {
-      text: "Платформа MyUnion Pro полностью трансформировала работу нашего профсоюза. AI-ассистент закрывает 80% обращений автоматически.",
-      author: "Виталий Николаевич",
-      role: "Председатель профсоюза",
-    },
-    duration: "3 месяца",
-    team: "1 человек",
-    year: "2025",
-  },
-  {
-    slug: "global-olive-corporation",
-    title: "Global Olive Corp. — Инвестиционная платформа",
-    client: "Global Olive Corporation",
-    category: "Marketing / eCommerce",
-    description: "Инвестиционная платформа для оливковых деревьев с прозрачной системой владения, персонализированными сертификатами и возможностью подарить дерево.",
-    fullDescription:
-      "Global Olive Corporation — инновационная инвестиционная платформа, позволяющая пользователям приобретать оливковые деревья как уникальные активы. Каждое дерево привязано к персональному сертификату владения с QR-кодом, фото и GPS-координатами. Платформа включает функции подарка дерева, личный кабинет с трекером урожая и интеграцию с платёжными системами. Полностью адаптивный дизайн для мобильных устройств.",
-    challenge:
-      "Клиенту требовалось создать цифровую платформу для продажи оливковых деревьев как инвестиционного актива. Необходимо было разработать систему прозрачного владения с сертификатами, возможность дарения и удобный личный кабинет для отслеживания активов и урожая.",
-    solution:
-      "Разработали полнофункциональную eCommerce платформу на React с интуитивным процессом покупки, генерацией персонализированных сертификатов владения (PDF с QR-кодом), функцией подарка с уникальным кодом активации и личным кабинетом с историей владения и статистикой урожая. Интегрировали Stripe для безопасных платежей и nodemailer для email-уведомлений.",
-    image: "/images/image copy.png",
-    videos: [
-      "/images/usmanoff-cases/1765726788099-Olive.mp4",
-    ],
-    gallery: [
-      "/images/Screenshot 2026-01-11 at 11.39.49.png",
-      "/images/Screenshot 2026-01-11 at 11.40.54.png",
-      "/images/Screenshot 2026-01-11 at 11.41.43.png",
-      "/images/Screenshot 2026-01-11 at 11.43.07.png",
-    ],
-    results: [
-      { label: "Конверсия", value: "+35%" },
-      { label: "Деревьев продано", value: "500+" },
-      { label: "Средний чек", value: "$180" },
-      { label: "Подарков", value: "120+" },
-    ],
-    tags: ["React", "Node.js", "Stripe", "PostgreSQL", "PDF Generation", "QR Codes"],
-    testimonial: {
-      text: "Платформа превзошла все наши ожидания. Процесс покупки интуитивен, а сертификаты выглядят премиально. Продажи выросли на 35% после запуска нового сайта.",
-      author: "Marco Ferretti",
-      role: "CEO Global Olive Corporation",
-    },
-    duration: "3 месяца",
-    team: "4 человека",
-    year: "2024",
-  },
-  {
-    slug: "priboy-hotels",
-    title: "Grand Hotels & SPA Priboy — сеть отелей",
-    client: "Группа отелей Прибой",
-    category: "Hospitality / Marketing",
-    description: "Комплексная разработка, техническая поддержка, SEO-продвижение и SMM для сети премиальных отелей на Черноморском побережье.",
-    fullDescription:
-      "Полный цикл digital-услуг для группы отелей Прибой: разработка и поддержка сайтов priboy-spa.ru (4*) и priboy1.ru (3*), SEO-оптимизация для высоких позиций в поисковой выдаче, ведение социальных сетей ВКонтакте с созданием контента и таргетированной рекламой. Отели расположены в Анапе и предлагают премиальный отдых с SPA-комплексами, бассейнами и ресторанами.",
-    challenge:
-      "Сеть отелей нуждалась в современном digital-присутствии: устаревшие сайты не конвертировали посетителей в бронирования, позиции в поиске были низкими, а социальные сети практически не велись. Требовалось комплексное решение для увеличения прямых бронирований и узнаваемости бренда.",
-    solution:
-      "Разработали современные адаптивные сайты с интеграцией систем бронирования, оптимизировали под SEO с фокусом на геозапросы «отель Анапа», «SPA отель Черное море». Запустили SMM-стратегию с регулярным контентом, сторис, reels и таргетированной рекламой во ВКонтакте. Настроили аналитику и сквозную отчётность.",
-    image: "/images/priboy.avif",
-    videos: [
-      "/images/priboy_overview.mp4",
-      "/images/usmanoff-cases/1765792488847-pr1.mp4",
-    ],
-    gallery: [
-      "/images/priboy001.mp4",
-      "/images/priboy_gal1.avif",
-      "/images/Screenshot 2026-01-11 at 11.57.15.png",
-      "/images/usmanoff-cases/1765792395288-bFI2IWilY7g4ukF9T80MrOrRVj8_width_600_height_1167.png",
-      "/images/usmanoff-cases/1765792429857-q8eUGGIY1BiO1oe8GScSU3ZJ3k_scale-down-to_1024_width_1920_height_1200.png",
-      "/images/usmanoff-cases/1765792638637-FoLlT7LSXYy6s5h8tjhFS1pN0U_scale-down-to_1024_width_1600_height_1200.png",
-      "/images/usmanoff-cases/1765792697728-UuUYkwEq1gwSBee31fsugTkw.png",
-      "/images/usmanoff-cases/1765792750119-77Q7f2uc7GRvOS3tyA3U6s7U_width_600_height_1298.png",
-      "/images/usmanoff-cases/1765792826028-Fp173n5obWlyvfQxnUzhJ1ymYk_scale-down-to_1024_width_600_height_1298.png",
-      "/images/usmanoff-cases/1765792906373-U43ZiD4bZrIOBvHCf2f54kMo_width_600_height_1298.png",
-      "/images/usmanoff-cases/1765792938372-mxGxicx7rf9opdoGjiSRrbYBo_width_600_height_1298.png",
-    ],
-    results: [
-      { label: "Рост трафика", value: "+180%" },
-      { label: "Прямые брони", value: "+65%" },
-      { label: "Подписчики VK", value: "12K+" },
-      { label: "ТОП-3 Яндекс", value: "85%" },
-    ],
-    tags: ["Next.js", "SEO", "SMM", "VK Ads", "Яндекс.Метрика", "TildaCMS"],
-    testimonial: {
-      text: "После редизайна сайтов и запуска SEO-продвижения количество прямых бронирований выросло на 65%. Наконец-то мы не зависим только от агрегаторов.",
-      author: "Администрация отеля",
-      role: "Grand Hotel & SPA Priboy",
-    },
-    duration: "Постоянная поддержка",
-    team: "3 человека",
-    year: "2023–2025",
-  },
-  {
     slug: "yappix-cms",
     title: "YappiX CMS — конструктор мобильных приложений",
     client: "YappiX (собственный продукт)",
@@ -227,9 +359,6 @@ export const casesData: CaseStudy[] = [
       "Разработали уникальную систему компиляции, которая генерирует настоящий нативный код из визуального конструктора. Магическая система компиляции стала технологическим прорывом того времени, за что проект получил гранты на R&D. Отчёт доступен на сайте GISNAUKA.",
     image: "/images/yappix.png",
     gallery: [
-      "/images/yappix_content.png",
-      "/images/1 phase YappiX CMS v1.0 .avif",
-      "/images/2 phase YappiX CMS v1.5 .avif",
       "/images/portal.startups.microsoft.png",
       "/images/1765791581257-yJhYOoAv5rNuaqBK66Kdsw73Xg.avif",
       "/images/1765791666409-Qwl2eN6NaWQvwvcVj32lG6Vw_width_2880_height_1800.avif",
@@ -267,150 +396,6 @@ export const casesData: CaseStudy[] = [
     year: "2015–2022",
   },
   {
-    slug: "reallaw-ai",
-    title: "realLaw AI — Legal Tech SaaS для ОАЭ",
-    client: "realLaw",
-    category: "SaaS / Legal Tech",
-    description: "Legal-tech SaaS для бизнеса и юристов ОАЭ. Полный цикл: исследование, бренд, дизайн-система, фронтенд на Next.js/Framer.",
-    fullDescription:
-      "realLaw AI — это legal-tech SaaS для бизнеса ОАЭ и юристов. Платформа объединяет базу знаний по законодательству ОАЭ, AI-ассистента для правовых консультаций и систему генерации документов. Я отвечал за полный цикл продукта: UX-исследования, бренд, дизайн-систему и фронтенд на Next.js/Framer.",
-    challenge:
-      "Юридические услуги в ОАЭ дороги и недоступны для малого бизнеса. Законодательство сложное, а поиск нужной информации занимает часы. Требовалась платформа, которая сделает юридические знания доступными и понятными для широкой аудитории.",
-    solution:
-      "Разработали AI-платформу с базой знаний по законодательству ОАЭ, интеллектуальным поиском и генератором документов. Создали интуитивную дизайн-систему и реализовали фронтенд на Next.js с интеграцией Framer для анимаций.",
-    image: "/images/usmanoff-cases/1765729149320-1D4c6ILkjRy9czuGXT6J1whhgSw.png",
-    videos: [
-      "/images/usmanoff-cases/1765730240971-rl01.mp4",
-      "/images/usmanoff-cases/1765730303289-rl02.mp4",
-      "/images/usmanoff-cases/1765730312497-rl03.mp4",
-    ],
-    gallery: [
-      "/images/usmanoff-cases/1765729149320-1D4c6ILkjRy9czuGXT6J1whhgSw.png",
-      "/images/usmanoff-cases/1765729356037-WZ36X6mtS9bdRftIcKUWTFNKxSQ.png",
-      "/images/usmanoff-cases/1765729470673-6SHicG4UHw4WNuyWltFxJhCSc_width_3840_height_1870.png",
-      "/images/usmanoff-cases/1765729581244-00001.avif",
-      "/images/usmanoff-cases/1765729597092-0002.avif",
-      "/images/usmanoff-cases/1765729610108-0003.avif",
-    ],
-    results: [
-      { label: "Год", value: "2025" },
-      { label: "Платформа", value: "Web" },
-      { label: "AI", value: "GPT-4" },
-      { label: "Регион", value: "UAE" },
-    ],
-    tags: ["Legal Tech", "SaaS", "Next.js", "Framer", "UAE", "AI"],
-    duration: "4 месяца",
-    team: "1 человек",
-    year: "2025",
-  },
-  {
-    slug: "jupid-platform",
-    title: "Jupid — AI бухгалтер для запуска LLC",
-    client: "Jupid",
-    category: "FinTech / AI",
-    description: "AI-бухгалтер для основателей из США. Создание и ведение LLC через чат. Продуктовые флоу, интерфейс, дизайн-система.",
-    fullDescription:
-      "Jupid — это AI-бухгалтер, который помогает основателям из США создавать и вести LLC через чат. Платформа автоматизирует регистрацию компании, налоговую отчётность, бухгалтерию и комплаенс. Я разработал продуктовые флоу, интерфейс и дизайн-систему, а также реализовал маркетинговый сайт в Framer.",
-    challenge:
-      "Открытие LLC в США — сложный процесс с десятками форм, налоговых деклараций и требований к комплаенсу. Услуги бухгалтеров дороги ($2000+/год), а основатели тратят время на рутину вместо развития бизнеса.",
-    solution:
-      "Создали AI-ассистента, который проводит через весь процесс регистрации LLC в чате, автоматически заполняет формы, подает документы и ведёт бухгалтерию. Разработал интуитивный интерфейс и дизайн-систему в Figma, реализовал маркетинговый сайт в Framer.",
-    image: "/images/usmanoff-cases/1765730706302-j1.png",
-    gallery: [
-      "/images/usmanoff-cases/1765730706302-j1.png",
-      "/images/usmanoff-cases/1765731172484-j2.png",
-      "/images/usmanoff-cases/1765731270134-j3.png",
-    ],
-    results: [
-      { label: "Год", value: "2025" },
-      { label: "Регион", value: "USA" },
-      { label: "AI", value: "GPT-4" },
-      { label: "Экономия", value: "$2K+/год" },
-    ],
-    tags: ["AI", "FinTech", "SaaS", "Accounting", "Framer", "USA"],
-    duration: "3 месяца",
-    team: "1 человек",
-    year: "2025",
-  },
-  {
-    slug: "bridgeinto-platform",
-    title: "BridgeInto — Приватная бизнес-платформа",
-    client: "BridgeInto",
-    category: "Enterprise / Blockchain",
-    description: "Безопасная бизнес-платформа для приватности и контроля данных. Бренд, UX/UI, дизайн-система, продуктовый сайт.",
-    fullDescription:
-      "BridgeInto — это безопасная бизнес-платформа для людей, которые ценят приватность и контроль над своими данными. Включает файловый менеджер на блокчейне, бухгалтерию, систему управления налогами и защищённые коммуникации. Я создал бренд, UX, UI, дизайн-систему и продуктовый сайт.",
-    challenge:
-      "Современные бизнес-платформы хранят данные на своих серверах, не давая полного контроля. Компании опасаются утечек конфиденциальной информации и зависимости от внешних сервисов.",
-    solution:
-      "Разработали платформу с хранением данных на блокчейне, где пользователи контролируют свои ключи шифрования. Создал самодостаточную систему с файловым менеджером, бухгалтерией и защищёнными коммуникациями. Разработал бренд и дизайн-систему, подчёркивающие безопасность и приватность.",
-    image: "/images/usmanoff-cases/1765731821927-b1.mp4",
-    videos: [
-      "/images/usmanoff-cases/1765731821927-b1.mp4",
-      "/images/usmanoff-cases/1765731899405-b2.mp4",
-      "/images/usmanoff-cases/1765733491723-b3.mp4",
-      "/images/usmanoff-cases/1765733531788-b4.mp4",
-    ],
-    gallery: [
-      "/images/usmanoff-cases/1765732982675-222333444.png",
-      "/images/usmanoff-cases/1765733275832-b2.png",
-      "/images/usmanoff-cases/1765733470185-b3.png",
-      "/images/usmanoff-cases/1765733642777-123Desktop.png",
-      "/images/usmanoff-cases/1765733704154-Desktop_1.png",
-      "/images/usmanoff-cases/1765733749734-Desktopqqwwee.png",
-      "/images/usmanoff-cases/1765733782837-Desktop_______.png",
-      "/images/usmanoff-cases/1765733815536-File_manager.png",
-      "/images/usmanoff-cases/1765733847173-Message-1.png",
-      "/images/usmanoff-cases/1765734002829-bb2.png",
-      "/images/usmanoff-cases/1765734179734-MS_Startups_FoundersHub_Celebration_Template_V1_1200x628.png",
-    ],
-    results: [
-      { label: "Год", value: "2024" },
-      { label: "Блокчейн", value: "Да" },
-      { label: "Шифрование", value: "E2E" },
-      { label: "Статус", value: "Продакшн" },
-    ],
-    tags: ["SaaS", "Blockchain", "Security", "File Manager", "E2E Encryption"],
-    duration: "5 месяцев",
-    team: "1 человек",
-    year: "2024",
-  },
-  {
-    slug: "my-buyer-crm",
-    title: "MY BUYER — CRM для маркетплейсов",
-    client: "MY BUYER",
-    category: "E-commerce / CRM",
-    description: "CRM для работы с товарами с китайских и СНГ маркетплейсов. UX/UI для веб и мобильных приложений.",
-    fullDescription:
-      "MY BUYER — это CRM для покупателей, логистов и продавцов, работающих с товарами с китайских и СНГ маркетплейсов. Система управляет заказами, отслеживает поставки, автоматизирует взаиморасчёты и заменяет электронные таблицы на удобный интерфейс. Я руководил UX и UI дизайном для веб и мобильных приложений.",
-    challenge:
-      "Покупатели и логисты использовали десятки Excel-таблиц для учёта заказов, товаров, поставщиков и платежей. Это приводило к ошибкам, потере данных и невозможности масштабирования бизнеса.",
-    solution:
-      "Спроектировал CRM-систему с интуитивным интерфейсом, заменившую электронные таблицы на структурированную базу данных. Разработал UX/UI для веб и iOS приложений с фокусом на скорость работы и минимальное количество кликов.",
-    image: "/images/usmanoff-cases/1765752539773-m1.png",
-    gallery: [
-      "/images/usmanoff-cases/1765752539773-m1.png",
-      "/images/usmanoff-cases/1765753315614-K879X1qy8ZtNGO616VEwaHHI8t8.png",
-      "/images/usmanoff-cases/1765754355165-xFowg0HApsqIfnuwQr3vHGhNc.png",
-      "/images/usmanoff-cases/1765754612428-wWj0FiwYoA1e6yOrIDLQZ2Ym6k.png",
-      "/images/usmanoff-cases/1765754695893-m1.avif",
-      "/images/usmanoff-cases/1765754703662-m2.avif",
-      "/images/usmanoff-cases/1765754710650-m3.avif",
-      "/images/usmanoff-cases/1765754775451-e7yq4jvuHht7f44cakdX02GTc_width_1440_height_5525.png",
-      "/images/usmanoff-cases/1765754807044-2RojtmMnT2UiT2gBgzGdDHBOKTs.webp",
-    ],
-    results: [
-      { label: "Год", value: "2023" },
-      { label: "Платформы", value: "Web + iOS" },
-      { label: "Пользователей", value: "5K+" },
-      { label: "Экономия времени", value: "70%" },
-    ],
-    tags: ["CRM", "E-commerce", "iOS", "Web App", "Supply Chain"],
-    duration: "4 месяца",
-    team: "1 человек",
-    year: "2023",
-  },
-  {
     slug: "projectorium-cicd",
     title: "Projectorium — CI/CD SaaS",
     client: "Projectorium",
@@ -422,12 +407,11 @@ export const casesData: CaseStudy[] = [
       "Деплой приложений требует знаний DevOps: настройка серверов, CI/CD, мониторинг. Существующие решения либо слишком сложные (AWS), либо ограниченные (Heroku). Разработчикам нужна простая платформа для быстрого деплоя.",
     solution:
       "Создал концепцию платформы с упрощённым интерфейсом для деплоя за 3 клика. Разработал дизайн-систему, лендинг с 3D визуализацией в Spline для демонстрации процесса деплоя и реализовал в Framer.",
-    image: "/images/usmanoff-cases/1765783687413-63iYpNljILixlnoDOQdmslCybkE_width_1200_height_7306.png",
+    image: "/images/usmanoff-cases/1765783956944-p1.png",
     gallery: [
       "/images/usmanoff-cases/1765783956944-p1.png",
       "/images/usmanoff-cases/1765784900404-p2.png",
       "/images/usmanoff-cases/1765785752006-p3.png",
-      "/images/usmanoff-cases/1765783687413-63iYpNljILixlnoDOQdmslCybkE_width_1200_height_7306.png",
     ],
     results: [
       { label: "Год", value: "2024" },

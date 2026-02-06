@@ -47,7 +47,7 @@ function LazyGifItem({ src, alt, index }: { src: string; alt: string; index: num
           <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted-foreground/10 to-muted animate-pulse" />
         )}
         
-        {/* Загружаем GIF только когда элемент виден */}
+        {/* Загружаем изображение только когда элемент виден */}
         {isVisible && (
           <Image
             src={src}
@@ -56,7 +56,7 @@ function LazyGifItem({ src, alt, index }: { src: string; alt: string; index: num
             className={`object-cover group-hover:scale-105 transition-all duration-500 ${
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
-            unoptimized
+            unoptimized={src.endsWith('.gif')}
             loading="lazy"
             onLoad={() => setIsLoaded(true)}
           />
@@ -102,14 +102,7 @@ export function ShowcaseGallery() {
         </div>
       </div>
       
-      <div
-        className="flex gap-4 overflow-x-auto scrollbar-hide px-4"
-        style={{
-          scrollBehavior: "smooth",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
+      <div className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth px-4">
         {isInView ? (
           showcaseItems.map((item, index) => (
             <LazyGifItem

@@ -1,110 +1,95 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { HeaderEn } from "@/components/header-en"
+import { FooterEn } from "@/components/footer-en"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, TrendingUp, Clock, Users } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Кейсы и портфолио — проекты YappiX",
+  title: "Case Studies & Portfolio — YappiX Projects",
   description:
-    "Портфолио IT-студии YappiX: веб-сайты, мобильные приложения, AI-решения, SaaS-платформы. Реальные результаты и метрики.",
-  keywords: ["портфолио разработки", "кейсы веб-студии", "примеры сайтов", "IT проекты"],
+    "YappiX IT studio portfolio: websites, mobile apps, AI solutions, SaaS platforms. Real results and metrics.",
   alternates: {
-    canonical: "https://yappix.ru/kejsy",
+    canonical: "https://yappix.ru/en/cases",
   },
   openGraph: {
-    title: "Кейсы и портфолио — YappiX",
-    description: "Портфолио IT-студии: веб-сайты, мобильные приложения, AI-решения. Реальные результаты.",
+    title: "Case Studies & Portfolio — YappiX",
+    description: "IT studio portfolio: websites, mobile apps, AI solutions. Real results.",
     type: "website",
-    url: "https://yappix.ru/kejsy",
-    siteName: "YappiX",
-    images: [
-      {
-        url: "/icon-512x512.png",
-        width: 512,
-        height: 512,
-        alt: "YappiX — Портфолио",
-      },
-    ],
-    locale: "ru_RU",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Кейсы и портфолио — YappiX",
-    description: "Портфолио IT-студии YappiX. Реальные результаты и метрики проектов.",
+    url: "https://yappix.ru/en/cases",
+    locale: "en_US",
   },
 }
 
 const cases = [
   {
     slug: "myunion-platform",
-    title: "MyUnion Pro — платформа управления профсоюзами",
+    title: "MyUnion Pro — Trade Union Management Platform",
     client: "MyUnion",
     category: "SaaS",
-    description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ.",
+    description: "Full-featured web application for trade union management with AI-powered chatbots and automated document generation.",
     image: "/images/image.png",
     results: [
-      { label: "Команда", value: "1 чел" },
-      { label: "Срок", value: "3 мес" },
-      { label: "Пользователей", value: "50K+" },
+      { label: "Team", value: "1 person" },
+      { label: "Timeline", value: "3 months" },
+      { label: "Users", value: "50K+" },
     ],
     tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain"],
   },
   {
     slug: "reallaw-ai",
-    title: "realLaw AI — Legal Tech SaaS для ОАЭ",
+    title: "realLaw AI — Legal Tech SaaS for UAE",
     client: "realLaw",
     category: "SaaS",
-    description: "Legal-tech SaaS для бизнеса и юристов ОАЭ. Полный цикл: исследование, бренд, дизайн-система, фронтенд на Next.js/Framer.",
+    description: "Legal-tech SaaS for UAE businesses and lawyers. Full cycle: research, brand, design system, frontend on Next.js/Framer.",
     image: "/images/usmanoff-cases/1765729581244-00001.avif",
     results: [
-      { label: "Год", value: "2025" },
-      { label: "Платформа", value: "Web" },
-      { label: "Стек", value: "Next.js + Framer" },
+      { label: "Year", value: "2025" },
+      { label: "Platform", value: "Web" },
+      { label: "Stack", value: "Next.js + Framer" },
     ],
     tags: ["Legal Tech", "SaaS", "Next.js", "Framer", "UAE"],
   },
   {
     slug: "jupid-platform",
-    title: "Jupid — AI бухгалтер для запуска LLC",
+    title: "Jupid — AI Accountant for LLC Setup",
     client: "Jupid",
     category: "FinTech",
-    description: "AI-бухгалтер для основателей из США. Создание и ведение LLC через чат. Продуктовые флоу, интерфейс, дизайн-система.",
+    description: "AI accountant for US founders. Create and manage LLC via chat. Product flows, interface, design system.",
     image: "/images/usmanoff-cases/1765730706302-j1.png",
     results: [
-      { label: "Год", value: "2025" },
-      { label: "Регион", value: "USA" },
+      { label: "Year", value: "2025" },
+      { label: "Region", value: "USA" },
       { label: "AI", value: "GPT-4" },
     ],
     tags: ["AI", "FinTech", "SaaS", "Accounting", "Framer"],
   },
   {
     slug: "priboy-hotels",
-    title: "Grand Hotels & SPA Priboy — сеть отелей",
-    client: "Группа отелей Прибой",
+    title: "Grand Hotels & SPA Priboy — Hotel Chain",
+    client: "Priboy Hotel Group",
     category: "Marketing",
-    description: "Комплексная разработка, техническая поддержка, SEO-продвижение и SMM для сети премиальных отелей.",
+    description: "Full-cycle digital services for a premium hotel chain: development, SEO, SMM on the Black Sea coast.",
     image: "/images/priboy.avif",
     results: [
-      { label: "Рост трафика", value: "+180%" },
-      { label: "Прямые брони", value: "+65%" },
-      { label: "ТОП-3 Яндекс", value: "85%" },
+      { label: "Traffic Growth", value: "+180%" },
+      { label: "Direct Bookings", value: "+65%" },
+      { label: "TOP-3 Yandex", value: "85%" },
     ],
     tags: ["Next.js", "SEO", "SMM", "VK Ads"],
   },
   {
     slug: "bridgeinto-platform",
-    title: "BridgeInto — Приватная бизнес-платформа",
+    title: "BridgeInto — Private Business Platform",
     client: "BridgeInto",
     category: "Enterprise",
-    description: "Безопасная бизнес-платформа для приватности и контроля данных. Бренд, UX/UI, дизайн-система, продуктовый сайт.",
+    description: "Secure business platform for privacy and data control. Brand, UX/UI, design system, product website.",
     image: "/images/usmanoff-cases/1765731821927-b1.mp4",
     results: [
-      { label: "Год", value: "2024" },
-      { label: "Блокчейн", value: "Да" },
-      { label: "Статус", value: "Продакшн" },
+      { label: "Year", value: "2024" },
+      { label: "Blockchain", value: "Yes" },
+      { label: "Status", value: "Production" },
     ],
     tags: ["SaaS", "Blockchain", "Security", "File Manager"],
   },
@@ -113,90 +98,89 @@ const cases = [
     title: "Global Olive Corporation",
     client: "Global Olive",
     category: "E-commerce",
-    description: "E-commerce платформа для инвестирования в оливковые деревья с сертификатами владения.",
+    description: "E-commerce platform for investing in olive trees with ownership certificates.",
     image: "/images/image copy.png",
     results: [
-      { label: "Конверсия", value: "+35%" },
-      { label: "Деревьев", value: "500+" },
-      { label: "Средний чек", value: "$180" },
+      { label: "Conversion", value: "+35%" },
+      { label: "Trees Sold", value: "500+" },
+      { label: "Avg. Order", value: "$180" },
     ],
     tags: ["React", "Node.js", "Stripe", "PostgreSQL"],
   },
   {
     slug: "my-buyer-crm",
-    title: "MY BUYER — CRM для маркетплейсов",
+    title: "MY BUYER — CRM for Marketplaces",
     client: "MY BUYER",
     category: "E-commerce",
-    description: "CRM для работы с товарами с китайских и СНГ маркетплейсов. UX/UI для веб и мобильных приложений.",
+    description: "CRM for managing products from Chinese and CIS marketplaces. UX/UI for web and mobile apps.",
     image: "/images/usmanoff-cases/1765752539773-m1.png",
     results: [
-      { label: "Год", value: "2023" },
-      { label: "Платформы", value: "Web + iOS" },
-      { label: "Пользователей", value: "5K+" },
+      { label: "Year", value: "2023" },
+      { label: "Platforms", value: "Web + iOS" },
+      { label: "Users", value: "5K+" },
     ],
     tags: ["CRM", "E-commerce", "iOS", "Web App"],
   },
   {
     slug: "fintech-marketplace",
-    title: "Card2Card — MVP мобильного приложения",
+    title: "Card2Card — Mobile Payment App MVP",
     client: "NDA",
     category: "FinTech",
-    description: "Мобильное приложение для переводов с карты на карту по всему миру. Автоматическая комиссия, простой перевод.",
+    description: "Mobile app for card-to-card transfers worldwide. Automatic fees, simple transfers, nothing extra.",
     image: "/images/05f1e332931093.589da5ec81ead.gif",
     results: [
-      { label: "Разработчиков", value: "14" },
-      { label: "Шлюзы", value: "VISA, MC, USDT" },
-      { label: "Регионы", value: "4" },
+      { label: "Developers", value: "14" },
+      { label: "Gateways", value: "VISA, MC, USDT" },
+      { label: "Regions", value: "4" },
     ],
     tags: ["React Native", "Node.js", "VISA API", "Mastercard"],
   },
   {
     slug: "ai-food-assistant",
-    title: "Ассистент заявок — голосовой заказ еды",
+    title: "Order Assistant — Voice Food Ordering",
     client: "Food Delivery",
     category: "AI",
-    description: "Голосовой AI-ассистент для заказа еды без касания экрана. Идеально для водителей за рулём.",
+    description: "Voice AI assistant for hands-free food ordering. Perfect for drivers on the road.",
     image: "/images/checkout_ai_2.mp4",
     results: [
-      { label: "Конверсия", value: "+40%" },
+      { label: "Conversion", value: "+40%" },
       { label: "Hands-free", value: "100%" },
-      { label: "Время заказа", value: "30 сек" },
+      { label: "Order Time", value: "30 sec" },
     ],
     tags: ["GPT-4", "Voice AI", "Speech Recognition", "Stripe"],
   },
   {
     slug: "yappix-cms",
-    title: "YappiX CMS — конструктор мобильных приложений",
-    client: "YappiX (собственный продукт)",
+    title: "YappiX CMS — Mobile App Builder",
+    client: "YappiX (own product)",
     category: "SaaS",
-    description: "No-code конструктор нативных мобильных приложений с CMS. Поддержан Microsoft for Startups.",
+    description: "No-code builder for native mobile apps with CMS. Supported by Microsoft for Startups.",
     image: "/images/yappix.png",
     results: [
-      { label: "Гранты", value: "ФСИ + MS" },
-      { label: "Инвестиции", value: "2 раунда" },
-      { label: "Резидент", value: "Сколково" },
+      { label: "Grants", value: "FSI + MS" },
+      { label: "Investments", value: "2 rounds" },
+      { label: "Resident", value: "Skolkovo" },
     ],
     tags: ["React", "Node.js", "Swift", "Kotlin", "No-code"],
   },
 ]
 
-const categories = ["Все", "FinTech", "AI", "E-commerce", "SaaS", "Marketing", "Enterprise"]
+const categories = ["All", "FinTech", "AI", "E-commerce", "SaaS", "Marketing", "Enterprise"]
 
-export default function CasesPage() {
+export default function CasesEnPage() {
   return (
     <>
-      <Header />
+      <HeaderEn />
       <main className="pt-20">
         {/* Hero */}
         <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
-                Наши кейсы
+                Our Case Studies
               </h1>
               <p className="text-xl text-muted-foreground text-pretty">
-                250+ проектов в разных отраслях: от стартапов до корпораций из топ-100. Показываем реальные результаты с
-                метриками.
+                250+ projects across industries: from startups to top-100 corporations. Real results with metrics.
               </p>
             </div>
           </div>
@@ -236,12 +220,12 @@ export default function CasesPage() {
                           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                      <Image
-                        src={caseItem.image || "/placeholder.svg"}
-                        alt={caseItem.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                        <Image
+                          src={caseItem.image || "/placeholder.svg"}
+                          alt={caseItem.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                       )}
                       <span className="absolute top-4 left-4 px-3 py-1 text-xs font-medium bg-primary text-primary-foreground rounded-full">
                         {caseItem.category}
@@ -285,22 +269,22 @@ export default function CasesPage() {
               <div>
                 <TrendingUp className="w-8 h-8 text-primary mx-auto mb-4" />
                 <p className="text-4xl font-bold text-foreground mb-2">+250%</p>
-                <p className="text-muted-foreground">Средний рост метрик</p>
+                <p className="text-muted-foreground">Average Metric Growth</p>
               </div>
               <div>
                 <Clock className="w-8 h-8 text-primary mx-auto mb-4" />
                 <p className="text-4xl font-bold text-foreground mb-2">7x-12x</p>
-                <p className="text-muted-foreground">Быстрее с AI</p>
+                <p className="text-muted-foreground">Faster with AI</p>
               </div>
               <div>
                 <Users className="w-8 h-8 text-primary mx-auto mb-4" />
                 <p className="text-4xl font-bold text-foreground mb-2">50M+</p>
-                <p className="text-muted-foreground">Пользователей продуктов</p>
+                <p className="text-muted-foreground">Product Users</p>
               </div>
               <div>
                 <ArrowRight className="w-8 h-8 text-primary mx-auto mb-4" />
                 <p className="text-4xl font-bold text-foreground mb-2">98%</p>
-                <p className="text-muted-foreground">Клиентов рекомендуют</p>
+                <p className="text-muted-foreground">Client Recommendation Rate</p>
               </div>
             </div>
           </div>
@@ -309,17 +293,17 @@ export default function CasesPage() {
         {/* CTA */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Хотите такой же результат?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Want Similar Results?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Обсудим ваш проект и покажем релевантные кейсы из вашей отрасли.
+              Let{"'"}s discuss your project and we{"'"}ll show relevant case studies from your industry.
             </p>
             <Button size="lg" asChild>
-              <Link href="/kontakty">Обсудить проект</Link>
+              <Link href="/en/contact">Start a Project</Link>
             </Button>
           </div>
         </section>
       </main>
-      <Footer />
+      <FooterEn />
     </>
   )
 }

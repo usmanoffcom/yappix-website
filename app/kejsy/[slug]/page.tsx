@@ -125,19 +125,19 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="container mx-auto space-y-6">
             {caseStudy.videos && caseStudy.videos.length > 0 ? (
               caseStudy.videos.map((video, index) => (
-                <div key={index} className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
+                <div key={index} className="relative w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
                   <video
                     src={video}
                     autoPlay={index === 0}
                     loop
                     playsInline
                     controls
-                    className="object-cover w-full h-full"
+                    className="object-contain w-full h-full"
                   />
                 </div>
               ))
             ) : (
-              <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
+              <div className="w-full rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
                 {caseStudy.image?.endsWith('.mp4') ? (
                   <video
                     src={caseStudy.image}
@@ -145,14 +145,16 @@ export default async function CaseStudyPage({ params }: Props) {
                     loop
                     playsInline
                     controls
-                    className="object-cover w-full h-full"
+                    className="w-full h-auto"
                   />
                 ) : (
                   <Image
                     src={caseStudy.image || "/placeholder.svg"}
                     alt={caseStudy.title}
-                    fill
-                    className="object-cover"
+                    width={1920}
+                    height={1080}
+                    className="w-full h-auto"
+                    sizes="(max-width: 1280px) 100vw, 1280px"
                     priority
                   />
                 )}

@@ -70,15 +70,15 @@ const services = [
 const navItems = [
   { href: "/kejsy", label: "Кейсы" },
   { href: "/blog", label: "Блог" },
-  { href: "/o-kompanii", label: "О компании" },
+  { href: "/o-kompanii", label: "О нас" },
   { href: "/karera", label: "Карьера" },
   { href: "/kontakty", label: "Контакты" },
 ]
 
 const templatesLink = {
-  href: "https://yappix.lemonsqueezy.com/",
+  href: "/shablony",
   label: "Шаблоны",
-  external: true,
+  external: false,
 }
 
 export function Header() {
@@ -144,7 +144,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-muted/50"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-muted/50 whitespace-nowrap"
               >
                 {item.label}
               </Link>
@@ -152,18 +152,22 @@ export function Header() {
             
             <Link
               href={templatesLink.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-muted/50 flex items-center gap-1.5"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-muted/50 flex items-center gap-1.5 whitespace-nowrap"
             >
               <Store className="w-4 h-4" />
               {templatesLink.label}
-              <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
+            <Link
+              href="/en"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-1"
+              title="English version"
+            >
+              EN
+            </Link>
             <Link
               href="tel:+79950955593"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -238,8 +242,6 @@ export function Header() {
                     ))}
                     <Link
                       href={templatesLink.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       onClick={() => setIsOpen(false)}
                       className="flex items-center justify-between py-3 px-3 -mx-3 rounded-lg text-foreground hover:bg-muted/50 transition-colors group"
                     >
@@ -255,6 +257,13 @@ export function Header() {
 
               {/* Footer мобильного меню */}
               <div className="border-t border-border/50 px-6 py-5 space-y-4 bg-muted/30">
+                <Link
+                  href="/en"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  🇬🇧 English version
+                </Link>
                 <Link
                   href="tel:+79950955593"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
