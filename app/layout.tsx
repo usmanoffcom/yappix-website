@@ -54,10 +54,6 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
-  other: {
-    'apple-mobile-web-app-status-bar-style': 'black-translucent',
-    'apple-mobile-web-app-title': 'YappiX',
-  },
   robots: {
     index: true,
     follow: true,
@@ -121,6 +117,8 @@ export default function RootLayout({
     <html lang="ru">
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="YappiX" />
         {/* Yandex.Metrika counter */}
         <script
           dangerouslySetInnerHTML={{
