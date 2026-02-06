@@ -54,10 +54,9 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'black-translucent',
-    title: 'YappiX',
+  other: {
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'apple-mobile-web-app-title': 'YappiX',
   },
   robots: {
     index: true,
@@ -121,6 +120,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <head>
+        <meta name="mobile-web-app-capable" content="yes" />
         {/* Yandex.Metrika counter */}
         <script
           dangerouslySetInnerHTML={{
@@ -137,7 +137,7 @@ export default function RootLayout({
         />
         <noscript>
           <div>
-            <img src="https://mc.yandex.ru/watch/95481194" style={{ position: 'absolute', left: '-9999px' }} alt="" />
+            <img src="https://mc.yandex.ru/watch/95481194" width="1" height="1" style={{ position: 'absolute', left: '-9999px' }} alt="" loading="lazy" />
           </div>
         </noscript>
         {/* /Yandex.Metrika counter */}
