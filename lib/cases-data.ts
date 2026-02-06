@@ -254,7 +254,19 @@ export const casesData: CaseStudy[] = [
     solution:
       "Разработали AI-платформу с базой знаний по законодательству ОАЭ, интеллектуальным поиском и генератором документов. Создали интуитивную дизайн-систему и реализовали фронтенд на Next.js с интеграцией Framer для анимаций.",
     image: "/images/usmanoff-cases/1765729149320-1D4c6ILkjRy9czuGXT6J1whhgSw.png",
-    gallery: [],
+    videos: [
+      "/images/usmanoff-cases/1765730240971-rl01.mp4",
+      "/images/usmanoff-cases/1765730303289-rl02.mp4",
+      "/images/usmanoff-cases/1765730312497-rl03.mp4",
+    ],
+    gallery: [
+      "/images/usmanoff-cases/1765729149320-1D4c6ILkjRy9czuGXT6J1whhgSw.png",
+      "/images/usmanoff-cases/1765729356037-WZ36X6mtS9bdRftIcKUWTFNKxSQ.png",
+      "/images/usmanoff-cases/1765729470673-6SHicG4UHw4WNuyWltFxJhCSc_width_3840_height_1870.png",
+      "/images/usmanoff-cases/1765729581244-00001.avif",
+      "/images/usmanoff-cases/1765729597092-0002.avif",
+      "/images/usmanoff-cases/1765729610108-0003.avif",
+    ],
     results: [
       { label: "Год", value: "2025" },
       { label: "Платформа", value: "Web" },
@@ -279,7 +291,11 @@ export const casesData: CaseStudy[] = [
     solution:
       "Создали AI-ассистента, который проводит через весь процесс регистрации LLC в чате, автоматически заполняет формы, подает документы и ведёт бухгалтерию. Разработал интуитивный интерфейс и дизайн-систему в Figma, реализовал маркетинговый сайт в Framer.",
     image: "/images/usmanoff-cases/1765730706302-j1.png",
-    gallery: [],
+    gallery: [
+      "/images/usmanoff-cases/1765730706302-j1.png",
+      "/images/usmanoff-cases/1765731172484-j2.png",
+      "/images/usmanoff-cases/1765731270134-j3.png",
+    ],
     results: [
       { label: "Год", value: "2025" },
       { label: "Регион", value: "USA" },
@@ -304,7 +320,25 @@ export const casesData: CaseStudy[] = [
     solution:
       "Разработали платформу с хранением данных на блокчейне, где пользователи контролируют свои ключи шифрования. Создал самодостаточную систему с файловым менеджером, бухгалтерией и защищёнными коммуникациями. Разработал бренд и дизайн-систему, подчёркивающие безопасность и приватность.",
     image: "/images/usmanoff-cases/1765731821927-b1.mp4",
-    gallery: [],
+    videos: [
+      "/images/usmanoff-cases/1765731821927-b1.mp4",
+      "/images/usmanoff-cases/1765731899405-b2.mp4",
+      "/images/usmanoff-cases/1765733491723-b3.mp4",
+      "/images/usmanoff-cases/1765733531788-b4.mp4",
+    ],
+    gallery: [
+      "/images/usmanoff-cases/1765732982675-222333444.png",
+      "/images/usmanoff-cases/1765733275832-b2.png",
+      "/images/usmanoff-cases/1765733470185-b3.png",
+      "/images/usmanoff-cases/1765733642777-123Desktop.png",
+      "/images/usmanoff-cases/1765733704154-Desktop_1.png",
+      "/images/usmanoff-cases/1765733749734-Desktopqqwwee.png",
+      "/images/usmanoff-cases/1765733782837-Desktop_______.png",
+      "/images/usmanoff-cases/1765733815536-File_manager.png",
+      "/images/usmanoff-cases/1765733847173-Message-1.png",
+      "/images/usmanoff-cases/1765734002829-bb2.png",
+      "/images/usmanoff-cases/1765734179734-MS_Startups_FoundersHub_Celebration_Template_V1_1200x628.png",
+    ],
     results: [
       { label: "Год", value: "2024" },
       { label: "Блокчейн", value: "Да" },
@@ -329,7 +363,17 @@ export const casesData: CaseStudy[] = [
     solution:
       "Спроектировал CRM-систему с интуитивным интерфейсом, заменившую электронные таблицы на структурированную базу данных. Разработал UX/UI для веб и iOS приложений с фокусом на скорость работы и минимальное количество кликов.",
     image: "/images/usmanoff-cases/1765752539773-m1.png",
-    gallery: [],
+    gallery: [
+      "/images/usmanoff-cases/1765752539773-m1.png",
+      "/images/usmanoff-cases/1765753315614-K879X1qy8ZtNGO616VEwaHHI8t8.png",
+      "/images/usmanoff-cases/1765754355165-xFowg0HApsqIfnuwQr3vHGhNc.png",
+      "/images/usmanoff-cases/1765754612428-wWj0FiwYoA1e6yOrIDLQZ2Ym6k.png",
+      "/images/usmanoff-cases/1765754695893-m1.avif",
+      "/images/usmanoff-cases/1765754703662-m2.avif",
+      "/images/usmanoff-cases/1765754710650-m3.avif",
+      "/images/usmanoff-cases/1765754775451-e7yq4jvuHht7f44cakdX02GTc_width_1440_height_5525.png",
+      "/images/usmanoff-cases/1765754807044-2RojtmMnT2UiT2gBgzGdDHBOKTs.webp",
+    ],
     results: [
       { label: "Год", value: "2023" },
       { label: "Платформы", value: "Web + iOS" },
@@ -354,7 +398,12 @@ export const casesData: CaseStudy[] = [
     solution:
       "Создал концепцию платформы с упрощённым интерфейсом для деплоя за 3 клика. Разработал дизайн-систему, лендинг с 3D визуализацией в Spline для демонстрации процесса деплоя и реализовал в Framer.",
     image: "/images/usmanoff-cases/1765783687413-63iYpNljILixlnoDOQdmslCybkE_width_1200_height_7306.png",
-    gallery: [],
+    gallery: [
+      "/images/usmanoff-cases/1765783956944-p1.png",
+      "/images/usmanoff-cases/1765784900404-p2.png",
+      "/images/usmanoff-cases/1765785752006-p3.png",
+      "/images/usmanoff-cases/1765783687413-63iYpNljILixlnoDOQdmslCybkE_width_1200_height_7306.png",
+    ],
     results: [
       { label: "Год", value: "2024" },
       { label: "Технологии", value: "Node.js + Python" },
