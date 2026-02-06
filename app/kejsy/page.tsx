@@ -122,9 +122,121 @@ const cases = [
     ],
     tags: ["React", "Node.js", "Swift", "Kotlin", "No-code"],
   },
+  {
+    slug: "reallaw-ai",
+    title: "realLaw AI — Legal Tech SaaS для ОАЭ",
+    client: "realLaw",
+    category: "SaaS",
+    description: "Legal-tech SaaS для бизнеса и юристов ОАЭ. Полный цикл: исследование, бренд, дизайн-система, фронтенд на Next.js/Framer.",
+    image: "/images/usmanoff-cases/1765729149320-1D4c6ILkjRy9czuGXT6J1whhgSw.png",
+    results: [
+      { label: "Год", value: "2025" },
+      { label: "Платформа", value: "Web" },
+      { label: "Стек", value: "Next.js + Framer" },
+    ],
+    tags: ["Legal Tech", "SaaS", "Next.js", "Framer", "UAE"],
+  },
+  {
+    slug: "jupid-platform",
+    title: "Jupid — AI бухгалтер для запуска LLC",
+    client: "Jupid",
+    category: "FinTech",
+    description: "AI-бухгалтер для основателей из США. Создание и ведение LLC через чат. Продуктовые флоу, интерфейс, дизайн-система.",
+    image: "/images/usmanoff-cases/1765730706302-j1.png",
+    results: [
+      { label: "Год", value: "2025" },
+      { label: "Регион", value: "USA" },
+      { label: "AI", value: "GPT-4" },
+    ],
+    tags: ["AI", "FinTech", "SaaS", "Accounting", "Framer"],
+  },
+  {
+    slug: "bridgeinto-platform",
+    title: "BridgeInto — Приватная бизнес-платформа",
+    client: "BridgeInto",
+    category: "Enterprise",
+    description: "Безопасная бизнес-платформа для приватности и контроля данных. Бренд, UX/UI, дизайн-система, продуктовый сайт.",
+    image: "/images/usmanoff-cases/1765731821927-b1.mp4",
+    results: [
+      { label: "Год", value: "2024" },
+      { label: "Блокчейн", value: "Да" },
+      { label: "Статус", value: "Продакшн" },
+    ],
+    tags: ["SaaS", "Blockchain", "Security", "File Manager"],
+  },
+  {
+    slug: "my-buyer-crm",
+    title: "MY BUYER — CRM для маркетплейсов",
+    client: "MY BUYER",
+    category: "E-commerce",
+    description: "CRM для работы с товарами с китайских и СНГ маркетплейсов. UX/UI для веб и мобильных приложений. Замена таблиц на удобный интерфейс.",
+    image: "/images/usmanoff-cases/1765752539773-m1.png",
+    results: [
+      { label: "Год", value: "2023" },
+      { label: "Платформы", value: "Web + iOS" },
+      { label: "Пользователей", value: "5K+" },
+    ],
+    tags: ["CRM", "E-commerce", "iOS", "Web App"],
+  },
+  {
+    slug: "projectorium-cicd",
+    title: "Projectorium — CI/CD SaaS",
+    client: "Projectorium",
+    category: "DevOps",
+    description: "CI/CD SaaS для деплоя Node.js и Python приложений. Продуктовая история, лендинг, дизайн-система, 3D визуализация в Spline.",
+    image: "/images/usmanoff-cases/1765783687413-63iYpNljILixlnoDOQdmslCybkE_width_1200_height_7306.png",
+    results: [
+      { label: "Год", value: "2024" },
+      { label: "Технологии", value: "Node.js + Python" },
+      { label: "3D", value: "Spline" },
+    ],
+    tags: ["CI/CD", "SaaS", "DevOps", "VDS", "Framer"],
+  },
+  {
+    slug: "minimal-portfolio-template",
+    title: "Minimal Portfolio — Шаблон для разработчиков",
+    client: "Template",
+    category: "Design",
+    description: "Минималистичный шаблон портфолио для веб-разработчиков. Figma, Framer и Next.js версии с чистым, переиспользуемым кодом.",
+    image: "/images/usmanoff-cases/1765793571452-5LXgMXEyVXeZH3OcVnyj6ZWrGY.png",
+    results: [
+      { label: "Год", value: "2024" },
+      { label: "Форматы", value: "3 версии" },
+      { label: "Скачиваний", value: "1K+" },
+    ],
+    tags: ["Template", "Next.js", "Framer", "Figma"],
+  },
+  {
+    slug: "bankist-ui-kit",
+    title: "Bankist — UI Kit для банковских приложений",
+    client: "Community",
+    category: "Design",
+    description: "Бесплатный UI Kit для банковских мобильных приложений. Figma Community. Полный набор экранов и компонентов.",
+    image: "/images/usmanoff-cases/1765794633140-vviamyylrzvr3japyiye.mp4",
+    results: [
+      { label: "Год", value: "2021" },
+      { label: "Лайков", value: "2.5K+" },
+      { label: "Дубликаций", value: "8K+" },
+    ],
+    tags: ["UI Kit", "Figma", "Finance", "Mobile"],
+  },
+  {
+    slug: "yandex-go-scooters",
+    title: "Yandex Go — Дизайн для самокатов",
+    client: "Figma Community",
+    category: "Design",
+    description: "Бесплатный дизайн для Figma Community. Интерфейс приложения для аренды самокатов Yandex Go.",
+    image: "/images/usmanoff-cases/1765794832056-CEcpn8RuVyfTk0ujNHo9IeBgI6M.png",
+    results: [
+      { label: "Год", value: "2020" },
+      { label: "Просмотров", value: "15K+" },
+      { label: "Дубликаций", value: "3K+" },
+    ],
+    tags: ["Figma", "Mobile", "Transport"],
+  },
 ]
 
-const categories = ["Все", "FinTech", "AI", "E-commerce", "SaaS", "Marketing", "Enterprise"]
+const categories = ["Все", "FinTech", "AI", "E-commerce", "SaaS", "Marketing", "Enterprise", "DevOps", "Design"]
 
 export default function CasesPage() {
   return (

@@ -1,0 +1,370 @@
+[
+  {
+    "title": {
+      "en": "Build mobile apps with YappiX using AI and chat",
+      "ru": "Создание мобильных приложений с YappiX используя ИИ и чат"
+    },
+    "date": "2023-02-07",
+    "excerpt": {
+      "en": "YappiX is an AI-powered CMS for mobile apps. You describe what you want in chat, and the system scaffolds a real application, generates UI components, hooks them to data, and ships builds — without standing up your own servers.",
+      "ru": "YappiX — это CMS на базе ИИ для мобильных приложений. Вы описываете что хотите в чате, и система создает реальное приложение, генерирует UI компоненты, подключает их к данным и собирает билды — без необходимости настраивать собственные серверы."
+    },
+    "content": "",
+    "contentBlocks": {
+      "en": [
+        {
+          "type": "text",
+          "id": "text-1765796204924-2orvli57u",
+          "text": "Chat to build: Specify screens, flows, and behaviors in plain English. The assistant creates navigations, screens, and state, then explains what it did so you can edit confidently.\n\n\n\n- **AI component generation:**Buttons, lists, cards, product grids, forms — generated with sensible defaults and accessible patterns.\n- **Instant backend wiring:**Connect to your data with guided prompts. AI maps fields, validates types, and adds CRUD endpoints. Works with REST, GraphQL, webhooks, and services you already use.\n- **Zero servers to manage:**YappiX handles build pipelines, preview environments, file storage, authentication, push, and observability — so you don’t babysit infrastructure.\n- **Real native results:**Projects compile to iOS and Android source you can download, audit, or extend.",
+          "title": "What makes it different"
+        },
+        {
+          "type": "youtube",
+          "id": "youtube-1765796306290-21gg0ei89",
+          "videoId": "wOnHwwfKch8"
+        },
+        {
+          "type": "text",
+          "id": "text-1765796338117-4fa8fkp3a",
+          "text": "**1. Start a project in chat**\n\n\n\n- “Create a retail app with a home feed, product catalog, cart, and checkout.” YappiX spins up a blank app, sets routing, and proposes a clean visual theme.\n\n\n\n**2. Pick or import a design**\n\n\n\n- Choose Blank, Side Menu, or Tab Menu — or paste a Figma link. The assistant translates tokens (colors, typography, spacing) and component structure into a working theme.\n\n\n\n**3. Refine the look and feel**\n\n\n\n- Ask, “Increase base font to 16, switch to Inter, add large rounded corners, use a warm neutral background.” The preview updates live.\n\n\n\n**4. Attach data**\n\n\n\n- “Connect Products to my endpoint and show name, price, image, rating; enable search and sort.” AI builds queries, error states, and pagination; you get editable code.\n\n**5. Add modules on demand**\n\n\n\n- E-commerce: Catalog, cart, checkout, Apple/Google Pay, tax/shipping rules, order history.\n- Page Builder: Drag-and-drop sections (text, image, gallery, video, HTML) for landing pages and promos.\n- Social Wall: Feed with posts, likes, comments, moderation, and push.\n- Automations: Triggers via webhooks or Zapier-style connectors for emails, notifications, and syncs.\n\n**6. Publish**\n\n\n\n- Hit Publish to trigger cloud builds for iOS/Android. Download sources or distribute test builds. No custom servers required.",
+          "title": "How it works"
+        },
+        {
+          "type": "youtube",
+          "id": "youtube-1765796571647-i2qpx6zc6",
+          "videoId": "56QSEr3O8Bs"
+        },
+        {
+          "type": "text",
+          "id": "text-1765796583204-b5px62hwe",
+          "text": "- Generates UI with context: Chooses layout patterns (tab bar vs. drawer), empty states, and gestures that match your domain.\n- Writes glue code: Navigation, validators, form handlers, data mappers, and optimistic updates.\n- Creates tests and docs: Basic unit tests and a short “how it works” note for every generated screen.\n- Safeguards UX: Linting for accessibility, tap targets, contrast, and motion preferences.",
+          "title": "What AI actually does"
+        },
+        {
+          "type": "text",
+          "id": "text-1765796610405-588mc6re9",
+          "text": "- Retail MVP: “Two product categories, promo banner, guest checkout, Apple Pay, order tracking.” Get a shippable build in hours.\n- Content app: “News feed, detail screens, saved items, offline read, scheduled push at 9am.”\n- Community: “User profiles, posts with photos and video, comments, abuse reporting, admin tools.”",
+          "title": "Typical scenarios"
+        },
+        {
+          "type": "text",
+          "id": "text-1765796630382-8p0s0ra2k",
+          "text": "You keep the code. You can export sources for in-house review or extend with your own modules. Cloud services cover identity, storage, and notifications so you avoid DevOps overhead while staying portable.",
+          "title": "Pricing and control"
+        },
+        {
+          "type": "text",
+          "id": "text-1765796652158-oe0y6em4e",
+          "text": "Custom mobile projects still take months and demand scarce engineering time. An AI-first workflow shortens the loop from idea to release and keeps pace with fast-moving product requirements — all while delivering native quality and modern patterns.",
+          "title": "Why this matters now"
+        }
+      ],
+      "ru": [
+        {
+          "type": "text",
+          "id": "text-1765796204924-2orvli57u",
+          "text": {
+            "en": "Chat to build: Specify screens, flows, and behaviors in plain English. The assistant creates navigations, screens, and state, then explains what it did so you can edit confidently.\n\n\n\n- **AI component generation:**Buttons, lists, cards, product grids, forms — generated with sensible defaults and accessible patterns.\n- **Instant backend wiring:**Connect to your data with guided prompts. AI maps fields, validates types, and adds CRUD endpoints. Works with REST, GraphQL, webhooks, and services you already use.\n- **Zero servers to manage:**YappiX handles build pipelines, preview environments, file storage, authentication, push, and observability — so you don’t babysit infrastructure.\n- **Real native results:**Projects compile to iOS and Android source you can download, audit, or extend.",
+            "ru": "Создание чата: укажите экраны, потоки и поведение на простом английском языке. Помощник создает навигацию, экраны и состояние, а затем объясняет, что он сделал, чтобы вы могли уверенно редактировать. \n\n\n\n- **Создание компонентов искусственного интеллекта:**Кнопки, списки, карточки, сетки продуктов, формы — создаются с разумными настройками по умолчанию и доступными шаблонами. \n- **Мгновенное подключение к серверной части:**Подключайтесь к своим данным с помощью подсказок. ИИ сопоставляет поля, проверяет типы и добавляет конечные точки CRUD. Работает с REST, GraphQL, веб-перехватчиками и сервисами, которые вы уже используете. \n- **Ноль серверов для управления:**YappiX управляет конвейерами сборки, средами предварительного просмотра, хранилищем файлов, аутентификацией, отправкой данных и возможностью наблюдения — так что вам не придется присматривать за инфраструктурой. \n- **Реальные результаты:**Проекты компилируются в исходный код iOS и Android, который можно загрузить, проверить или расширить."
+          },
+          "title": {
+            "en": "What makes it different",
+            "ru": "Чем он отличается"
+          }
+        },
+        {
+          "type": "youtube",
+          "id": "youtube-1765796306290-21gg0ei89",
+          "videoId": "wOnHwwfKch8"
+        },
+        {
+          "type": "text",
+          "id": "text-1765796338117-4fa8fkp3a",
+          "text": {
+            "en": "**1. Start a project in chat**\n\n\n\n- “Create a retail app with a home feed, product catalog, cart, and checkout.” YappiX spins up a blank app, sets routing, and proposes a clean visual theme.\n\n\n\n**2. Pick or import a design**\n\n\n\n- Choose Blank, Side Menu, or Tab Menu — or paste a Figma link. The assistant translates tokens (colors, typography, spacing) and component structure into a working theme.\n\n\n\n**3. Refine the look and feel**\n\n\n\n- Ask, “Increase base font to 16, switch to Inter, add large rounded corners, use a warm neutral background.” The preview updates live.\n\n\n\n**4. Attach data**\n\n\n\n- “Connect Products to my endpoint and show name, price, image, rating; enable search and sort.” AI builds queries, error states, and pagination; you get editable code.\n\n**5. Add modules on demand**\n\n\n\n- E-commerce: Catalog, cart, checkout, Apple/Google Pay, tax/shipping rules, order history.\n- Page Builder: Drag-and-drop sections (text, image, gallery, video, HTML) for landing pages and promos.\n- Social Wall: Feed with posts, likes, comments, moderation, and push.\n- Automations: Triggers via webhooks or Zapier-style connectors for emails, notifications, and syncs.\n\n**6. Publish**\n\n\n\n- Hit Publish to trigger cloud builds for iOS/Android. Download sources or distribute test builds. No custom servers required.",
+            "ru": "**1. Начать проект в чате** \n\n\n\n- «Создайте приложение для розничной торговли с домашней лентой, каталогом товаров, корзиной и кассой». YappiX запускает пустое приложение, устанавливает маршрутизацию и предлагает чистую визуальную тему. \n\n\n\n**2. Выберите или импортируйте дизайн** \n\n\n\n- Выберите «Пустое», «Боковое меню» или «Меню вкладок» — или вставьте ссылку Figma. Помощник переводит токены (цвета, типографику, интервалы) и структуру компонентов в рабочую тему. \n\n\n\n**3. Улучшите внешний вид** \n\n\n\n- Спросите: «Увеличьте базовый шрифт до 16, переключитесь на Inter, добавьте большие закругленные углы, используйте теплый нейтральный фон». Предварительный просмотр обновляется в реальном времени. \n\n\n\n**4. Прикрепить данные** \n\n\n\n- «Подключите продукты к моей конечной точке и покажите имя, цену, изображение, рейтинг; включите поиск и сортировку». ИИ строит запросы, состояния ошибок и нумерацию страниц; вы получаете редактируемый код. \n\n**5. Добавляйте модули по требованию** \n\n\n\n- Электронная коммерция: каталог, корзина, оформление заказа, Apple/Google Pay, правила налогообложения/доставки, история заказов. \n- Конструктор страниц: разделы перетаскивания (текст, изображение, галерея, видео, HTML) для целевых страниц и рекламных материалов. \n- Социальная стена: лента с публикациями, лайками, комментариями, модерацией и push-уведомлениями. \n- Автоматизация: запуск через веб-перехватчики или соединители в стиле Zapier для электронной почты, уведомлений и синхронизации. \n\n**6. Опубликовать** \n\n\n\n- Нажмите «Опубликовать», чтобы запустить облачную сборку для iOS/Android. Скачивайте исходники или распространяйте тестовые сборки. Никакие пользовательские серверы не требуются."
+          },
+          "title": {
+            "en": "How it works",
+            "ru": "Как это работает"
+          }
+        },
+        {
+          "type": "youtube",
+          "id": "youtube-1765796571647-i2qpx6zc6",
+          "videoId": "56QSEr3O8Bs"
+        },
+        {
+          "type": "text",
+          "id": "text-1765796583204-b5px62hwe",
+          "text": {
+            "en": "- Generates UI with context: Chooses layout patterns (tab bar vs. drawer), empty states, and gestures that match your domain.\n- Writes glue code: Navigation, validators, form handlers, data mappers, and optimistic updates.\n- Creates tests and docs: Basic unit tests and a short “how it works” note for every generated screen.\n- Safeguards UX: Linting for accessibility, tap targets, contrast, and motion preferences.",
+            "ru": "– Генерирует пользовательский интерфейс с контекстом: выбирает шаблоны макета (панель вкладок или ящик), пустые состояния и жесты, соответствующие вашему домену. \n- Пишет связующий код: навигация, валидаторы, обработчики форм, преобразователи данных и оптимистичные обновления. \n- Создает тесты и документацию: базовые модульные тесты и краткую заметку «как это работает» для каждого сгенерированного экрана. \n- Гарантии UX: проверка доступности, целей касания, контрастности и настроек движения."
+          },
+          "title": {
+            "en": "What AI actually does",
+            "ru": "Что на самом деле делает ИИ"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text-1765796610405-588mc6re9",
+          "text": {
+            "en": "- Retail MVP: “Two product categories, promo banner, guest checkout, Apple Pay, order tracking.” Get a shippable build in hours.\n- Content app: “News feed, detail screens, saved items, offline read, scheduled push at 9am.”\n- Community: “User profiles, posts with photos and video, comments, abuse reporting, admin tools.”",
+            "ru": "- Retail MVP: «Две категории товаров, промо-баннер, гостевая касса, Apple Pay, отслеживание заказов». Получите готовую к отправке сборку за несколько часов. \n- Приложение «Контент»: «Лента новостей, экраны с подробными сведениями, сохраненные элементы, чтение в автономном режиме, запланированное нажатие на 9 утра». \n- Сообщество: «Профили пользователей, публикации с фотографиями и видео, комментарии, сообщения о злоупотреблениях, инструменты администратора»."
+          },
+          "title": {
+            "en": "Typical scenarios",
+            "ru": "Типичные сценарии"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text-1765796630382-8p0s0ra2k",
+          "text": {
+            "en": "You keep the code. You can export sources for in-house review or extend with your own modules. Cloud services cover identity, storage, and notifications so you avoid DevOps overhead while staying portable.",
+            "ru": "Вы сохраняете код. Вы можете экспортировать источники для внутреннего анализа или расширить их собственными модулями. Облачные сервисы охватывают идентификацию, хранение и уведомления, поэтому вы избегаете затрат на DevOps, сохраняя при этом портативность."
+          },
+          "title": {
+            "en": "Pricing and control",
+            "ru": "Ценообразование и контроль"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text-1765796652158-oe0y6em4e",
+          "text": {
+            "en": "Custom mobile projects still take months and demand scarce engineering time. An AI-first workflow shortens the loop from idea to release and keeps pace with fast-moving product requirements — all while delivering native quality and modern patterns.",
+            "ru": "Индивидуальные мобильные проекты по-прежнему занимают месяцы и требуют ограниченного времени на разработку. Рабочий процесс с использованием искусственного интеллекта сокращает цикл от идеи до выпуска и идет в ногу с быстро меняющимися требованиями к продукту, обеспечивая при этом естественное качество и современные шаблоны."
+          },
+          "title": {
+            "en": "Why this matters now",
+            "ru": "Почему это важно сейчас"
+          }
+        }
+      ]
+    },
+    "slug": "build-mobile-apps-with-yappix-using-ai-and-chat",
+    "views": 1220,
+    "likes": 20
+  },
+  {
+    "title": {
+      "en": "Article 1 — Results, hiring, and where clients actually come from in 2025",
+      "ru": "Статья 1 — Результаты, найм и откуда на самом деле приходят клиенты в 2025"
+    },
+    "date": "2025-12-15",
+    "excerpt": {
+      "en": "TL;DR: I shut down my regional web studio in 2022 and doubled down on a “solo operator” model. I hire selectively (audit, QA, DevOps, legal/finance, localization) and let AI handle the glue work. Here’s who to hire, when to hire, and where the clients really are in 2025 — backed by data.",
+      "ru": "TL;DR: I shut down my regional web studio in 2022 and doubled down on a “solo operator” model. I hire selectively (audit, QA, DevOps, legal/finance, localization) and let AI handle the glue work. Here’s who to hire, when to hire, and where the clients really are in 2025 — backed by data."
+    },
+    "content": "",
+    "contentBlocks": {
+      "en": [
+        {
+          "type": "text",
+          "id": "text-1765797697760-fbfm2bgzq",
+          "text": "I stopped selling “hours” and started selling measurable outcomes (activation, conversion, time-to-release). That shift made my pipeline predictable and cut the coordination overhead that used to drown my studio. Recent examples: reallaw.ai shipped; myunion.pro goes to production in November 2025. All portfolio [usmanoff.com](https://usmanoff.com)",
+          "title": "What changed for me"
+        },
+        {
+          "type": "text",
+          "id": "text-1765797740258-7j5pm00kh",
+          "text": "- Security & compliance audit (external) before major releases — cheaper than fixing incidents later.\n- QA for release sprints (manual checklists + critical-path automation) to keep velocity without regressions.\n- DevOps on demand for CI/CD, build pipelines, infra monitoring — so product and design stay focused.\n- Legal & finance (contracts, licensing, tax) — time insurance, not “overhead.”\n- Localization / content design when entering new regions or segments.\n- Everything else: cover with AI assistants, templates, and pre-built playbooks.",
+          "title": "Who to hire (and when)"
+        },
+        {
+          "type": "text",
+          "id": "text-1765797779610-1vn0xps4f",
+          "text": "Self-serve research dominates. Most B2B buyers do their homework before talking to a human, and a large majority choose a preferred vendor ahead of any sales call. Translation: your demo and interactive walkthrough must do the heavy lifting.\n\nCold outbound still works — predictably modest. Benchmarks show 1–6% reply rates depending on targeting and brevity; smaller, tightly segmented campaigns with <200 words perform best. Don’t “spray and pray”; personalize to the role and a triggering event (new hire, launch, funding). belkins.io\n\nMarketplaces are alive and well. Upwork’s 2025 research highlights the rise of skilled freelancers and steady enterprise use; one in four U.S. knowledge workers now operates independently, with $1.5T in earnings in 2024. If you position narrowly and bring a working demo, these platforms can fill a predictable portion of your pipeline. Upwork",
+          "title": "Where clients actually come from in 2025 (with proof)"
+        },
+        {
+          "type": "text",
+          "id": "text-1765797855183-awmytl0r7",
+          "text": "Week 1 — ICP + proof: pick 1–2 niches; ship two mini case studies (1–2 KPIs, 60–90s screencast, public changelog). This matches how buyers actually evaluate solutions pre-call. 6sense\n\nWeek 2 — Outbound: 100–150 handpicked contacts (role + event signal). Two touches max, <200 words, call-to-action = watch the demo. Expect “single-digit but consistent” replies. belkins.io\n\nWeek 3 — Marketplaces: 10–15 targeted proposals with a custom 60–90s demo per brief; aim for 1–2 paid pilots/month. Upwork\n\nWeek 4 — Double down: scale what worked; rotate ICP/offers if not.\n\n\n\nBottom line: Promise outcomes, not hours. Show a live demo before the first call. Keep outbound short and precise. Treat marketplaces as a repeatable channel, not a lottery.",
+          "listItems": [
+            "Week 1 — ICP + proof: pick 1–2 niches; ship two mini case studies (1–2 KPIs, 60–90s screencast, public changelog). This matches how buyers actually evaluate solutions pre-call. 6sense",
+            "Week 2 — Outbound: 100–150 handpicked contacts (role + event signal). Two touches max, <200 words, call-to-action = watch the demo. Expect “single-digit but consistent” replies. belkins.io",
+            "Week 3 — Marketplaces: 10–15 targeted proposals with a custom 60–90s demo per brief; aim for 1–2 paid pilots/month. Upwork",
+            "Week 4 — Double down: scale what worked; rotate ICP/offers if not.",
+            "Bottom line: Promise outcomes, not hours. Show a live demo before the first call. Keep outbound short and precise. Treat marketplaces as a repeatable channel, not a lottery."
+          ],
+          "title": "A 30-day plan you can measure"
+        }
+      ],
+      "ru": [
+        {
+          "type": "text",
+          "id": "text-1765797697760-fbfm2bgzq",
+          "text": {
+            "en": "I stopped selling “hours” and started selling measurable outcomes (activation, conversion, time-to-release). That shift made my pipeline predictable and cut the coordination overhead that used to drown my studio. Recent examples: reallaw.ai shipped; myunion.pro goes to production in November 2025. All portfolio [usmanoff.com](https://usmanoff.com)",
+            "ru": "Я перестал продавать «часы» и начал продавать измеримые результаты (активация, конверсия, время выпуска). Этот сдвиг сделал мой конвейер предсказуемым и сократил накладные расходы на координацию, которые раньше топили мою студию. Недавние примеры: добавлен сайт reallaw.ai; myunion.pro выйдет в производство в ноябре 2025 года. Все портфолио [usmanoff.com](https://usmanoff.com)"
+          },
+          "title": {
+            "en": "What changed for me",
+            "ru": "Что изменилось для меня"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text-1765797740258-7j5pm00kh",
+          "text": {
+            "en": "- Security & compliance audit (external) before major releases — cheaper than fixing incidents later.\n- QA for release sprints (manual checklists + critical-path automation) to keep velocity without regressions.\n- DevOps on demand for CI/CD, build pipelines, infra monitoring — so product and design stay focused.\n- Legal & finance (contracts, licensing, tax) — time insurance, not “overhead.”\n- Localization / content design when entering new regions or segments.\n- Everything else: cover with AI assistants, templates, and pre-built playbooks.",
+            "ru": "- Аудит безопасности и соответствия (внешний) перед выпуском основных релизов — дешевле, чем исправлять инциденты позже. \n- Контроль качества для спринтов выпуска (ручные контрольные списки + автоматизация критического пути) для поддержания скорости без регрессов. \n- DevOps по требованию для CI/CD, построения конвейеров, мониторинга инфраструктуры — чтобы продукт и дизайн оставались сосредоточенными. \n- Юридические и финансы (контракты, лицензирование, налоги) — страхование времени, а не «накладных расходов». \n- Локализация/дизайн контента при выходе в новые регионы или сегменты. \n- Все остальное: используйте помощников искусственного интеллекта, шаблоны и готовые сборники сценариев."
+          },
+          "title": {
+            "en": "Who to hire (and when)",
+            "ru": "Кого нанять (и когда)"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text-1765797779610-1vn0xps4f",
+          "text": {
+            "en": "Self-serve research dominates. Most B2B buyers do their homework before talking to a human, and a large majority choose a preferred vendor ahead of any sales call. Translation: your demo and interactive walkthrough must do the heavy lifting.\n\nCold outbound still works — predictably modest. Benchmarks show 1–6% reply rates depending on targeting and brevity; smaller, tightly segmented campaigns with <200 words perform best. Don’t “spray and pray”; personalize to the role and a triggering event (new hire, launch, funding). belkins.io\n\nMarketplaces are alive and well. Upwork’s 2025 research highlights the rise of skilled freelancers and steady enterprise use; one in four U.S. knowledge workers now operates independently, with $1.5T in earnings in 2024. If you position narrowly and bring a working demo, these platforms can fill a predictable portion of your pipeline. Upwork",
+            "ru": "Преобладают исследования, ориентированные на самообслуживание. Большинство покупателей B2B делают свою домашнюю работу, прежде чем разговаривать с человеком, и подавляющее большинство выбирает предпочтительного поставщика до любого звонка по продажам. Перевод: ваша демо-версия и интерактивное прохождение должны выполнять тяжелую работу. \n\nХолодный исходящий трафик все еще работает — предсказуемо скромно. Контрольные показатели показывают процент ответов от 1 до 6% в зависимости от таргетинга и краткости; небольшие, жестко сегментированные кампании, содержащие <200 слов, работают лучше всего. Не «распыляйте и молитесь»; персонализировать роль и триггерное событие (найм нового сотрудника, запуск, финансирование). Белкинс.io \n\nБиржи живы и здоровы. Исследование Upwork, проведенное в 2025 году, подчеркивает рост числа квалифицированных фрилансеров и устойчивое использование их на предприятиях; каждый четвертый работник умственного труда в США сейчас работает независимо, и в 2024 году его доход составит $1,5 трлн. Если вы позиционируете себя узко и предоставите работающую демонстрацию, эти платформы могут заполнить предсказуемую часть вашего конвейера. Апворк"
+          },
+          "title": {
+            "en": "Where clients actually come from in 2025 (with proof)",
+            "ru": "Откуда на самом деле приходят клиенты в 2025 году (с доказательствами)"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text-1765797855183-awmytl0r7",
+          "text": {
+            "en": "Week 1 — ICP + proof: pick 1–2 niches; ship two mini case studies (1–2 KPIs, 60–90s screencast, public changelog). This matches how buyers actually evaluate solutions pre-call. 6sense\n\nWeek 2 — Outbound: 100–150 handpicked contacts (role + event signal). Two touches max, <200 words, call-to-action = watch the demo. Expect “single-digit but consistent” replies. belkins.io\n\nWeek 3 — Marketplaces: 10–15 targeted proposals with a custom 60–90s demo per brief; aim for 1–2 paid pilots/month. Upwork\n\nWeek 4 — Double down: scale what worked; rotate ICP/offers if not.\n\n\n\nBottom line: Promise outcomes, not hours. Show a live demo before the first call. Keep outbound short and precise. Treat marketplaces as a repeatable channel, not a lottery.",
+            "ru": "Неделя 1 — ПМС + доказательство: выберите 1–2 ниши; представить два мини-кейса (1–2 ключевых показателя эффективности, скринкаст 60–90-х годов, публичный журнал изменений). Это соответствует тому, как покупатели на самом деле оценивают решения перед звонком. 6sense \n\nНеделя 2 — Исходящая: 100–150 выбранных контактов (роль + сигнал о событии). Максимум два касания, <200 слов, призыв к действию = посмотрите демо. Ожидайте «однозначных, но последовательных» ответов. Белкинс.io \n\nНеделя 3 — Торговые площадки: 10–15 целевых предложений с индивидуальной демонстрацией 60–90 годов на каждый бриф; стремитесь к 1–2 оплачиваемым пилотам в месяц. Апворк \n\nНеделя 4. Удвоение: масштабируйте то, что сработало; если нет, чередуйте ICP/предложения. \n\n\n\nИтог: Обещайте результаты, а не часы. Покажите живую демонстрацию перед первым звонком. Делайте исходящие сообщения краткими и точными. Относитесь к торговым площадкам как к повторяемому каналу, а не как к лотерее."
+          },
+          "listItems": [
+            "Неделя 1 — ПМС + доказательство: выберите 1–2 ниши; представить два мини-кейса (1–2 ключевых показателя эффективности, скринкаст 60–90-х годов, публичный журнал изменений). Это соответствует тому, как покупатели на самом деле оценивают решения перед звонком. 6sense",
+            "Неделя 2 — Исходящая: 100–150 выбранных контактов (роль + сигнал о событии). Максимум два касания, <200 слов, призыв к действию = посмотрите демо. Ожидайте «однозначных, но последовательных» ответов. Белкинс.io",
+            "Неделя 3 — Торговые площадки: 10–15 целевых предложений с индивидуальной демонстрацией 60–90 годов на каждый бриф; стремитесь к 1–2 оплачиваемым пилотам в месяц. Апворк",
+            "Неделя 4. Удвоение: масштабируйте то, что сработало; если нет, чередуйте ICP/предложения.",
+            "Итог: Обещайте результаты, а не часы. Покажите живую демонстрацию перед первым звонком. Делайте исходящие сообщения краткими и точными. Относитесь к торговым площадкам как к повторяемому каналу, а не как к лотерее."
+          ],
+          "title": {
+            "en": "A 30-day plan you can measure",
+            "ru": "30-дневный план, который вы можете измерить"
+          }
+        }
+      ]
+    },
+    "slug": "article-1--results-hiring-and-where-clients-actually-come-from-in-2025",
+    "views": 1114,
+    "likes": 42
+  },
+  {
+    "title": {
+      "en": "Article 2 — In 2025 I’m a one-person company. My “developers” are AI agents (and this is how I keep it safe)",
+      "ru": "Статья 2 — В 2025 году я компания из одного человека. Мои \"разработчики\" — это ИИ-агенты (и вот как я обеспечиваю безопасность)"
+    },
+    "date": "2025-12-15",
+    "excerpt": {
+      "en": "In 2025 I leaned fully into the company-of-one model. I’m the product owner and lead designer; AI agents accelerate coding and deployment. They generate components, write docs for each other, cross-review, and even handle first-pass debugging. I ship real products with complex business logic — schemes, forms, integrations, CI/CD — using Cursor for repo-aware coding, Figma for tokens and systems, and Builder.io for visual front-end composition.",
+      "ru": "В 2025 году я полностью перешел на модель компании из одного человека. Я владелец продукта и ведущий дизайнер; ИИ-агенты ускоряют кодирование и развертывание. Они генерируют компоненты, пишут документацию друг для друга, проводят кросс-ревью и даже выполняют первичную отладку. Я выпускаю реальные продукты со сложной бизнес-логикой — схемы, формы, интеграции, CI/CD — используя Cursor для кодирования с учетом репозитория, Figma для токенов и систем, и Builder.io для визуальной композиции фронтенда."
+    },
+    "content": "",
+    "contentBlocks": {
+      "en": [
+        {
+          "type": "text",
+          "id": "text-1765797946885-9tt0z0q3o",
+          "text": "Usage is mainstream: 84% of developers use or plan to use AI tools; over half of pros use them daily. That’s not hype — that’s a new baseline. survey.stackoverflow.co\n\nProductivity gains are documented: controlled studies around GitHub Copilot show faster task completion and reduced cognitive load (which matters when you’re “the whole team”). Still, you must design the workflow, not just bolt on a tool. github.blog\n\nTrust is the real constraint. Multiple reads of the 2025 Stack Overflow data show adoption up, but confidence in raw AI output is down — which matches my experience. The fix: explicit human-in-the-loop stages (reviews, tests, audits) and clear ownership of decisions. TechRadar\n\nAgentic AI is promising but risky: Gartner expects >40% of agentic projects to be canceled by 2027 due to cost and unclear value. Treat “agents” as accelerators inside a governed pipeline, not autonomous teams. Reuters",
+          "title": "Why this works now (and where the pitfalls are)"
+        },
+        {
+          "type": "text",
+          "id": "text-1765798010539-6jlu81fqw",
+          "text": "Spec → scaffold: chat prompts spin up screens, routes, and state. I lock requirements in a short design doc.\n\nGenerate → test: agents create components and tests; I enforce coding standards and a11y checks.\n\nWire to data: agents map fields, validations, and error states; I sign off on schemas and fallbacks.\n\nShip with guardrails: every PR gets human review + smoke tests; I own rollback plans and incident playbooks.",
+          "listItems": [
+            "Spec → scaffold: chat prompts spin up screens, routes, and state. I lock requirements in a short design doc.",
+            "Generate → test: agents create components and tests; I enforce coding standards and a11y checks.",
+            "Wire to data: agents map fields, validations, and error states; I sign off on schemas and fallbacks.",
+            "Ship with guardrails: every PR gets human review + smoke tests; I own rollback plans and incident playbooks."
+          ],
+          "title": "My operating model (you can copy it)"
+        },
+        {
+          "type": "text",
+          "id": "text-1765798027430-zizw2by2l",
+          "text": "reallaw.ai — shipped to production with AI-assisted UI/data wiring.\n\nmyunion.pro — production launch in November 2025 (final hardening underway).\n\nMy portfolio: usmanoff.com",
+          "listItems": [
+            "reallaw.ai — shipped to production with AI-assisted UI/data wiring.",
+            "myunion.pro — production launch in November 2025 (final hardening underway).",
+            "My portfolio: usmanoff.com",
+            "olive.yappix.studio"
+          ],
+          "title": "Recent proof"
+        },
+        {
+          "type": "text",
+          "id": "text-1765798100149-ifez73x81",
+          "text": "Bottom line: AI agents let one person ship like a small team — if you orchestrate them with tests, reviews, and clear accountability. Adoption is real; blind trust isn’t."
+        }
+      ],
+      "ru": [
+        {
+          "type": "text",
+          "id": "text-1765797946885-9tt0z0q3o",
+          "text": {
+            "en": "Usage is mainstream: 84% of developers use or plan to use AI tools; over half of pros use them daily. That’s not hype — that’s a new baseline. survey.stackoverflow.co\n\nProductivity gains are documented: controlled studies around GitHub Copilot show faster task completion and reduced cognitive load (which matters when you’re “the whole team”). Still, you must design the workflow, not just bolt on a tool. github.blog\n\nTrust is the real constraint. Multiple reads of the 2025 Stack Overflow data show adoption up, but confidence in raw AI output is down — which matches my experience. The fix: explicit human-in-the-loop stages (reviews, tests, audits) and clear ownership of decisions. TechRadar\n\nAgentic AI is promising but risky: Gartner expects >40% of agentic projects to be canceled by 2027 due to cost and unclear value. Treat “agents” as accelerators inside a governed pipeline, not autonomous teams. Reuters",
+            "ru": "Использование является массовым: 84% разработчиков используют или планируют использовать инструменты искусственного интеллекта; более половины профессионалов используют их ежедневно. Это не хайп — это новый базовый уровень. Survey.stackoverflow.co \n\nПовышение производительности документально подтверждено: контролируемые исследования с использованием GitHub Copilot показывают более быстрое выполнение задач и снижение когнитивной нагрузки (что важно, когда вы «вся команда»). Тем не менее, вы должны спроектировать рабочий процесс, а не просто прикрутить инструмент. github.блог \n\nДоверие – это настоящее ограничение. Многочисленные чтения данных Stack Overflow за 2025 год показывают, что внедрение растет, но уверенность в необработанных результатах ИИ снижается, что соответствует моему опыту. Исправление: четкие этапы участия человека (проверки, тесты, аудиты) и четкое понимание ответственности за принятие решений. ТехРадар \n\nАгентный искусственный интеллект является перспективным, но рискованным: Gartner ожидает, что> 40% агентных проектов будут отменены к 2027 году из-за стоимости и неясной ценности. Относитесь к «агентам» как к ускорителям внутри управляемого конвейера, а не как к автономным командам. Рейтер"
+          },
+          "title": {
+            "en": "Why this works now (and where the pitfalls are)",
+            "ru": "Почему это работает сейчас (и где подводные камни)"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text-1765798010539-6jlu81fqw",
+          "text": {
+            "en": "Spec → scaffold: chat prompts spin up screens, routes, and state. I lock requirements in a short design doc.\n\nGenerate → test: agents create components and tests; I enforce coding standards and a11y checks.\n\nWire to data: agents map fields, validations, and error states; I sign off on schemas and fallbacks.\n\nShip with guardrails: every PR gets human review + smoke tests; I own rollback plans and incident playbooks.",
+            "ru": "Спецификация → эшафот: подсказки чата раскручивают экраны, маршруты и состояние. Я фиксирую требования в коротком дизайн-документе. \n\nГенерировать → тестировать: агенты создают компоненты и тесты; Я соблюдаю стандарты кодирования и все проверки. \n\nПодключение к данным: агенты отображают поля, проверки и состояния ошибок; Я подписываюсь на схемы и резервные варианты. \n\nКорабль с ограждением: каждый PR проходит проверку человеком + дымовые испытания; У меня есть планы отката и сценарии инцидентов."
+          },
+          "listItems": [
+            "Спецификация → эшафот: подсказки чата раскручивают экраны, маршруты и состояние. Я фиксирую требования в коротком дизайн-документе.",
+            "Генерировать → тестировать: агенты создают компоненты и тесты; Я соблюдаю стандарты кодирования и все проверки.",
+            "Подключение к данным: агенты отображают поля, проверки и состояния ошибок; Я подписываюсь на схемы и резервные варианты.",
+            "Корабль с ограждением: каждый PR проходит проверку человеком + дымовые испытания; У меня есть планы отката и сценарии инцидентов."
+          ],
+          "title": {
+            "en": "My operating model (you can copy it)",
+            "ru": "Моя операционная модель (можно скопировать)"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text-1765798027430-zizw2by2l",
+          "text": {
+            "en": "reallaw.ai — shipped to production with AI-assisted UI/data wiring.\n\nmyunion.pro — production launch in November 2025 (final hardening underway).\n\nMy portfolio: usmanoff.com",
+            "ru": "Reallaw.ai — поставляется в производство с интерфейсом пользовательского интерфейса и передачей данных с помощью искусственного интеллекта. \n\nmyunion.pro — запуск производства в ноябре 2025 года (идет финальная закалка). \n\nМое портфолио: usmanoff.com."
+          },
+          "listItems": [
+            "Reallaw.ai — поставляется в производство с интерфейсом пользовательского интерфейса и передачей данных с помощью искусственного интеллекта.",
+            "myunion.pro — запуск производства в ноябре 2025 года (идет финальная закалка).",
+            "Мое портфолио: usmanoff.com.",
+            "olive.yappix.studio"
+          ],
+          "title": {
+            "en": "Recent proof",
+            "ru": "Недавнее доказательство"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text-1765798100149-ifez73x81",
+          "text": {
+            "en": "Bottom line: AI agents let one person ship like a small team — if you orchestrate them with tests, reviews, and clear accountability. Adoption is real; blind trust isn’t.",
+            "ru": "Итог: агенты ИИ позволяют одному человеку работать как небольшой команде — если вы организуете их с помощью тестов, обзоров и четкой отчетности. Усыновление реально; слепое доверие — нет."
+          }
+        }
+      ]
+    },
+    "slug": "article-2--in-2025-im-a-one-person-company-my-developers-are-ai-agents-and-this-is-how-i-keep-it-safe",
+    "views": 1711,
+    "likes": 42
+  }
+]
