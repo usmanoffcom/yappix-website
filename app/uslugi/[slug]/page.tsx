@@ -745,6 +745,27 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     alternates: {
       canonical: `https://yappix.ru/uslugi/${slug}`,
     },
+    openGraph: {
+      title: service.title + " — YappiX",
+      description: service.metaDescription,
+      type: "website",
+      url: `https://yappix.ru/uslugi/${slug}`,
+      siteName: "YappiX",
+      images: [
+        {
+          url: "/icon-512x512.png",
+          width: 512,
+          height: 512,
+          alt: `YappiX — ${service.title}`,
+        },
+      ],
+      locale: "ru_RU",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: service.title + " — YappiX",
+      description: service.metaDescription.substring(0, 200),
+    },
   }
 }
 

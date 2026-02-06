@@ -13,6 +13,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/karera",
   },
+  openGraph: {
+    title: "Карьера в YappiX — вакансии IT-студии",
+    description: "Вакансии: разработчики, дизайнеры, менеджеры. Работа в Сколково, удалённо, из офисов в 5 странах.",
+    type: "website",
+    url: "https://yappix.ru/karera",
+    siteName: "YappiX",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "YappiX — Карьера",
+      },
+    ],
+    locale: "ru_RU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Карьера в YappiX — вакансии IT-студии",
+    description: "Вакансии в YappiX. Работа в Сколково, удалённо или из офисов в 5 странах.",
+  },
 }
 
 const benefits = [

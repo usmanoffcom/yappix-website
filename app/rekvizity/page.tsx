@@ -13,6 +13,26 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/rekvizity",
   },
+  openGraph: {
+    title: "Реквизиты YappiX — банковские реквизиты",
+    description: "Реквизиты компании YAPPIX, LLC: EIN, юридический адрес, банковские реквизиты.",
+    type: "website",
+    url: "https://yappix.ru/rekvizity",
+    siteName: "YappiX",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "YappiX — Реквизиты",
+      },
+    ],
+    locale: "ru_RU",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RekvizityPage() {

@@ -14,6 +14,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/o-kompanii",
   },
+  openGraph: {
+    title: "О компании YappiX — резиденты Сколково",
+    description: "IT-студия полного цикла. Резиденты Сколково. 250+ проектов, 50+ специалистов, офисы в 5 странах.",
+    type: "website",
+    url: "https://yappix.ru/o-kompanii",
+    siteName: "YappiX",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "YappiX — О компании",
+      },
+    ],
+    locale: "ru_RU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "О компании YappiX — резиденты Сколково",
+    description: "IT-студия полного цикла. 250+ проектов, офисы в 5 странах.",
+  },
 }
 
 const stats = [

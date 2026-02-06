@@ -21,6 +21,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/uslugi",
   },
+  openGraph: {
+    title: "IT-услуги с AI-first подходом — YappiX",
+    description: "Полный спектр IT-услуг с AI-ускорением: разработка сайтов, приложений, AI чат-боты. Сроки в 7-12 раз быстрее.",
+    type: "website",
+    url: "https://yappix.ru/uslugi",
+    siteName: "YappiX",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "YappiX — IT-услуги",
+      },
+    ],
+    locale: "ru_RU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "IT-услуги с AI-first подходом — YappiX",
+    description: "Полный спектр IT-услуг с AI-ускорением. Сроки в 7-12 раз быстрее рынка.",
+  },
 }
 
 const services = [

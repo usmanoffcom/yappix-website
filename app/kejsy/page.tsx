@@ -14,6 +14,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/kejsy",
   },
+  openGraph: {
+    title: "Кейсы и портфолио — YappiX",
+    description: "Портфолио IT-студии: веб-сайты, мобильные приложения, AI-решения. Реальные результаты.",
+    type: "website",
+    url: "https://yappix.ru/kejsy",
+    siteName: "YappiX",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "YappiX — Портфолио",
+      },
+    ],
+    locale: "ru_RU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Кейсы и портфолио — YappiX",
+    description: "Портфолио IT-студии YappiX. Реальные результаты и метрики проектов.",
+  },
 }
 
 const cases = [

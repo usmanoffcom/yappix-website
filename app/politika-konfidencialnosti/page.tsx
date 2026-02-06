@@ -11,6 +11,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/politika-konfidencialnosti",
   },
+  openGraph: {
+    title: "Политика конфиденциальности YappiX",
+    description: "Политика конфиденциальности: защита персональных данных. Соблюдение GDPR.",
+    type: "website",
+    url: "https://yappix.ru/politika-konfidencialnosti",
+    siteName: "YappiX",
+    locale: "ru_RU",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function PolitikaKonfidencialnostiPage() {

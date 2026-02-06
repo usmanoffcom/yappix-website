@@ -17,6 +17,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/kontakty",
   },
+  openGraph: {
+    title: "Контакты YappiX — связаться с нами",
+    description: "Свяжитесь с YappiX: офисы в 5 странах, телефон, email, Telegram. Бесплатная консультация.",
+    type: "website",
+    url: "https://yappix.ru/kontakty",
+    siteName: "YappiX",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "YappiX — Контакты",
+      },
+    ],
+    locale: "ru_RU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Контакты YappiX — связаться с нами",
+    description: "Офисы в 5 странах. Бесплатная консультация по вашему проекту.",
+  },
 }
 
 const offices = [
@@ -170,6 +191,7 @@ export default function ContactsPage() {
                     <Label htmlFor="service">Интересующая услуга</Label>
                     <select
                       id="service"
+                      aria-label="Выберите интересующую услугу"
                       className="w-full px-3 py-2 bg-card border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Выберите услугу</option>
@@ -188,6 +210,7 @@ export default function ContactsPage() {
                     <Label htmlFor="budget">Примерный бюджет</Label>
                     <select
                       id="budget"
+                      aria-label="Выберите примерный бюджет проекта"
                       className="w-full px-3 py-2 bg-card border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Выберите диапазон</option>
@@ -208,7 +231,13 @@ export default function ContactsPage() {
                     />
                   </div>
                   <div className="flex items-start gap-2">
-                    <input type="checkbox" id="privacy" className="mt-1" required />
+                    <input 
+                      type="checkbox" 
+                      id="privacy" 
+                      aria-label="Согласие на обработку персональных данных"
+                      className="mt-1" 
+                      required 
+                    />
                     <Label htmlFor="privacy" className="text-sm text-muted-foreground">
                       Согласен на обработку персональных данных в соответствии с{" "}
                       <Link href="/politika-konfidencialnosti" className="text-primary hover:underline">

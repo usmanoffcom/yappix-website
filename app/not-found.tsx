@@ -12,6 +12,21 @@ export const metadata: Metadata = {
     index: false,
     follow: true,
   },
+  openGraph: {
+    title: "404 — Страница не найдена",
+    description: "Запрашиваемая страница не найдена на сайте YappiX.",
+    type: "website",
+    url: "https://yappix.ru/404",
+    siteName: "YappiX",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "YappiX",
+      },
+    ],
+  },
 }
 
 export default function NotFound() {
@@ -134,12 +149,13 @@ export default function NotFound() {
 
             {/* Back Button */}
             <div className="mt-8">
-              <Button variant="ghost" asChild>
-                <Link href="javascript:history.back()">
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Вернуться назад
-                </Link>
-              </Button>
+              <button 
+                onClick={() => window.history.back()} 
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Вернуться назад
+              </button>
             </div>
           </div>
         </div>

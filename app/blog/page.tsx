@@ -20,6 +20,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/blog",
   },
+  openGraph: {
+    title: "Блог о разработке, AI и технологиях — YappiX",
+    description: "Статьи о веб-разработке, AI, DevOps, SEO. Практические руководства и кейсы.",
+    type: "website",
+    url: "https://yappix.ru/blog",
+    siteName: "YappiX",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "YappiX — Блог",
+      },
+    ],
+    locale: "ru_RU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Блог о разработке, AI и технологиях — YappiX",
+    description: "Статьи о веб-разработке, AI, DevOps, SEO от команды YappiX.",
+  },
 }
 
 export default function BlogPage() {

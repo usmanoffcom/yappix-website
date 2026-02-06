@@ -11,6 +11,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/oferta",
   },
+  openGraph: {
+    title: "Публичная оферта YappiX",
+    description: "Условия оказания IT-услуг компанией YappiX. Публичная оферта.",
+    type: "website",
+    url: "https://yappix.ru/oferta",
+    siteName: "YappiX",
+    locale: "ru_RU",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function OfertaPage() {

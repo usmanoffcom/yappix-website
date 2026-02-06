@@ -125,7 +125,7 @@ export function Header() {
                             >
                               <service.icon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                               <div>
-                                <span className="text-sm font-medium block" style={{ color: 'white' }}>
+                                <span className="text-sm font-medium block text-foreground">
                                   {service.label}
                                 </span>
                                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{service.desc}</p>
