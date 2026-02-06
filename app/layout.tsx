@@ -135,7 +135,7 @@ export default function RootLayout({
         />
         <noscript>
           <div>
-            <img src="https://mc.yandex.ru/watch/95481194" width="1" height="1" style={{ position: 'absolute', left: '-9999px' }} alt="" loading="lazy" />
+            <img src="https://mc.yandex.ru/watch/95481194" width="1" height="1" className="ym-noscript-pixel" alt="" loading="lazy" />
           </div>
         </noscript>
         {/* /Yandex.Metrika counter */}

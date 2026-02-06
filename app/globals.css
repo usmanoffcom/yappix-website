@@ -357,3 +357,9 @@ html {
 .blog-content > h3:first-child {
   @apply mt-0;
 }
+
+/* Скрытый пиксель Яндекс.Метрики (noscript) — без inline-стилей */
+.ym-noscript-pixel {
+  position: absolute;
+  left: -9999px;
+}
