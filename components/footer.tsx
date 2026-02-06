@@ -2,7 +2,9 @@ import Link from "next/link"
 import Image from "next/image"
 import { Logo } from "./logo"
 
-const footerLinks = {
+type FooterLink = { label: string; href: string; external?: boolean }
+
+const footerLinks: { services: FooterLink[]; company: FooterLink[]; legal: FooterLink[] } = {
   services: [
     { label: "Веб-разработка", href: "/uslugi/razrabotka-sajtov" },
     { label: "Мобильные приложения", href: "/uslugi/mobilnye-prilozheniya" },
@@ -26,11 +28,11 @@ const footerLinks = {
   ],
 }
 
-const socialLinks = [
-  { label: "Telegram", href: "https://t.me/yappix_bot" },
-  { label: "VK", href: "https://vk.com/yappix" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/yappix" },
-  { label: "GitHub", href: "https://github.com/yappix" },
+const socialLinks: FooterLink[] = [
+  { label: "Telegram", href: "https://t.me/yappix_bot", external: true },
+  { label: "VK", href: "https://vk.com/yappix", external: true },
+  { label: "LinkedIn", href: "https://linkedin.com/company/yappix", external: true },
+  { label: "GitHub", href: "https://github.com/yappix", external: true },
 ]
 
 export function Footer() {
