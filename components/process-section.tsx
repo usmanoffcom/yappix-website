@@ -3,56 +3,44 @@
 import { Badge } from "@/components/ui/badge"
 import { MessageSquare, FileSearch, Code2, Rocket, HeadphonesIcon } from "lucide-react"
 
-const steps = [
-  {
-    icon: MessageSquare,
-    step: "01",
-    title: "Бриф и анализ",
-    description: "Собираем требования, анализируем рынок и конкурентов, формируем техническое задание",
-    duration: "1-2 дня",
-  },
-  {
-    icon: FileSearch,
-    step: "02",
-    title: "Прототип и дизайн",
-    description: "Создаём прототипы интерфейсов, утверждаем дизайн-концепцию и UI-kit",
-    duration: "3-5 дней",
-  },
-  {
-    icon: Code2,
-    step: "03",
-    title: "Разработка с AI",
-    description: "Пишем код с AI-агентами и deep coding, тестируем каждую итерацию",
-    duration: "1-4 недели",
-  },
-  {
-    icon: Rocket,
-    step: "04",
-    title: "Запуск и тестирование",
-    description: "Разворачиваем на продакшене, проводим нагрузочное тестирование",
-    duration: "2-3 дня",
-  },
-  {
-    icon: HeadphonesIcon,
-    step: "05",
-    title: "Поддержка и развитие",
-    description: "Мониторим метрики, вносим улучшения, масштабируем функционал",
-    duration: "Постоянно",
-  },
-]
+const stepsByLocale = {
+  ru: [
+    { icon: MessageSquare, step: "01", title: "Анализ процесса", description: "Фиксируем текущие операции, узкие места, SLA и стоимость ручного труда", duration: "1-2 дня" },
+    { icon: FileSearch, step: "02", title: "Расчёт ROI", description: "Считаем экономику внедрения: потери сейчас, целевые метрики и срок окупаемости", duration: "1-2 дня" },
+    { icon: Code2, step: "03", title: "Архитектура и внедрение", description: "Проектируем и внедряем цифровое решение или AI-контур с контролем качества", duration: "2-6 недель" },
+    { icon: Rocket, step: "04", title: "Интеграция и запуск", description: "Подключаем CRM/ERP/API, настраиваем роли, логирование, мониторинг и алерты", duration: "3-5 дней" },
+    { icon: HeadphonesIcon, step: "05", title: "Поддержка по SLA", description: "Сопровождаем, улучшаем метрики и масштабируем только при подтверждённой экономике", duration: "Постоянно" },
+  ],
+  en: [
+    { icon: MessageSquare, step: "01", title: "Brief & Analysis", description: "Gather requirements, analyze market and competitors, create technical specification", duration: "1-2 days" },
+    { icon: FileSearch, step: "02", title: "Prototype & Design", description: "Create interface prototypes, approve design concept and UI kit", duration: "3-5 days" },
+    { icon: Code2, step: "03", title: "Development with AI", description: "Code with AI agents and deep coding, test each iteration", duration: "1-4 weeks" },
+    { icon: Rocket, step: "04", title: "Launch & Testing", description: "Deploy to production, run load testing", duration: "2-3 days" },
+    { icon: HeadphonesIcon, step: "05", title: "Support & Growth", description: "Monitor metrics, improve, scale functionality", duration: "Ongoing" },
+  ],
+}
 
-export function ProcessSection() {
+const processHeadByLocale = {
+  ru: { badge: "Формат работы", headline: "Сначала экономика, потом внедрение", body: "Запускаем AI-проекты только после расчёта ROI. Это снижает риски и делает результат измеримым для бизнеса." },
+  en: { badge: "Process", headline: "From Idea to Launch in 7 Days", body: "Our process is optimized with AI tools for maximum speed without losing quality. Trial week with money-back guarantee." },
+}
+
+const videoFallback = { ru: "Ваш браузер не поддерживает воспроизведение видео.", en: "Your browser does not support video playback." }
+
+export function ProcessSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
+  const steps = stepsByLocale[locale]
+  const head = processHeadByLocale[locale]
+  const fallback = videoFallback[locale]
   return (
     <section id="process" className="section-padding bg-card/30">
       <div className="container mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 lg:mb-16">
           <Badge variant="outline" className="mb-3 sm:mb-4">
-            Процесс
+            {head.badge}
           </Badge>
-          <h2 className="text-headline text-foreground mb-4 sm:mb-5 text-balance">От идеи до запуска за 7 дней</h2>
+          <h2 className="text-headline text-foreground mb-4 sm:mb-5 text-balance">{head.headline}</h2>
           <p className="text-body-lg text-pretty">
-            Наш процесс оптимизирован с помощью AI-инструментов для максимальной скорости без потери качества. Тестовая
-            неделя с гарантией возврата.
+            {head.body}
           </p>
         </div>
 
@@ -67,9 +55,9 @@ export function ProcessSection() {
               playsInline
               crossOrigin="anonymous"
             >
-              <source src="/yappix_2026.mp4" type="video/mp4" />
+              <source src="/Yappix_%20AI-инженерия%20будущего_720p_caption.mp4" type="video/mp4" />
               <track kind="captions" />
-              Ваш браузер не поддерживает воспроизведение видео.
+              {fallback}
             </video>
           </div>
         </div>

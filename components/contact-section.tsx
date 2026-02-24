@@ -15,15 +15,89 @@ import { BookingCalendar } from "@/components/booking-calendar"
 import { PhoneInputField } from "@/components/phone-input"
 import { validateName, validateEmail, validateCompany, validateMessage } from "@/lib/validation"
 
-const offices = [
-  { country: "🇷🇺 Россия", city: "Москва, Сколково" },
-  { country: "🇺🇸 США", city: "Delaware" },
-  { country: "🇹🇷 Турция", city: "Стамбул" },
-  { country: "🇷🇸 Сербия", city: "Белград" },
-  { country: "🇰🇿 Казахстан", city: "Алматы" },
-]
+const officesByLocale = {
+  ru: [
+    { country: "🇷🇺 Россия", city: "Москва, Сколково" },
+    { country: "🇺🇸 США", city: "Delaware" },
+    { country: "🇹🇷 Турция", city: "Стамбул" },
+    { country: "🇷🇸 Сербия", city: "Белград" },
+    { country: "🇰🇿 Казахстан", city: "Алматы" },
+  ],
+  en: [
+    { country: "🇷🇺 Russia", city: "Moscow, Skolkovo" },
+    { country: "🇺🇸 USA", city: "Delaware" },
+    { country: "🇹🇷 Turkey", city: "Istanbul" },
+    { country: "🇷🇸 Serbia", city: "Belgrade" },
+    { country: "🇰🇿 Kazakhstan", city: "Almaty" },
+  ],
+}
 
-export function ContactSection() {
+const contactContentByLocale = {
+  ru: {
+    badge: "Контакты",
+    headline: "Обсудим ваш проект?",
+    body: "Расскажите о вашей идее — мы предложим оптимальное решение и составим план реализации бесплатно",
+    cardTitle: "Оставить заявку",
+    cardDesc: "Заполните форму и мы свяжемся с вами в течение 2 часов",
+    nameLabel: "Имя *",
+    namePlaceholder: "Ваше имя",
+    companyLabel: "Компания",
+    companyPlaceholder: "Название компании",
+    emailLabel: "Email *",
+    phoneLabel: "Телефон",
+    messageLabel: "Расскажите о проекте *",
+    messagePlaceholder: "Опишите вашу идею, задачи и примерные сроки...",
+    submitBtn: "Отправить заявку",
+    sendingBtn: "Отправка...",
+    successTitle: "Заявка отправлена!",
+    successDesc: "Мы свяжемся с вами в ближайшее время",
+    errorDefault: "Ошибка отправки. Попробуйте позже или свяжитесь по телефону.",
+    privacyPre: "Нажимая кнопку, вы соглашаетесь с",
+    privacyLink: "политикой конфиденциальности",
+    privacyHref: "/politika-konfidencialnosti",
+    quickContact: "Быстрая связь",
+    telegramDesc: "Ответим за 5 минут",
+    callLabel: "Позвонить",
+    ourOffices: "Наши офисы",
+    bookCall: "Забронировать звонок",
+    bookCallDesc: "Выберите удобное время для 30-минутной консультации с нашим экспертом",
+    bookBtn: "Выбрать время",
+  },
+  en: {
+    badge: "Contact",
+    headline: "Let's Discuss Your Project?",
+    body: "Tell us about your idea — we'll suggest the best solution and create an implementation plan for free",
+    cardTitle: "Submit Request",
+    cardDesc: "Fill out the form and we'll get back to you within 2 hours",
+    nameLabel: "Name *",
+    namePlaceholder: "Your name",
+    companyLabel: "Company",
+    companyPlaceholder: "Company name",
+    emailLabel: "Email *",
+    phoneLabel: "Phone",
+    messageLabel: "Tell us about your project *",
+    messagePlaceholder: "Describe your idea, goals and timeline...",
+    submitBtn: "Send Request",
+    sendingBtn: "Sending...",
+    successTitle: "Request sent!",
+    successDesc: "We'll get back to you soon",
+    errorDefault: "Send failed. Try again later or contact us by phone.",
+    privacyPre: "By submitting you agree to our",
+    privacyLink: "Privacy Policy",
+    privacyHref: "/politika-konfidencialnosti",
+    quickContact: "Quick Contact",
+    telegramDesc: "Reply within 5 minutes",
+    callLabel: "Call",
+    ourOffices: "Our Offices",
+    bookCall: "Book a Call",
+    bookCallDesc: "Choose a time for a 30-minute consultation with our expert",
+    bookBtn: "Select Time",
+  },
+}
+
+export function ContactSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
+  const offices = officesByLocale[locale]
+  const t = contactContentByLocale[locale]
   const recaptchaContext = useGoogleReCaptcha()
   const executeRecaptcha = recaptchaContext?.executeRecaptcha
   
@@ -120,43 +194,41 @@ export function ContactSection() {
         setErrors({})
       } else {
         setSubmitStatus("error")
-        setSubmitError(data.error || "Ошибка отправки")
+        setSubmitError(data.error || (locale === "en" ? "Send failed" : "Ошибка отправки"))
         if (data.field) {
           setErrors({ [data.field]: data.error })
         }
       }
     } catch {
       setSubmitStatus("error")
-      setSubmitError("Ошибка сети. Попробуйте позже.")
+      setSubmitError(locale === "en" ? "Network error. Try again later." : "Ошибка сети. Попробуйте позже.")
     } finally {
       setIsSubmitting(false)
     }
-  }, [formData, executeRecaptcha])
+  }, [formData, executeRecaptcha, locale])
 
   return (
     <section id="contact" className="py-20 md:py-32 bg-card/30">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            Контакты
+            {t.badge}
           </Badge>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-            Обсудим ваш проект?
+            {t.headline}
           </h2>
           <p className="text-lg text-muted-foreground text-pretty">
-            Расскажите о вашей идее — мы предложим оптимальное решение и составим план реализации бесплатно
+            {t.body}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Form */}
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <Card className="bg-card border-border">
               <CardHeader>
-                <CardTitle className="text-foreground">Оставить заявку</CardTitle>
+                <CardTitle className="text-foreground">{t.cardTitle}</CardTitle>
                 <CardDescription className="text-muted-foreground">
-                  Заполните форму и мы свяжемся с вами в течение 2 часов
+                  {t.cardDesc}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -165,19 +237,19 @@ export function ContactSection() {
                     <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
                       <Send className="w-8 h-8 text-green-500" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">Заявка отправлена!</h3>
-                    <p className="text-muted-foreground">Мы свяжемся с вами в ближайшее время</p>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">{t.successTitle}</h3>
+                    <p className="text-muted-foreground">{t.successDesc}</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name" className="text-foreground">
-                          Имя *
+                          {t.nameLabel}
                         </Label>
                         <Input 
                           id="name" 
-                          placeholder="Ваше имя" 
+                          placeholder={t.namePlaceholder} 
                           required 
                           className={`bg-input border-border ${errors.name ? "border-red-500" : ""}`}
                           value={formData.name}
@@ -193,11 +265,11 @@ export function ContactSection() {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="company" className="text-foreground">
-                          Компания
+                          {t.companyLabel}
                         </Label>
                         <Input 
                           id="company" 
-                          placeholder="Название компании" 
+                          placeholder={t.companyPlaceholder} 
                           className={`bg-input border-border ${errors.company ? "border-red-500" : ""}`}
                           value={formData.company}
                           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -215,7 +287,7 @@ export function ContactSection() {
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-foreground">
-                          Email *
+                          {t.emailLabel}
                         </Label>
                         <Input
                           id="email"
@@ -236,7 +308,7 @@ export function ContactSection() {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-foreground">
-                          Телефон
+                          {t.phoneLabel}
                         </Label>
                         <PhoneInputField
                           value={formData.phone}
@@ -249,11 +321,11 @@ export function ContactSection() {
 
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-foreground">
-                        Расскажите о проекте *
+                        {t.messageLabel}
                       </Label>
                       <Textarea
                         id="message"
-                        placeholder="Опишите вашу идею, задачи и примерные сроки..."
+                        placeholder={t.messagePlaceholder}
                         rows={4}
                         required
                         className={`bg-input border-border resize-none ${errors.message ? "border-red-500" : ""}`}
@@ -273,22 +345,23 @@ export function ContactSection() {
                       <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
                         <p className="text-sm text-red-500 flex items-center gap-2">
                           <AlertCircle className="w-4 h-4" />
-                          {submitError || "Ошибка отправки. Попробуйте позже или свяжитесь по телефону."}
+                          {submitError || t.errorDefault}
                         </p>
                       </div>
                     )}
 
                     <Button type="submit" className="w-full" disabled={isSubmitting}>
-                      {isSubmitting ? "Отправка..." : "Отправить заявку"}
+                      {isSubmitting ? t.sendingBtn : t.submitBtn}
                       <Send className="w-4 h-4 ml-2" />
                     </Button>
 
                     <p className="text-xs text-muted-foreground text-center">
-                      Нажимая кнопку, вы соглашаетесь с{" "}
-                      <Link href="/politika-konfidencialnosti" className="text-primary hover:underline">
-                        политикой конфиденциальности
+                      {t.privacyPre}
+                      {" "}
+                      <Link href={t.privacyHref} className="text-primary hover:underline">
+                        {t.privacyLink}
                       </Link>
-                      . Защищено reCAPTCHA.
+                      . Protected by reCAPTCHA.
                     </p>
                   </form>
                 )}
@@ -298,9 +371,8 @@ export function ContactSection() {
 
           {/* Contact Info */}
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {/* Quick Contact */}
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-foreground">Быстрая связь</h3>
+              <h3 className="text-xl font-semibold text-foreground">{t.quickContact}</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <Link 
                   href="https://t.me/yappix_bot" 
@@ -310,7 +382,7 @@ export function ContactSection() {
                   <MessageCircle className="w-5 h-5 text-primary group-hover:text-accent-foreground transition-colors shrink-0" />
                   <div className="text-left">
                     <div className="font-semibold text-foreground group-hover:text-accent-foreground transition-colors">Telegram</div>
-                    <div className="text-xs text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">Ответим за 5 минут</div>
+                    <div className="text-xs text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">{t.telegramDesc}</div>
                   </div>
                 </Link>
                 <Link 
@@ -319,7 +391,7 @@ export function ContactSection() {
                 >
                   <Phone className="w-5 h-5 text-primary group-hover:text-accent-foreground transition-colors shrink-0" />
                   <div className="text-left">
-                    <div className="font-semibold text-foreground group-hover:text-accent-foreground transition-colors">Позвонить</div>
+                    <div className="font-semibold text-foreground group-hover:text-accent-foreground transition-colors">{t.callLabel}</div>
                     <div className="text-xs text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">+7 995 095 55 93</div>
                   </div>
                 </Link>
@@ -339,11 +411,10 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* Offices */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-primary" />
-                Наши офисы
+                {t.ourOffices}
               </h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {offices.map((office, index) => (
@@ -355,17 +426,16 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* CTA for call */}
             <div className="p-6 rounded-2xl bg-primary/10 border border-primary/20">
               <div className="flex items-start gap-4">
                 <Calendar className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">Забронировать звонок</h4>
+                  <h4 className="font-semibold text-foreground mb-1">{t.bookCall}</h4>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Выберите удобное время для 30-минутной консультации с нашим экспертом
+                    {t.bookCallDesc}
                   </p>
                   <Button variant="outline" size="sm" onClick={() => setIsBookingOpen(true)}>
-                    Выбрать время
+                    {t.bookBtn}
                   </Button>
                 </div>
               </div>

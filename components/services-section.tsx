@@ -18,121 +18,62 @@ import {
   ShieldCheck,
 } from "lucide-react"
 
-const services = [
-  {
-    icon: Globe,
-    title: "Веб-разработка",
-    description: "Корпоративные сайты, интернет-магазины, веб-сервисы и порталы любой сложности",
-    tags: ["Next.js", "React", "Vue", "Node.js"],
-    popular: true,
-    href: "/uslugi/razrabotka-sajtov",
-  },
-  {
-    icon: Smartphone,
-    title: "Мобильные приложения",
-    description: "Нативные и кроссплатформенные приложения для iOS и Android",
-    tags: ["React Native", "Flutter", "Swift", "Kotlin"],
-    popular: true,
-    href: "/uslugi/mobilnye-prilozheniya",
-  },
-  {
-    icon: Bot,
-    title: "AI и чат-боты",
-    description: "Интеллектуальные ассистенты, RAG-системы, интеграция с GPT и LLM",
-    tags: ["ChatGPT", "Claude", "LangChain", "RAG"],
-    popular: true,
-    href: "/uslugi/ai-chat-boty",
-  },
-  {
-    icon: Cloud,
-    title: "SaaS / PaaS решения",
-    description: "Облачные платформы и сервисы с подписной моделью монетизации",
-    tags: ["Multi-tenant", "Billing", "Analytics"],
-    popular: false,
-    href: "/uslugi/saas-paas",
-  },
-  {
-    icon: CreditCard,
-    title: "FinTech",
-    description: "Платёжные системы, банкинг, трейдинг платформы, криптовалютные решения",
-    tags: ["PCI DSS", "KYC/AML", "Blockchain"],
-    popular: false,
-    href: "/kontakty?service=fintech",
-  },
-  {
-    icon: Server,
-    title: "DevOps услуги",
-    description: "CI/CD пайплайны, контейнеризация, облачная инфраструктура, мониторинг",
-    tags: ["Docker", "Kubernetes", "AWS", "Terraform"],
-    popular: false,
-    href: "/kontakty?service=devops",
-  },
-  {
-    icon: Search,
-    title: "SEO продвижение",
-    description: "Техническая оптимизация, контент-маркетинг, продвижение в Яндекс и Google",
-    tags: ["Яндекс", "Google", "Контент"],
-    popular: false,
-    href: "/uslugi/seo-prodvizhenie",
-  },
-  {
-    icon: Share2,
-    title: "SMM маркетинг",
-    description: "Стратегия продвижения в социальных сетях, таргетированная реклама",
-    tags: ["VK", "Telegram", "Таргет"],
-    popular: false,
-    href: "/kontakty?service=smm",
-  },
-  {
-    icon: Database,
-    title: "Интеграции и API",
-    description: "Интеграция с 1C, CRM, ERP системами, разработка REST и GraphQL API",
-    tags: ["1C", "Bitrix24", "AmoCRM"],
-    popular: false,
-    href: "/kontakty?service=integrations",
-  },
-  {
-    icon: LineChart,
-    title: "Аналитика данных",
-    description: "BI-системы, дашборды, предиктивная аналитика и машинное обучение",
-    tags: ["Python", "ML", "Tableau"],
-    popular: false,
-    href: "/kontakty?service=analytics",
-  },
-  {
-    icon: Palette,
-    title: "UX/UI дизайн",
-    description: "Исследования, прототипирование, дизайн-системы, брендинг",
-    tags: ["Figma", "Design System"],
-    popular: false,
-    href: "/kontakty?service=design",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Кибербезопасность",
-    description: "Аудит безопасности, пентесты, защита данных, соответствие стандартам",
-    tags: ["Pentest", "GDPR", "152-ФЗ"],
-    popular: false,
-    href: "/kontakty?service=security",
-  },
-]
+const servicesByLocale = {
+  ru: [
+    { icon: Globe, title: "Веб-разработка", description: "Корпоративные сайты, порталы и веб-сервисы как основа для последующей автоматизации процессов", tags: ["Next.js", "React", "Vue", "Node.js"], popular: true, href: "/uslugi/razrabotka-sajtov" },
+    { icon: Smartphone, title: "Мобильные приложения", description: "Нативные и кроссплатформенные приложения с AI-модулями и интеграциями в операционные процессы", tags: ["React Native", "Flutter", "Swift", "Kotlin"], popular: true, href: "/uslugi/mobilnye-prilozheniya" },
+    { icon: Bot, title: "AI-автоматизация процессов", description: "Поиск по базе знаний, проверка документов, обработка обратной связи и ассистенты отделов с расчётом ROI", tags: ["ChatGPT", "Claude", "LangChain", "RAG"], popular: true, href: "/uslugi/ai-chat-boty" },
+    { icon: Cloud, title: "SaaS / PaaS решения", description: "Облачные платформы и сервисы с подписной моделью монетизации", tags: ["Multi-tenant", "Billing", "Analytics"], popular: false, href: "/uslugi/saas-paas" },
+    { icon: CreditCard, title: "FinTech", description: "Платёжные системы, банкинг, трейдинг платформы, криптовалютные решения", tags: ["PCI DSS", "KYC/AML", "Blockchain"], popular: false, href: "/kontakty?service=fintech" },
+    { icon: Server, title: "DevOps услуги", description: "CI/CD пайплайны, контейнеризация, облачная инфраструктура, мониторинг", tags: ["Docker", "Kubernetes", "AWS", "Terraform"], popular: false, href: "/kontakty?service=devops" },
+    { icon: Search, title: "SEO продвижение", description: "Техническая оптимизация, контент-маркетинг, продвижение в Яндекс и Google", tags: ["Яндекс", "Google", "Контент"], popular: false, href: "/uslugi/seo-prodvizhenie" },
+    { icon: Share2, title: "SMM маркетинг", description: "Стратегия продвижения в социальных сетях, таргетированная реклама", tags: ["VK", "Telegram", "Таргет"], popular: false, href: "/kontakty?service=smm" },
+    { icon: Database, title: "Интеграции и API", description: "Интеграция с 1C, CRM, ERP системами, разработка REST и GraphQL API", tags: ["1C", "Bitrix24", "AmoCRM"], popular: false, href: "/kontakty?service=integrations" },
+    { icon: LineChart, title: "Аналитика данных", description: "BI-системы, дашборды, предиктивная аналитика и машинное обучение", tags: ["Python", "ML", "Tableau"], popular: false, href: "/kontakty?service=analytics" },
+    { icon: Palette, title: "UX/UI дизайн", description: "Исследования, прототипирование, дизайн-системы, брендинг", tags: ["Figma", "Design System"], popular: false, href: "/kontakty?service=design" },
+    { icon: ShieldCheck, title: "Кибербезопасность", description: "Аудит безопасности, пентесты, защита данных, соответствие стандартам", tags: ["Pentest", "GDPR", "152-ФЗ"], popular: false, href: "/kontakty?service=security" },
+  ],
+  en: [
+    { icon: Globe, title: "Web Development", description: "Corporate sites, e-commerce, web apps and portals of any complexity", tags: ["Next.js", "React", "Vue", "Node.js"], popular: true, href: "/en/contact?service=web" },
+    { icon: Smartphone, title: "Mobile Apps", description: "Native and cross-platform applications for iOS and Android", tags: ["React Native", "Flutter", "Swift", "Kotlin"], popular: true, href: "/en/contact?service=mobile" },
+    { icon: Bot, title: "AI & Chatbots", description: "Intelligent assistants, RAG systems, GPT and LLM integration", tags: ["ChatGPT", "Claude", "LangChain", "RAG"], popular: true, href: "/en/contact?service=ai" },
+    { icon: Cloud, title: "SaaS / PaaS", description: "Cloud platforms and services with subscription monetization", tags: ["Multi-tenant", "Billing", "Analytics"], popular: false, href: "/en/contact?service=saas" },
+    { icon: CreditCard, title: "FinTech", description: "Payment systems, banking, trading platforms, crypto solutions", tags: ["PCI DSS", "KYC/AML", "Blockchain"], popular: false, href: "/en/contact?service=fintech" },
+    { icon: Server, title: "DevOps", description: "CI/CD pipelines, containerization, cloud infrastructure, monitoring", tags: ["Docker", "Kubernetes", "AWS", "Terraform"], popular: false, href: "/en/contact?service=devops" },
+    { icon: Search, title: "SEO & Marketing", description: "Technical optimization, content marketing, Yandex & Google promotion", tags: ["Yandex", "Google", "Content"], popular: false, href: "/en/contact?service=seo" },
+    { icon: Share2, title: "SMM Marketing", description: "Social media promotion strategy, targeted advertising", tags: ["VK", "Telegram", "Targeting"], popular: false, href: "/en/contact?service=smm" },
+    { icon: Database, title: "Integrations & API", description: "Integration with 1C, CRM, ERP, REST and GraphQL API development", tags: ["1C", "Bitrix24", "AmoCRM"], popular: false, href: "/en/contact?service=integrations" },
+    { icon: LineChart, title: "Data Analytics", description: "BI systems, dashboards, predictive analytics and ML", tags: ["Python", "ML", "Tableau"], popular: false, href: "/en/contact?service=analytics" },
+    { icon: Palette, title: "UX/UI Design", description: "Research, prototyping, design systems, branding", tags: ["Figma", "Design System"], popular: false, href: "/en/contact?service=design" },
+    { icon: ShieldCheck, title: "Cybersecurity", description: "Security audit, pentests, data protection, compliance", tags: ["Pentest", "GDPR"], popular: false, href: "/en/contact?service=security" },
+  ],
+} as const
 
-export function ServicesSection() {
+const sectionByLocale = {
+  ru: { badge: "Услуги", headline: "Сохраняем разработку, усиливаем автоматизацией", body: "Делаем сайты, приложения и SaaS, а также внедряем AI-контуры в процессы: от поиска информации до комплаенса и клиентского сервиса." },
+  en: { badge: "Services", headline: "Full-Cycle Digital Development", body: "From idea to scaling — we deliver projects of any complexity using modern technologies and AI tools" },
+}
+
+const popularLabel = { ru: "Популярно", en: "Popular" }
+
+export function ServicesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
+  const services = servicesByLocale[locale]
+  const section = sectionByLocale[locale]
+  const popular = popularLabel[locale]
   return (
-    <section id="uslugi" className="section-padding">
+    <section id={locale === "en" ? "services" : "uslugi"} className="section-padding">
       <div className="container mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 lg:mb-16">
           <Badge variant="outline" className="mb-3 sm:mb-4">
-            Услуги
+            {section.badge}
           </Badge>
-          <h2 className="text-headline text-foreground mb-4 sm:mb-5 text-balance">Полный цикл digital-разработки</h2>
+          <h2 className="text-headline text-foreground mb-4 sm:mb-5 text-balance">{section.headline}</h2>
           <p className="text-body-lg text-pretty">
-            От идеи до масштабирования — реализуем проекты любой сложности с использованием современных технологий и
-            AI-инструментов
+            {section.body}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 min-[1100px]:grid-cols-3 min-[1400px]:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {services.map((service, index) => (
             <Link key={index} href={service.href} className="animate-in fade-in slide-in-from-bottom-4 duration-500 block">
               <Card className="h-full bg-card hover:bg-secondary/50 transition-colors border-border group cursor-pointer hover:border-primary/30">
@@ -143,7 +84,7 @@ export function ServicesSection() {
                     </div>
                     {service.popular && (
                       <Badge className="bg-primary/20 text-primary border-0 text-[10px] sm:text-xs px-2 py-0.5">
-                        Популярно
+                        {popular}
                       </Badge>
                     )}
                   </div>

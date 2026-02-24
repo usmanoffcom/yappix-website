@@ -66,11 +66,16 @@ function LazyGifItem({ src, alt, index }: { src: string; alt: string; index: num
   )
 }
 
-export function ShowcaseGallery() {
+const showcaseHeadByLocale = {
+  ru: { headline: "Наши работы в деталях", body: "Примеры UI/UX анимаций и интерфейсов, которые мы создаём для клиентов" },
+  en: { headline: "Our Work in Detail", body: "Examples of UI/UX animations and interfaces we build for clients" },
+}
+
+export function ShowcaseGallery({ locale = "ru" }: { locale?: "ru" | "en" }) {
   const [isInView, setIsInView] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const head = showcaseHeadByLocale[locale]
 
-  // Не рендерим галерею пока секция не появится на экране
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -94,10 +99,10 @@ export function ShowcaseGallery() {
       <div className="container mx-auto px-4 mb-12">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Наши работы в деталях
+            {head.headline}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Примеры UI/UX анимаций и интерфейсов, которые мы создаём для клиентов
+            {head.body}
           </p>
         </div>
       </div>

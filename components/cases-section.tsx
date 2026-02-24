@@ -7,44 +7,25 @@ import { ArrowUpRight, Volume2, VolumeX } from "lucide-react"
 import Link from "next/link"
 import { useRef, useState, useEffect } from "react"
 
-const cases = [
-  {
-    slug: "fintech-marketplace",
-    title: "Card2Card — MVP мобильного приложения",
-    category: "FinTech / Mobile",
-    description: "Мобильное приложение для переводов с карты на карту по всему миру. Автоматическая комиссия, простой перевод и ничего лишнего.",
-    metrics: ["14 разработчиков", "VISA, MC, USDT", "EU, US, Asia, Africa"],
-    tags: ["React Native", "Node.js", "VISA API", "Mastercard"],
-    image: "/images/05f1e332931093.589da5ec81ead.gif",
-  },
-  {
-    slug: "ai-food-assistant",
-    title: "Ассистент заявок — голосовой заказ еды",
-    category: "AI / Voice",
-    description: "Голосовой AI-ассистент для заказа еды без касания экрана. Идеально для водителей за рулём.",
-    metrics: ["+40% конверсия", "100% hands-free", "30 сек заказ"],
-    tags: ["GPT-4", "Voice AI", "Speech Recognition", "Stripe"],
-    video: "/images/checkout_ai_2.mp4",
-  },
-  {
-    slug: "myunion-platform",
-    title: "MyUnion Pro — платформа управления профсоюзами",
-    category: "SaaS / AI",
-    description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ и автоматическим созданием документов",
-    metrics: ["4 человека", "3 месяца", "50K+ пользователей"],
-    tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain"],
-    image: "/images/image.png",
-  },
-  {
-    slug: "priboy-hotels",
-    title: "Grand Hotels & SPA Priboy — сеть отелей",
-    category: "Hospitality / Marketing",
-    description: "Комплексная разработка, техническая поддержка, SEO-продвижение и SMM для сети премиальных отелей на Черноморском побережье.",
-    metrics: ["+180% трафик", "+65% прямые брони", "ТОП-3 Яндекс"],
-    tags: ["Next.js", "SEO", "SMM", "VK Ads"],
-    image: "/images/priboy.avif",
-  },
-]
+const casesByLocale = {
+  ru: [
+    { slug: "fintech-marketplace", title: "Card2Card — MVP мобильного приложения", category: "FinTech / Mobile", description: "Мобильное приложение для переводов с карты на карту по всему миру. Автоматическая комиссия, простой перевод и ничего лишнего.", metrics: ["14 разработчиков", "VISA, MC, USDT", "EU, US, Asia, Africa"], tags: ["React Native", "Node.js", "VISA API", "Mastercard"], image: "/images/05f1e332931093.589da5ec81ead.gif" as string | undefined, video: undefined as string | undefined },
+    { slug: "ai-food-assistant", title: "Ассистент заявок — голосовой заказ еды", category: "AI / Voice", description: "Голосовой AI-ассистент для заказа еды без касания экрана. Идеально для водителей за рулём.", metrics: ["+40% конверсия", "100% hands-free", "30 сек заказ"], tags: ["GPT-4", "Voice AI", "Speech Recognition", "Stripe"], image: undefined, video: "/images/checkout_ai_2.mp4" },
+    { slug: "myunion-platform", title: "MyUnion Pro — платформа управления профсоюзами", category: "SaaS / AI", description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ и автоматическим созданием документов", metrics: ["4 человека", "3 месяца", "50K+ пользователей"], tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain"], image: "/images/image.png", video: undefined },
+    { slug: "priboy-hotels", title: "Grand Hotels & SPA Priboy — сеть отелей", category: "Hospitality / Marketing", description: "Комплексная разработка, техническая поддержка, SEO-продвижение и SMM для сети премиальных отелей на Черноморском побережье.", metrics: ["+180% трафик", "+65% прямые брони", "ТОП-3 Яндекс"], tags: ["Next.js", "SEO", "SMM", "VK Ads"], image: "/images/priboy.avif", video: undefined },
+  ],
+  en: [
+    { slug: "fintech-marketplace", title: "Card2Card — Mobile Payment App MVP", category: "FinTech / Mobile", description: "Mobile app for card-to-card transfers worldwide. Automatic fees, simple transfers, nothing extra.", metrics: ["14 developers", "VISA, MC, USDT", "EU, US, Asia, Africa"], tags: ["React Native", "Node.js", "VISA API", "Mastercard"], image: "/images/05f1e332931093.589da5ec81ead.gif", video: undefined },
+    { slug: "ai-food-assistant", title: "Order Assistant — Voice Food Ordering", category: "AI / Voice", description: "Voice AI assistant for hands-free food ordering. Ideal for drivers on the road.", metrics: ["+40% conversion", "100% hands-free", "30 sec order"], tags: ["GPT-4", "Voice AI", "Speech Recognition", "Stripe"], image: undefined, video: "/images/checkout_ai_2.mp4" },
+    { slug: "myunion-platform", title: "MyUnion Pro — Trade Union Management Platform", category: "SaaS / AI", description: "Full-featured web application for trade union management with AI chatbots and automated document generation.", metrics: ["1 person", "3 months", "50K+ users"], tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain"], image: "/images/image.png", video: undefined },
+    { slug: "priboy-hotels", title: "Grand Hotels & SPA Priboy — Hotel Chain", category: "Hospitality / Marketing", description: "Full-cycle digital services for a premium hotel chain: development, SEO, SMM on the Black Sea coast.", metrics: ["+180% traffic", "+65% direct bookings", "TOP-3 Yandex"], tags: ["Next.js", "SEO", "SMM", "VK Ads"], image: "/images/priboy.avif", video: undefined },
+  ],
+}
+
+const casesHeadByLocale = {
+  ru: { badge: "Кейсы", headline: "Проекты, которыми гордимся", body: "Наши клиенты привлекают раунды инвестиций и масштабируют бизнес благодаря технологическим решениям, которые мы создаём", allCases: "Все кейсы", discuss: "Обсудить ваш проект" },
+  en: { badge: "Cases", headline: "Projects We're Proud Of", body: "Our clients raise investment rounds and scale businesses thanks to the technology solutions we build", allCases: "All Case Studies", discuss: "Discuss Your Project" },
+}
 
 // Lazy loading video component
 function VideoCard({ src, title }: { src: string; title: string }) {
@@ -163,28 +144,31 @@ function LazyImage({ src, alt }: { src: string; alt: string }) {
   )
 }
 
-export function CasesSection() {
+export function CasesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
+  const cases = casesByLocale[locale]
+  const head = casesHeadByLocale[locale]
+  const casesBase = locale === "en" ? "/en/cases" : "/kejsy"
+  const contactAnchor = locale === "en" ? "/en/contact" : "#contact"
   return (
     <section id="cases" className="py-20 md:py-32">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            Кейсы
+            {head.badge}
           </Badge>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-            Проекты, которыми гордимся
+            {head.headline}
           </h2>
           <p className="text-lg text-muted-foreground text-pretty">
-            Наши клиенты привлекают раунды инвестиций и масштабируют бизнес благодаря технологическим решениям, которые
-            мы создаём
+            {head.body}
           </p>
         </div>
 
         {/* Cases Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {cases.map((caseItem, index) => (
-            <Link key={index} href={`/kejsy/${caseItem.slug}`} className="animate-in fade-in slide-in-from-bottom-4 duration-500 block">
+            <Link key={index} href={`${casesBase}/${caseItem.slug}`} className="animate-in fade-in slide-in-from-bottom-4 duration-500 block">
               <Card className="overflow-hidden bg-card border-border hover:border-primary/30 transition-colors group !p-0 !gap-0 cursor-pointer h-full">
                 {/* Image or Video */}
                 {caseItem.video ? (
@@ -231,14 +215,14 @@ export function CasesSection() {
         {/* CTA */}
         <div className="flex justify-center gap-4 mt-12">
           <Button variant="default" size="lg" asChild>
-            <Link href="/kejsy">
-              Все кейсы
+            <Link href={locale === "en" ? "/en/cases" : "/kejsy"}>
+              {head.allCases}
               <ArrowUpRight className="w-5 h-5 ml-2" />
             </Link>
           </Button>
           <Button variant="outline" size="lg" asChild>
-            <Link href="#contact">
-              Обсудить ваш проект
+            <Link href={contactAnchor}>
+              {head.discuss}
               <ArrowUpRight className="w-5 h-5 ml-2" />
             </Link>
           </Button>

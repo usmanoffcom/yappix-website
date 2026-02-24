@@ -181,7 +181,7 @@ html {
 
 /* Контейнер с правильными отступами на всех брейкпоинтах */
 .container {
-  @apply px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12;
+  @apply px-4 sm:px-6 md:px-8 lg:px-8 xl:px-10;
 }
 
 /* Секции с консистентными отступами */
@@ -193,10 +193,14 @@ html {
   @apply py-12 sm:py-16 md:py-20;
 }
 
-/* Скрытие скроллбара */
+/* Скрытие скроллбара: -webkit для Safari/Chrome, -ms для IE/Edge, scrollbar-width для Firefox */
 .scrollbar-hide {
   -ms-overflow-style: none;
-  scrollbar-width: none;
+}
+@supports (scrollbar-width: none) {
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
 }
 
 .scrollbar-hide::-webkit-scrollbar {

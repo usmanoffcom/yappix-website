@@ -1,6 +1,7 @@
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { TrustBadges } from "@/components/trust-badges"
+import { AutomationEconomicsSection } from "@/components/automation-economics-section"
 import { ServicesSection } from "@/components/services-section"
 import { ProcessSection } from "@/components/process-section"
 import { CasesSection } from "@/components/cases-section"
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Header />
       <HeroSection />
       <TrustBadges />
+      <AutomationEconomicsSection />
       <ServicesSection />
       <ProcessSection />
       <CasesSection />

@@ -5,9 +5,6 @@ import { ChatWidgetWrapper } from "@/components/chat-widget-wrapper"
 import { RecaptchaProvider } from "@/components/recaptcha-provider"
 import "./globals.css"
 
-// Suppress hydration warnings from browser extensions
-const suppressHydrationWarning = true
-
 const _onest = Onest({
   subsets: ["latin", "cyrillic"],
   variable: "--font-onest",
@@ -114,7 +111,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -195,7 +192,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${_onest.variable} font-sans antialiased`}>
+      <body className={`${_onest.variable} font-sans antialiased`} suppressHydrationWarning>
         <RecaptchaProvider>
           {children}
           <ChatWidgetWrapper />

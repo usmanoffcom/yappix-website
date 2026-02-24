@@ -305,6 +305,18 @@ export default function ContactEnPage() {
                   q: "Do you sign NDAs?",
                   a: "Yes, we sign NDAs before discussing project details upon client request.",
                 },
+                {
+                  q: "How do you calculate AI automation economics?",
+                  a: "Before launch, we calculate current process labor time, hourly team cost, expected reduction in manual work, and support cost. You get a monthly savings forecast and estimated payback period.",
+                },
+                {
+                  q: "How fast does an AI project usually pay back?",
+                  a: "Typical payback is 3 to 5 months when the process is selected correctly and baseline metrics are measured before implementation.",
+                },
+                {
+                  q: "What input do you need from us for an accurate ROI estimate?",
+                  a: "We need 4 baseline inputs: monthly process volume, actual time per operation, hourly team cost, and current process SLA. This is enough for an initial financial forecast.",
+                },
               ].map((item) => (
                 <div key={item.q} className="p-6 bg-background border border-border rounded-xl">
                   <h3 className="font-semibold text-foreground mb-2">{item.q}</h3>

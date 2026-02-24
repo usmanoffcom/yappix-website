@@ -6,76 +6,42 @@ import { Button } from "@/components/ui/button"
 import { Check, Sparkles, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
-const plans = [
-  {
-    name: "MVP Sprint",
-    description: "Быстрый запуск минимального продукта",
-    price: "от 62 500 ₽",
-    duration: "1-2 недели",
-    features: [
-      "Прототип + дизайн",
-      "Базовый функционал",
-      "Адаптивная вёрстка",
-      "1 итерация правок",
-      "Деплой на сервер",
-      "Тестовая неделя",
-    ],
-    cta: "Начать MVP",
-    popular: false,
-  },
-  {
-    name: "Product",
-    description: "Полноценный продукт с расширенным функционалом",
-    price: "от 250 000 ₽",
-    duration: "4-8 недель",
-    features: [
-      "Всё из MVP Sprint",
-      "Расширенный функционал",
-      "Интеграции с API",
-      "Админ-панель",
-      "Аналитика и метрики",
-      "3 итерации правок",
-      "Документация",
-      "1 месяц поддержки",
-    ],
-    cta: "Обсудить продукт",
-    popular: true,
-  },
-  {
-    name: "Enterprise",
-    description: "Комплексные решения для крупного бизнеса",
-    price: "Индивидуально",
-    duration: "от 3 месяцев",
-    features: [
-      "Всё из Product",
-      "Микросервисная архитектура",
-      "Высокая нагрузка",
-      "Кастомные интеграции",
-      "AI и ML решения",
-      "DevOps и инфраструктура",
-      "SLA 99.9%",
-      "Выделенная команда",
-    ],
-    cta: "Связаться",
-    popular: false,
-  },
-]
+const plansByLocale = {
+  ru: [
+    { name: "MVP Sprint", description: "Быстрый запуск минимального продукта", price: "от 62 500 ₽", duration: "1-2 недели", features: ["Прототип + дизайн", "Базовый функционал", "Адаптивная вёрстка", "1 итерация правок", "Деплой на сервер", "Тестовая неделя"], cta: "Начать MVP", popular: false },
+    { name: "Product", description: "Полноценный продукт с расширенным функционалом", price: "от 250 000 ₽", duration: "4-8 недель", features: ["Всё из MVP Sprint", "Расширенный функционал", "Интеграции с API", "Админ-панель", "Аналитика и метрики", "3 итерации правок", "Документация", "1 месяц поддержки"], cta: "Обсудить продукт", popular: true },
+    { name: "Enterprise", description: "Комплексные решения для крупного бизнеса", price: "Индивидуально", duration: "от 3 месяцев", features: ["Всё из Product", "Микросервисная архитектура", "Высокая нагрузка", "Кастомные интеграции", "AI и ML решения", "DevOps и инфраструктура", "SLA 99.9%", "Выделенная команда"], cta: "Связаться", popular: false },
+  ],
+  en: [
+    { name: "MVP Sprint", description: "Quick launch of a minimal product", price: "from $690", duration: "1-2 weeks", features: ["Prototype + Design", "Core functionality", "Responsive layout", "1 revision round", "Server deployment", "Trial week"], cta: "Start MVP", popular: false },
+    { name: "Product", description: "Full product with extended functionality", price: "from $2,750", duration: "4-8 weeks", features: ["Everything from MVP", "Extended functionality", "API integrations", "Admin panel", "Analytics & metrics", "3 revision rounds", "Documentation", "1 month support"], cta: "Discuss Product", popular: true },
+    { name: "Enterprise", description: "Complex solutions for large business", price: "Custom", duration: "from 3 months", features: ["Everything from Product", "Microservices architecture", "High load", "Custom integrations", "AI & ML solutions", "DevOps & infrastructure", "SLA 99.9%", "Dedicated team"], cta: "Get in Touch", popular: false },
+  ],
+}
 
-export function PricingSection() {
+const pricingHeadByLocale = {
+  ru: { badge: "Тарифы", headline: "Прозрачное ценообразование", body: "Тестовая неделя с гарантией возврата средств. Все способы оплаты: РФ, международные карты, крипто.", popular: "Популярный", payment: "Принимаем: Российские карты • SWIFT/SEPA • PayPal • Криптовалюта • Безналичный расчёт для юрлиц" },
+  en: { badge: "Pricing", headline: "Transparent Pricing", body: "Trial week with money-back guarantee. All payment methods: Russian cards, international cards, crypto.", popular: "Popular", payment: "We accept: Russian cards • SWIFT/SEPA • PayPal • Cryptocurrency • Invoicing for businesses" },
+}
+
+export function PricingSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
+  const plans = plansByLocale[locale]
+  const head = pricingHeadByLocale[locale]
+  const contactHref = locale === "en" ? "/en/contact" : "#contact"
   return (
     <section id="pricing" className="section-padding">
       <div className="container mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 lg:mb-16">
           <Badge variant="outline" className="mb-3 sm:mb-4">
-            Тарифы
+            {head.badge}
           </Badge>
-          <h2 className="text-headline text-foreground mb-4 sm:mb-5 text-balance">Прозрачное ценообразование</h2>
+          <h2 className="text-headline text-foreground mb-4 sm:mb-5 text-balance">{head.headline}</h2>
           <p className="text-body-lg text-pretty">
-            Тестовая неделя с гарантией возврата средств. Все способы оплаты: РФ, международные карты, крипто.
+            {head.body}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 min-[1100px]:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <div key={index} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
               <Card
@@ -85,7 +51,7 @@ export function PricingSection() {
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <Badge className="bg-primary text-primary-foreground text-[10px] sm:text-xs">
                       <Sparkles className="w-3 h-3 mr-1" />
-                      Популярный
+                      {head.popular}
                     </Badge>
                   </div>
                 )}
@@ -117,7 +83,7 @@ export function PricingSection() {
                     className="w-full h-10 sm:h-11 text-sm"
                     variant={plan.popular ? "default" : "outline"}
                   >
-                    <Link href="#contact">
+                    <Link href={contactHref}>
                       {plan.cta}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
@@ -130,7 +96,7 @@ export function PricingSection() {
 
         <div className="mt-8 sm:mt-10 lg:mt-12 text-center">
           <p className="text-xs sm:text-sm text-muted-foreground">
-            Принимаем: Российские карты • SWIFT/SEPA • PayPal • Криптовалюта • Безналичный расчёт для юрлиц
+            {head.payment}
           </p>
         </div>
       </div>

@@ -1,29 +1,22 @@
 import { Award, Building2, Rocket, Globe } from "lucide-react"
 
-const badges = [
-  {
-    icon: Building2,
-    title: "Резиденты Сколково",
-    description: "Официальный статус с 2020",
-  },
-  {
-    icon: Award,
-    title: "Гранты и инвестиции",
-    description: "Проекты привлекли раунды",
-  },
-  {
-    icon: Rocket,
-    title: "AI-First подход",
-    description: "AI-агенты в разработке",
-  },
-  {
-    icon: Globe,
-    title: "5 офисов по миру",
-    description: "США, Россия, Турция, Сербия, Казахстан",
-  },
-]
+const badgesByLocale = {
+  ru: [
+    { icon: Building2, title: "Работаем от бизнес-задачи", description: "Сначала процесс и экономика, затем технология" },
+    { icon: Award, title: "Прозрачный ROI", description: "Финансовая модель и критерии окупаемости до старта" },
+    { icon: Rocket, title: "Управляемый AI-контур", description: "Доступы, логирование, качество ответов, SLA" },
+    { icon: Globe, title: "5 офисов по миру", description: "США, Россия, Турция, Сербия, Казахстан" },
+  ],
+  en: [
+    { icon: Building2, title: "Skolkovo Residents", description: "Official status since 2020" },
+    { icon: Award, title: "Grants & Investments", description: "Projects raised rounds" },
+    { icon: Rocket, title: "AI-First Approach", description: "AI agents in development" },
+    { icon: Globe, title: "5 Offices Worldwide", description: "USA, Russia, Turkey, Serbia, Kazakhstan" },
+  ],
+}
 
-export function TrustBadges() {
+export function TrustBadges({ locale = "ru" }: { locale?: "ru" | "en" }) {
+  const badges = badgesByLocale[locale]
   return (
     <section className="py-10 sm:py-12 md:py-16 border-y border-border bg-card/50">
       <div className="container mx-auto">
