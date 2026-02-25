@@ -7,9 +7,10 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react"
 interface GalleryWithLightboxProps {
   images: string[]
   title: string
+  locale?: "ru" | "en"
 }
 
-export function GalleryWithLightbox({ images, title }: GalleryWithLightboxProps) {
+export function GalleryWithLightbox({ images, title, locale = "ru" }: GalleryWithLightboxProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -74,7 +75,11 @@ export function GalleryWithLightbox({ images, title }: GalleryWithLightboxProps)
               <>
                 <Image
                   src={media || "/placeholder.svg"}
-                  alt={`${title} — скриншот ${index + 1}`}
+                  alt={
+                    locale === "ru"
+                      ? `${title} — скриншот проекта ${index + 1}`
+                      : `${title} — project screenshot ${index + 1}`
+                  }
                   fill
                   className="object-contain transition-transform duration-300 group-hover:scale-105"
                 />
@@ -102,7 +107,7 @@ export function GalleryWithLightbox({ images, title }: GalleryWithLightboxProps)
           <button
             onClick={closeLightbox}
             className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-            aria-label="Закрыть"
+            aria-label={locale === "ru" ? "Закрыть" : "Close"}
           >
             <X className="w-6 h-6 text-white" />
           </button>
@@ -112,7 +117,7 @@ export function GalleryWithLightbox({ images, title }: GalleryWithLightboxProps)
             <button
               onClick={(e) => { e.stopPropagation(); goToPrevious() }}
               className="absolute left-4 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              aria-label="Предыдущее изображение"
+              aria-label={locale === "ru" ? "Предыдущее изображение" : "Previous image"}
             >
               <ChevronLeft className="w-8 h-8 text-white" />
             </button>
@@ -126,7 +131,11 @@ export function GalleryWithLightbox({ images, title }: GalleryWithLightboxProps)
             {!isVideo(images[currentIndex]) && (
               <Image
                 src={images[currentIndex]}
-                alt={`${title} — скриншот ${currentIndex + 1}`}
+                alt={
+                  locale === "ru"
+                    ? `${title} — скриншот проекта ${currentIndex + 1}`
+                    : `${title} — project screenshot ${currentIndex + 1}`
+                }
                 fill
                 className="object-contain"
                 priority
@@ -139,7 +148,7 @@ export function GalleryWithLightbox({ images, title }: GalleryWithLightboxProps)
             <button
               onClick={(e) => { e.stopPropagation(); goToNext() }}
               className="absolute right-4 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              aria-label="Следующее изображение"
+              aria-label={locale === "ru" ? "Следующее изображение" : "Next image"}
             >
               <ChevronRight className="w-8 h-8 text-white" />
             </button>

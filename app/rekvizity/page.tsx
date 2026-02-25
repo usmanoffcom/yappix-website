@@ -4,9 +4,30 @@ import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "Реквизиты ООО «ЯППИКС»",
-  description: "Юридические и банковские реквизиты ООО «ЯППИКС».",
+  description:
+    "Официальные реквизиты ООО «ЯППИКС»: ОГРН, ИНН, КПП, юридический адрес, банковские реквизиты, система налогообложения, контактные данные и информация о генеральном директоре.",
+  keywords: [
+    "реквизиты ООО ЯППИКС",
+    "ИНН 9707055804",
+    "ОГРН 1267700040684",
+    "банковские реквизиты ЯППИКС",
+    "юридический адрес ЯППИКС",
+  ],
   alternates: {
     canonical: "https://yappix.ru/rekvizity",
+    languages: {
+      "ru-RU": "https://yappix.ru/rekvizity",
+      "en-US": "https://yappix.ru/en/rekvizity",
+    },
+  },
+  openGraph: {
+    title: "Реквизиты ООО «ЯППИКС»",
+    description:
+      "Юридические и банковские реквизиты ООО «ЯППИКС»: ИНН, ОГРН, адрес, банковские счета и контактная информация.",
+    url: "https://yappix.ru/rekvizity",
+    siteName: "YappiX",
+    type: "website",
+    locale: "ru_RU",
   },
 }
 

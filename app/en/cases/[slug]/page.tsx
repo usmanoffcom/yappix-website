@@ -196,7 +196,7 @@ export default async function CaseStudyEnPage({ params }: Props) {
           <section className="pb-12 sm:pb-16 md:pb-20">
             <div className="container mx-auto">
               <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8">Project gallery</h2>
-              <GalleryWithLightbox images={caseStudy.gallery} title={caseStudy.title} />
+              <GalleryWithLightbox images={caseStudy.gallery} title={caseStudy.title} locale="en" />
             </div>
           </section>
         )}

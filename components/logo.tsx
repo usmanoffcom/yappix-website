@@ -14,7 +14,7 @@ export function Logo({ className, width = 140, height = 40, href = "/" }: LogoPr
     <Link href={href} className={cn("inline-flex items-center shrink-0", className)}>
       <Image
         src="/images/logo-002.png"
-        alt="YappiX — IT-студия полного цикла"
+        alt="YappiX logo"
         width={width}
         height={height}
         priority

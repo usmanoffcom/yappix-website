@@ -4,9 +4,30 @@ import { FooterEn } from "@/components/footer-en"
 
 export const metadata: Metadata = {
   title: "Company Details — YAPPIX, LLC",
-  description: "Legal and banking details of YAPPIX, LLC (US).",
+  description:
+    "Official company details of YAPPIX, LLC: Entity ID, EIN, registered address, US bank account information, members, CEO and D-U-N-S number.",
+  keywords: [
+    "YAPPIX LLC details",
+    "YAPPIX EIN 38-4161656",
+    "YAPPIX Entity ID 202030310656",
+    "YAPPIX bank details",
+    "YAPPIX D-U-N-S 108915689",
+  ],
   alternates: {
     canonical: "https://yappix.ru/en/rekvizity",
+    languages: {
+      "ru-RU": "https://yappix.ru/rekvizity",
+      "en-US": "https://yappix.ru/en/rekvizity",
+    },
+  },
+  openGraph: {
+    title: "Company Details — YAPPIX, LLC",
+    description:
+      "Official legal and banking details of YAPPIX, LLC (US): EIN, Entity ID, address, bank details, members and CEO.",
+    url: "https://yappix.ru/en/rekvizity",
+    siteName: "YappiX",
+    type: "website",
+    locale: "en_US",
   },
 }
 
