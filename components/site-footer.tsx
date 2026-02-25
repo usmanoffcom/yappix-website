@@ -52,7 +52,7 @@ const footerLinksByLocale: Record<
     legal: [
       { label: "Privacy Policy", href: "/politika-konfidencialnosti" },
       { label: "Terms of Service", href: "/oferta" },
-      { label: "Company Details", href: "/rekvizity" },
+      { label: "Company Details", href: "/en/rekvizity" },
     ],
   },
 }
@@ -76,6 +76,7 @@ const textByLocale = {
     showSwitch: false,
     switchLabel: "🇷🇺 Russian version",
     switchHref: "/",
+    companyLine: 'ООО "ЯППИКС" ИНН: 9707055804',
   },
   en: {
     brand: "Full-cycle IT studio. Building complex products faster with AI.",
@@ -88,6 +89,7 @@ const textByLocale = {
     showSwitch: true,
     switchLabel: "🇷🇺 Russian version",
     switchHref: "/",
+    companyLine: "YAPPIX, LLC • EIN: 38-4161656",
   },
 } as const
 
@@ -210,7 +212,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground text-center sm:text-left" suppressHydrationWarning>
             © {new Date().getFullYear()} YappiX. {t.rights}
           </p>
-          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">YAPPIX, LLC • EIN: 38-4161656</p>
+          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">{t.companyLine}</p>
           {t.showSwitch && (
             <Link href={t.switchHref} className="text-[10px] sm:text-xs md:text-sm text-primary hover:underline">
               {t.switchLabel}
