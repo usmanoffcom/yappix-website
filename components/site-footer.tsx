@@ -59,7 +59,7 @@ const footerLinksByLocale: Record<
 
 const socialLinks: FooterLink[] = [
   { label: "Telegram", href: "https://t.me/yappix_bot", external: true },
-  { label: "VK", href: "https://vk.com/yappix", external: true },
+  { label: "VK", href: "https://vk.com/club57100", external: true },
   { label: "LinkedIn", href: "https://linkedin.com/company/yappix", external: true },
   { label: "GitHub", href: "https://github.com/yappix", external: true },
 ]

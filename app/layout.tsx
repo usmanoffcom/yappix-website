@@ -176,7 +176,7 @@ export default function RootLayout({
                   addressLocality: "Belgrade",
                 },
               ],
-              sameAs: ["https://t.me/yappix", "https://vk.com/yappix", "https://linkedin.com/company/yappix"],
+              sameAs: ["https://t.me/yappix", "https://vk.com/club57100", "https://linkedin.com/company/yappix"],
               areaServed: ["RU", "KZ", "BY", "UZ", "AM", "GE", "AZ"],
               serviceType: [
                 "Разработка веб-сайтов",
