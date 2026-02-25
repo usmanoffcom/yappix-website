@@ -232,6 +232,20 @@ const nextConfig = {
         destination: 'https://yappix.ru/:path*',
         permanent: true,
       },
+      // yappix.net → yappix.ru
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'yappix.net' }],
+        destination: 'https://yappix.ru/:path*',
+        permanent: true,
+      },
+      // yappix.studio → yappix.ru
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'yappix.studio' }],
+        destination: 'https://yappix.ru/:path*',
+        permanent: true,
+      },
       // Редирект старых URL если нужно
       {
         source: '/services',
