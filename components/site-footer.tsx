@@ -210,7 +210,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground text-center sm:text-left" suppressHydrationWarning>
             © {new Date().getFullYear()} YappiX. {t.rights}
           </p>
-          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">YAPPIX, LLC • EIN: 38-4161656 • VK: 57100</p>
+          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">YAPPIX, LLC • EIN: 38-4161656</p>
           {t.showSwitch && (
             <Link href={t.switchHref} className="text-[10px] sm:text-xs md:text-sm text-primary hover:underline">
               {t.switchLabel}

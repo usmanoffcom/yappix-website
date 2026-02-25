@@ -8,10 +8,10 @@ const badgesByLocale = {
     { icon: Globe, title: "5 офисов по миру", description: "США, Россия, Турция, Сербия, Казахстан" },
   ],
   en: [
-    { icon: Building2, title: "Skolkovo Residents", description: "Official status since 2020" },
-    { icon: Award, title: "Grants & Investments", description: "Projects raised rounds" },
-    { icon: Rocket, title: "AI-First Approach", description: "AI agents in development" },
-    { icon: Globe, title: "5 Offices Worldwide", description: "USA, Russia, Turkey, Serbia, Kazakhstan" },
+    { icon: Building2, title: "We start from the business task", description: "Process and economics first, then technology" },
+    { icon: Award, title: "Transparent ROI", description: "Financial model and payback criteria before we start" },
+    { icon: Rocket, title: "Controlled AI contour", description: "Access control, logging, answer quality, SLA" },
+    { icon: Globe, title: "5 offices worldwide", description: "USA, Russia, Turkey, Serbia, Kazakhstan" },
   ],
 }
 

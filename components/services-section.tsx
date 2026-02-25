@@ -34,9 +34,9 @@ const servicesByLocale = {
     { icon: ShieldCheck, title: "Кибербезопасность", description: "Аудит безопасности, пентесты, защита данных, соответствие стандартам", tags: ["Pentest", "GDPR", "152-ФЗ"], popular: false, href: "/kontakty?service=security" },
   ],
   en: [
-    { icon: Globe, title: "Web Development", description: "Corporate sites, e-commerce, web apps and portals of any complexity", tags: ["Next.js", "React", "Vue", "Node.js"], popular: true, href: "/en/contact?service=web" },
-    { icon: Smartphone, title: "Mobile Apps", description: "Native and cross-platform applications for iOS and Android", tags: ["React Native", "Flutter", "Swift", "Kotlin"], popular: true, href: "/en/contact?service=mobile" },
-    { icon: Bot, title: "AI & Chatbots", description: "Intelligent assistants, RAG systems, GPT and LLM integration", tags: ["ChatGPT", "Claude", "LangChain", "RAG"], popular: true, href: "/en/contact?service=ai" },
+    { icon: Globe, title: "Web development", description: "Corporate sites, portals and web services as a base for later process automation", tags: ["Next.js", "React", "Vue", "Node.js"], popular: true, href: "/en/contact?service=web" },
+    { icon: Smartphone, title: "Mobile apps", description: "Native and cross-platform apps with AI modules and integrations into operations", tags: ["React Native", "Flutter", "Swift", "Kotlin"], popular: true, href: "/en/contact?service=mobile" },
+    { icon: Bot, title: "AI process automation", description: "Knowledge-base search, document checks, feedback handling and department assistants with ROI calculation", tags: ["ChatGPT", "Claude", "LangChain", "RAG"], popular: true, href: "/en/contact?service=ai" },
     { icon: Cloud, title: "SaaS / PaaS", description: "Cloud platforms and services with subscription monetization", tags: ["Multi-tenant", "Billing", "Analytics"], popular: false, href: "/en/contact?service=saas" },
     { icon: CreditCard, title: "FinTech", description: "Payment systems, banking, trading platforms, crypto solutions", tags: ["PCI DSS", "KYC/AML", "Blockchain"], popular: false, href: "/en/contact?service=fintech" },
     { icon: Server, title: "DevOps", description: "CI/CD pipelines, containerization, cloud infrastructure, monitoring", tags: ["Docker", "Kubernetes", "AWS", "Terraform"], popular: false, href: "/en/contact?service=devops" },
@@ -51,7 +51,7 @@ const servicesByLocale = {
 
 const sectionByLocale = {
   ru: { badge: "Услуги", headline: "Сохраняем разработку, усиливаем автоматизацией", body: "Делаем сайты, приложения и SaaS, а также внедряем AI-контуры в процессы: от поиска информации до комплаенса и клиентского сервиса." },
-  en: { badge: "Services", headline: "Full-Cycle Digital Development", body: "From idea to scaling — we deliver projects of any complexity using modern technologies and AI tools" },
+  en: { badge: "Services", headline: "We keep development, we add automation", body: "We build sites, apps and SaaS, and deploy AI contours into processes: from information search to compliance and customer service." },
 }
 
 const popularLabel = { ru: "Популярно", en: "Popular" }

@@ -12,17 +12,17 @@ const stepsByLocale = {
     { icon: HeadphonesIcon, step: "05", title: "Поддержка по SLA", description: "Сопровождаем, улучшаем метрики и масштабируем только при подтверждённой экономике", duration: "Постоянно" },
   ],
   en: [
-    { icon: MessageSquare, step: "01", title: "Brief & Analysis", description: "Gather requirements, analyze market and competitors, create technical specification", duration: "1-2 days" },
-    { icon: FileSearch, step: "02", title: "Prototype & Design", description: "Create interface prototypes, approve design concept and UI kit", duration: "3-5 days" },
-    { icon: Code2, step: "03", title: "Development with AI", description: "Code with AI agents and deep coding, test each iteration", duration: "1-4 weeks" },
-    { icon: Rocket, step: "04", title: "Launch & Testing", description: "Deploy to production, run load testing", duration: "2-3 days" },
-    { icon: HeadphonesIcon, step: "05", title: "Support & Growth", description: "Monitor metrics, improve, scale functionality", duration: "Ongoing" },
+    { icon: MessageSquare, step: "01", title: "Process analysis", description: "Map current operations, bottlenecks, SLA and cost of manual work", duration: "1-2 days" },
+    { icon: FileSearch, step: "02", title: "ROI calculation", description: "Model implementation economics: current losses, target metrics and payback period", duration: "1-2 days" },
+    { icon: Code2, step: "03", title: "Architecture and implementation", description: "Design and deploy the digital solution or AI contour with quality control", duration: "2-6 weeks" },
+    { icon: Rocket, step: "04", title: "Integration and launch", description: "Connect CRM/ERP/API, set up roles, logging, monitoring and alerts", duration: "3-5 days" },
+    { icon: HeadphonesIcon, step: "05", title: "Support under SLA", description: "We maintain, improve metrics and scale only when economics is confirmed", duration: "Ongoing" },
   ],
 }
 
 const processHeadByLocale = {
   ru: { badge: "Формат работы", headline: "Сначала экономика, потом внедрение", body: "Запускаем AI-проекты только после расчёта ROI. Это снижает риски и делает результат измеримым для бизнеса." },
-  en: { badge: "Process", headline: "From Idea to Launch in 7 Days", body: "Our process is optimized with AI tools for maximum speed without losing quality. Trial week with money-back guarantee." },
+  en: { badge: "How we work", headline: "Economics first, then implementation", body: "We start AI projects only after ROI is calculated. That reduces risk and makes the outcome measurable for the business." },
 }
 
 const videoFallback = { ru: "Ваш браузер не поддерживает воспроизведение видео.", en: "Your browser does not support video playback." }
