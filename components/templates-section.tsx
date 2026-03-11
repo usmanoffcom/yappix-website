@@ -49,14 +49,14 @@ export function TemplatesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
                       loop
                       muted
                       playsInline
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
                     <Image
                       src={template.image || "/placeholder.svg"}
                       alt={template.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   )}
                   <div className="absolute top-4 left-4 px-3 py-1 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-medium rounded-full">
