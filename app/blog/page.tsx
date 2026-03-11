@@ -55,10 +55,10 @@ export default function BlogPage() {
         <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 Блог YappiX
               </h1>
-              <p className="text-xl text-muted-foreground text-pretty">
+              <p className="text-body-lg text-pretty">
                 Делимся опытом разработки, рассказываем о технологиях и AI. Практические руководства и реальные кейсы.
               </p>
             </div>
@@ -137,7 +137,7 @@ export default function BlogPage() {
         {/* Other Posts */}
         <section className="py-12 md:py-16 bg-card">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Все статьи</h2>
+            <h2 className="text-title text-foreground mb-8">Все статьи</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherPosts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
@@ -186,7 +186,7 @@ export default function BlogPage() {
         {/* Newsletter */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Подпишитесь на рассылку</h2>
+            <h2 className="text-headline text-foreground mb-4">Подпишитесь на рассылку</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Новые статьи, кейсы и новости из мира разработки — раз в неделю. Без спама.
             </p>

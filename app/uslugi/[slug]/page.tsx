@@ -793,10 +793,10 @@ export default async function ServicePage({ params }: { params: Params }) {
               Все услуги
             </Link>
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 {service.title}
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 text-pretty">{service.heroDescription}</p>
+              <p className="text-body-lg mb-8 text-pretty">{service.heroDescription}</p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
                   <Link href="/kontakty">Обсудить проект</Link>
@@ -819,7 +819,7 @@ export default async function ServicePage({ params }: { params: Params }) {
                 </svg>
                 Подход YappiX
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+              <h2 className="text-title text-foreground mb-4">
                 Сначала бизнес-метрики, затем внедрение технологий
               </h2>
               <p className="text-lg text-muted-foreground">
@@ -832,7 +832,7 @@ export default async function ServicePage({ params }: { params: Params }) {
         {/* Features */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Что мы делаем</h2>
+            <h2 className="text-headline text-foreground mb-12">Что мы делаем</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {service.features.map((feature, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-4 bg-card rounded-lg border border-border">
@@ -847,7 +847,7 @@ export default async function ServicePage({ params }: { params: Params }) {
         {/* Process */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Как мы работаем</h2>
+            <h2 className="text-headline text-foreground mb-12">Как мы работаем</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {service.process.map((step) => (
                 <div key={step.step} className="relative">
@@ -863,7 +863,7 @@ export default async function ServicePage({ params }: { params: Params }) {
         {/* Technologies */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Технологии</h2>
+            <h2 className="text-headline text-foreground mb-8">Технологии</h2>
             <div className="flex flex-wrap gap-3">
               {service.technologies.map((tech) => (
                 <span key={tech} className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg">
@@ -877,7 +877,7 @@ export default async function ServicePage({ params }: { params: Params }) {
         {/* Pricing */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Стоимость</h2>
+            <h2 className="text-headline text-foreground mb-12">Стоимость</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {service.pricing.map((plan) => (
                 <div key={plan.name} className="p-6 bg-background border border-border rounded-xl flex flex-col">
@@ -903,7 +903,7 @@ export default async function ServicePage({ params }: { params: Params }) {
         {/* FAQ */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Частые вопросы</h2>
+            <h2 className="text-headline text-foreground mb-12">Частые вопросы</h2>
             <div className="max-w-3xl space-y-6">
               {service.faq.map((item, idx) => (
                 <div key={idx} className="p-6 bg-card border border-border rounded-xl">
@@ -930,7 +930,7 @@ export default async function ServicePage({ params }: { params: Params }) {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-primary/5">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Готовы начать проект?</h2>
+            <h2 className="text-headline text-foreground mb-4">Готовы начать проект?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Оставьте заявку — обсудим задачу, предложим решение и назовём точные сроки и стоимость. Бесплатная консультация.
             </p>

@@ -96,11 +96,11 @@ export default async function CaseStudyPage({ params }: Props) {
                 <span className="text-caption">{caseStudy.client}</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 tracking-tight text-balance">
+              <h1 className="text-display text-foreground mb-4 sm:mb-6 text-balance">
                 {caseStudy.title}
               </h1>
 
-              <p className="text-body-lg mb-6 sm:mb-8">{caseStudy.fullDescription}</p>
+              <p className="text-body-lg mb-6 sm:mb-8 max-w-4xl">{caseStudy.fullDescription}</p>
 
               <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">

@@ -136,10 +136,10 @@ export default function TemplatesEnPage() {
                 <Download className="w-4 h-4" />
                 All templates are free
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 Templates & UI Kits
               </h1>
-              <p className="text-xl text-muted-foreground text-pretty">
+              <p className="text-body-lg text-pretty">
                 Free design resources for the community: UI kits, portfolio templates and concepts.
                 All projects are available for commercial use.
               </p>
@@ -185,7 +185,7 @@ export default function TemplatesEnPage() {
                   </div>
                   <div className={idx % 2 === 1 ? "lg:order-1" : ""}>
                     <span className="text-sm text-primary font-medium">{template.category}</span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
+                    <h2 className="text-headline text-foreground mt-2 mb-4">
                       {template.title}
                     </h2>
                     <p className="text-lg text-muted-foreground mb-6">{template.description}</p>
@@ -235,7 +235,7 @@ export default function TemplatesEnPage() {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-headline text-foreground mb-4">
               Want More Templates?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">

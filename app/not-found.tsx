@@ -50,7 +50,7 @@ export default function NotFound() {
             </div>
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-display text-foreground mb-4">
               Страница не найдена
             </h1>
 

@@ -97,7 +97,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               </ol>
             </nav>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-display text-foreground mb-4">
               {category.name}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl">

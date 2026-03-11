@@ -33,7 +33,7 @@ export default function PolitikaKonfidencialnostiPage() {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto prose prose-invert prose-lg prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-code:text-primary prose-pre:bg-card prose-pre:border prose-pre:border-border">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Политика конфиденциальности</h1>
+              <h1 className="text-display text-foreground mb-6">Политика конфиденциальности</h1>
               
               <div className="text-sm text-muted-foreground mb-8">
                 <p>Дата последнего обновления: {new Date().toLocaleDateString("ru-RU", { year: "numeric", month: "long", day: "numeric" })}</p>

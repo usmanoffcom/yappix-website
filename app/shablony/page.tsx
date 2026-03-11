@@ -137,17 +137,17 @@ export default function ShablonyPage() {
       <Header />
       <main className="pt-20">
         {/* Hero */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
+        <section className="py-16 md:py-24 pb-12 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full text-green-400 font-medium text-sm mb-6">
                 <Download className="w-4 h-4" />
                 Все шаблоны бесплатны
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 Шаблоны и UI Kits
               </h1>
-              <p className="text-xl text-muted-foreground text-pretty">
+              <p className="text-body-lg text-pretty">
                 Бесплатные дизайн-ресурсы для сообщества: UI kits, шаблоны портфолио и концепты. 
                 Все проекты доступны для коммерческого использования.
               </p>
@@ -193,7 +193,7 @@ export default function ShablonyPage() {
                   </div>
                   <div className={idx % 2 === 1 ? "lg:order-1" : ""}>
                     <span className="text-sm text-primary font-medium">{template.category}</span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
+                    <h2 className="text-headline text-foreground mt-2 mb-4">
                       {template.title}
                     </h2>
                     <p className="text-lg text-muted-foreground mb-6">{template.description}</p>
@@ -250,7 +250,7 @@ export default function ShablonyPage() {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-headline text-foreground mb-4">
               Хотите больше шаблонов?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">

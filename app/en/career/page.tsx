@@ -153,10 +153,10 @@ export default function CareerPageEn() {
         <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 Join the YappiX team
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 text-pretty">
+              <p className="text-body-lg mb-8 text-pretty">
                 We build products of the future with AI tools. We’re looking for people who want to work at the forefront of technology.
               </p>
               <Button size="lg" asChild>
@@ -169,7 +169,7 @@ export default function CareerPageEn() {
         {/* Benefits */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why YappiX</h2>
+            <h2 className="text-headline text-foreground mb-4">Why YappiX</h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
               We create conditions where talented people do the best work of their lives.
             </p>
@@ -188,7 +188,7 @@ export default function CareerPageEn() {
         {/* Vacancies */}
         <section id="vacancies" className="py-16 md:py-24 bg-card scroll-mt-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Open positions</h2>
+            <h2 className="text-headline text-foreground mb-4">Open positions</h2>
             <p className="text-lg text-muted-foreground mb-12">
               {vacancies.length} positions across different areas. Don’t see a fit? Get in touch.
             </p>
@@ -252,7 +252,7 @@ export default function CareerPageEn() {
         {/* Process */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Hiring process</h2>
+            <h2 className="text-headline text-foreground mb-12">Hiring process</h2>
             <div className="grid md:grid-cols-4 gap-6">
               {[
                 {
@@ -289,7 +289,7 @@ export default function CareerPageEn() {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-primary/5">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-headline text-foreground mb-4">
               Don’t see the right role?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">

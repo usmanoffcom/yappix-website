@@ -103,10 +103,10 @@ export default function ServicesEnPage() {
                 </svg>
                 AI-First Approach
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 IT Services with AI Acceleration
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 text-pretty">
+              <p className="text-body-lg mb-8 text-pretty">
                 Full-cycle digital product development with an AI-first approach. We use Cursor AI, v0.dev, ChatGPT — delivering 7-12x faster at the same quality. 10+ years of experience, 250+ projects.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -160,7 +160,7 @@ export default function ServicesEnPage() {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Can{"'"}t Find What You Need?</h2>
+            <h2 className="text-headline text-foreground mb-4">Can{"'"}t Find What You Need?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               We work with non-standard tasks. Tell us about your project — we{"'"}ll find a solution.
             </p>

@@ -82,10 +82,10 @@ export default function AboutEnPage() {
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+                <h1 className="text-display text-foreground mb-6 text-balance">
                   Building Digital Products Faster with AI
                 </h1>
-                <p className="text-xl text-muted-foreground mb-8 text-pretty">
+                <p className="text-body-lg mb-8 text-pretty">
                   YappiX — full-cycle IT studio. Skolkovo residents. We use AI tools for 7-12x development acceleration without compromising quality.
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -133,7 +133,7 @@ export default function AboutEnPage() {
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Founder</h2>
+              <h2 className="text-headline text-foreground mb-8">Founder</h2>
               <div className="grid md:grid-cols-[200px_1fr] gap-8 items-start">
                 <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted">
                   <Image
@@ -178,7 +178,7 @@ export default function AboutEnPage() {
         {/* Values */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Values</h2>
+            <h2 className="text-headline text-foreground mb-4">Our Values</h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
               Principles that guide our work with clients and within the team.
             </p>
@@ -196,7 +196,7 @@ export default function AboutEnPage() {
         {/* Timeline */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Our Journey</h2>
+            <h2 className="text-headline text-foreground mb-12">Our Journey</h2>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12">
               {/* Left side - Video */}
               <div className="md:sticky md:top-24 md:self-start">
@@ -262,7 +262,7 @@ export default function AboutEnPage() {
         {/* Clients */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Trusted By</h2>
+            <h2 className="text-headline text-foreground mb-4">Trusted By</h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
               We&apos;ve worked with top-100 Russian companies and international startups.
             </p>
@@ -279,7 +279,7 @@ export default function AboutEnPage() {
         {/* Why Us */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Why YappiX</h2>
+            <h2 className="text-headline text-foreground mb-12">Why YappiX</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 "10+ years of experience — proven solutions",
@@ -301,7 +301,7 @@ export default function AboutEnPage() {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-primary/5">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Ready to Collaborate?</h2>
+            <h2 className="text-headline text-foreground mb-4">Ready to Collaborate?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Tell us about your project — we&apos;ll suggest a solution and provide exact timelines.
             </p>

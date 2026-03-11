@@ -133,7 +133,7 @@ export default function DesignSystemPage() {
                 <p className="text-caption mb-3">.text-display</p>
                 <p className="text-display text-foreground">Display Text</p>
                 <p className="text-caption mt-3 font-mono">
-                  text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl / font-bold / tracking-tighter
+                  text-3xl sm:text-4xl md:text-5xl lg:text-6xl / font-bold / tracking-tight / leading-[1.08]
                 </p>
               </div>
 
@@ -141,7 +141,7 @@ export default function DesignSystemPage() {
                 <p className="text-caption mb-3">.text-headline</p>
                 <p className="text-headline text-foreground">Headline Text</p>
                 <p className="text-caption mt-3 font-mono">
-                  text-2xl sm:text-3xl md:text-4xl lg:text-5xl / font-bold / tracking-tight
+                  text-2xl sm:text-3xl md:text-4xl lg:text-5xl / font-bold / tracking-tight / leading-[1.12]
                 </p>
               </div>
 
@@ -149,7 +149,7 @@ export default function DesignSystemPage() {
                 <p className="text-caption mb-3">.text-title</p>
                 <p className="text-title text-foreground">Title Text</p>
                 <p className="text-caption mt-3 font-mono">
-                  text-xl sm:text-2xl md:text-3xl / font-semibold / tracking-tight
+                  text-xl sm:text-2xl md:text-3xl / font-semibold / tracking-tight / leading-[1.16]
                 </p>
               </div>
 
@@ -164,13 +164,13 @@ export default function DesignSystemPage() {
                 <p className="text-body-lg">
                   Large body text for introductions and important paragraphs. Uses muted foreground color.
                 </p>
-                <p className="text-caption mt-3 font-mono">text-base sm:text-lg md:text-xl / text-muted-foreground</p>
+                <p className="text-caption mt-3 font-mono">text-base sm:text-lg md:text-xl / text-muted-foreground / leading-[1.6]</p>
               </div>
 
               <div className="p-4 sm:p-6 bg-card rounded-lg border border-border">
                 <p className="text-caption mb-3">.text-body</p>
                 <p className="text-body">Regular body text for general content. Comfortable reading size.</p>
-                <p className="text-caption mt-3 font-mono">text-sm sm:text-base / text-muted-foreground</p>
+                <p className="text-caption mt-3 font-mono">text-sm sm:text-base / text-muted-foreground / leading-[1.6]</p>
               </div>
 
               <div className="p-4 sm:p-6 bg-card rounded-lg border border-border">
@@ -194,7 +194,7 @@ export default function DesignSystemPage() {
                   <CardDescription>Стандартные отступы для секций</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-caption font-mono">py-16 sm:py-20 md:py-24 lg:py-32</p>
+                  <p className="text-caption font-mono">py-14 sm:py-16 md:py-20 lg:py-24</p>
                   <div className="mt-4 h-32 bg-primary/10 rounded-lg flex items-center justify-center">
                     <span className="text-caption">Пример секции</span>
                   </div>
@@ -207,7 +207,7 @@ export default function DesignSystemPage() {
                   <CardDescription>Компактные отступы для секций</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-caption font-mono">py-12 sm:py-16 md:py-20</p>
+                  <p className="text-caption font-mono">py-10 sm:py-12 md:py-16</p>
                   <div className="mt-4 h-24 bg-primary/10 rounded-lg flex items-center justify-center">
                     <span className="text-caption">Компактная секция</span>
                   </div>
@@ -220,7 +220,7 @@ export default function DesignSystemPage() {
                   <CardDescription>Контейнер с адаптивными отступами</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-caption font-mono">px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12</p>
+                  <p className="text-caption font-mono">px-4 sm:px-6 md:px-8 lg:px-8 xl:px-10 2xl:px-12</p>
                 </CardContent>
               </Card>
 

@@ -22,7 +22,7 @@ export function TrustBadges({ locale = "ru" }: { locale?: "ru" | "en" }) {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {badges.map((badge, index) => (
-            <div key={index} className="flex items-center gap-3 sm:gap-4">
+            <div key={index} className="flex items-start gap-3 sm:gap-4">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <badge.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </div>

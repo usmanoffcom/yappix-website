@@ -39,7 +39,7 @@ export default function RekvizityPage() {
         <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">Реквизиты компании</h1>
+              <h1 className="text-display text-foreground mb-6 text-balance">Реквизиты компании</h1>
               <div className="p-6 md:p-8 bg-card border border-border rounded-2xl space-y-6 text-sm md:text-base text-foreground leading-relaxed">
                 <div>
                   <p>Общество с ограниченной ответственностью «ЯППИКС»</p>

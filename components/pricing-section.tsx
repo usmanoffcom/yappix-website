@@ -41,7 +41,7 @@ export function PricingSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 min-[1100px]:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <div key={index} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
               <Card

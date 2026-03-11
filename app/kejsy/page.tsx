@@ -188,13 +188,13 @@ export default function CasesPage() {
       <Header />
       <main className="pt-20">
         {/* Hero */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
+        <section className="pt-16 md:pt-24 pb-12 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 Наши кейсы
               </h1>
-              <p className="text-xl text-muted-foreground text-pretty">
+              <p className="text-body-lg text-pretty">
                 250+ проектов в разных отраслях: от стартапов до корпораций из топ-100. Показываем реальные результаты с
                 метриками.
               </p>
@@ -309,7 +309,7 @@ export default function CasesPage() {
         {/* CTA */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Хотите такой же результат?</h2>
+            <h2 className="text-headline text-foreground mb-4">Хотите такой же результат?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Обсудим ваш проект и покажем релевантные кейсы из вашей отрасли.
             </p>

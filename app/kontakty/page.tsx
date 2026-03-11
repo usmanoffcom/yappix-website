@@ -115,13 +115,13 @@ export default function ContactsPage() {
       <Header />
       <main className="pt-20">
         {/* Hero */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
+        <section className="py-16 md:py-24 md:pb-12 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 Свяжитесь с нами
               </h1>
-              <p className="text-xl text-muted-foreground text-pretty">
+              <p className="text-body-lg text-pretty">
                 Расскажите о вашем проекте — бесплатно проконсультируем, оценим сроки и стоимость. Отвечаем в течение 2
                 часов.
               </p>
@@ -165,7 +165,7 @@ export default function ContactsPage() {
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Form */}
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Оставить заявку</h2>
+                <h2 className="text-title text-foreground mb-6">Оставить заявку</h2>
                 <form className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -260,7 +260,7 @@ export default function ContactsPage() {
 
               {/* Offices */}
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Наши офисы</h2>
+                <h2 className="text-title text-foreground mb-6">Наши офисы</h2>
                 <div className="space-y-4">
                   {offices.map((office) => (
                     <div key={office.city} className="p-6 bg-card border border-border rounded-xl">
@@ -314,7 +314,7 @@ export default function ContactsPage() {
         {/* FAQ */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Часто задаваемые вопросы</h2>
+            <h2 className="text-title text-foreground mb-8">Часто задаваемые вопросы</h2>
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
               {[
                 {

@@ -130,13 +130,13 @@ export default function CareerPage() {
       <Header />
       <main className="pt-20">
         {/* Hero */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
+        <section className="py-16 md:py-24 pb-12 md:pb-12 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 Присоединяйтесь к команде YappiX
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 text-pretty">
+              <p className="text-body-lg mb-8 text-pretty">
                 Создаём продукты будущего с AI-инструментами. Ищем тех, кто хочет работать на передовой технологий.
               </p>
               <Button size="lg" asChild>
@@ -149,7 +149,7 @@ export default function CareerPage() {
         {/* Benefits */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Почему YappiX</h2>
+            <h2 className="text-headline text-foreground mb-4">Почему YappiX</h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
               Создаём условия, в которых талантливые люди делают лучшую работу в своей жизни.
             </p>
@@ -168,7 +168,7 @@ export default function CareerPage() {
         {/* Vacancies */}
         <section id="vacancies" className="py-16 md:py-24 bg-card scroll-mt-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Открытые вакансии</h2>
+            <h2 className="text-headline text-foreground mb-4">Открытые вакансии</h2>
             <p className="text-lg text-muted-foreground mb-12">
               {vacancies.length} позиций в разных направлениях. Не нашли подходящую? Напишите нам.
             </p>
@@ -226,7 +226,7 @@ export default function CareerPage() {
         {/* Process */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Как проходит найм</h2>
+            <h2 className="text-headline text-foreground mb-12">Как проходит найм</h2>
             <div className="grid md:grid-cols-4 gap-6">
               {[
                 { step: "01", title: "Заявка", description: "Отправьте резюме или ссылку на GitHub/LinkedIn" },
@@ -247,7 +247,7 @@ export default function CareerPage() {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-primary/5">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Не нашли подходящую вакансию?</h2>
+            <h2 className="text-headline text-foreground mb-4">Не нашли подходящую вакансию?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Отправьте резюме — мы свяжемся, когда появится подходящая позиция.
             </p>

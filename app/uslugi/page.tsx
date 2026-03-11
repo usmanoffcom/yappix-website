@@ -134,10 +134,10 @@ export default function UslugiPage() {
                 </svg>
                 AI-First подход
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 IT-услуги с AI-ускорением
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 text-pretty">
+              <p className="text-body-lg mb-8 text-pretty">
                 Полный цикл разработки цифровых продуктов с AI-first подходом. Используем Cursor AI, v0.dev, ChatGPT — 
                 разрабатываем в 7-12 раз быстрее при том же качестве. 10+ лет опыта, 250+ проектов.
               </p>
@@ -194,7 +194,7 @@ export default function UslugiPage() {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Не нашли нужную услугу?</h2>
+            <h2 className="text-headline text-foreground mb-4">Не нашли нужную услугу?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Мы работаем с нестандартными задачами. Расскажите о вашем проекте — найдём решение.
             </p>

@@ -97,10 +97,10 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+                <h1 className="text-display text-foreground mb-6 text-balance">
                   Создаём цифровые продукты быстрее с AI
                 </h1>
-                <p className="text-xl text-muted-foreground mb-8 text-pretty">
+                <p className="text-body-lg mb-8 text-pretty">
                   YappiX — IT-студия полного цикла. Резиденты Сколково. Используем AI-инструменты для 7-12-кратного
                   ускорения разработки без потери качества.
                 </p>
@@ -149,7 +149,7 @@ export default function AboutPage() {
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Основатель</h2>
+              <h2 className="text-headline text-foreground mb-8">Основатель</h2>
               <div className="grid md:grid-cols-[200px_1fr] gap-8 items-start">
                 <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted">
                   <Image
@@ -196,7 +196,7 @@ export default function AboutPage() {
         {/* Values */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Наши ценности</h2>
+            <h2 className="text-headline text-foreground mb-4">Наши ценности</h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
               Принципы, которыми мы руководствуемся в работе с клиентами и внутри команды.
             </p>
@@ -214,7 +214,7 @@ export default function AboutPage() {
         {/* Timeline */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Наш путь</h2>
+            <h2 className="text-headline text-foreground mb-12">Наш путь</h2>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12">
               {/* Left side - Fixed video and description */}
               <div className="md:sticky md:top-24 md:self-start">
@@ -301,7 +301,7 @@ export default function AboutPage() {
         {/* Clients */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Нам доверяют</h2>
+            <h2 className="text-headline text-foreground mb-4">Нам доверяют</h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
               Работали с компаниями из топ-100 России и международными стартапами.
             </p>
@@ -327,7 +327,7 @@ export default function AboutPage() {
         {/* Why Us */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Почему YappiX</h2>
+            <h2 className="text-headline text-foreground mb-12">Почему YappiX</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 "10+ лет опыта — многолетний опыт разработки и проверенные решения",
@@ -349,7 +349,7 @@ export default function AboutPage() {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-primary/5">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Готовы к сотрудничеству?</h2>
+            <h2 className="text-headline text-foreground mb-4">Готовы к сотрудничеству?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Расскажите о вашем проекте — предложим решение и назовём точные сроки.
             </p>

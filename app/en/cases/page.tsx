@@ -34,10 +34,10 @@ export default function CasesEnPage() {
         <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              <h1 className="text-display text-foreground mb-6 text-balance">
                 Our Case Studies
               </h1>
-              <p className="text-xl text-muted-foreground text-pretty">
+              <p className="text-body-lg text-pretty">
                 250+ projects across industries: from startups to top-100 corporations. Real results with metrics.
               </p>
             </div>
@@ -151,7 +151,7 @@ export default function CasesEnPage() {
         {/* CTA */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Want Similar Results?</h2>
+            <h2 className="text-headline text-foreground mb-4">Want Similar Results?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Let{"'"}s discuss your project and we{"'"}ll show relevant case studies from your industry.
             </p>
