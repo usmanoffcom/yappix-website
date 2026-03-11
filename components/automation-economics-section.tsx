@@ -79,8 +79,8 @@ export function AutomationEconomicsSection({ locale = "ru" }: { locale?: "ru" | 
           ))}
         </div>
 
-        <div className="grid min-[1100px]:grid-cols-2 items-start gap-6 mb-8">
-          <div className="p-5 rounded-xl border border-border bg-background">
+        <div className="grid min-[1100px]:grid-cols-3 items-start gap-6 mb-8">
+          <div className="min-[1100px]:col-span-1 p-5 rounded-xl border border-border bg-background">
             <h3 className="text-lg font-semibold text-foreground mb-4">{t.contourTitle}</h3>
             <ul className="space-y-2">
               {t.contour.map((item) => (
@@ -91,7 +91,7 @@ export function AutomationEconomicsSection({ locale = "ru" }: { locale?: "ru" | 
             </ul>
           </div>
 
-          <div className="p-5 rounded-xl border border-primary/30 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
+          <div className="min-[1100px]:col-span-2 p-5 rounded-xl border border-primary/30 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
             <h3 className="text-lg font-semibold text-foreground mb-4">{t.roiTitle}</h3>
             <div className="grid xl:grid-cols-2 gap-4">
               <div className="rounded-lg border border-border/70 bg-background/80 p-4">
