@@ -63,13 +63,15 @@ const templates = [
       "Адаптивный дизайн",
       "Бесплатно для коммерческого использования",
     ],
+    productUrl: "https://www.figma.com/community/file/1351548503843486460/bankist-mobile-app-ui-kit",
+    productLabel: "Скачать в Figma",
   },
   {
     slug: "projectorium-cicd",
     title: "Projectorium — Landing для CI/CD платформы",
     category: "Framer Template",
     description: "Современный лендинг для DevOps-продукта с 3D визуализацией в Spline. Полностью анимированный в Framer.",
-    image: "/images/usmanoff-cases/1765783956944-p1.png",
+    image: "/m1fjlIfFhD1Rbz3LZBm0KPjCnIc.png",
     stats: [
       { label: "3D Элементы", value: "Spline" },
       { label: "Анимации", value: "15+" },
@@ -82,6 +84,8 @@ const templates = [
       "Адаптивная версия",
       "Готов к деплою",
     ],
+    productUrl: "https://yappix.lemonsqueezy.com/checkout",
+    productLabel: "Скачать шаблон",
   },
   {
     slug: "minimal-portfolio-template",
@@ -101,6 +105,8 @@ const templates = [
       "SEO-оптимизированный",
       "Open source на GitHub",
     ],
+    productUrl: "https://yappix.lemonsqueezy.com/checkout",
+    productLabel: "Скачать шаблон",
   },
   {
     slug: "yandex-go-scooters",
@@ -120,6 +126,8 @@ const templates = [
       "Экран активной поездки",
       "Бренд-стиль Яндекса",
     ],
+    productUrl: "https://www.figma.com/community/file/1353445766809808189/yandex-go-scooters",
+    productLabel: "Скачать в Figma",
   },
 ]
 
@@ -167,14 +175,15 @@ export default function ShablonyPage() {
                           loop
                           muted
                           playsInline
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="absolute inset-0 w-full h-full object-cover object-top"
                         />
                       ) : (
                         <Image
                           src={template.image}
                           alt={template.title}
                           fill
-                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 574px"
+                          className="object-cover object-top"
                         />
                       )}
                       <div className="absolute top-4 left-4 px-3 py-1 bg-green-500/90 backdrop-blur-sm text-white text-xs font-medium rounded-full">
@@ -215,12 +224,22 @@ export default function ShablonyPage() {
                       ))}
                     </div>
 
-                    <Button size="lg" asChild>
-                      <Link href={`/kejsy/${template.slug}`}>
-                        Посмотреть детали
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Link>
-                    </Button>
+                    <div className="flex flex-wrap gap-3">
+                      <Button size="lg" asChild>
+                        <Link href={`/kejsy/${template.slug}`}>
+                          Посмотреть детали
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
+                      {template.productUrl && (
+                        <Button size="lg" variant="outline" asChild>
+                          <a href={template.productUrl} target="_blank" rel="noopener noreferrer">
+                            {template.productLabel ?? "Скачать шаблон"}
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </a>
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </article>
               ))}
@@ -240,7 +259,7 @@ export default function ShablonyPage() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button size="lg" variant="outline" asChild>
-                <Link href="https://yappix.lemonsqueezy.com/" target="_blank" rel="noopener noreferrer">
+                <Link href="https://yappix.lemonsqueezy.com/checkout" target="_blank" rel="noopener noreferrer">
                   LemonSqueezy Store
                   <ExternalLink className="w-4 h-4 ml-2" />
                 </Link>

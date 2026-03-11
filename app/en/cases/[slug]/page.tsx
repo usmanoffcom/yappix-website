@@ -7,7 +7,7 @@ import { FooterEn } from "@/components/footer-en"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, ArrowRight, Clock, Users, Calendar, Quote } from "lucide-react"
+import { ArrowLeft, ArrowRight, Clock, Users, Calendar, Quote, ExternalLink } from "lucide-react"
 import { getCaseBySlugEn, getAllCaseSlugsEn, casesDataEn } from "@/lib/cases-data-en"
 import { GalleryWithLightbox } from "@/components/gallery-lightbox"
 
@@ -88,7 +88,7 @@ export default async function CaseStudyEnPage({ params }: Props) {
 
         <section className="pb-12 sm:pb-16 md:pb-20">
           <div className="container mx-auto">
-            <div className="max-w-4xl">
+            <div>
               <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
                 <Badge variant="default">{caseStudy.category}</Badge>
                 <span className="text-caption">{caseStudy.client}</span>
@@ -98,7 +98,7 @@ export default async function CaseStudyEnPage({ params }: Props) {
                 {caseStudy.title}
               </h1>
 
-              <p className="text-body-lg max-w-3xl mb-6 sm:mb-8">{caseStudy.fullDescription}</p>
+              <p className="text-body-lg mb-6 sm:mb-8">{caseStudy.fullDescription}</p>
 
               <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
@@ -114,6 +114,14 @@ export default async function CaseStudyEnPage({ params }: Props) {
                   <span>{caseStudy.year}</span>
                 </div>
               </div>
+              {caseStudy.projectUrl && (
+                <Button size="lg" className="mt-6 gap-2" asChild>
+                  <a href={caseStudy.projectUrl} target="_blank" rel="noopener noreferrer">
+                    View project
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
         </section>

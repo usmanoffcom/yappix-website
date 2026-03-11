@@ -20,6 +20,13 @@ export interface CaseStudy {
   duration: string
   team: string
   year: string
+  /** Ссылка на живой проект (кнопка «Смотреть проект») */
+  projectUrl?: string
+  /** Элемент из раздела «Шаблоны» — кнопка «Назад» ведёт на /shablony */
+  isTemplate?: boolean
+  /** Ссылка на скачивание (Figma / LemonSqueezy) — кнопка в карточке деталей */
+  productUrl?: string
+  productLabel?: string
 }
 
 export const casesData: CaseStudy[] = [
@@ -244,6 +251,7 @@ export const casesData: CaseStudy[] = [
     duration: "3 месяца",
     team: "4 человека",
     year: "2024",
+    projectUrl: "https://myolive.shop/",
   },
   {
     slug: "my-buyer-crm",
@@ -407,9 +415,9 @@ export const casesData: CaseStudy[] = [
       "Деплой приложений требует знаний DevOps: настройка серверов, CI/CD, мониторинг. Существующие решения либо слишком сложные (AWS), либо ограниченные (Heroku). Разработчикам нужна простая платформа для быстрого деплоя.",
     solution:
       "Создал концепцию платформы с упрощённым интерфейсом для деплоя за 3 клика. Разработал дизайн-систему, лендинг с 3D визуализацией в Spline для демонстрации процесса деплоя и реализовал в Framer.",
-    image: "/images/usmanoff-cases/1765783956944-p1.png",
+    image: "/m1fjlIfFhD1Rbz3LZBm0KPjCnIc.png",
     gallery: [
-      "/images/usmanoff-cases/1765783956944-p1.png",
+      "/m1fjlIfFhD1Rbz3LZBm0KPjCnIc.png",
       "/images/usmanoff-cases/1765784900404-p2.png",
       "/images/usmanoff-cases/1765785752006-p3.png",
     ],
@@ -423,6 +431,9 @@ export const casesData: CaseStudy[] = [
     duration: "2 месяца",
     team: "1 человек",
     year: "2024",
+    isTemplate: true,
+    productUrl: "https://yappix.lemonsqueezy.com/checkout",
+    productLabel: "Скачать шаблон",
   },
   {
     slug: "minimal-portfolio-template",
@@ -448,6 +459,9 @@ export const casesData: CaseStudy[] = [
     duration: "1 месяц",
     team: "1 человек",
     year: "2024",
+    isTemplate: true,
+    productUrl: "https://yappix.lemonsqueezy.com/checkout",
+    productLabel: "Скачать шаблон",
   },
   {
     slug: "bankist-ui-kit",
@@ -473,6 +487,9 @@ export const casesData: CaseStudy[] = [
     duration: "1 месяц",
     team: "1 человек",
     year: "2021",
+    isTemplate: true,
+    productUrl: "https://www.figma.com/community/file/1351548503843486460/bankist-mobile-app-ui-kit",
+    productLabel: "Скачать в Figma",
   },
   {
     slug: "yandex-go-scooters",
@@ -498,6 +515,9 @@ export const casesData: CaseStudy[] = [
     duration: "2 недели",
     team: "1 человек",
     year: "2020",
+    isTemplate: true,
+    productUrl: "https://www.figma.com/community/file/1353445766809808189/yandex-go-scooters",
+    productLabel: "Скачать в Figma",
   },
 ]
 

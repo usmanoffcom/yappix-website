@@ -97,12 +97,17 @@ export default function AboutEnPage() {
                   </Button>
                 </div>
               </div>
-              <div className="relative aspect-square lg:aspect-auto lg:h-[500px]">
-                <Image
-                  src="/placeholder.svg?height=500&width=500"
-                  alt="YappiX Team"
-                  fill
-                  className="object-cover rounded-2xl"
+              <div className="relative aspect-square lg:aspect-auto lg:h-[500px] rounded-2xl overflow-hidden bg-black/50">
+                <video
+                  src="/yappix_2026.mp4"
+                  controls
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-contain"
+                  aria-label="YappiX Team — video"
                 />
               </div>
             </div>
@@ -132,9 +137,10 @@ export default function AboutEnPage() {
               <div className="grid md:grid-cols-[200px_1fr] gap-8 items-start">
                 <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted">
                   <Image
-                    src="/placeholder.svg?height=200&width=200"
+                    src="/images/image1.png"
                     alt="Renat Usmanov"
                     fill
+                    sizes="200px"
                     className="object-cover"
                   />
                 </div>

@@ -55,7 +55,7 @@ export function ProcessSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
               playsInline
               crossOrigin="anonymous"
             >
-              <source src="/Yappix_%20AI-инженерия%20будущего_720p_caption.mp4" type="video/mp4" />
+              <source src="/YappiX.mp4" type="video/mp4" />
               <track kind="captions" />
               {fallback}
             </video>

@@ -223,6 +223,7 @@ export const casesDataEn: CaseStudy[] = [
     duration: "3 months",
     team: "4 people",
     year: "2024",
+    projectUrl: "https://myolive.shop/",
   },
   {
     slug: "my-buyer-crm",
@@ -388,9 +389,9 @@ export const casesDataEn: CaseStudy[] = [
       "Deploying apps requires DevOps knowledge: server setup, CI/CD, monitoring. Existing options are either complex (AWS) or limited (Heroku). Developers need a simple platform for quick deploy.",
     solution:
       "Designed a platform concept with a simple 3-click deploy UI. Created the design system, landing with 3D in Spline to show the deploy flow, and implemented it in Framer.",
-    image: "/images/usmanoff-cases/1765783956944-p1.png",
+    image: "/m1fjlIfFhD1Rbz3LZBm0KPjCnIc.png",
     gallery: [
-      "/images/usmanoff-cases/1765783956944-p1.png",
+      "/m1fjlIfFhD1Rbz3LZBm0KPjCnIc.png",
       "/images/usmanoff-cases/1765784900404-p2.png",
       "/images/usmanoff-cases/1765785752006-p3.png",
     ],

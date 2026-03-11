@@ -6,13 +6,13 @@ import { ArrowRight, Download, ExternalLink } from "lucide-react"
 const templatesByLocale = {
   ru: [
     { slug: "bankist-ui-kit", title: "Bankist UI Kit", description: "Бесплатный UI Kit для банковских мобильных приложений", image: "/images/usmanoff-cases/1765794633140-vviamyylrzvr3japyiye.mp4", stats: [{ label: "Лайков", value: "2.5K+" }, { label: "Скачиваний", value: "8K+" }], tags: ["Figma", "UI Kit", "Mobile"], link: "/shablony" },
-    { slug: "projectorium-cicd", title: "Projectorium", description: "CI/CD платформа с 3D визуализацией в Spline", image: "/images/usmanoff-cases/1765783956944-p1.png", stats: [{ label: "Технологии", value: "Node.js + Python" }, { label: "3D", value: "Spline" }], tags: ["Framer", "3D", "DevOps"], link: "/shablony" },
+    { slug: "projectorium-cicd", title: "Projectorium", description: "CI/CD платформа с 3D визуализацией в Spline", image: "/m1fjlIfFhD1Rbz3LZBm0KPjCnIc.png", stats: [{ label: "Технологии", value: "Node.js + Python" }, { label: "3D", value: "Spline" }], tags: ["Framer", "3D", "DevOps"], link: "/shablony" },
     { slug: "minimal-portfolio-template", title: "Minimal Portfolio", description: "Минималистичное портфолио для разработчиков", image: "/images/usmanoff-cases/1765793571452-5LXgMXEyVXeZH3OcVnyj6ZWrGY.png", stats: [{ label: "Скачиваний", value: "1K+" }, { label: "Форматы", value: "3 версии" }], tags: ["Next.js", "Framer", "Figma"], link: "/shablony" },
     { slug: "yandex-go-scooters", title: "Yandex Go Scooters", description: "Концепт приложения для аренды самокатов Yandex Go", image: "/images/usmanoff-cases/1765794832056-CEcpn8RuVyfTk0ujNHo9IeBgI6M.png", stats: [{ label: "Просмотров", value: "15K+" }, { label: "Дубликаций", value: "3K+" }], tags: ["Figma", "Mobile", "Transport"], link: "/shablony" },
   ],
   en: [
     { slug: "bankist-ui-kit", title: "Bankist UI Kit", description: "Free UI kit for banking mobile apps", image: "/images/usmanoff-cases/1765794633140-vviamyylrzvr3japyiye.mp4", stats: [{ label: "Likes", value: "2.5K+" }, { label: "Downloads", value: "8K+" }], tags: ["Figma", "UI Kit", "Mobile"], link: "/en/templates" },
-    { slug: "projectorium-cicd", title: "Projectorium", description: "CI/CD platform with 3D visualization in Spline", image: "/images/usmanoff-cases/1765783956944-p1.png", stats: [{ label: "Stack", value: "Node.js + Python" }, { label: "3D", value: "Spline" }], tags: ["Framer", "3D", "DevOps"], link: "/en/templates" },
+    { slug: "projectorium-cicd", title: "Projectorium", description: "CI/CD platform with 3D visualization in Spline", image: "/m1fjlIfFhD1Rbz3LZBm0KPjCnIc.png", stats: [{ label: "Stack", value: "Node.js + Python" }, { label: "3D", value: "Spline" }], tags: ["Framer", "3D", "DevOps"], link: "/en/templates" },
     { slug: "minimal-portfolio-template", title: "Minimal Portfolio", description: "Minimal portfolio template for developers", image: "/images/usmanoff-cases/1765793571452-5LXgMXEyVXeZH3OcVnyj6ZWrGY.png", stats: [{ label: "Downloads", value: "1K+" }, { label: "Formats", value: "3 versions" }], tags: ["Next.js", "Framer", "Figma"], link: "/en/templates" },
     { slug: "yandex-go-scooters", title: "Yandex Go Scooters", description: "Scooter rental app concept for Yandex Go", image: "/images/usmanoff-cases/1765794832056-CEcpn8RuVyfTk0ujNHo9IeBgI6M.png", stats: [{ label: "Views", value: "15K+" }, { label: "Duplicates", value: "3K+" }], tags: ["Figma", "Mobile", "Transport"], link: "/en/templates" },
   ],
@@ -90,7 +90,7 @@ export function TemplatesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
         </div>
         <div className="mt-8 text-center">
           <Button variant="outline" size="lg" className="gap-2 bg-transparent" asChild>
-            <Link href="https://yappix.lemonsqueezy.com/" target="_blank" rel="noopener noreferrer">
+            <Link href="https://yappix.lemonsqueezy.com/checkout" target="_blank" rel="noopener noreferrer">
               {head.cta}
               <ExternalLink className="w-4 h-4" />
             </Link>

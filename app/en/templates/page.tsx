@@ -69,7 +69,7 @@ const templates = [
     title: "Projectorium — CI/CD Platform Landing",
     category: "Framer Template",
     description: "Modern landing for a DevOps product with 3D visualization in Spline. Fully animated in Framer.",
-    image: "/images/usmanoff-cases/1765783956944-p1.png",
+    image: "/m1fjlIfFhD1Rbz3LZBm0KPjCnIc.png",
     stats: [
       { label: "3D Elements", value: "Spline" },
       { label: "Animations", value: "15+" },
@@ -167,14 +167,15 @@ export default function TemplatesEnPage() {
                           loop
                           muted
                           playsInline
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="absolute inset-0 w-full h-full object-cover object-top"
                         />
                       ) : (
                         <Image
                           src={template.image}
                           alt={template.title}
                           fill
-                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 574px"
+                          className="object-cover object-top"
                         />
                       )}
                       <div className="absolute top-4 left-4 px-3 py-1 bg-green-500/90 backdrop-blur-sm text-white text-xs font-medium rounded-full">
@@ -243,7 +244,7 @@ export default function TemplatesEnPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <Button size="lg" variant="outline" asChild>
                 <Link
-                  href="https://yappix.lemonsqueezy.com/"
+                  href="https://yappix.lemonsqueezy.com/checkout"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

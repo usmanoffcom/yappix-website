@@ -241,8 +241,10 @@ export function SiteHeader({ locale }: { locale: Locale }) {
               className="w-full sm:w-[380px] bg-background border-l border-border/50 p-0 flex flex-col"
             >
               <SheetHeader className="px-6 py-5 border-b border-border/50">
-                <SheetTitle className="flex items-center justify-between">
-                  <Logo href={t.logoHref} />
+                <SheetTitle asChild>
+                  <div className="flex items-center justify-between">
+                    <Logo href={t.logoHref} />
+                  </div>
                 </SheetTitle>
               </SheetHeader>
 

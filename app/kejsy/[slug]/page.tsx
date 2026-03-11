@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, ArrowRight, Clock, Users, Calendar, Quote } from "lucide-react"
+import { ArrowLeft, ArrowRight, Clock, Users, Calendar, Quote, ExternalLink } from "lucide-react"
 import { getCaseBySlug, getAllCaseSlugs, casesData } from "@/lib/cases-data"
 import { GalleryWithLightbox } from "@/components/gallery-lightbox"
 
@@ -80,9 +80,9 @@ export default async function CaseStudyPage({ params }: Props) {
         {/* Back Button */}
         <div className="container mx-auto py-6 sm:py-8">
           <Button variant="ghost" size="sm" asChild className="gap-2 text-muted-foreground hover:text-foreground">
-            <Link href="/kejsy">
+            <Link href={caseStudy.isTemplate ? "/shablony" : "/kejsy"}>
               <ArrowLeft className="w-4 h-4" />
-              Все кейсы
+              {caseStudy.isTemplate ? "Все шаблоны" : "Все кейсы"}
             </Link>
           </Button>
         </div>
@@ -90,7 +90,7 @@ export default async function CaseStudyPage({ params }: Props) {
         {/* Hero */}
         <section className="pb-12 sm:pb-16 md:pb-20">
           <div className="container mx-auto">
-            <div className="max-w-4xl">
+            <div>
               <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
                 <Badge variant="default">{caseStudy.category}</Badge>
                 <span className="text-caption">{caseStudy.client}</span>
@@ -100,7 +100,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 {caseStudy.title}
               </h1>
 
-              <p className="text-body-lg max-w-3xl mb-6 sm:mb-8">{caseStudy.fullDescription}</p>
+              <p className="text-body-lg mb-6 sm:mb-8">{caseStudy.fullDescription}</p>
 
               <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
@@ -115,6 +115,24 @@ export default async function CaseStudyPage({ params }: Props) {
                   <Calendar className="w-4 h-4 text-primary" />
                   <span>{caseStudy.year}</span>
                 </div>
+              </div>
+              <div className="flex flex-wrap gap-3 mt-6">
+                {caseStudy.projectUrl && (
+                  <Button size="lg" className="gap-2" asChild>
+                    <a href={caseStudy.projectUrl} target="_blank" rel="noopener noreferrer">
+                      Смотреть проект
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </Button>
+                )}
+                {caseStudy.productUrl && (
+                  <Button size="lg" variant="outline" className="gap-2" asChild>
+                    <a href={caseStudy.productUrl} target="_blank" rel="noopener noreferrer">
+                      {caseStudy.productLabel ?? "Скачать шаблон"}
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </Button>
+                )}
               </div>
             </div>
           </div>
