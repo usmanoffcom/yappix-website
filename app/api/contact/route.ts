@@ -142,9 +142,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Format message for Telegram
+    // Format message for Telegram (единый формат: время + источник + данные)
+    const ts = new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" })
+    const recaptchaLine = recaptchaOk ? "✅ reCAPTCHA пройдена" : recaptchaToken ? "⚠️ reCAPTCHA не пройдена" : "⚠️ Без reCAPTCHA"
     const telegramMessage = `
-🔔 <b>Новая заявка с сайта!</b>
+🕐 ${ts} · <b>Лид с сайта</b> yappix.ru
 
 👤 <b>Имя:</b> ${name}
 ${email ? `📧 <b>Email:</b> ${email}` : ""}
@@ -154,9 +156,7 @@ ${company ? `🏢 <b>Компания:</b> ${company}` : ""}
 💬 <b>Сообщение:</b>
 ${message}
 
-🌐 Источник: yappix.ru
-📅 ${new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" })}
-${recaptchaOk ? "✅ reCAPTCHA пройдена" : recaptchaToken ? "⚠️ reCAPTCHA не пройдена" : "⚠️ Без reCAPTCHA"}
+${recaptchaLine}
     `.trim()
 
     // Send to Telegram first (most reliable)

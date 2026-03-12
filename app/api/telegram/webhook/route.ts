@@ -49,6 +49,15 @@ function escapeHtml(input: string): string {
     .replace(/"/g, "&quot;")
 }
 
+function moscowTime(): string {
+  return new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" })
+}
+
+function dialogId(chatId: number): string {
+  const s = String(Math.abs(chatId))
+  return s.length >= 4 ? s.slice(-4) : s
+}
+
 async function sendTelegramMessage(chatId: string | number, text: string): Promise<boolean> {
   try {
     const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
@@ -151,15 +160,21 @@ function getCannedReply(text: string): string | undefined {
   return undefined
 }
 
-async function mirrorToLeadsChannel(userLabel: string, direction: "IN" | "OUT", text: string): Promise<void> {
-  const prefix = direction === "IN" ? "⬅️" : "➡️"
-  const message = `${prefix} <b>${direction}</b> ${escapeHtml(userLabel)}\n${escapeHtml(text)}`
+async function mirrorToLeadsChannel(chatId: number, userLabel: string, direction: "IN" | "OUT", text: string): Promise<void> {
+  const ts = moscowTime()
+  const id = dialogId(chatId)
+  const who = direction === "IN" ? "Клиент" : "Бот"
+  const toClient = direction === "OUT" ? " → клиенту" : ""
+  const message = `🕐 ${ts} · диалог #${id}\n<b>${who}</b>${toClient} ${escapeHtml(userLabel)}\n\n${escapeHtml(text)}`
   await sendTelegramMessage(TELEGRAM_LEADS_CHAT_ID, message)
 }
 
-async function finalizeLead(userLabel: string, session: Session): Promise<void> {
+async function finalizeLead(chatId: number, userLabel: string, session: Session): Promise<void> {
+  const ts = moscowTime()
+  const id = dialogId(chatId)
   const leadMessage =
-    `🟢 <b>Новый лид из @yappix_bot</b>\n` +
+    `🕐 ${ts} · диалог #${id}\n` +
+    `🟢 <b>Лид из @yappix_bot</b>\n` +
     `👤 <b>Клиент:</b> ${escapeHtml(userLabel)}\n` +
     `🧑 <b>Имя:</b> ${escapeHtml(session.lead.name || "—")}\n` +
     `📞 <b>Контакт:</b> ${escapeHtml(session.lead.contact || "—")}\n` +
@@ -188,7 +203,7 @@ export async function POST(request: NextRequest) {
     const store = await readStore()
     const session = getOrCreateSession(store, chatId)
     pushHistory(session, "user", text)
-    await mirrorToLeadsChannel(userLabel, "IN", text)
+    await mirrorToLeadsChannel(chatId, userLabel, "IN", text)
 
     let reply = ""
 
@@ -233,7 +248,7 @@ export async function POST(request: NextRequest) {
       } else if (session.state === "awaiting_project") {
         session.lead.project = text
         session.state = "done"
-        await finalizeLead(userLabel, session)
+        await finalizeLead(chatId, userLabel, session)
         reply = "Спасибо! Заявка принята. Команда YappiX свяжется с вами в ближайшее время."
       } else {
         const canned = getCannedReply(text)
@@ -251,7 +266,7 @@ export async function POST(request: NextRequest) {
     await writeStore(store)
 
     await sendTelegramMessage(chatId, reply)
-    await mirrorToLeadsChannel(userLabel, "OUT", reply)
+    await mirrorToLeadsChannel(chatId, userLabel, "OUT", reply)
 
     return NextResponse.json({ ok: true })
   } catch (error) {
