@@ -13,6 +13,9 @@ interface Message {
   content: string
 }
 
+const EMAIL_IN_TEXT_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i
+const PHONE_IN_TEXT_REGEX = /(?:\+?\d[\d\s\-()]{8,}\d)/
+
 const INITIAL_MESSAGE = `👋 Привет! Я AI-ассистент YappiX.
 
 Чем могу помочь?
@@ -21,6 +24,38 @@ const INITIAL_MESSAGE = `👋 Привет! Я AI-ассистент YappiX.
 • Связать с менеджером
 
 Напишите ваш вопрос!`
+
+function extractLeadHintsFromMessage(text: string): { name?: string; contact?: string } {
+  const normalized = text.trim()
+  if (!normalized) return {}
+
+  const emailMatch = normalized.match(EMAIL_IN_TEXT_REGEX)
+  if (emailMatch?.[0]) {
+    return { contact: emailMatch[0] }
+  }
+
+  const phoneMatch = normalized.match(PHONE_IN_TEXT_REGEX)
+  if (phoneMatch?.[0]) {
+    const digits = phoneMatch[0].replace(/\D/g, "")
+    if (digits.length >= 10) {
+      return { contact: phoneMatch[0] }
+    }
+  }
+
+  const namePatterns = [
+    /(?:меня зовут|я)\s+([A-Za-zА-Яа-яЁё-]{2,40})/i,
+    /(?:my name is|i am)\s+([A-Za-z-]{2,40})/i,
+  ]
+
+  for (const pattern of namePatterns) {
+    const match = normalized.match(pattern)
+    if (match?.[1]) {
+      return { name: match[1] }
+    }
+  }
+
+  return {}
+}
 
 export function ChatWidget() {
   const recaptchaContext = useGoogleReCaptcha()
@@ -35,6 +70,7 @@ export function ChatWidget() {
   const [showLeadForm, setShowLeadForm] = useState(false)
   const [leadData, setLeadData] = useState({ name: "", contact: "", message: "" })
   const [leadErrors, setLeadErrors] = useState<Record<string, string>>({})
+  const [leadSubmitError, setLeadSubmitError] = useState("")
   const [leadSent, setLeadSent] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -67,6 +103,23 @@ export function ChatWidget() {
     if (!input.trim() || isLoading) return
 
     const userMessage = input.trim()
+    const leadHints = extractLeadHintsFromMessage(userMessage)
+
+    // Autofill lead form from free-form chat messages to avoid duplicate data entry.
+    if (leadHints.name || leadHints.contact) {
+      setLeadData((prev) => ({
+        ...prev,
+        name: prev.name || leadHints.name || "",
+        contact: prev.contact || (leadHints.contact ? formatRussianPhone(leadHints.contact) : ""),
+      }))
+      setShowLeadForm(true)
+    } else if (showLeadForm && userMessage.length >= 10) {
+      setLeadData((prev) => ({
+        ...prev,
+        message: prev.message || userMessage,
+      }))
+    }
+
     setInput("")
     setMessages(prev => [...prev, { role: "user", content: userMessage }])
     setIsLoading(true)
@@ -112,6 +165,7 @@ export function ChatWidget() {
 
     // Валидация
     const errors: Record<string, string> = {}
+    setLeadSubmitError("")
     
     const nameValidation = validateName(leadData.name)
     if (!nameValidation.valid) {
@@ -163,27 +217,32 @@ export function ChatWidget() {
         }),
       })
 
-      if (response.ok) {
+      const data = await response.json()
+
+      if (response.ok && data?.success) {
         setLeadSent(true)
+        setShowLeadForm(false)
         setMessages(prev => [...prev, { 
           role: "assistant", 
           content: "✅ Спасибо! Мы получили ваши контакты и скоро свяжемся с вами!" 
         }])
       } else {
-        const data = await response.json()
+        const errorText = data?.error || "Ошибка отправки. Попробуйте позже."
+        setLeadSubmitError(errorText)
         setMessages(prev => [...prev, { 
           role: "assistant", 
-          content: `❌ ${data.error || "Ошибка отправки. Попробуйте позже."}` 
+          content: `❌ ${errorText}` 
         }])
       }
     } catch {
+      const errorText = "Ошибка сети. Проверьте интернет или позвоните: +7 995 095 55 93"
+      setLeadSubmitError(errorText)
       setMessages(prev => [...prev, { 
         role: "assistant", 
-        content: "❌ Ошибка сети. Позвоните: +7 995 095 55 93" 
+        content: `❌ ${errorText}` 
       }])
     } finally {
       setIsLoading(false)
-      setShowLeadForm(false)
     }
   }, [leadData, executeRecaptcha])
 
@@ -200,6 +259,8 @@ export function ChatWidget() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
+          aria-label="Открыть чат"
+          title="Открыть чат"
           className="fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary to-pink-600 text-white shadow-lg shadow-primary/25 flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
         >
           <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
@@ -226,6 +287,8 @@ export function ChatWidget() {
             </div>
             <button
               onClick={handleClose}
+              aria-label="Закрыть чат"
+              title="Закрыть чат"
               className="p-2 hover:bg-secondary rounded-lg transition-colors"
             >
               <X className="w-5 h-5 text-muted-foreground" />
@@ -318,6 +381,11 @@ export function ChatWidget() {
                   onChange={(e) => setLeadData({ ...leadData, message: e.target.value })}
                   className="bg-background/50 resize-none h-16"
                 />
+                {leadSubmitError && (
+                  <div className="text-xs text-red-500 bg-red-500/10 border border-red-500/30 rounded-md px-2.5 py-2">
+                    {leadSubmitError}
+                  </div>
+                )}
                 <Button
                   onClick={submitLead}
                   disabled={!leadData.name || !leadData.contact || isLoading}

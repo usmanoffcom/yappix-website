@@ -67,9 +67,7 @@ const content = {
     badge1: "AI-автоматизация процессов",
     badge2: "ROI до старта проекта",
     badge3: "Безопасность и SLA",
-    h1a: "Автоматизируем процессы ",
-    h1b: "и считаем экономику ",
-    h1c: "внедрения",
+    headline: "Автоматизируем процессы разработки программного обеспечения, веб сервисов и считаем экономику внедрения ИИ.",
     desc: "Разрабатываем сайты, приложения и AI-контуры для снижения операционных затрат. Проектируем решения с прогнозируемым ROI, контролем доступа, логированием и измеримыми метриками качества.",
     cta1: "Рассчитать экономию",
     cta2: "Обсудить задачу",
@@ -88,9 +86,7 @@ const content = {
     badge1: "AI process automation",
     badge2: "ROI before project start",
     badge3: "Security and SLA",
-    h1a: "We automate processes ",
-    h1b: "and calculate the economics ",
-    h1c: "of implementation",
+    headline: "We automate software and web service development processes and calculate the economics of AI implementation.",
     desc: "We build websites, apps and AI contours to cut operational costs. We design solutions with predictable ROI, access control, logging and measurable quality metrics.",
     cta1: "Calculate savings",
     cta2: "Discuss your task",
@@ -139,10 +135,8 @@ export function HeroSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
                 {t.badge3}
               </Badge>
             </div>
-            <h1 className="text-display mb-5 sm:mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
-              <span className="text-foreground">{t.h1a}</span>
-              <span className="text-primary">{t.h1b}</span>
-              <span className="text-foreground">{t.h1c}</span>
+            <h1 className="text-display text-foreground mb-5 sm:mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
+              {t.headline}
             </h1>
             <p className="text-body-lg max-w-2xl xl:max-w-none mx-auto xl:mx-0 mb-8 sm:mb-10 text-pretty animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
               {t.desc}

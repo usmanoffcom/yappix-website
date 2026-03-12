@@ -3,9 +3,9 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yappix.ru'),
-  title: "YappiX — Web Development, Apps & AI Solutions | Skolkovo Residents",
+  title: "YappiX — We automate software and web service development and calculate the economics of AI implementation",
   description:
-    "YappiX — Full-cycle IT studio. Web development, mobile apps, AI chatbots, SaaS, FinTech solutions. Skolkovo residents. MVP in 7 days with money-back guarantee. Offices in USA, Russia, Turkey, Serbia.",
+    "We automate software and web service development processes and calculate the economics of AI implementation. Full-cycle IT studio. Skolkovo residents. MVP in 7 days with money-back guarantee.",
   keywords: [
     "web development",
     "mobile apps",
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://yappix.ru/en",
     siteName: "YappiX",
-    title: "YappiX — Web Development, Apps & AI Solutions",
-    description: "Full-cycle IT studio. Skolkovo residents. MVP in 7 days with money-back guarantee.",
+    title: "YappiX — We automate software and web service development and calculate the economics of AI implementation",
+    description: "We automate software and web service development and calculate the economics of AI implementation. Skolkovo residents. MVP in 7 days with money-back guarantee.",
     images: [
       {
         url: "/icon-512x512.png",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "YappiX — Web Development & AI Solutions",
-    description: "Full-cycle IT studio. Skolkovo residents. MVP in 7 days.",
+    title: "YappiX — We automate software and web service development and the economics of AI implementation",
+    description: "We automate software and web service development and calculate the economics of AI implementation. Skolkovo residents.",
   },
   alternates: {
     canonical: "https://yappix.ru/en",

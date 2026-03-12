@@ -33,7 +33,24 @@ const SYSTEM_PROMPT = `Ты — AI-ассистент компании YappiX, I
 - Telegram: @yappix_bot
 
 Если пользователь заинтересован в услугах, предложи оставить контакты (имя, телефон/email, описание проекта).
+ВАЖНО: никогда не говори, что контакты уже сохранены, отправлены или записаны. Ты не отправляешь лиды сам — только просишь заполнить форму.
 Отвечай кратко, дружелюбно и профессионально. Используй эмодзи умеренно.`
+
+function sanitizeAssistantReply(reply: string): string {
+  // Prevent false confirmations about lead submission.
+  const forbiddenPatterns = [
+    /контакт[а-я]*\s+(сохран|запис|отправ)/i,
+    /заявк[а-я]*\s+(принят|отправ|создан|оформлен)/i,
+    /your contact(s)? (have been|has been)?\s*(saved|recorded|sent)/i,
+    /lead (has been )?(saved|sent|submitted|recorded)/i,
+  ]
+
+  const hasFalseSubmissionClaim = forbiddenPatterns.some((pattern) => pattern.test(reply))
+
+  if (!hasFalseSubmissionClaim) return reply
+
+  return "Чтобы передать контакты менеджеру, заполните форму в чате: имя, телефон или email и краткое описание задачи."
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -73,7 +90,8 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json()
-    const reply = data.choices?.[0]?.message?.content || "Извините, произошла ошибка. Попробуйте снова."
+    const rawReply = data.choices?.[0]?.message?.content || "Извините, произошла ошибка. Попробуйте снова."
+    const reply = sanitizeAssistantReply(rawReply)
 
     return NextResponse.json({ reply })
   } catch (error) {
