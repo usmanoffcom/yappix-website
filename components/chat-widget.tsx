@@ -57,6 +57,13 @@ function extractLeadHintsFromMessage(text: string): { name?: string; contact?: s
   return {}
 }
 
+function formatChatTranscript(messages: Message[], maxMessages = 20): string {
+  const slice = messages.slice(-maxMessages)
+  return slice
+    .map((m) => (m.role === "user" ? "Клиент" : "Бот") + ": " + m.content.replace(/\n/g, " "))
+    .join("\n")
+}
+
 export function ChatWidget() {
   const recaptchaContext = useGoogleReCaptcha()
   const executeRecaptcha = recaptchaContext?.executeRecaptcha
@@ -206,6 +213,12 @@ export function ChatWidget() {
         ? leadData.contact 
         : formatRussianPhone(leadData.contact)
 
+      const transcript = formatChatTranscript(messages)
+      const messageForLead =
+        leadData.message?.trim()
+          ? leadData.message.trim() + "\n\n--- Переписка в чате ---\n" + transcript
+          : transcript
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -213,7 +226,7 @@ export function ChatWidget() {
           name: leadData.name,
           email: isEmail ? leadData.contact : "",
           phone: !isEmail ? formattedContact : "",
-          message: leadData.message || "Заявка из чата",
+          message: messageForLead,
           recaptchaToken,
         }),
       })
@@ -245,7 +258,7 @@ export function ChatWidget() {
     } finally {
       setIsLoading(false)
     }
-  }, [leadData, executeRecaptcha])
+  }, [leadData, messages, executeRecaptcha])
 
   const handleClose = () => {
     setIsOpen(false)
