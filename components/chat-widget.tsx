@@ -103,6 +103,7 @@ export function ChatWidget() {
     if (!input.trim() || isLoading) return
 
     const userMessage = input.trim()
+    setLeadSubmitError("")
     const leadHints = extractLeadHintsFromMessage(userMessage)
 
     // Autofill lead form from free-form chat messages to avoid duplicate data entry.
@@ -348,6 +349,7 @@ export function ChatWidget() {
                     onChange={(e) => {
                       setLeadData({ ...leadData, name: e.target.value })
                       setLeadErrors(prev => ({ ...prev, name: "" }))
+                      setLeadSubmitError("")
                     }}
                     className={`bg-background/50 ${leadErrors.name ? "border-red-500" : ""}`}
                   />
@@ -365,6 +367,7 @@ export function ChatWidget() {
                     onChange={(e) => {
                       setLeadData({ ...leadData, contact: e.target.value })
                       setLeadErrors(prev => ({ ...prev, contact: "" }))
+                      setLeadSubmitError("")
                     }}
                     className={`bg-background/50 ${leadErrors.contact ? "border-red-500" : ""}`}
                   />
@@ -378,14 +381,12 @@ export function ChatWidget() {
                 <Textarea
                   placeholder="Кратко о проекте (опционально)"
                   value={leadData.message}
-                  onChange={(e) => setLeadData({ ...leadData, message: e.target.value })}
+                  onChange={(e) => {
+                    setLeadData({ ...leadData, message: e.target.value })
+                    setLeadSubmitError("")
+                  }}
                   className="bg-background/50 resize-none h-16"
                 />
-                {leadSubmitError && (
-                  <div className="text-xs text-red-500 bg-red-500/10 border border-red-500/30 rounded-md px-2.5 py-2">
-                    {leadSubmitError}
-                  </div>
-                )}
                 <Button
                   onClick={submitLead}
                   disabled={!leadData.name || !leadData.contact || isLoading}
@@ -398,6 +399,14 @@ export function ChatWidget() {
 
             <div ref={messagesEndRef} />
           </div>
+
+          {showLeadForm && typeof leadSubmitError === "string" && leadSubmitError.trim().length > 0 && (
+            <div className="px-4 pb-2">
+              <div className="text-xs text-red-500 bg-red-500/10 border border-red-500/30 rounded-md px-2.5 py-2">
+                {leadSubmitError}
+              </div>
+            </div>
+          )}
 
           {/* Quick Actions */}
           <div className="px-4 pb-2 flex gap-2 overflow-x-auto">

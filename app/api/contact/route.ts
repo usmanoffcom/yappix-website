@@ -83,17 +83,13 @@ export async function POST(request: NextRequest) {
     const data = await request.json()
     const { name, email, phone, company, message, recaptchaToken } = data
 
-    // 1. Проверка reCAPTCHA (если токен передан)
+    // 1. Проверка reCAPTCHA (не блокируем лид при ошибке — помечаем в Telegram)
+    let recaptchaOk = false
     if (recaptchaToken) {
       const recaptchaResult = await verifyRecaptcha(recaptchaToken)
-      if (!recaptchaResult.success) {
-        console.log("reCAPTCHA failed:", recaptchaResult)
-        return NextResponse.json(
-          { error: recaptchaResult.error || "Проверка безопасности не пройдена" },
-          { status: 403 }
-        )
-      }
-      console.log("reCAPTCHA score:", recaptchaResult.score)
+      recaptchaOk = recaptchaResult.success === true
+      if (!recaptchaOk) console.log("reCAPTCHA failed:", recaptchaResult)
+      else console.log("reCAPTCHA score:", recaptchaResult.score)
     }
 
     // 2. Валидация обязательных полей
@@ -160,7 +156,7 @@ ${message}
 
 🌐 Источник: yappix.ru
 📅 ${new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" })}
-${recaptchaToken ? "✅ reCAPTCHA пройдена" : "⚠️ Без reCAPTCHA"}
+${recaptchaOk ? "✅ reCAPTCHA пройдена" : recaptchaToken ? "⚠️ reCAPTCHA не пройдена" : "⚠️ Без reCAPTCHA"}
     `.trim()
 
     // Send to Telegram first (most reliable)
