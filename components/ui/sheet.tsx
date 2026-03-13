@@ -101,16 +101,19 @@ function SheetFooter({ className, ...props }: React.ComponentProps<'div'>) {
   )
 }
 
+// Always render as span to avoid duplicate heading (Radix Title defaults to h2); single H1 per page for SEO.
 function SheetTitle({
   className,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Title>) {
   return (
-    <SheetPrimitive.Title
-      data-slot="sheet-title"
-      className={cn('text-foreground font-semibold', className)}
-      {...props}
-    />
+    <SheetPrimitive.Title asChild>
+      <span
+        data-slot="sheet-title"
+        className={cn('text-foreground font-semibold', className)}
+        {...props}
+      />
+    </SheetPrimitive.Title>
   )
 }
 

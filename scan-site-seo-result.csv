@@ -1,0 +1,63 @@
+url,status,h1,og_ok,errors,og_title
+https://yappix.ru,200,1,True,,"YappiX — Автоматизируем процессы разработки ПО, веб-сервисов и считаем экономику"
+https://yappix.ru/blog,200,1,True,,"Блог о разработке, AI и технологиях — YappiX"
+https://yappix.ru/blog/ai-agenty-v-biznese-prakticheskoe-rukovodstvo,200,1,False,OG не заполнена: og:url,AI-агенты в бизнесе: практическое руководство
+https://yappix.ru/blog/bezopasnost-fintech-prilozhenij-chek-list,200,1,False,OG не заполнена: og:url,Безопасность FinTech-приложений: чек-лист 2025
+https://yappix.ru/blog/kak-chelninskij-dizajner-privlek-amerikanskih-investorov,200,1,False,OG не заполнена: og:url,Как челнинский дизайнер привлёк американских инвесторов: опыт YappiX
+https://yappix.ru/blog/kak-my-sozdaem-mvp-za-7-dnej-s-pomoshchyu-ai,200,1,False,OG не заполнена: og:url,Как мы создали MyUnion Pro за 7 дней с помощью AI: от идеи до одобрения Минздрав
+https://yappix.ru/blog/kak-zakazat-sajt-poshagovaya-instrukciya,200,1,False,OG не заполнена: og:url,Как заказать сайт: пошаговая инструкция и цены 2026
+https://yappix.ru/blog/kategoriya/ai-ml,200,1,False,OG не заполнена: og:image,AI и ML — Блог YappiX
+https://yappix.ru/blog/kategoriya/biznes,200,1,False,OG не заполнена: og:image,Бизнес — Блог YappiX
+https://yappix.ru/blog/kategoriya/devops,200,1,False,OG не заполнена: og:image,DevOps — Блог YappiX
+https://yappix.ru/blog/kategoriya/novosti,200,1,False,OG не заполнена: og:image,Новости — Блог YappiX
+https://yappix.ru/blog/kategoriya/razrabotka,200,1,False,OG не заполнена: og:image,Разработка — Блог YappiX
+https://yappix.ru/blog/kategoriya/seo,200,1,False,OG не заполнена: og:image,SEO — Блог YappiX
+https://yappix.ru/blog/kubernetes-vs-serverless-chto-vybrat,200,1,False,OG не заполнена: og:url,Kubernetes vs Serverless: что выбрать в 2025
+https://yappix.ru/blog/pochemu-ai-proekty-ne-okupayutsya-i-kak-etogo-izbezhat,200,1,False,OG не заполнена: og:url,Почему AI-проекты не окупаются и как этого избежать: позиция Yappix
+https://yappix.ru/blog/seo-optimizaciya-nextjs-polnoe-rukovodstvo-2025,200,1,False,OG не заполнена: og:url,SEO-оптимизация Next.js: полное руководство 2025
+https://yappix.ru/blog/skolko-stoit-mobilnoe-prilozhenie-2026,200,1,False,OG не заполнена: og:url,Сколько стоит разработка мобильного приложения в 2026 году
+https://yappix.ru/blog/skolko-stoit-mvp-startapa-2026,200,1,False,OG не заполнена: og:url,Сколько стоит MVP стартапа в 2026 году: от идеи до первых пользователей
+https://yappix.ru/blog/skolko-stoit-razrabotka-sajta-v-2026,200,1,False,OG не заполнена: og:url,Сколько стоит разработка сайта в 2026 году: полный гайд по ценам
+https://yappix.ru/blog/vnedrenie-iskusstvennogo-intellekta-v-biznes,200,1,False,OG не заполнена: og:url,Внедрение искусственного интеллекта в бизнес: полное руководство 2026
+https://yappix.ru/blog/vybor-steka-tehnologij-dlya-saas-v-2025,200,1,False,OG не заполнена: og:url,Выбор стека технологий для SaaS в 2025 году
+https://yappix.ru/blog/yappix-cms-zainteresoval-kremnievuyu-dolinu,200,1,False,OG не заполнена: og:url,В Кремниевой долине заинтересовались проектом YappiX из Челнов
+https://yappix.ru/blog/yappix-poluchil-podderzhku-microsoft-for-startups,200,1,False,OG не заполнена: og:url,YappiX теперь участник Microsoft for Startups Founders Hub
+https://yappix.ru/en,200,1,True,,YappiX — We automate software and web service development and calculate the econ
+https://yappix.ru/en/about,200,1,False,OG не заполнена: og:image,About YappiX — Skolkovo Residents
+https://yappix.ru/en/career,200,1,True,,Careers at YappiX — IT Studio Jobs
+https://yappix.ru/en/cases,200,1,False,OG не заполнена: og:image,Case Studies &amp; Portfolio — YappiX
+https://yappix.ru/en/contact,200,1,False,OG не заполнена: og:image,Contact YappiX — Get in Touch
+https://yappix.ru/en/rekvizity,200,1,False,OG не заполнена: og:image,"Company Details — YAPPIX, LLC"
+https://yappix.ru/en/services,200,1,False,OG не заполнена: og:image,IT Services with AI-First Approach — YappiX
+https://yappix.ru/en/templates,200,1,True,,Templates &amp; UI Kits — YappiX
+https://yappix.ru/karera,200,1,True,,Карьера в YappiX — вакансии IT-студии
+https://yappix.ru/kejsy,200,1,True,,Кейсы и портфолио — YappiX
+https://yappix.ru/kejsy/ai-food-assistant,200,1,True,,Ассистент заявок — голосовой заказ еды — кейс YappiX
+https://yappix.ru/kejsy/bankist-ui-kit,200,1,True,,Bankist — UI Kit для банковских приложений — кейс YappiX
+https://yappix.ru/kejsy/bridgeinto-platform,200,1,True,,BridgeInto — Приватная бизнес-платформа — кейс YappiX
+https://yappix.ru/kejsy/fintech-marketplace,200,1,True,,Card2Card — MVP мобильного приложения — кейс YappiX
+https://yappix.ru/kejsy/global-olive-corporation,200,1,True,,Global Olive Corp. — Инвестиционная платформа — кейс YappiX
+https://yappix.ru/kejsy/jupid-platform,200,1,True,,Jupid — AI бухгалтер для запуска LLC — кейс YappiX
+https://yappix.ru/kejsy/minimal-portfolio-template,200,1,True,,Minimal Portfolio — Шаблон для разработчиков — кейс YappiX
+https://yappix.ru/kejsy/my-buyer-crm,200,1,True,,MY BUYER — CRM для маркетплейсов — кейс YappiX
+https://yappix.ru/kejsy/myunion-platform,200,1,True,,MyUnion Pro — платформа управления профсоюзами — кейс YappiX
+https://yappix.ru/kejsy/priboy-hotels,200,1,True,,Grand Hotels &amp; SPA Priboy — сеть отелей — кейс YappiX
+https://yappix.ru/kejsy/projectorium-cicd,200,1,True,,Projectorium — CI/CD SaaS — кейс YappiX
+https://yappix.ru/kejsy/reallaw-ai,200,1,True,,realLaw AI — Legal Tech SaaS для ОАЭ — кейс YappiX
+https://yappix.ru/kejsy/yandex-go-scooters,200,1,True,,Yandex Go — Дизайн для самокатов — кейс YappiX
+https://yappix.ru/kejsy/yappix-cms,200,1,True,,YappiX CMS — конструктор мобильных приложений — кейс YappiX
+https://yappix.ru/kontakty,200,1,True,,Контакты YappiX — связаться с нами
+https://yappix.ru/o-kompanii,200,1,True,,О компании YappiX — резиденты Сколково
+https://yappix.ru/oferta,200,1,False,OG не заполнена: og:image,Публичная оферта YappiX
+https://yappix.ru/politika-konfidencialnosti,200,1,False,OG не заполнена: og:image,Политика конфиденциальности YappiX
+https://yappix.ru/rekvizity,200,1,False,OG не заполнена: og:image,Реквизиты ООО «ЯППИКС»
+https://yappix.ru/shablony,200,1,True,,Шаблоны и UI Kits — YappiX
+https://yappix.ru/uslugi,200,1,True,,IT-услуги с AI-first подходом — YappiX
+https://yappix.ru/uslugi/ai-chat-boty,200,1,True,,AI-автоматизация процессов и ассистенты — YappiX
+https://yappix.ru/uslugi/devops,200,1,True,,DevOps и облачная инфраструктура — YappiX
+https://yappix.ru/uslugi/fintech,200,1,True,,FinTech решения — YappiX
+https://yappix.ru/uslugi/mobilnye-prilozheniya,200,1,True,,Мобильные приложения — YappiX
+https://yappix.ru/uslugi/razrabotka-sajtov,200,1,True,,Разработка сайтов — YappiX
+https://yappix.ru/uslugi/saas-paas,200,1,True,,SaaS / PaaS разработка — YappiX
+https://yappix.ru/uslugi/seo-prodvizhenie,200,1,True,,SEO продвижение сайтов — YappiX
+https://yappix.ru/uslugi/smm,200,1,True,,SMM продвижение — YappiX
