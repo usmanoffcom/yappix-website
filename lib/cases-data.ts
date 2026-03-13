@@ -404,6 +404,39 @@ export const casesData: CaseStudy[] = [
     year: "2015–2022",
   },
   {
+    slug: "coinpulse-crypto",
+    title: "CoinPulse — Crypto Market Dashboard",
+    client: "Community",
+    category: "FinTech / Crypto",
+    description: "Готовый шаблон крипто-дашборда на Next.js. Конвертация макета из Figma за 30 минут благодаря дизайн-токенам и правильной разметке компонентов.",
+    fullDescription:
+      "CoinPulse — production-ready шаблон криптовалютного дашборда, сконвертированный из Figma-макета в живой Next.js за 30 минут. Секрет скорости — дизайн-токены (цвета, типографика, отступы), auto layout и правильная структура компонентов в Figma, которые 1:1 ложатся на Tailwind CSS. Подходит для крипто-бирж, DeFi-панелей, портфельных трекеров и финтех-стартапов.",
+    challenge:
+      "Разработка крипто-дашборда с нуля занимает недели: дизайн, вёрстка графиков, таблиц, адаптив. Дизайнеры и разработчики работают рассинхронно, и правки множатся.",
+    solution:
+      "Спроектировал макет в Figma с дизайн-токенами и auto layout, что позволило конвертировать весь дашборд в Next.js + Tailwind за 30 минут. Подключили CoinGecko API для реальных данных, Recharts для графиков, Radix UI для доступных компонентов.",
+    image: "/images/coinpulse/cover.png",
+    gallery: [
+      "/images/coinpulse/dashboard.png",
+      "/images/coinpulse/details.png",
+      "/images/coinpulse/tokens.png",
+    ],
+    results: [
+      { label: "Figma → Code", value: "30 мин" },
+      { label: "Стек", value: "Next.js 14" },
+      { label: "API", value: "CoinGecko" },
+      { label: "Компоненты", value: "40+" },
+    ],
+    tags: ["Next.js", "Tailwind CSS", "Figma Tokens", "CoinGecko API", "Recharts", "Radix UI", "TypeScript"],
+    duration: "1 день",
+    team: "1 человек",
+    year: "2025",
+    isTemplate: true,
+    projectUrl: "https://coin.yappix.ru",
+    productUrl: "https://github.com/usmanoffcom/coinpulse",
+    productLabel: "Скачать код на GitHub",
+  },
+  {
     slug: "projectorium-cicd",
     title: "Projectorium — CI/CD SaaS",
     client: "Projectorium",

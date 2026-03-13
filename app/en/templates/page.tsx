@@ -46,6 +46,30 @@ export const metadata: Metadata = {
 
 const templates = [
   {
+    slug: "coinpulse-crypto",
+    title: "CoinPulse — Crypto Dashboard: Figma to Next.js in 30 min",
+    category: "Next.js Template",
+    description: "Production-ready crypto dashboard template. Figma-to-Next.js conversion in 30 minutes using design tokens and proper markup. CoinGecko API, Recharts, Radix UI.",
+    image: "/images/coinpulse/cover.png",
+    stats: [
+      { label: "Figma → Code", value: "30 min" },
+      { label: "Components", value: "40+" },
+      { label: "API", value: "CoinGecko" },
+    ],
+    tags: ["Next.js", "Tailwind", "Figma Tokens", "CoinGecko", "Recharts", "Crypto"],
+    features: [
+      "Figma mockup with design tokens & auto layout",
+      "Converted to Next.js + Tailwind in 30 minutes",
+      "CoinGecko API for live cryptocurrency data",
+      "Recharts charts, Radix UI components",
+      "Open source on GitHub",
+    ],
+    productUrl: "https://github.com/usmanoffcom/coinpulse",
+    productLabel: "Get code on GitHub",
+    demoUrl: "https://coin.yappix.ru",
+    figmaUrl: "/cryptopulse_assets/CoinPules - CryptoMarket.fig",
+  },
+  {
     slug: "bankist-ui-kit",
     title: "Bankist — Banking App UI Kit",
     category: "UI Kit",
@@ -220,12 +244,38 @@ export default function TemplatesEnPage() {
                       ))}
                     </div>
 
-                    <Button size="lg" asChild>
-                      <Link href={`/kejsy/${template.slug}`}>
-                        View Details
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Link>
-                    </Button>
+                    <div className="flex flex-wrap gap-3">
+                      <Button size="lg" asChild>
+                        <Link href={`/en/cases/${template.slug}`}>
+                          View Details
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
+                      {template.productUrl && (
+                        <Button size="lg" variant="outline" asChild>
+                          <a href={template.productUrl} target="_blank" rel="noopener noreferrer">
+                            {template.productLabel ?? "Download"}
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </a>
+                        </Button>
+                      )}
+                      {template.demoUrl && (
+                        <Button size="lg" variant="outline" asChild>
+                          <a href={template.demoUrl} target="_blank" rel="noopener noreferrer">
+                            Live Demo
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </a>
+                        </Button>
+                      )}
+                      {template.figmaUrl && (
+                        <Button size="lg" variant="outline" asChild>
+                          <a href={template.figmaUrl} download>
+                            Download Figma
+                            <Download className="w-4 h-4 ml-2" />
+                          </a>
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </article>
               ))}

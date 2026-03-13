@@ -46,6 +46,30 @@ export const metadata: Metadata = {
 
 const templates = [
   {
+    slug: "coinpulse-crypto",
+    title: "CoinPulse — Крипто-дашборд из Figma в Next.js за 30 минут",
+    category: "Next.js Template",
+    description: "Production-ready шаблон криптовалютного дашборда. Конвертация Figma → Next.js за 30 минут благодаря дизайн-токенам и правильной разметке. CoinGecko API, Recharts, Radix UI.",
+    image: "/images/coinpulse/cover.png",
+    stats: [
+      { label: "Figma → Code", value: "30 мин" },
+      { label: "Компоненты", value: "40+" },
+      { label: "API", value: "CoinGecko" },
+    ],
+    tags: ["Next.js", "Tailwind", "Figma Tokens", "CoinGecko", "Recharts", "Crypto"],
+    features: [
+      "Figma-макет с дизайн-токенами и auto layout",
+      "Конвертация в Next.js + Tailwind за 30 минут",
+      "CoinGecko API для живых данных криптовалют",
+      "Recharts графики, Radix UI компоненты",
+      "Открытый исходный код на GitHub",
+    ],
+    productUrl: "https://github.com/usmanoffcom/coinpulse",
+    productLabel: "Скачать код на GitHub",
+    demoUrl: "https://coin.yappix.ru",
+    figmaUrl: "/cryptopulse_assets/CoinPules - CryptoMarket.fig",
+  },
+  {
     slug: "bankist-ui-kit",
     title: "Bankist — UI Kit для банковских приложений",
     category: "UI Kit",
@@ -237,6 +261,22 @@ export default function ShablonyPage() {
                           <a href={template.productUrl} target="_blank" rel="noopener noreferrer">
                             {template.productLabel ?? "Скачать шаблон"}
                             <ExternalLink className="w-4 h-4 ml-2" />
+                          </a>
+                        </Button>
+                      )}
+                      {template.demoUrl && (
+                        <Button size="lg" variant="outline" asChild>
+                          <a href={template.demoUrl} target="_blank" rel="noopener noreferrer">
+                            Live Demo
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </a>
+                        </Button>
+                      )}
+                      {template.figmaUrl && (
+                        <Button size="lg" variant="outline" asChild>
+                          <a href={template.figmaUrl} download>
+                            Скачать Figma
+                            <Download className="w-4 h-4 ml-2" />
                           </a>
                         </Button>
                       )}

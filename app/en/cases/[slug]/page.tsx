@@ -120,9 +120,9 @@ export default async function CaseStudyEnPage({ params }: Props) {
       <main className="pt-20 sm:pt-24">
         <div className="container mx-auto py-6 sm:py-8">
           <Button variant="ghost" size="sm" asChild className="gap-2 text-muted-foreground hover:text-foreground">
-            <Link href="/en/cases">
+            <Link href={caseStudy.isTemplate ? "/en/templates" : "/en/cases"}>
               <ArrowLeft className="w-4 h-4" />
-              All cases
+              {caseStudy.isTemplate ? "All templates" : "All cases"}
             </Link>
           </Button>
         </div>

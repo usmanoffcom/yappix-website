@@ -377,6 +377,39 @@ export const casesDataEn: CaseStudy[] = [
     year: "2015–2022",
   },
   {
+    slug: "coinpulse-crypto",
+    title: "CoinPulse — Crypto Market Dashboard",
+    client: "Community",
+    category: "FinTech / Crypto",
+    description: "Production-ready crypto dashboard template for Next.js. Figma-to-code conversion in 30 minutes powered by design tokens and proper component markup.",
+    fullDescription:
+      "CoinPulse is a production-ready cryptocurrency dashboard template, converted from a Figma mockup to a live Next.js app in just 30 minutes. The secret is design tokens (colors, typography, spacing), auto layout, and proper Figma component structure that maps 1:1 to Tailwind CSS. Perfect for crypto exchanges, DeFi dashboards, portfolio trackers, and fintech startups.",
+    challenge:
+      "Building a crypto dashboard from scratch takes weeks: design, chart/table markup, responsive layout. Designers and developers work out of sync, and revisions pile up.",
+    solution:
+      "Designed the mockup in Figma with design tokens and auto layout, enabling full dashboard conversion to Next.js + Tailwind in 30 minutes. Integrated CoinGecko API for live data, Recharts for charts, and Radix UI for accessible components.",
+    image: "/images/coinpulse/cover.png",
+    gallery: [
+      "/images/coinpulse/dashboard.png",
+      "/images/coinpulse/details.png",
+      "/images/coinpulse/tokens.png",
+    ],
+    results: [
+      { label: "Figma → Code", value: "30 min" },
+      { label: "Stack", value: "Next.js 14" },
+      { label: "API", value: "CoinGecko" },
+      { label: "Components", value: "40+" },
+    ],
+    tags: ["Next.js", "Tailwind CSS", "Figma Tokens", "CoinGecko API", "Recharts", "Radix UI", "TypeScript"],
+    duration: "1 day",
+    team: "1 person",
+    year: "2025",
+    isTemplate: true,
+    projectUrl: "https://coin.yappix.ru",
+    productUrl: "https://github.com/usmanoffcom/coinpulse",
+    productLabel: "Get code on GitHub",
+  },
+  {
     slug: "projectorium-cicd",
     title: "Projectorium — CI/CD SaaS",
     client: "Projectorium",
