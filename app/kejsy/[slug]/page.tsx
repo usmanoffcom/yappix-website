@@ -133,31 +133,31 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Header />
       <main className="pt-20 sm:pt-24">
-        {/* Back Button */}
-        <div className="container mx-auto py-6 sm:py-8">
-          <Button variant="ghost" size="sm" asChild className="gap-2 text-muted-foreground hover:text-foreground">
-            <Link href={caseStudy.isTemplate ? "/shablony" : "/kejsy"}>
-              <ArrowLeft className="w-4 h-4" />
-              {caseStudy.isTemplate ? "Все шаблоны" : "Все кейсы"}
-            </Link>
-          </Button>
-        </div>
+        <article aria-labelledby="case-title">
+          {/* Back Button */}
+          <div className="container mx-auto py-6 sm:py-8">
+            <Button variant="ghost" size="sm" asChild className="gap-2 text-muted-foreground hover:text-foreground">
+              <Link href={caseStudy.isTemplate ? "/shablony" : "/kejsy"}>
+                <ArrowLeft className="w-4 h-4" />
+                {caseStudy.isTemplate ? "Все шаблоны" : "Все кейсы"}
+              </Link>
+            </Button>
+          </div>
 
-        {/* Hero */}
-        <section className="pb-12 sm:pb-16 md:pb-20">
-          <div className="container mx-auto">
-            <div>
-              <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
-                <Badge variant="default">{caseStudy.category}</Badge>
-                <span className="text-caption">{caseStudy.client}</span>
-              </div>
+          {/* Hero — единственный H1 на странице для SEO */}
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <div>
+                <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
+                  <Badge variant="default">{caseStudy.category}</Badge>
+                  <span className="text-caption">{caseStudy.client}</span>
+                </div>
 
-              <h1 className="text-display text-foreground mb-4 sm:mb-6 text-balance">
-                {caseStudy.title}
-              </h1>
+                <h1 id="case-title" className="text-display text-foreground mb-4 sm:mb-6 text-balance">
+                  {caseStudy.title}
+                </h1>
 
               <p className="text-body-lg mb-6 sm:mb-8 max-w-4xl">{caseStudy.fullDescription}</p>
 
@@ -346,23 +346,25 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="section-padding-sm bg-card border-t border-border">
-          <div className="container mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Хотите такой же результат?</h2>
-            <p className="text-body mb-6 sm:mb-8 max-w-xl mx-auto">
-              Обсудим ваш проект и покажем релевантные кейсы из вашей отрасли.
-            </p>
-            <Button size="lg" asChild>
-              <Link href="/kontakty">
-                Обсудить проект
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-            </Button>
-          </div>
-        </section>
+          {/* CTA */}
+          <section className="section-padding-sm bg-card border-t border-border">
+            <div className="container mx-auto text-center">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Хотите такой же результат?</h2>
+              <p className="text-body mb-6 sm:mb-8 max-w-xl mx-auto">
+                Обсудим ваш проект и покажем релевантные кейсы из вашей отрасли.
+              </p>
+              <Button size="lg" asChild>
+                <Link href="/kontakty">
+                  Обсудить проект
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </section>
+        </article>
       </main>
       <Footer />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </>
   )
 }

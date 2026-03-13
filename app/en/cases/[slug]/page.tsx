@@ -133,29 +133,29 @@ export default async function CaseStudyEnPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HeaderEn />
       <main className="pt-20 sm:pt-24">
-        <div className="container mx-auto py-6 sm:py-8">
-          <Button variant="ghost" size="sm" asChild className="gap-2 text-muted-foreground hover:text-foreground">
-            <Link href={caseStudy.isTemplate ? "/en/templates" : "/en/cases"}>
-              <ArrowLeft className="w-4 h-4" />
-              {caseStudy.isTemplate ? "All templates" : "All cases"}
-            </Link>
-          </Button>
-        </div>
+        <article aria-labelledby="case-title">
+          <div className="container mx-auto py-6 sm:py-8">
+            <Button variant="ghost" size="sm" asChild className="gap-2 text-muted-foreground hover:text-foreground">
+              <Link href={caseStudy.isTemplate ? "/en/templates" : "/en/cases"}>
+                <ArrowLeft className="w-4 h-4" />
+                {caseStudy.isTemplate ? "All templates" : "All cases"}
+              </Link>
+            </Button>
+          </div>
 
-        <section className="pb-12 sm:pb-16 md:pb-20">
-          <div className="container mx-auto">
-            <div>
-              <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
-                <Badge variant="default">{caseStudy.category}</Badge>
-                <span className="text-caption">{caseStudy.client}</span>
-              </div>
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <div>
+                <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
+                  <Badge variant="default">{caseStudy.category}</Badge>
+                  <span className="text-caption">{caseStudy.client}</span>
+                </div>
 
-              <h1 className="text-display text-foreground mb-4 sm:mb-6 text-balance">
-                {caseStudy.title}
-              </h1>
+                <h1 id="case-title" className="text-display text-foreground mb-4 sm:mb-6 text-balance">
+                  {caseStudy.title}
+                </h1>
 
               <p className="text-body-lg mb-6 sm:mb-8 max-w-4xl">{caseStudy.fullDescription}</p>
 
@@ -327,22 +327,24 @@ export default async function CaseStudyEnPage({ params }: Props) {
           </div>
         </section>
 
-        <section className="section-padding-sm bg-card border-t border-border">
-          <div className="container mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Want similar results?</h2>
-            <p className="text-body mb-6 sm:mb-8 max-w-xl mx-auto">
-              Let&apos;s discuss your project and we&apos;ll show relevant case studies from your industry.
-            </p>
-            <Button size="lg" asChild>
-              <Link href="/en/contact">
-                Get in Touch
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-            </Button>
-          </div>
-        </section>
+          <section className="section-padding-sm bg-card border-t border-border">
+            <div className="container mx-auto text-center">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Want similar results?</h2>
+              <p className="text-body mb-6 sm:mb-8 max-w-xl mx-auto">
+                Let&apos;s discuss your project and we&apos;ll show relevant case studies from your industry.
+              </p>
+              <Button size="lg" asChild>
+                <Link href="/en/contact">
+                  Get in Touch
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </section>
+        </article>
       </main>
       <FooterEn />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </>
   )
 }
