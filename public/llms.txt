@@ -1,0 +1,30 @@
+# YappiX
+
+> YappiX — IT-студия полного цикла. Автоматизируем процессы разработки ПО, веб-сервисов и считаем экономику внедрения ИИ. Резиденты Сколково. Разработка сайтов, мобильных приложений, AI-решений, MVP за 7 дней с гарантией возврата.
+
+## Contact
+
+- Сайт: https://yappix.ru
+- Telegram: https://t.me/yappix_bot
+- Email: sales@yappix.ru
+- Телефон: +7 995 095 55 93
+
+## Services
+
+- [Разработка сайтов](https://yappix.ru/uslugi/razrabotka-sajtov): корпоративные сайты, порталы, веб-сервисы (Next.js, React, Vue, Node.js)
+- [Мобильные приложения](https://yappix.ru/uslugi/mobilnye-prilozheniya): нативные и кроссплатформенные (React Native, Flutter, Swift, Kotlin)
+- [AI-автоматизация](https://yappix.ru/uslugi/ai-chat-boty): чат-боты, базы знаний, RAG, расчёт ROI
+- [SaaS / PaaS](https://yappix.ru/uslugi/saas-paas): облачные платформы, подписная модель
+- [FinTech](https://yappix.ru/uslugi/fintech): платёжные системы, банкинг, KYC/AML
+- [DevOps](https://yappix.ru/uslugi/devops): CI/CD, Docker, Kubernetes, AWS, Terraform
+- [SEO и SMM](https://yappix.ru/uslugi/seo-prodvizhenie): продвижение в Яндексе и Google, таргет
+
+## Key Information
+
+- [Главная](https://yappix.ru)
+- [Услуги](https://yappix.ru/uslugi)
+- [Кейсы](https://yappix.ru/kejsy)
+- [Блог](https://yappix.ru/blog)
+- [Контакты](https://yappix.ru/kontakty)
+- [О компании](https://yappix.ru/o-kompanii)
+- [English](https://yappix.ru/en)

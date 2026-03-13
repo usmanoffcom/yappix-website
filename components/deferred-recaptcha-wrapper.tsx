@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { RECAPTCHA_SITE_KEY } from "@/lib/validation"
 
-const DEFER_MS = 2500
+// Отложенная загрузка снижает TBT на десктопе (reCAPTCHA ~41 KB CSS блокирует поток)
+const DEFER_MS = 5000
 
 export function DeferredRecaptchaWrapper({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false)
