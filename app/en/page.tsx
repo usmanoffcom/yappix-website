@@ -25,7 +25,7 @@ export default function HomeEnPage() {
       <TechStack locale="en" />
       <PricingSection locale="en" />
       <ShowcaseGallery locale="en" />
-      <TemplatesSection locale="en" />
+      <TemplatesSection locale="en" excludeSlugs={["yandex-go-scooters"]} />
       <ContactSection locale="en" />
       <FooterEn />
     </main>

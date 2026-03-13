@@ -59,6 +59,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
+  const canonicalUrl = `https://yappix.ru/kejsy/${slug}`
+  const ogImageUrl = caseStudy.image.startsWith("http") ? caseStudy.image : `https://yappix.ru${caseStudy.image}`
+
   return {
     title: `${caseStudy.title} — кейс YappiX | ${caseStudy.category}`,
     description: `${caseStudy.description} Результаты: ${caseStudy.results.map((r) => `${r.label}: ${r.value}`).join(", ")}`,
@@ -66,9 +69,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${caseStudy.title} — кейс YappiX`,
       description: caseStudy.description,
-      images: [caseStudy.image],
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: caseStudy.title,
+        },
+      ],
       type: "article",
-      url: `https://yappix.ru/kejsy/${slug}`,
+      url: canonicalUrl,
       siteName: "YappiX",
       locale: "ru_RU",
     },
@@ -76,11 +86,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${caseStudy.title} — кейс YappiX`,
       description: caseStudy.description,
-      images: [caseStudy.image],
+      images: [ogImageUrl],
     },
     alternates: {
-      canonical: `https://yappix.ru/kejsy/${slug}`,
+      canonical: canonicalUrl,
     },
+    robots: "index, follow",
   }
 }
 
@@ -96,12 +107,19 @@ export default async function CaseStudyPage({ params }: Props) {
   const prevCase = currentIndex > 0 ? casesData[currentIndex - 1] : null
   const nextCase = currentIndex < casesData.length - 1 ? casesData[currentIndex + 1] : null
 
+  const absoluteImage = caseStudy.image.startsWith("http") ? caseStudy.image : `https://yappix.ru${caseStudy.image}`
+  const canonicalUrl = `https://yappix.ru/kejsy/${slug}`
+  const year = caseStudy.year?.replace(/[^0-9]/g, "") || String(new Date().getFullYear())
+  const datePublished = year.length === 4 ? `${year}-01-01` : undefined
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: caseStudy.title,
     description: caseStudy.description,
-    image: caseStudy.image,
+    image: absoluteImage,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+    ...(datePublished && { datePublished }),
     author: {
       "@type": "Organization",
       name: "YappiX",
@@ -109,7 +127,7 @@ export default async function CaseStudyPage({ params }: Props) {
     publisher: {
       "@type": "Organization",
       name: "YappiX",
-      logo: "https://yappix.ru/images/logo.png",
+      logo: { "@type": "ImageObject", url: "https://yappix.ru/images/logo.png" },
     },
   }
 

@@ -27,7 +27,7 @@ export default function HomePage() {
       <TechStack />
       <PricingSection />
       <ShowcaseGallery />
-      <TemplatesSection />
+      <TemplatesSection excludeSlugs={["yandex-go-scooters"]} />
       <ContactSection />
       <Footer />
     </main>

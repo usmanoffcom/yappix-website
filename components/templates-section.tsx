@@ -25,8 +25,10 @@ const templatesHeadByLocale = {
   en: { headline: "Templates & UI Kits", body: "Free design resources for the community: UI kits, templates and concepts", cta: "All templates on LemonSqueezy" },
 }
 
-export function TemplatesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
-  const templates = templatesByLocale[locale]
+export function TemplatesSection({ locale = "ru", excludeSlugs }: { locale?: "ru" | "en"; excludeSlugs?: string[] }) {
+  const templates = (excludeSlugs?.length
+    ? templatesByLocale[locale].filter((t) => !excludeSlugs.includes(t.slug))
+    : templatesByLocale[locale])
   const head = templatesHeadByLocale[locale]
   return (
     <section className="py-16 md:py-24 bg-card">
