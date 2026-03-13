@@ -107,30 +107,6 @@ export default async function CaseStudyPage({ params }: Props) {
   const prevCase = currentIndex > 0 ? casesData[currentIndex - 1] : null
   const nextCase = currentIndex < casesData.length - 1 ? casesData[currentIndex + 1] : null
 
-  const absoluteImage = caseStudy.image.startsWith("http") ? caseStudy.image : `https://yappix.ru${caseStudy.image}`
-  const canonicalUrl = `https://yappix.ru/kejsy/${slug}`
-  const year = caseStudy.year?.replace(/[^0-9]/g, "") || String(new Date().getFullYear())
-  const datePublished = year.length === 4 ? `${year}-01-01` : undefined
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    name: caseStudy.title,
-    description: caseStudy.description,
-    image: absoluteImage,
-    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
-    ...(datePublished && { datePublished }),
-    author: {
-      "@type": "Organization",
-      name: "YappiX",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "YappiX",
-      logo: { "@type": "ImageObject", url: "https://yappix.ru/images/logo.png" },
-    },
-  }
-
   return (
     <>
       <Header />
@@ -364,7 +340,6 @@ export default async function CaseStudyPage({ params }: Props) {
         </article>
       </main>
       <Footer />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </>
   )
 }

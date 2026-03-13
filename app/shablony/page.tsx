@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Download, ExternalLink } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Шаблоны и UI Kits — Бесплатные ресурсы для дизайнеров | YappiX",
+  title: "Бесплатные шаблоны и UI Kits для дизайнеров | YappiX",
   description:
     "Бесплатные шаблоны и UI kits для Figma, Framer и Next.js. Bankist UI Kit (8K+ скачиваний), Projectorium, Minimal Portfolio. Качественные ресурсы для дизайнеров и разработчиков.",
   keywords: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "https://yappix.ru/shablony",
   },
   openGraph: {
-    title: "Шаблоны и UI Kits — YappiX",
+    title: "Бесплатные шаблоны и UI Kits | YappiX",
     description: "Бесплатные дизайн-ресурсы для сообщества. UI kits, шаблоны портфолио и концепты.",
     type: "website",
     url: "https://yappix.ru/shablony",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Шаблоны и UI Kits — YappiX",
+    title: "Бесплатные шаблоны и UI Kits | YappiX",
     description: "Бесплатные дизайн-ресурсы для сообщества.",
   },
 }
