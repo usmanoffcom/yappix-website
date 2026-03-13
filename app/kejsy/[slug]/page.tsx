@@ -115,7 +115,7 @@ export default async function CaseStudyPage({ params }: Props) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: caseStudy.title,
+    name: caseStudy.title,
     description: caseStudy.description,
     image: absoluteImage,
     mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
