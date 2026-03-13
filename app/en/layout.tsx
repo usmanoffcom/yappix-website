@@ -27,15 +27,16 @@ export const metadata: Metadata = {
     description: "We automate software and web service development and calculate the economics of AI implementation. Skolkovo residents. MVP in 7 days with money-back guarantee.",
     images: [
       {
-        url: "/icon-512x512.png",
-        width: 512,
-        height: 512,
+        url: "/og.png",
+        width: 1200,
+        height: 630,
         alt: "YappiX - IT Studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og.png"],
     title: "YappiX — We automate software and web service development and the economics of AI implementation",
     description: "We automate software and web service development and calculate the economics of AI implementation. Skolkovo residents.",
   },

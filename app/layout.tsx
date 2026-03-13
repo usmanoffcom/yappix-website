@@ -76,9 +76,9 @@ export const metadata: Metadata = {
     description: "Автоматизируем процессы разработки ПО, веб-сервисов и считаем экономику внедрения ИИ. Резиденты Сколково. MVP за 7 дней с гарантией возврата.",
     images: [
       {
-        url: "/icon-512x512.png",
-        width: 512,
-        height: 512,
+        url: "/og.png",
+        width: 1200,
+        height: 630,
         alt: "YappiX - IT-студия",
       },
     ],
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "YappiX — Автоматизируем процессы разработки ПО и считаем экономику внедрения ИИ",
     description: "Автоматизируем процессы разработки ПО, веб-сервисов и считаем экономику внедрения ИИ. Резиденты Сколково.",
-    images: ["/icon-512x512.png"],
+    images: ["/og.png"],
   },
   alternates: {
     canonical: "https://yappix.ru",
