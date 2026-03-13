@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Onest, JetBrains_Mono } from "next/font/google"
 import { ChatWidgetWrapper } from "@/components/chat-widget-wrapper"
 import { DeferredRecaptchaWrapper } from "@/components/deferred-recaptcha-wrapper"
+import { GoogleAnalytics } from "@/components/google-analytics"
 import { YandexMetrika } from "@/components/yandex-metrika"
 import "./globals.css"
 
@@ -178,6 +179,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${_onest.variable} font-sans antialiased`} suppressHydrationWarning>
+        <GoogleAnalytics />
         <YandexMetrika />
         <DeferredRecaptchaWrapper>
           {children}

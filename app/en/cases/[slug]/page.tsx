@@ -24,7 +24,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const caseStudy = getCaseBySlugEn(slug)
 
   if (!caseStudy) {
-    return { title: "Case not found" }
+    return {
+      title: "Case not found | YappiX",
+      description: "The requested case study was not found. Explore other YappiX projects.",
+      robots: {
+        index: false,
+        follow: true,
+      },
+      openGraph: {
+        title: "Case not found | YappiX",
+        description: "The requested case study was not found. Explore other YappiX projects.",
+        type: "website",
+        url: `https://yappix.ru/en/cases/${slug}`,
+        siteName: "YappiX",
+        locale: "en_US",
+        images: [
+          {
+            url: "/og.png",
+            width: 1200,
+            height: 630,
+            alt: "YappiX",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Case not found | YappiX",
+        description: "The requested case study was not found. Explore other YappiX projects.",
+        images: ["/og.png"],
+      },
+      alternates: {
+        canonical: `https://yappix.ru/en/cases/${slug}`,
+      },
+    }
   }
 
   return {
@@ -36,6 +68,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: caseStudy.description,
       images: [caseStudy.image],
       type: "article",
+      url: `https://yappix.ru/en/cases/${slug}`,
+      siteName: "YappiX",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${caseStudy.title} — YappiX case`,
+      description: caseStudy.description,
+      images: [caseStudy.image],
     },
     alternates: {
       canonical: `https://yappix.ru/en/cases/${slug}`,
