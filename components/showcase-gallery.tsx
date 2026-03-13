@@ -51,7 +51,7 @@ function LazyGifItem({ src, alt, index }: { src: string; alt: string; index: num
         {isVisible && (
           <Image
             src={src}
-            alt={alt}
+            alt={alt || "Демонстрация интерфейса YappiX"}
             fill
             className={`object-cover group-hover:scale-105 transition-all duration-500 ${
               isLoaded ? "opacity-100" : "opacity-0"

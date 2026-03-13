@@ -122,8 +122,8 @@ export default function AboutPage() {
                   muted
                   playsInline
                   preload="metadata"
+                  title="Команда YappiX — видео о компании"
                   className="absolute inset-0 w-full h-full object-contain"
-                  aria-label="Команда YappiX — видео"
                 />
               </div>
             </div>
@@ -313,7 +313,7 @@ export default function AboutPage() {
                 >
                   <Image
                     src={client.logo}
-                    alt={client.name}
+                    alt={client.name || "Логотип партнёра"}
                     width={120}
                     height={40}
                     className="object-contain max-w-full max-h-full"

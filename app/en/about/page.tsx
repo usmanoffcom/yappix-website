@@ -18,7 +18,9 @@ export const metadata: Metadata = {
     description: "Full-cycle IT studio. Skolkovo residents. 250+ projects, offices in 5 countries.",
     type: "website",
     url: "https://yappix.ru/en/about",
+    siteName: "YappiX",
     locale: "en_US",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "YappiX" }],
   },
 }
 
@@ -106,8 +108,8 @@ export default function AboutEnPage() {
                   muted
                   playsInline
                   preload="metadata"
+                  title="YappiX Team — company video"
                   className="absolute inset-0 w-full h-full object-contain"
-                  aria-label="YappiX Team — video"
                 />
               </div>
             </div>
@@ -269,7 +271,7 @@ export default function AboutEnPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {clients.map((client) => (
                 <div key={client.name} className="flex items-center justify-center h-20 bg-card border border-border rounded-lg p-4">
-                  <Image src={client.logo} alt={client.name} width={120} height={40} className="object-contain max-w-full max-h-full" />
+                  <Image src={client.logo} alt={client.name || "Логотип партнёра"} width={120} height={40} className="object-contain max-w-full max-h-full" />
                 </div>
               ))}
             </div>

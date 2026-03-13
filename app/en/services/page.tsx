@@ -17,7 +17,9 @@ export const metadata: Metadata = {
     description: "Full range of AI-accelerated IT services. 7-12x faster delivery.",
     type: "website",
     url: "https://yappix.ru/en/services",
+    siteName: "YappiX",
     locale: "en_US",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "YappiX" }],
   },
 }
 

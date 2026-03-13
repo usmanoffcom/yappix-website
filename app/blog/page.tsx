@@ -95,12 +95,13 @@ export default function BlogPage() {
                       muted
                       loop
                       playsInline
+                      title={featuredPost.title}
                       className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
                     <Image
                       src={featuredPost.image || "/placeholder.svg"}
-                      alt={featuredPost.title}
+                      alt={featuredPost.title || "Статья блога YappiX"}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -150,12 +151,13 @@ export default function BlogPage() {
                           muted
                           loop
                           playsInline
+                          title={post.title}
                           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
                         <Image
                           src={post.image || "/placeholder.svg"}
-                          alt={post.title}
+                          alt={post.title || "Статья блога YappiX"}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />

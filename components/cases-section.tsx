@@ -76,6 +76,7 @@ function VideoCard({ src, title }: { src: string; title: string }) {
           muted
           playsInline
           preload="none"
+          title={title}
           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
         />
       ) : (
@@ -131,7 +132,7 @@ function LazyImage({ src, alt }: { src: string; alt: string }) {
       {isVisible && (
         <img
           src={src}
-          alt={alt}
+          alt={alt || "Кейс YappiX"}
           loading="lazy"
           onLoad={() => setIsLoaded(true)}
           className={`object-cover w-full h-full group-hover:scale-105 transition-all duration-500 ${
@@ -174,7 +175,7 @@ export function CasesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
                 {caseItem.video ? (
                   <VideoCard src={caseItem.video} title={caseItem.title} />
                 ) : (
-                  <LazyImage src={caseItem.image || "/placeholder.svg"} alt={caseItem.title} />
+                  <LazyImage src={caseItem.image || "/placeholder.svg"} alt={caseItem.title || "Кейс YappiX"} />
                 )}
 
                 <CardContent className="p-6">

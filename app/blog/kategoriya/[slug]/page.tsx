@@ -54,6 +54,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       description: categoryDescriptions[params.slug] || `Статьи в категории "${category.name}"`,
       type: "website",
       url: `https://yappix.ru/blog/kategoriya/${params.slug}`,
+      siteName: "YappiX",
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "YappiX" }],
     },
   }
 }
@@ -143,12 +145,13 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                             muted
                             loop
                             playsInline
+                            title={post.title}
                             autoPlay
                           />
                         ) : (
                           <Image
                             src={post.image}
-                            alt={post.title}
+                            alt={post.title || "Статья блога YappiX"}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />

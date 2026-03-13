@@ -49,12 +49,13 @@ export function TemplatesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
                       loop
                       muted
                       playsInline
+                      title={template.title}
                       className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
                     <Image
                       src={template.image || "/placeholder.svg"}
-                      alt={template.title}
+                      alt={template.title || "Шаблон YappiX"}
                       fill
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />

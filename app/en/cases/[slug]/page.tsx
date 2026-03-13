@@ -178,6 +178,7 @@ export default async function CaseStudyEnPage({ params }: Props) {
                     loop
                     playsInline
                     controls
+                    title={`${caseStudy.title} — video ${index + 1}`}
                     className="object-contain w-full h-full"
                   />
                 </div>
@@ -191,12 +192,13 @@ export default async function CaseStudyEnPage({ params }: Props) {
                     loop
                     playsInline
                     controls
+                    title={caseStudy.title}
                     className="w-full h-auto"
                   />
                 ) : (
                   <Image
                     src={caseStudy.image || "/placeholder.svg"}
-                    alt={caseStudy.title}
+                    alt={caseStudy.title || "YappiX case study"}
                     width={1920}
                     height={1080}
                     className="w-full h-auto"

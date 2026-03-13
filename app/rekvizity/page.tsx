@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     siteName: "YappiX",
     type: "website",
     locale: "ru_RU",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "YappiX" }],
   },
 }
 

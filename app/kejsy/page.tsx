@@ -233,12 +233,13 @@ export default function CasesPage() {
                           loop
                           muted
                           playsInline
+                          title={caseItem.title}
                           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
                       <Image
                         src={caseItem.image || "/placeholder.svg"}
-                        alt={caseItem.title}
+                        alt={caseItem.title || "Кейс YappiX"}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />

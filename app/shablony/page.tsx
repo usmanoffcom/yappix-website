@@ -175,12 +175,13 @@ export default function ShablonyPage() {
                           loop
                           muted
                           playsInline
+                          title={template.title}
                           className="absolute inset-0 w-full h-full object-cover object-top"
                         />
                       ) : (
                         <Image
                           src={template.image}
-                          alt={template.title}
+                          alt={template.title || "Шаблон YappiX"}
                           fill
                           sizes="(max-width: 1024px) 100vw, 574px"
                           className="object-cover object-top"

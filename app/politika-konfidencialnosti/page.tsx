@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     url: "https://yappix.ru/politika-konfidencialnosti",
     siteName: "YappiX",
     locale: "ru_RU",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "YappiX" }],
   },
   robots: {
     index: true,

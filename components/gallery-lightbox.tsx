@@ -69,6 +69,7 @@ export function GalleryWithLightbox({ images, title, locale = "ru" }: GalleryWit
                 loop
                 muted
                 playsInline
+                title={locale === "ru" ? `${title} — видео ${index + 1}` : `${title} — video ${index + 1}`}
                 className="object-cover w-full h-full"
               />
             ) : (
@@ -77,8 +78,8 @@ export function GalleryWithLightbox({ images, title, locale = "ru" }: GalleryWit
                   src={media || "/placeholder.svg"}
                   alt={
                     locale === "ru"
-                      ? `${title} — скриншот проекта ${index + 1}`
-                      : `${title} — project screenshot ${index + 1}`
+                      ? `${title || "Проект"} — скриншот ${index + 1}`
+                      : `${title || "Project"} — screenshot ${index + 1}`
                   }
                   fill
                   className="object-contain transition-transform duration-300 group-hover:scale-105"
@@ -133,8 +134,8 @@ export function GalleryWithLightbox({ images, title, locale = "ru" }: GalleryWit
                 src={images[currentIndex]}
                 alt={
                   locale === "ru"
-                    ? `${title} — скриншот проекта ${currentIndex + 1}`
-                    : `${title} — project screenshot ${currentIndex + 1}`
+                    ? `${title || "Проект"} — скриншот ${currentIndex + 1}`
+                    : `${title || "Project"} — screenshot ${currentIndex + 1}`
                 }
                 fill
                 className="object-contain"

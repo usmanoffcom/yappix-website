@@ -71,6 +71,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     authors: [{ name: post.author }],
     openGraph: {
       type: "article",
+      url: `https://yappix.ru/blog/${slug}`,
+      siteName: "YappiX",
       title: post.title,
       description: post.metaDescription,
       images: [post.image],
@@ -167,10 +169,11 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                     muted
                     loop
                     playsInline
+                    title={post.title}
                     className="object-cover w-full h-full"
                   />
                 ) : (
-                  <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" priority />
+                  <Image src={post.image || "/placeholder.svg"} alt={post.title || "Статья блога YappiX"} fill className="object-cover" priority />
                 )}
               </div>
             </div>
@@ -251,7 +254,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                       <div className="relative aspect-video bg-muted">
                         <Image
                           src={relatedPost.image || "/placeholder.svg"}
-                          alt={relatedPost.title}
+                          alt={relatedPost.title || "Статья блога YappiX"}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />

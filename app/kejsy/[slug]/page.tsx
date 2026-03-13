@@ -191,6 +191,7 @@ export default async function CaseStudyPage({ params }: Props) {
                     loop
                     playsInline
                     controls
+                    title={`${caseStudy.title} — видео ${index + 1}`}
                     className="object-contain w-full h-full"
                   />
                 </div>
@@ -204,12 +205,13 @@ export default async function CaseStudyPage({ params }: Props) {
                     loop
                     playsInline
                     controls
+                    title={caseStudy.title}
                     className="w-full h-auto"
                   />
                 ) : (
                   <Image
                     src={caseStudy.image || "/placeholder.svg"}
-                    alt={caseStudy.title}
+                    alt={caseStudy.title || "Кейс YappiX"}
                     width={1920}
                     height={1080}
                     className="w-full h-auto"

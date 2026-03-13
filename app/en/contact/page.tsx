@@ -20,7 +20,9 @@ export const metadata: Metadata = {
     description: "Contact YappiX: offices in 5 countries, phone, email, Telegram. Free consultation.",
     type: "website",
     url: "https://yappix.ru/en/contact",
+    siteName: "YappiX",
     locale: "en_US",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "YappiX" }],
   },
 }
 

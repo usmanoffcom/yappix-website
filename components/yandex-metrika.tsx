@@ -27,7 +27,7 @@ export function YandexMetrika() {
             src={`https://mc.yandex.ru/watch/${YM_ID}`}
             width={1}
             height={1}
-            alt=""
+            alt="Счётчик Яндекс.Метрики"
             loading="lazy"
             className="absolute left-[-9999px]"
           />
