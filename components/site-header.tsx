@@ -242,10 +242,11 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             >
               <SheetHeader className="px-6 py-5 border-b border-border/50">
                 <SheetTitle asChild>
-                  <div className="flex items-center justify-between">
-                    <Logo href={t.logoHref} />
-                  </div>
+                  <span className="sr-only">{t.openMenu}</span>
                 </SheetTitle>
+                <div className="flex items-center justify-between">
+                  <Logo href={t.logoHref} />
+                </div>
               </SheetHeader>
 
               <div className="flex-1 overflow-y-auto">

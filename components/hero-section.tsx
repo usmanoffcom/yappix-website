@@ -3,36 +3,40 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Play, Sparkles, Zap, Shield, Rocket, Globe, TrendingUp, Briefcase } from "lucide-react"
 import dynamic from "next/dynamic"
 import { useState, useEffect } from "react"
 
-// Lazy load Spline только когда страница полностью загружена и после задержки
 const Spline = dynamic(() => import('@splinetool/react-spline').then(m => m.default), {
   ssr: false,
-  loading: () => (
-    <div className="w-full h-full bg-gradient-to-br from-primary/5 via-primary/3 to-transparent flex items-center justify-center">
-      <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
-    </div>
-  )
+  loading: () => null,
 })
 
-// Компонент для отложенной загрузки Spline (управляется снаружи)
 function LazySpline({ scene, className = "", shouldLoad }: { scene: string; className?: string; shouldLoad: boolean }) {
-  if (!shouldLoad) {
-    return (
-      <div className={`w-full h-full bg-gradient-to-br from-primary/5 via-primary/3 to-transparent ${className}`.trim()}>
-        {/* Animated gradient placeholder */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -inset-[100%] animate-[spin_20s_linear_infinite] opacity-30">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-gradient-conic from-primary/20 via-transparent to-primary/10" />
-          </div>
-        </div>
-      </div>
-    )
-  }
+  const [splineLoaded, setSplineLoaded] = useState(false)
 
-  return <Spline scene={scene} />
+  return (
+    <div className={`relative w-full h-full ${className}`.trim()}>
+      {/* Робот-плейсхолдер: показывается сразу, плавно исчезает после загрузки Spline */}
+      <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ${splineLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <Image
+          src="/Robot.png"
+          alt="YappiX Robot"
+          width={600}
+          height={600}
+          priority
+          className="w-auto h-[80%] max-h-[600px] object-contain drop-shadow-[0_0_40px_rgba(236,72,153,0.3)]"
+        />
+      </div>
+      {/* Spline: грузится в фоне, при готовности плавно появляется */}
+      {shouldLoad && (
+        <div className={`absolute inset-0 transition-opacity duration-1000 ${splineLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          <Spline scene={scene} onLoad={() => setSplineLoaded(true)} />
+        </div>
+      )}
+    </div>
+  )
 }
 
 const content = {
@@ -80,26 +84,17 @@ export function HeroSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
   const t = content[locale]
   const [splineReady, setSplineReady] = useState(false)
 
+  // Spline сильно грузит главный поток (TBT). Грузим только через 10s, чтобы страница успела стать интерактивной.
   useEffect(() => {
     let cancelled = false
     const trigger = () => {
       if (!cancelled) setSplineReady(true)
     }
-    const fallback = setTimeout(trigger, 3500)
-    const section = document.querySelector('[data-hero-section]')
-    if (section && typeof IntersectionObserver !== 'undefined') {
-      const io = new IntersectionObserver(
-        (entries) => { if (entries[0]?.isIntersecting) trigger() },
-        { rootMargin: '80px', threshold: 0.01 }
-      )
-      io.observe(section)
-      return () => {
-        cancelled = true
-        clearTimeout(fallback)
-        io.disconnect()
-      }
+    const t = setTimeout(trigger, 10000)
+    return () => {
+      cancelled = true
+      clearTimeout(t)
     }
-    return () => { cancelled = true; clearTimeout(fallback) }
   }, [])
 
   return (
