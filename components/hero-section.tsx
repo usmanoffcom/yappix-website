@@ -17,38 +17,11 @@ const Spline = dynamic(() => import('@splinetool/react-spline').then(m => m.defa
   )
 })
 
-// Компонент для отложенной загрузки Spline
-function LazySpline({ scene, className }: { scene: string; className?: string }) {
-  const [shouldLoad, setShouldLoad] = useState(false)
-
-  useEffect(() => {
-    // Загружаем Spline только после полной загрузки страницы и задержки
-    const loadSpline = () => {
-      // Используем requestIdleCallback для загрузки в idle время
-      if ('requestIdleCallback' in window) {
-        (window as any).requestIdleCallback(() => {
-          setShouldLoad(true)
-        }, { timeout: 5000 })
-      } else {
-        // Fallback: загружаем через 3 секунды
-        setTimeout(() => {
-          setShouldLoad(true)
-        }, 3000)
-      }
-    }
-
-    // Проверяем, загружена ли страница
-    if (document.readyState === 'complete') {
-      loadSpline()
-    } else {
-      window.addEventListener('load', loadSpline)
-      return () => window.removeEventListener('load', loadSpline)
-    }
-  }, [])
-
+// Компонент для отложенной загрузки Spline (управляется снаружи)
+function LazySpline({ scene, className = "", shouldLoad }: { scene: string; className?: string; shouldLoad: boolean }) {
   if (!shouldLoad) {
     return (
-      <div className={`w-full h-full bg-gradient-to-br from-primary/5 via-primary/3 to-transparent ${className}`}>
+      <div className={`w-full h-full bg-gradient-to-br from-primary/5 via-primary/3 to-transparent ${className}`.trim()}>
         {/* Animated gradient placeholder */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -inset-[100%] animate-[spin_20s_linear_infinite] opacity-30">
@@ -105,15 +78,39 @@ const content = {
 
 export function HeroSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
   const t = content[locale]
+  const [splineReady, setSplineReady] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+    const trigger = () => {
+      if (!cancelled) setSplineReady(true)
+    }
+    const fallback = setTimeout(trigger, 3500)
+    const section = document.querySelector('[data-hero-section]')
+    if (section && typeof IntersectionObserver !== 'undefined') {
+      const io = new IntersectionObserver(
+        (entries) => { if (entries[0]?.isIntersecting) trigger() },
+        { rootMargin: '80px', threshold: 0.01 }
+      )
+      io.observe(section)
+      return () => {
+        cancelled = true
+        clearTimeout(fallback)
+        io.disconnect()
+      }
+    }
+    return () => { cancelled = true; clearTimeout(fallback) }
+  }, [])
+
   return (
-    <section className="relative min-h-[100svh] flex items-center pt-20 sm:pt-24 pb-12 overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-center pt-20 sm:pt-24 pb-12 overflow-hidden" data-hero-section>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
-      {/* Spline Background for Mobile/Tablet (< xl) - Lazy loaded */}
+      {/* Spline Background for Mobile/Tablet (< xl) - Lazy loaded when hero in viewport */}
       <div className="absolute inset-0 xl:hidden pointer-events-none opacity-30 overflow-hidden">
         <div className="w-full h-[calc(100%+100px)] -mb-[100px]">
-          <LazySpline scene="https://prod.spline.design/YMKHOsTacHbgDg3g/scene.splinecode" />
+          <LazySpline scene="https://prod.spline.design/YMKHOsTacHbgDg3g/scene.splinecode" shouldLoad={splineReady} />
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </div>
@@ -135,7 +132,7 @@ export function HeroSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
                 {t.badge3}
               </Badge>
             </div>
-            <h1 className="text-display text-foreground mb-5 sm:mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
+            <h1 className="text-headline text-foreground mb-5 sm:mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
               {t.headline}
             </h1>
             <p className="text-body-lg max-w-2xl xl:max-w-none mx-auto xl:mx-0 mb-8 sm:mb-10 text-pretty animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
@@ -157,10 +154,10 @@ export function HeroSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
             </div>
           </div>
 
-          {/* Right Column - Spline 3D Robot (Desktop >= xl) - Lazy loaded */}
+          {/* Right Column - Spline 3D Robot (Desktop >= xl) - Lazy loaded when hero in viewport */}
           <div className="hidden xl:block relative w-full h-[560px] min-[1280px]:h-[700px] 2xl:h-[800px]">
             <div className="absolute -inset-x-20 2xl:-inset-x-32 -top-10 -bottom-20 overflow-hidden animate-in fade-in zoom-in-90 duration-800 delay-200">
-              <LazySpline scene="https://prod.spline.design/YsrhGK1AHO4x8zaQ/scene.splinecode" />
+              <LazySpline scene="https://prod.spline.design/YsrhGK1AHO4x8zaQ/scene.splinecode" shouldLoad={splineReady} />
               <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-background to-transparent pointer-events-none" />
             </div>
           </div>

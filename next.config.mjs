@@ -1,5 +1,17 @@
 /** @type {import('next').NextConfig} */
+
+// CDN для статики (_next/static, CSS, JS). В production по умолчанию cdn.yappix.ru.
+// Отключить: NEXT_PUBLIC_CDN_URL=
+const cdnUrl =
+  process.env.NEXT_PUBLIC_CDN_URL !== undefined
+    ? process.env.NEXT_PUBLIC_CDN_URL
+    : process.env.NODE_ENV === 'production'
+      ? 'https://cdn.yappix.ru'
+      : ''
+
 const nextConfig = {
+  assetPrefix: cdnUrl ? cdnUrl.replace(/\/$/, '') : undefined,
+
   // TypeScript configuration
   typescript: {
     // Enable type checking in build
@@ -26,6 +38,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'yappix.ru',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.yappix.ru',
       },
       {
         protocol: 'https',
@@ -220,6 +236,13 @@ const nextConfig = {
   // Redirects for SEO
   async redirects() {
     return [
+      // Убираем мусорные query (Apache/индексация): ?C=D;O=D и т.п. → каноничный /
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'C' }],
+        destination: '/',
+        permanent: true,
+      },
       // Редирект с www на non-www
       {
         source: '/:path*',

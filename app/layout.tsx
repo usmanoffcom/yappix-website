@@ -2,14 +2,19 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Onest, JetBrains_Mono } from "next/font/google"
 import { ChatWidgetWrapper } from "@/components/chat-widget-wrapper"
-import { RecaptchaProvider } from "@/components/recaptcha-provider"
+import { DeferredRecaptchaWrapper } from "@/components/deferred-recaptcha-wrapper"
+import { YandexMetrika } from "@/components/yandex-metrika"
 import "./globals.css"
 
 const _onest = Onest({
   subsets: ["latin", "cyrillic"],
   variable: "--font-onest",
+  display: "swap",
 })
-const _geistMono = JetBrains_Mono({ subsets: ["latin"] })
+const _geistMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yappix.ru'),
@@ -116,26 +121,6 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="YappiX" />
-        {/* Yandex.Metrika counter */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(m,e,t,r,i,k,a){
-                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-                m[i].l=1*new Date();
-                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-              })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-              ym(95481194, 'init', {webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true});
-            `,
-          }}
-        />
-        <noscript>
-          <div>
-            <img src="https://mc.yandex.ru/watch/95481194" width="1" height="1" className="ym-noscript-pixel" alt="" loading="lazy" />
-          </div>
-        </noscript>
-        {/* /Yandex.Metrika counter */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -193,10 +178,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${_onest.variable} font-sans antialiased`} suppressHydrationWarning>
-        <RecaptchaProvider>
+        <YandexMetrika />
+        <DeferredRecaptchaWrapper>
           {children}
           <ChatWidgetWrapper />
-        </RecaptchaProvider>
+        </DeferredRecaptchaWrapper>
       </body>
     </html>
   )

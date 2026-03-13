@@ -1,16 +1,18 @@
+import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
-import { TrustBadges } from "@/components/trust-badges"
-import { AutomationEconomicsSection } from "@/components/automation-economics-section"
-import { ServicesSection } from "@/components/services-section"
-import { ProcessSection } from "@/components/process-section"
-import { CasesSection } from "@/components/cases-section"
-import { TechStack } from "@/components/tech-stack"
-import { PricingSection } from "@/components/pricing-section"
-import { ShowcaseGallery } from "@/components/showcase-gallery"
-import { TemplatesSection } from "@/components/templates-section"
-import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
+
+const TrustBadges = dynamic(() => import("@/components/trust-badges").then((m) => ({ default: m.TrustBadges })), { ssr: true })
+const AutomationEconomicsSection = dynamic(() => import("@/components/automation-economics-section").then((m) => ({ default: m.AutomationEconomicsSection })), { ssr: true })
+const ServicesSection = dynamic(() => import("@/components/services-section").then((m) => ({ default: m.ServicesSection })), { ssr: true })
+const ProcessSection = dynamic(() => import("@/components/process-section").then((m) => ({ default: m.ProcessSection })), { ssr: true })
+const CasesSection = dynamic(() => import("@/components/cases-section").then((m) => ({ default: m.CasesSection })), { ssr: true })
+const TechStack = dynamic(() => import("@/components/tech-stack").then((m) => ({ default: m.TechStack })), { ssr: true })
+const PricingSection = dynamic(() => import("@/components/pricing-section").then((m) => ({ default: m.PricingSection })), { ssr: true })
+const ShowcaseGallery = dynamic(() => import("@/components/showcase-gallery").then((m) => ({ default: m.ShowcaseGallery })), { ssr: true })
+const TemplatesSection = dynamic(() => import("@/components/templates-section").then((m) => ({ default: m.TemplatesSection })), { ssr: true })
+const ContactSection = dynamic(() => import("@/components/contact-section").then((m) => ({ default: m.ContactSection })), { ssr: true })
+const Footer = dynamic(() => import("@/components/footer").then((m) => ({ default: m.Footer })), { ssr: true })
 
 export default function HomePage() {
   return (
