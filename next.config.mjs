@@ -1,12 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-// CDN для статики. В production по умолчанию cdn.yappix.ru. Отключить: NEXT_PUBLIC_CDN_URL=
-const cdnUrl =
-  process.env.NEXT_PUBLIC_CDN_URL !== undefined
-    ? process.env.NEXT_PUBLIC_CDN_URL
-    : process.env.NODE_ENV === 'production'
-      ? 'https://cdn.yappix.ru'
-      : ''
+// CDN: включить только когда настроены 1) отдача _next/static с CDN 2) CORS: Access-Control-Allow-Origin: https://yappix.ru
+// Сейчас выключен — статика с yappix.ru. Включить: NEXT_PUBLIC_CDN_URL=https://cdn.yappix.ru
+const cdnUrl = (process.env.NEXT_PUBLIC_CDN_URL || '').trim()
 
 const nextConfig = {
   assetPrefix: cdnUrl ? cdnUrl.replace(/\/$/, '') : undefined,
