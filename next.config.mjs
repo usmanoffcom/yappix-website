@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-// CDN для статики (_next/static, CSS, JS). В production по умолчанию cdn.yappix.ru.
-// Отключить: NEXT_PUBLIC_CDN_URL=
+// CDN для статики. В production по умолчанию cdn.yappix.ru. Отключить: NEXT_PUBLIC_CDN_URL=
 const cdnUrl =
   process.env.NEXT_PUBLIC_CDN_URL !== undefined
     ? process.env.NEXT_PUBLIC_CDN_URL
