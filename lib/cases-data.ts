@@ -405,7 +405,7 @@ export const casesData: CaseStudy[] = [
   },
   {
     slug: "coinpulse-crypto",
-    title: "CoinPulse — Crypto Market Dashboard",
+    title: "CoinPulse — Крипто-дашборд для мониторинга рынка",
     client: "Community",
     category: "FinTech / Crypto",
     description: "Готовый шаблон крипто-дашборда на Next.js. Конвертация макета из Figma за 30 минут благодаря дизайн-токенам и правильной разметке компонентов.",
@@ -438,7 +438,7 @@ export const casesData: CaseStudy[] = [
   },
   {
     slug: "projectorium-cicd",
-    title: "Projectorium — CI/CD SaaS",
+    title: "Projectorium — CI/CD платформа для деплоя",
     client: "Projectorium",
     category: "DevOps / SaaS",
     description: "CI/CD SaaS для деплоя Node.js и Python приложений. Продуктовая история, лендинг, дизайн-система, 3D в Spline.",
