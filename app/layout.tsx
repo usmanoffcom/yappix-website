@@ -5,6 +5,7 @@ import { ChatWidgetWrapper } from "@/components/chat-widget-wrapper"
 import { DeferredRecaptchaWrapper } from "@/components/deferred-recaptcha-wrapper"
 import { GoogleAnalytics } from "@/components/google-analytics"
 import { YandexMetrika } from "@/components/yandex-metrika"
+import { MailRuTop } from "@/components/mail-ru-top"
 import "./globals.css"
 
 const _onest = Onest({
@@ -181,6 +182,7 @@ export default function RootLayout({
       <body className={`${_onest.variable} font-sans antialiased`} suppressHydrationWarning>
         <GoogleAnalytics />
         <YandexMetrika />
+        <MailRuTop />
         <DeferredRecaptchaWrapper>
           {children}
           <ChatWidgetWrapper />
