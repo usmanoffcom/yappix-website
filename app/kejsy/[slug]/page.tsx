@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogImageUrl = caseStudy.image.startsWith("http") ? caseStudy.image : `https://yappix.ru${caseStudy.image}`
 
   return {
-    title: `${caseStudy.title} — кейс YappiX | ${caseStudy.category}`,
+    title: `Кейс YappiX: ${caseStudy.title} | ${caseStudy.category}`,
     description: `${caseStudy.description} Результаты: ${caseStudy.results.map((r) => `${r.label}: ${r.value}`).join(", ")}`,
     keywords: [caseStudy.category, ...caseStudy.tags, "кейс", "портфолио", "YappiX"],
     openGraph: {
