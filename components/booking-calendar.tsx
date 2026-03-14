@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { reachGoal } from "@/lib/mail-ru-goal"
 
 // Генерируем временные слоты с 9:00 до 19:00 с интервалом 30 минут
 const timeSlots = Array.from({ length: 21 }, (_, i) => {
@@ -85,6 +86,7 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
 
       if (response.ok) {
         setSubmitStatus("success")
+        reachGoal("lead")
         // Сброс формы
         setTimeout(() => {
           setFormData({ name: "", email: "", phone: "" })

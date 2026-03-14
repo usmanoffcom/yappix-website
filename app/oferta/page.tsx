@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
+import { TelegramLeadLink } from "@/components/telegram-lead-link"
 
 export const metadata: Metadata = {
   title: "Публичная оферта YappiX — условия оказания услуг",
@@ -182,7 +183,7 @@ export default function OfertaPage() {
                   <ul>
                     <li>Email: <Link href="mailto:sales@yappix.ru">sales@yappix.ru</Link></li>
                     <li>Телефон: <Link href="tel:+79950955593">+7 995 095 55 93</Link></li>
-                    <li>Telegram: <Link href="https://t.me/yappix_bot" target="_blank">@yappix_bot</Link></li>
+                    <li>Telegram: <TelegramLeadLink>@yappix_bot</TelegramLeadLink></li>
                     <li>
                       Юридический адрес: 2108 N St Ste N, Sacramento, CA 95816 US
                     </li>

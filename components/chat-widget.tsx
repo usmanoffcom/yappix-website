@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { validateName, validateEmail, formatRussianPhone } from "@/lib/validation"
+import { reachGoal } from "@/lib/mail-ru-goal"
 
 interface Message {
   role: "user" | "assistant"
@@ -236,6 +237,7 @@ export function ChatWidget() {
       if (response.ok && data?.success) {
         setLeadSent(true)
         setShowLeadForm(false)
+        reachGoal("lead")
         setMessages(prev => [...prev, { 
           role: "assistant", 
           content: "✅ Спасибо! Мы получили ваши контакты и скоро свяжемся с вами!" 
@@ -431,7 +433,7 @@ export function ChatWidget() {
               Позвонить
             </button>
             <button
-              onClick={() => window.open("https://t.me/yappix_bot")}
+              onClick={() => { reachGoal("lead"); window.open("https://t.me/yappix_bot") }}
               className="flex items-center gap-1.5 px-3 py-1.5 bg-secondary rounded-full text-xs text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
             >
               <MessageCircle className="w-3 h-3" />

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, MessageCircle, Clock } from "lucide-react"
+import { TelegramLeadLink } from "@/components/telegram-lead-link"
 
 export const metadata: Metadata = {
   title: "Contact YappiX — Get in Touch | IT Studio",
@@ -235,9 +236,9 @@ export default function ContactEnPage() {
                   </Button>
                   <p className="text-sm text-muted-foreground text-center">
                     Or write to us on{" "}
-                    <Link href="https://t.me/yappix_bot" className="text-primary hover:underline">
+                    <TelegramLeadLink className="text-primary hover:underline">
                       Telegram
-                    </Link>{" "}
+                    </TelegramLeadLink>{" "}
                     — we&apos;ll respond faster
                   </p>
                 </form>

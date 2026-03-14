@@ -14,6 +14,7 @@ import Link from "next/link"
 import { BookingCalendar } from "@/components/booking-calendar"
 import { PhoneInputField } from "@/components/phone-input"
 import { validateName, validateEmail, validateCompany, validateMessage } from "@/lib/validation"
+import { reachGoal } from "@/lib/mail-ru-goal"
 
 const officesByLocale = {
   ru: [
@@ -192,6 +193,7 @@ export function ContactSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
         setSubmitStatus("success")
         setFormData({ name: "", company: "", email: "", phone: "", message: "" })
         setErrors({})
+        reachGoal("lead")
       } else {
         setSubmitStatus("error")
         setSubmitError(data.error || (locale === "en" ? "Send failed" : "Ошибка отправки"))
@@ -377,6 +379,7 @@ export function ContactSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
                 <Link 
                   href="https://t.me/yappix_bot" 
                   target="_blank"
+                  onClick={() => reachGoal("lead")}
                   className="group inline-flex items-center justify-start gap-3 whitespace-nowrap rounded-md text-sm font-medium transition-all border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground active:bg-accent/90 active:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 h-auto py-4 px-6"
                 >
                   <MessageCircle className="w-5 h-5 text-primary group-hover:text-accent-foreground transition-colors shrink-0" />

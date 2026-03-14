@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Logo } from "./logo"
+import { TelegramLeadLink } from "./telegram-lead-link"
 
 type Locale = "ru" | "en"
 type FooterLink = { label: string; href: string; external?: boolean }
@@ -194,14 +195,20 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <ul className="space-y-2 sm:space-y-2.5">
               {socialLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.href.includes("yappix_bot") ? (
+                    <TelegramLeadLink className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </TelegramLeadLink>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

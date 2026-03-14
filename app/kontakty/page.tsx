@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, MessageCircle, Clock } from "lucide-react"
 import { BookingCallBlock } from "@/components/booking-call-block"
+import { TelegramLeadLink } from "@/components/telegram-lead-link"
 
 export const metadata: Metadata = {
   title: "Контакты YappiX — связаться с нами | IT-студия",
@@ -250,9 +251,9 @@ export default function ContactsPage() {
                   </Button>
                   <p className="text-sm text-muted-foreground text-center">
                     Или напишите нам в{" "}
-                    <Link href="https://t.me/yappix_bot" className="text-primary hover:underline">
+                    <TelegramLeadLink className="text-primary hover:underline">
                       Telegram
-                    </Link>{" "}
+                    </TelegramLeadLink>{" "}
                     — ответим быстрее
                   </p>
                 </form>
