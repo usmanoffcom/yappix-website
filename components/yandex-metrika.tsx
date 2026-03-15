@@ -32,7 +32,7 @@ export function YandexMetrika() {
             src={`https://mc.yandex.ru/watch/${YM_ID}`}
             width={1}
             height={1}
-            alt=""
+            alt="Yandex Metrika"
             className="absolute left-[-9999px]"
           />
         </div>
