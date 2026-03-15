@@ -153,14 +153,25 @@ export default async function CaseStudyEnPage({ params }: Props) {
                   <span>{caseStudy.year}</span>
                 </div>
               </div>
-              {caseStudy.projectUrl && (
-                <Button size="lg" className="mt-6 gap-2" asChild>
-                  <a href={caseStudy.projectUrl} target="_blank" rel="nofollow noopener noreferrer">
-                    View project
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </Button>
-              )}
+              <div className="flex flex-wrap gap-3 mt-6">
+                {caseStudy.projectLinks?.length
+                  ? caseStudy.projectLinks.map((project) => (
+                      <Button key={project.url} size="lg" className="gap-2" asChild>
+                        <a href={project.url} target="_blank" rel="nofollow noopener noreferrer">
+                          {project.label}
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    ))
+                  : caseStudy.projectUrl && (
+                      <Button size="lg" className="gap-2" asChild>
+                        <a href={caseStudy.projectUrl} target="_blank" rel="nofollow noopener noreferrer">
+                          View project
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    )}
+              </div>
             </div>
           </div>
         </section>
@@ -264,6 +275,68 @@ export default async function CaseStudyEnPage({ params }: Props) {
           </div>
         </section>
 
+        {caseStudy.evidencePack && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Evidence Pack</h2>
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
+                <Card className="bg-card border-border">
+                  <CardContent className="pt-6 space-y-3">
+                    <p className="text-sm text-muted-foreground">Baseline</p>
+                    <p className="text-foreground">{caseStudy.evidencePack.baseline}</p>
+                    <p className="text-sm text-muted-foreground pt-2">Period</p>
+                    <p className="text-foreground">{caseStudy.evidencePack.period}</p>
+                    <p className="text-sm text-muted-foreground pt-2">Data source</p>
+                    <p className="text-foreground">{caseStudy.evidencePack.source}</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-card border-border">
+                  <CardContent className="pt-6">
+                    <p className="text-sm text-muted-foreground mb-3">Measurement methodology</p>
+                    <ul className="space-y-2">
+                      {caseStudy.evidencePack.methodology.map((item) => (
+                        <li key={item} className="text-foreground text-sm">
+                          - {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 mt-6 sm:mt-8">
+                <Card className="bg-card border-border">
+                  <CardContent className="pt-6">
+                    <p className="text-sm text-muted-foreground mb-3">Validation artifacts</p>
+                    <ul className="space-y-2">
+                      {caseStudy.evidencePack.artifacts.map((item) => (
+                        <li key={item} className="text-foreground text-sm">
+                          - {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card className="bg-card border-border">
+                  <CardContent className="pt-6">
+                    <p className="text-sm text-muted-foreground mb-3">Before / After</p>
+                    <div className="space-y-3">
+                      {caseStudy.evidencePack.metrics.map((m) => (
+                        <div key={m.name} className="rounded-lg border border-border p-3">
+                          <p className="text-foreground font-medium mb-2">{m.name}</p>
+                          <p className="text-sm text-muted-foreground">Before: {m.before}</p>
+                          <p className="text-sm text-muted-foreground">After: {m.after}</p>
+                          {m.note ? <p className="text-sm text-primary mt-1">{m.note}</p> : null}
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="pb-12 sm:pb-16 md:pb-20">
           <div className="container mx-auto">
             <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
@@ -297,6 +370,28 @@ export default async function CaseStudyEnPage({ params }: Props) {
                   {tag}
                 </Badge>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-12 sm:pb-16 md:pb-20">
+          <div className="container mx-auto">
+            <div className="rounded-xl border border-border bg-card p-5 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-3">How we validate outcomes</h2>
+              <p className="text-muted-foreground mb-5">
+                For priority projects we publish measurement methodology, baseline reports, and delivery governance standards.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="outline" asChild>
+                  <Link href="/en/evidence">Evidence Hub</Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link href="/en/roi-methodology">ROI Methodology</Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link href="/en/security-compliance">Security &amp; Compliance</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>

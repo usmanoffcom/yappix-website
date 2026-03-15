@@ -81,6 +81,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/en/services`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: `${baseUrl}/en/career`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
     { url: `${baseUrl}/en/rekvizity`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.6 },
+    { url: `${baseUrl}/evidence`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${baseUrl}/security-compliance`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: `${baseUrl}/sla-support`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: `${baseUrl}/roi-methodology`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${baseUrl}/en/evidence`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${baseUrl}/en/security-compliance`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: `${baseUrl}/en/sla-support`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: `${baseUrl}/en/roi-methodology`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
   ]
 
   // Services pages - используем реальные slug'и из servicesData

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <rect width="1600" height="900" fill="#0B0F12"/>
+  <rect x="36" y="36" width="1528" height="828" rx="24" fill="#11181F" stroke="#26404C"/>
+  <text x="90" y="120" fill="#F1F7FA" font-size="44" font-family="Onest, Arial, sans-serif" font-weight="700">Security &amp; Compliance Controls Matrix</text>
+  <text x="90" y="165" fill="#9EB4C1" font-size="24" font-family="Onest, Arial, sans-serif">Data flow, access governance, logging retention, incident readiness (demo artifact)</text>
+  <rect x="90" y="220" width="1420" height="580" rx="18" fill="#142029" stroke="#2A4A59"/>
+  <line x1="90" y1="320" x2="1510" y2="320" stroke="#2A4A59"/>
+  <line x1="440" y1="220" x2="440" y2="800" stroke="#2A4A59"/>
+  <line x1="790" y1="220" x2="790" y2="800" stroke="#2A4A59"/>
+  <line x1="1140" y1="220" x2="1140" y2="800" stroke="#2A4A59"/>
+  <text x="125" y="285" fill="#CDE1EB" font-size="24" font-family="JetBrains Mono, monospace">Control</text>
+  <text x="475" y="285" fill="#CDE1EB" font-size="24" font-family="JetBrains Mono, monospace">Owner</text>
+  <text x="825" y="285" fill="#CDE1EB" font-size="24" font-family="JetBrains Mono, monospace">Coverage</text>
+  <text x="1175" y="285" fill="#CDE1EB" font-size="24" font-family="JetBrains Mono, monospace">Status</text>
+  <text x="125" y="380" fill="#F1F7FA" font-size="22" font-family="Onest, Arial, sans-serif">RBAC + Audit Trail</text>
+  <text x="475" y="380" fill="#9EB4C1" font-size="22" font-family="Onest, Arial, sans-serif">Engineering Lead</text>
+  <text x="825" y="380" fill="#9EF0C4" font-size="22" font-family="Onest, Arial, sans-serif">Critical actions</text>
+  <text x="1175" y="380" fill="#9EF0C4" font-size="22" font-family="Onest, Arial, sans-serif">Implemented</text>
+  <text x="125" y="470" fill="#F1F7FA" font-size="22" font-family="Onest, Arial, sans-serif">Data Retention Policy</text>
+  <text x="475" y="470" fill="#9EB4C1" font-size="22" font-family="Onest, Arial, sans-serif">Security Officer</text>
+  <text x="825" y="470" fill="#FFD08A" font-size="22" font-family="Onest, Arial, sans-serif">Logs + backups</text>
+  <text x="1175" y="470" fill="#FFD08A" font-size="22" font-family="Onest, Arial, sans-serif">In review</text>
+  <text x="125" y="560" fill="#F1F7FA" font-size="22" font-family="Onest, Arial, sans-serif">Incident Escalation Runbook</text>
+  <text x="475" y="560" fill="#9EB4C1" font-size="22" font-family="Onest, Arial, sans-serif">Support Manager</text>
+  <text x="825" y="560" fill="#9EF0C4" font-size="22" font-family="Onest, Arial, sans-serif">P1/P2/P3 process</text>
+  <text x="1175" y="560" fill="#9EF0C4" font-size="22" font-family="Onest, Arial, sans-serif">Implemented</text>
+  <text x="125" y="650" fill="#F1F7FA" font-size="22" font-family="Onest, Arial, sans-serif">Security Headers Baseline</text>
+  <text x="475" y="650" fill="#9EB4C1" font-size="22" font-family="Onest, Arial, sans-serif">Platform Team</text>
+  <text x="825" y="650" fill="#FFD08A" font-size="22" font-family="Onest, Arial, sans-serif">Public routes</text>
+  <text x="1175" y="650" fill="#FFD08A" font-size="22" font-family="Onest, Arial, sans-serif">Planned</text>
+  <text x="125" y="740" fill="#F1F7FA" font-size="22" font-family="Onest, Arial, sans-serif">Data Flow Diagram</text>
+  <text x="475" y="740" fill="#9EB4C1" font-size="22" font-family="Onest, Arial, sans-serif">Architecture Team</text>
+  <text x="825" y="740" fill="#9EF0C4" font-size="22" font-family="Onest, Arial, sans-serif">Core integrations</text>
+  <text x="1175" y="740" fill="#9EF0C4" font-size="22" font-family="Onest, Arial, sans-serif">Implemented</text>
+</svg>

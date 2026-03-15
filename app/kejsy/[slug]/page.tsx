@@ -156,14 +156,23 @@ export default async function CaseStudyPage({ params }: Props) {
                 </div>
               </div>
               <div className="flex flex-wrap gap-3 mt-6">
-                {caseStudy.projectUrl && (
-                  <Button size="lg" className="gap-2" asChild>
-                    <a href={caseStudy.projectUrl} target="_blank" rel="nofollow noopener noreferrer">
-                      Смотреть проект
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
-                )}
+                {caseStudy.projectLinks?.length
+                  ? caseStudy.projectLinks.map((project) => (
+                      <Button key={project.url} size="lg" className="gap-2" asChild>
+                        <a href={project.url} target="_blank" rel="nofollow noopener noreferrer">
+                          {project.label}
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    ))
+                  : caseStudy.projectUrl && (
+                      <Button size="lg" className="gap-2" asChild>
+                        <a href={caseStudy.projectUrl} target="_blank" rel="nofollow noopener noreferrer">
+                          Смотреть проект
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    )}
                 {caseStudy.productUrl && (
                   <Button size="lg" variant="outline" className="gap-2" asChild>
                     <a href={caseStudy.productUrl} target="_blank" rel="noopener noreferrer">
@@ -278,6 +287,68 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </section>
 
+        {caseStudy.evidencePack && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Evidence Pack</h2>
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
+                <Card className="bg-card border-border">
+                  <CardContent className="pt-6 space-y-3">
+                    <p className="text-sm text-muted-foreground">Baseline</p>
+                    <p className="text-foreground">{caseStudy.evidencePack.baseline}</p>
+                    <p className="text-sm text-muted-foreground pt-2">Период</p>
+                    <p className="text-foreground">{caseStudy.evidencePack.period}</p>
+                    <p className="text-sm text-muted-foreground pt-2">Источник данных</p>
+                    <p className="text-foreground">{caseStudy.evidencePack.source}</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-card border-border">
+                  <CardContent className="pt-6">
+                    <p className="text-sm text-muted-foreground mb-3">Методика измерений</p>
+                    <ul className="space-y-2">
+                      {caseStudy.evidencePack.methodology.map((item) => (
+                        <li key={item} className="text-foreground text-sm">
+                          - {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 mt-6 sm:mt-8">
+                <Card className="bg-card border-border">
+                  <CardContent className="pt-6">
+                    <p className="text-sm text-muted-foreground mb-3">Артефакты проверки</p>
+                    <ul className="space-y-2">
+                      {caseStudy.evidencePack.artifacts.map((item) => (
+                        <li key={item} className="text-foreground text-sm">
+                          - {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card className="bg-card border-border">
+                  <CardContent className="pt-6">
+                    <p className="text-sm text-muted-foreground mb-3">До / После</p>
+                    <div className="space-y-3">
+                      {caseStudy.evidencePack.metrics.map((m) => (
+                        <div key={m.name} className="rounded-lg border border-border p-3">
+                          <p className="text-foreground font-medium mb-2">{m.name}</p>
+                          <p className="text-sm text-muted-foreground">До: {m.before}</p>
+                          <p className="text-sm text-muted-foreground">После: {m.after}</p>
+                          {m.note ? <p className="text-sm text-primary mt-1">{m.note}</p> : null}
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Challenge & Solution */}
         <section className="pb-12 sm:pb-16 md:pb-20">
           <div className="container mx-auto">
@@ -314,6 +385,28 @@ export default async function CaseStudyPage({ params }: Props) {
                   {tag}
                 </Badge>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-12 sm:pb-16 md:pb-20">
+          <div className="container mx-auto">
+            <div className="rounded-xl border border-border bg-card p-5 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-3">Как подтверждаем результат</h2>
+              <p className="text-muted-foreground mb-5">
+                Для ключевых проектов публикуем методики измерений, baseline-отчеты и операционные стандарты внедрения.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="outline" asChild>
+                  <Link href="/evidence">Evidence Hub</Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link href="/roi-methodology">ROI Methodology</Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link href="/security-compliance">Security &amp; Compliance</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>

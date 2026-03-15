@@ -159,6 +159,33 @@ export default function ServicesEnPage() {
           </div>
         </section>
 
+        <section className="py-12 md:py-16 border-t border-border bg-background">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Proof & delivery standards</h2>
+            <p className="text-muted-foreground mb-8 max-w-3xl">
+              We publish practical artifacts for enterprise evaluation: quality metrics, security baseline, SLA model, and ROI methodology.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Link href="/en/evidence" className="rounded-xl border border-border bg-card p-4 hover:border-primary/40 transition-colors">
+                <p className="font-semibold text-foreground">Evidence Hub</p>
+                <p className="text-sm text-muted-foreground mt-2">PSI/Lighthouse baseline and methods</p>
+              </Link>
+              <Link href="/en/security-compliance" className="rounded-xl border border-border bg-card p-4 hover:border-primary/40 transition-colors">
+                <p className="font-semibold text-foreground">Security &amp; Compliance</p>
+                <p className="text-sm text-muted-foreground mt-2">Security controls and baseline policy</p>
+              </Link>
+              <Link href="/en/sla-support" className="rounded-xl border border-border bg-card p-4 hover:border-primary/40 transition-colors">
+                <p className="font-semibold text-foreground">SLA &amp; Support</p>
+                <p className="text-sm text-muted-foreground mt-2">Operational support and escalation map</p>
+              </Link>
+              <Link href="/en/roi-methodology" className="rounded-xl border border-border bg-card p-4 hover:border-primary/40 transition-colors">
+                <p className="font-semibold text-foreground">ROI Methodology</p>
+                <p className="text-sm text-muted-foreground mt-2">How we model AI economics</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4 text-center">

@@ -1,6 +1,8 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
+import { BarChart3, BookOpenCheck, FileCheck2, LifeBuoy, LockKeyhole, MessageSquareWarning, SearchCheck, WalletCards } from "lucide-react"
 
 const contentByLocale = {
   ru: {
@@ -28,6 +30,14 @@ const contentByLocale = {
     roiSummaryLabel: "Типовой срок окупаемости",
     roiSummaryValue: "3-5 месяцев",
     roiNote: "Запускаем только после проверки финансовой модели.",
+    proofTitle: "Как подтверждаем результат",
+    proofSubtitle: "Открыто публикуем методики, артефакты и стандарты внедрения по ключевым проектам.",
+    proofLinks: [
+      { label: "Evidence Hub", description: "Метрики, baseline и артефакты", href: "/evidence" },
+      { label: "Security & Compliance", description: "Контроль доступа и контур безопасности", href: "/security-compliance" },
+      { label: "SLA & Support", description: "Процессы поддержки и SLA-модель", href: "/sla-support" },
+      { label: "ROI Methodology", description: "Финмодель и правила расчёта эффекта", href: "/roi-methodology" },
+    ],
   },
   en: {
     badge: "Automation Economics",
@@ -54,15 +64,27 @@ const contentByLocale = {
     roiSummaryLabel: "Typical payback period",
     roiSummaryValue: "3-5 months",
     roiNote: "We launch only after validating the financial model.",
+    proofTitle: "How we validate outcomes",
+    proofSubtitle: "We openly publish methodology, artifacts, and delivery standards for priority projects.",
+    proofLinks: [
+      { label: "Evidence Hub", description: "Metrics, baselines, and verification artifacts", href: "/en/evidence" },
+      { label: "Security & Compliance", description: "Access control and security governance", href: "/en/security-compliance" },
+      { label: "SLA & Support", description: "Support process and SLA model", href: "/en/sla-support" },
+      { label: "ROI Methodology", description: "Financial model and impact calculation rules", href: "/en/roi-methodology" },
+    ],
   },
 } as const
 
 export function AutomationEconomicsSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
   const t = contentByLocale[locale]
+  const lossIcons = [SearchCheck, FileCheck2, MessageSquareWarning]
+  const proofIcons = [BookOpenCheck, LockKeyhole, LifeBuoy, WalletCards]
 
   return (
-    <section className="py-16 md:py-24 border-y border-border bg-card/30">
+    <section className="relative overflow-hidden py-16 md:py-24 border-y border-border bg-card/30 bg-[url('/abstract-background-4480x2520-11615.png')] bg-cover bg-center bg-no-repeat">
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-[1px]" aria-hidden="true" />
       <div className="container mx-auto px-4">
+        <div className="relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-12">
           <Badge variant="outline" className="mb-3 sm:mb-4">
             {t.badge}
@@ -72,11 +94,17 @@ export function AutomationEconomicsSection({ locale = "ru" }: { locale?: "ru" | 
         </div>
 
         <div className="grid min-[1100px]:grid-cols-3 gap-6 mb-8">
-          {t.losses.map((item) => (
-            <div key={item} className="p-5 rounded-xl border border-border bg-background">
+          {t.losses.map((item, index) => {
+            const Icon = lossIcons[index] ?? BarChart3
+            return (
+            <div key={item} className="p-5 rounded-xl border border-border bg-background/95">
+              <span className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-primary/20 bg-primary/10 text-primary">
+                <Icon className="h-4 w-4" />
+              </span>
               <p className="text-sm sm:text-base text-foreground">{item}</p>
             </div>
-          ))}
+            )
+          })}
         </div>
 
         <div className="grid min-[1100px]:grid-cols-3 items-start gap-6 mb-8">
@@ -121,6 +149,30 @@ export function AutomationEconomicsSection({ locale = "ru" }: { locale?: "ru" | 
             </div>
             <p className="mt-3 text-xs sm:text-sm text-muted-foreground">{t.roiNote}</p>
           </div>
+        </div>
+
+        <div className="rounded-xl border border-border bg-background/80 p-5 sm:p-6">
+          <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">{t.proofTitle}</h3>
+          <p className="text-sm sm:text-base text-muted-foreground mb-4">{t.proofSubtitle}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {t.proofLinks.map((link, index) => {
+              const Icon = proofIcons[index] ?? BookOpenCheck
+              return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-lg border border-border bg-card/95 hover:border-primary/50 transition-colors p-4"
+              >
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-primary/20 bg-primary/10 text-primary mb-3">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <p className="text-sm text-foreground font-medium">{link.label}</p>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{link.description}</p>
+              </Link>
+              )
+            })}
+          </div>
+        </div>
         </div>
       </div>
     </section>

@@ -22,11 +22,30 @@ export interface CaseStudy {
   year: string
   /** Ссылка на живой проект (кнопка «Смотреть проект») */
   projectUrl?: string
+  /** Набор ссылок на несколько живых проектов */
+  projectLinks?: Array<{
+    label: string
+    url: string
+  }>
   /** Элемент из раздела «Шаблоны» — кнопка «Назад» ведёт на /shablony */
   isTemplate?: boolean
   /** Ссылка на скачивание (Figma / LemonSqueezy) — кнопка в карточке деталей */
   productUrl?: string
   productLabel?: string
+  /** Унифицированный evidence pack для кейсов с доказательной методикой */
+  evidencePack?: {
+    baseline: string
+    period: string
+    source: string
+    methodology: string[]
+    artifacts: string[]
+    metrics: Array<{
+      name: string
+      before: string
+      after: string
+      note?: string
+    }>
+  }
 }
 
 export const casesData: CaseStudy[] = [
@@ -68,6 +87,26 @@ export const casesData: CaseStudy[] = [
     team: "1 человек",
     year: "2025",
     projectUrl: "https://myunion.pro/",
+    evidencePack: {
+      baseline: "Входящий поток обращений, время обработки и доля ручного маршрута",
+      period: "Сравнение 8 недель до внедрения и 8 недель после стабилизации релиза",
+      source: "Логи тикет-системы + CRM профкома + внутренний BI-дашборд",
+      methodology: [
+        "Метрика времени обработки считалась по медиане TTR, чтобы исключить влияние выбросов.",
+        "Доля AI-автоматизации считалась как процент обращений, закрытых без эскалации на специалиста.",
+        "Пиковые недели исключались при сравнении периодов, чтобы снизить сезонный шум.",
+      ],
+      artifacts: [
+        "График TTR до/после по неделям",
+        "Воронка обращений: ручной маршрут vs AI-маршрут",
+        "Снимок SLA-доски с распределением очередей",
+      ],
+      metrics: [
+        { name: "Время обработки обращения (TTR)", before: "2.4 дня", after: "0.24 дня", note: "-90%" },
+        { name: "Доля AI-автоматизации", before: "22%", after: "80%", note: "+58 п.п." },
+        { name: "Вовлеченность членов (MAU/WAU)", before: "1.0x", after: "2.5x", note: "+150%" },
+      ],
+    },
   },
   {
     slug: "reallaw-ai",
@@ -184,6 +223,31 @@ export const casesData: CaseStudy[] = [
     duration: "Постоянная поддержка",
     team: "3 человека",
     year: "2023–2025",
+    projectLinks: [
+      { label: "Grand Hotel & SPA Priboy", url: "https://priboy-spa.ru/" },
+      { label: "Гостиница Priboy", url: "https://priboy1.ru/" },
+      { label: "Отель Dvin", url: "https://hoteldvin.ru/" },
+    ],
+    evidencePack: {
+      baseline: "Органический трафик, прямые брони и позиции в поиске по геокластерам",
+      period: "Сравнение 6 месяцев до запуска стратегии и 6 месяцев после",
+      source: "Яндекс.Метрика + booking engine + SEO-панель семантики",
+      methodology: [
+        "Прямые брони считались без агрегаторов, только из собственного сайта/движка бронирования.",
+        "Трафик считался по органическому сегменту, брендовые кампании исключались.",
+        "TOP-3 рассчитывался как доля приоритетной семантики в топ-3 по целевому региону.",
+      ],
+      artifacts: [
+        "Тренд органического трафика по месяцам",
+        "Отчет по прямым броням и их доле в общем канале",
+        "Матрица позиций по ключевым кластерам (Анапа, SPA, семейный отдых)",
+      ],
+      metrics: [
+        { name: "Органический трафик", before: "1.0x", after: "2.8x", note: "+180%" },
+        { name: "Прямые брони", before: "1.0x", after: "1.65x", note: "+65%" },
+        { name: "Доля семантики в TOP-3", before: "31%", after: "85%", note: "+54 п.п." },
+      ],
+    },
   },
   {
     slug: "bridgeinto-platform",
@@ -263,6 +327,26 @@ export const casesData: CaseStudy[] = [
     team: "4 человека",
     year: "2024",
     projectUrl: "https://myolive.shop/",
+    evidencePack: {
+      baseline: "Конверсия витрины, средний чек и доля подарочных покупок",
+      period: "Сравнение 90 дней до релиза и 90 дней после релиза",
+      source: "Shop analytics + Stripe + CRM заказов",
+      methodology: [
+        "Конверсия считалась как purchase_completed / sessions на витрине.",
+        "Средний чек считался как revenue / orders без возвратов.",
+        "Подарки считались по событиям gift_purchase и gift_activation.",
+      ],
+      artifacts: [
+        "Воронка checkout с конверсией по шагам",
+        "Дашборд заказов: средний чек и repeat rate",
+        "Отчет по сертификатам и активациям подарков",
+      ],
+      metrics: [
+        { name: "Конверсия витрины", before: "2.6%", after: "3.5%", note: "+35%" },
+        { name: "Продано деревьев", before: "210", after: "500+", note: "рост объема" },
+        { name: "Подарочные покупки", before: "45", after: "120+", note: "x2.6" },
+      ],
+    },
   },
   {
     slug: "my-buyer-crm",
@@ -413,6 +497,26 @@ export const casesData: CaseStudy[] = [
     duration: "3+ года",
     team: "8 человек",
     year: "2015–2022",
+    evidencePack: {
+      baseline: "Скорость выпуска мобильных приложений и стоимость запуска MVP",
+      period: "Сравнение проектных циклов до платформы и после внедрения CMS",
+      source: "Product backlog + release-логи + финансовая модель R&D",
+      methodology: [
+        "Скорость релизов считалась по времени от брифа до публикации MVP.",
+        "Экономия бюджета считалась по фактическим трудозатратам команд.",
+        "Качество проверялось по чек-листу нативной сборки iOS/Android.",
+      ],
+      artifacts: [
+        "Карта архитектуры визуального конструктора и compile-pipeline",
+        "Таймлайн релизов до/после внедрения CMS",
+        "Пакет R&D-артефактов (грантовый контур и патентные материалы)",
+      ],
+      metrics: [
+        { name: "Время вывода MVP", before: "14-18 недель", after: "3-5 недель", note: "~x3 быстрее" },
+        { name: "Стоимость запуска MVP", before: "1.0x", after: "0.42x", note: "-58%" },
+        { name: "Доля переиспользуемых модулей", before: "15%", after: "70%", note: "+55 п.п." },
+      ],
+    },
   },
   {
     slug: "coinpulse-crypto",

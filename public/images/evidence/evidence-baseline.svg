@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <rect width="1600" height="900" fill="#0A0A0F"/>
+  <rect x="40" y="40" width="1520" height="820" rx="24" fill="#11131A" stroke="#2A2E3A"/>
+  <text x="90" y="120" fill="#F4F6FA" font-size="44" font-family="Onest, Arial, sans-serif" font-weight="700">Evidence Hub - Baseline Metrics</text>
+  <text x="90" y="165" fill="#9DA4B5" font-size="24" font-family="Onest, Arial, sans-serif">PSI + Lighthouse + Accessibility snapshots (demo artifact)</text>
+  <rect x="90" y="210" width="1420" height="280" rx="18" fill="#151925" stroke="#2D3447"/>
+  <polyline points="130,430 260,360 390,390 520,320 650,340 780,285 910,300 1040,250 1170,275 1300,230 1430,240" stroke="#53B0FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="120" y="260" fill="#D7DEEE" font-size="26" font-family="JetBrains Mono, monospace">weekly trend: performance / seo / accessibility</text>
+  <rect x="90" y="530" width="440" height="270" rx="18" fill="#151925" stroke="#2D3447"/>
+  <rect x="580" y="530" width="440" height="270" rx="18" fill="#151925" stroke="#2D3447"/>
+  <rect x="1070" y="530" width="440" height="270" rx="18" fill="#151925" stroke="#2D3447"/>
+  <text x="125" y="585" fill="#9DA4B5" font-size="22" font-family="Onest, Arial, sans-serif">Performance</text>
+  <text x="125" y="670" fill="#A8FFCC" font-size="64" font-family="JetBrains Mono, monospace" font-weight="700">91</text>
+  <text x="125" y="740" fill="#D7DEEE" font-size="20" font-family="Onest, Arial, sans-serif">mobile median / last 30d</text>
+  <text x="615" y="585" fill="#9DA4B5" font-size="22" font-family="Onest, Arial, sans-serif">SEO</text>
+  <text x="615" y="670" fill="#A8FFCC" font-size="64" font-family="JetBrains Mono, monospace" font-weight="700">96</text>
+  <text x="615" y="740" fill="#D7DEEE" font-size="20" font-family="Onest, Arial, sans-serif">key routes baseline</text>
+  <text x="1105" y="585" fill="#9DA4B5" font-size="22" font-family="Onest, Arial, sans-serif">Accessibility</text>
+  <text x="1105" y="670" fill="#A8FFCC" font-size="64" font-family="JetBrains Mono, monospace" font-weight="700">93</text>
+  <text x="1105" y="740" fill="#D7DEEE" font-size="20" font-family="Onest, Arial, sans-serif">audit snapshot</text>
+</svg>

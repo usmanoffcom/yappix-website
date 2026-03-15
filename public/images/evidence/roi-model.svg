@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <rect width="1600" height="900" fill="#10130B"/>
+  <rect x="36" y="36" width="1528" height="828" rx="24" fill="#1A2113" stroke="#3C4C2A"/>
+  <text x="90" y="120" fill="#F2F8EA" font-size="44" font-family="Onest, Arial, sans-serif" font-weight="700">ROI Model Snapshot</text>
+  <text x="90" y="165" fill="#B6C7A2" font-size="24" font-family="Onest, Arial, sans-serif">Costs, savings, and payback logic for AI initiatives (demo artifact)</text>
+  <rect x="90" y="220" width="740" height="580" rx="18" fill="#202A16" stroke="#486136"/>
+  <rect x="860" y="220" width="650" height="580" rx="18" fill="#202A16" stroke="#486136"/>
+  <text x="125" y="280" fill="#E4F0D6" font-size="26" font-family="JetBrains Mono, monospace">Assumptions</text>
+  <text x="125" y="340" fill="#B6C7A2" font-size="22" font-family="Onest, Arial, sans-serif">Manual ops cost / month</text>
+  <text x="510" y="340" fill="#F2F8EA" font-size="22" font-family="JetBrains Mono, monospace">1,800,000 RUB</text>
+  <text x="125" y="390" fill="#B6C7A2" font-size="22" font-family="Onest, Arial, sans-serif">Implementation cost</text>
+  <text x="510" y="390" fill="#F2F8EA" font-size="22" font-family="JetBrains Mono, monospace">2,400,000 RUB</text>
+  <text x="125" y="440" fill="#B6C7A2" font-size="22" font-family="Onest, Arial, sans-serif">Ops + support / month</text>
+  <text x="510" y="440" fill="#F2F8EA" font-size="22" font-family="JetBrains Mono, monospace">450,000 RUB</text>
+  <text x="125" y="490" fill="#B6C7A2" font-size="22" font-family="Onest, Arial, sans-serif">Expected efficiency gain</text>
+  <text x="510" y="490" fill="#A8FFCC" font-size="22" font-family="JetBrains Mono, monospace">62%</text>
+  <line x1="125" y1="540" x2="795" y2="540" stroke="#486136" stroke-width="2"/>
+  <text x="125" y="595" fill="#E4F0D6" font-size="22" font-family="Onest, Arial, sans-serif">Annual savings (estimated)</text>
+  <text x="510" y="595" fill="#A8FFCC" font-size="32" font-family="JetBrains Mono, monospace" font-weight="700">9,350,000 RUB</text>
+  <text x="125" y="655" fill="#E4F0D6" font-size="22" font-family="Onest, Arial, sans-serif">Payback period</text>
+  <text x="510" y="655" fill="#A8FFCC" font-size="32" font-family="JetBrains Mono, monospace" font-weight="700">3.8 months</text>
+  <text x="895" y="280" fill="#E4F0D6" font-size="26" font-family="JetBrains Mono, monospace">Monthly Cashflow</text>
+  <polyline points="920,700 1010,640 1100,600 1190,560 1280,520 1370,470 1460,430" stroke="#A8FFCC" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="920" y1="700" x2="1460" y2="700" stroke="#486136" stroke-width="2"/>
+  <line x1="920" y1="350" x2="920" y2="700" stroke="#486136" stroke-width="2"/>
+  <text x="910" y="730" fill="#B6C7A2" font-size="18" font-family="Onest, Arial, sans-serif">M1</text>
+  <text x="1450" y="730" fill="#B6C7A2" font-size="18" font-family="Onest, Arial, sans-serif">M12</text>
+  <text x="965" y="360" fill="#F2F8EA" font-size="20" font-family="Onest, Arial, sans-serif">Break-even by month 4</text>
+</svg>

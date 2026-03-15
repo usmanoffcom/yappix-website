@@ -40,6 +40,26 @@ export const casesDataEn: CaseStudy[] = [
     team: "1 person",
     year: "2025",
     projectUrl: "https://myunion.pro/",
+    evidencePack: {
+      baseline: "Incoming request volume, handling time, and manual routing share",
+      period: "8 weeks before rollout vs 8 weeks after stable production",
+      source: "Ticketing logs + union CRM + internal BI dashboard",
+      methodology: [
+        "Handling time was measured by median TTR to avoid outlier distortion.",
+        "AI automation share was measured as tickets closed without human escalation.",
+        "Peak outlier weeks were excluded from comparison to reduce seasonality noise.",
+      ],
+      artifacts: [
+        "Weekly TTR trend before/after",
+        "Request funnel: manual flow vs AI-assisted flow",
+        "SLA board snapshot with queue distribution",
+      ],
+      metrics: [
+        { name: "Ticket handling time (TTR)", before: "2.4 days", after: "0.24 days", note: "-90%" },
+        { name: "AI automation share", before: "22%", after: "80%", note: "+58 pp" },
+        { name: "Member engagement (MAU/WAU)", before: "1.0x", after: "2.5x", note: "+150%" },
+      ],
+    },
   },
   {
     slug: "reallaw-ai",
@@ -155,6 +175,31 @@ export const casesDataEn: CaseStudy[] = [
     duration: "Ongoing support",
     team: "3 people",
     year: "2023–2025",
+    projectLinks: [
+      { label: "Grand Hotel & SPA Priboy", url: "https://priboy-spa.ru/" },
+      { label: "Priboy Hotel", url: "https://priboy1.ru/" },
+      { label: "Dvin Hotel", url: "https://hoteldvin.ru/" },
+    ],
+    evidencePack: {
+      baseline: "Organic traffic, direct bookings, and search visibility by geo-clusters",
+      period: "6 months before SEO/SMM strategy vs 6 months after launch",
+      source: "Yandex.Metrika + booking engine + SEO ranking panel",
+      methodology: [
+        "Direct bookings were counted excluding OTAs/aggregators.",
+        "Traffic baseline used organic segment only; branded paid bursts excluded.",
+        "TOP-3 was calculated as share of target semantic core in top-3 by region.",
+      ],
+      artifacts: [
+        "Monthly organic traffic trend",
+        "Direct booking share report by channel",
+        "Ranking matrix for key geo-intent clusters",
+      ],
+      metrics: [
+        { name: "Organic traffic", before: "1.0x", after: "2.8x", note: "+180%" },
+        { name: "Direct bookings", before: "1.0x", after: "1.65x", note: "+65%" },
+        { name: "Semantic core in TOP-3", before: "31%", after: "85%", note: "+54 pp" },
+      ],
+    },
   },
   {
     slug: "bridgeinto-platform",
@@ -234,6 +279,26 @@ export const casesDataEn: CaseStudy[] = [
     team: "4 people",
     year: "2024",
     projectUrl: "https://myolive.shop/",
+    evidencePack: {
+      baseline: "Storefront conversion, average order value, and gift purchase share",
+      period: "90 days pre-launch vs 90 days post-launch",
+      source: "Store analytics + Stripe + order CRM",
+      methodology: [
+        "Conversion was calculated as purchase_completed / sessions.",
+        "AOV was measured as revenue / orders excluding refunds.",
+        "Gift demand was tracked by gift_purchase and gift_activation events.",
+      ],
+      artifacts: [
+        "Checkout funnel with step conversion",
+        "Order dashboard: AOV and repeat behavior",
+        "Gift certificate activation report",
+      ],
+      metrics: [
+        { name: "Storefront conversion", before: "2.6%", after: "3.5%", note: "+35%" },
+        { name: "Trees sold", before: "210", after: "500+", note: "volume growth" },
+        { name: "Gift purchases", before: "45", after: "120+", note: "x2.6" },
+      ],
+    },
   },
   {
     slug: "my-buyer-crm",
@@ -385,6 +450,26 @@ export const casesDataEn: CaseStudy[] = [
     duration: "3+ years",
     team: "8 people",
     year: "2015–2022",
+    evidencePack: {
+      baseline: "Mobile release speed and MVP launch cost before platform standardization",
+      period: "Project cycles before internal CMS vs cycles after adoption",
+      source: "Product backlog + release logs + R&D finance model",
+      methodology: [
+        "Release speed measured from approved brief to MVP publication.",
+        "Cost reduction measured by actual team effort and delivery budget.",
+        "Quality validated through native iOS/Android release checklist.",
+      ],
+      artifacts: [
+        "Visual builder and compile-pipeline architecture map",
+        "Release timeline before/after CMS",
+        "R&D package: grant and patent support artifacts",
+      ],
+      metrics: [
+        { name: "MVP time-to-market", before: "14-18 weeks", after: "3-5 weeks", note: "~3x faster" },
+        { name: "MVP launch cost", before: "1.0x", after: "0.42x", note: "-58%" },
+        { name: "Reusable module share", before: "15%", after: "70%", note: "+55 pp" },
+      ],
+    },
   },
   {
     slug: "coinpulse-crypto",

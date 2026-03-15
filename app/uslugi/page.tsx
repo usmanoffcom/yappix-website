@@ -191,6 +191,33 @@ export default function UslugiPage() {
           </div>
         </section>
 
+        <section className="py-12 md:py-16 border-t border-border bg-background">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Доказательства и стандарты внедрения</h2>
+            <p className="text-muted-foreground mb-8 max-w-3xl">
+              Для enterprise-оценки мы публикуем методики и артефакты качества: метрики, безопасность, SLA и подход к расчету ROI.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Link href="/evidence" className="rounded-xl border border-border bg-card p-4 hover:border-primary/40 transition-colors">
+                <p className="font-semibold text-foreground">Evidence Hub</p>
+                <p className="text-sm text-muted-foreground mt-2">PSI/Lighthouse baseline и методики</p>
+              </Link>
+              <Link href="/security-compliance" className="rounded-xl border border-border bg-card p-4 hover:border-primary/40 transition-colors">
+                <p className="font-semibold text-foreground">Security &amp; Compliance</p>
+                <p className="text-sm text-muted-foreground mt-2">Пакет контролей и baseline безопасности</p>
+              </Link>
+              <Link href="/sla-support" className="rounded-xl border border-border bg-card p-4 hover:border-primary/40 transition-colors">
+                <p className="font-semibold text-foreground">SLA &amp; Support</p>
+                <p className="text-sm text-muted-foreground mt-2">Операционная модель и эскалации</p>
+              </Link>
+              <Link href="/roi-methodology" className="rounded-xl border border-border bg-card p-4 hover:border-primary/40 transition-colors">
+                <p className="font-semibold text-foreground">ROI Methodology</p>
+                <p className="text-sm text-muted-foreground mt-2">Как считаем экономику внедрения AI</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4 text-center">
