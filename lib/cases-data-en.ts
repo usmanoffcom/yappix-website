@@ -14,7 +14,7 @@ export const casesDataEn: CaseStudy[] = [
       "Trade unions used fragmented systems for member records, documents, and communications. Processing requests took days and member engagement was minimal. A single platform with modern technology was needed.",
     solution:
       "Built a unified platform with an AI assistant for automated request handling, document generation, and personalized recommendations. Implemented partner discount system, news feed, and chats to boost member engagement.",
-    image: "/images/image.png",
+    image: "/myunion/Cover2.png",
     videos: [
       "/images/usmanoff-cases/1765719152722-MyUnion.mp4",
       "/images/Презентация платформы MyUnion_ новые возможности для профсоюзов 🚀 (1).mp4",
@@ -39,6 +39,7 @@ export const casesDataEn: CaseStudy[] = [
     duration: "3 months",
     team: "1 person",
     year: "2025",
+    projectUrl: "https://myunion.pro/",
   },
   {
     slug: "reallaw-ai",
@@ -74,6 +75,7 @@ export const casesDataEn: CaseStudy[] = [
     duration: "4 months",
     team: "1 person",
     year: "2025",
+    projectUrl: "https://reallaw.ai/",
   },
   {
     slug: "jupid-platform",
@@ -81,29 +83,37 @@ export const casesDataEn: CaseStudy[] = [
     client: "Jupid",
     category: "FinTech / AI",
     description:
-      "AI accountant for US founders. Create and manage LLC via chat. Product flows, interface, design system.",
+      "AI-native accounting for SMBs: LLC formation, intelligent bookkeeping, and tax compliance in chat. White-labeled for banks and fintech platforms.",
     fullDescription:
-      "Jupid is an AI accountant that helps US founders create and manage LLCs through chat. The platform automates company registration, tax filing, bookkeeping, and compliance. I designed product flows, interface, design system, and built the marketing site in Framer.",
+      "Jupid is an AI-native accounting and compliance platform embedded into digital banking. It supports the full SMB lifecycle: free LLC formation, AI bookkeeping, tax preparation and filing, and 24/7 conversational support via WhatsApp, iMessage, and embedded chat. The product can go live in 4-6 weeks without core banking changes.",
     challenge:
-      "Setting up an LLC in the US is a complex process with dozens of forms, tax returns, and compliance requirements. Accountant services cost $2000+/year, and founders spend time on routine instead of growing the business.",
+      "Financial institutions lose entrepreneurs before onboarding: new businesses register elsewhere and never see the business banking offer. At the same time, SMB owners face expensive, fragmented bookkeeping and tax workflows.",
     solution:
-      "Created an AI assistant that guides users through the entire LLC registration process in chat, auto-fills forms, submits documents, and maintains books. Designed an intuitive interface and design system in Figma, built the marketing site in Framer.",
+      "Built a white-label product experience around contextual AI: autonomous transaction categorization, 24/7 conversational accountant, tax compliance with CPA oversight, and a single interface for finance operations. I designed product flows, UX/UI system, and conversion-focused content blocks for partner-facing pages.",
     image: "/images/usmanoff-cases/1765730706302-j1.png",
+    videos: [
+      "/Jupid/0001.mp4",
+      "/Jupid/0002.mp4",
+      "/Jupid/Social%20preview.png",
+    ],
     gallery: [
-      "/images/usmanoff-cases/1765730706302-j1.png",
+      "/Jupid/j1.png",
+      "/Jupid/Desktop_LLC formation.png",
+      "/Jupid/Desktop_LLC formation 2.png",
       "/images/usmanoff-cases/1765731172484-j2.png",
       "/images/usmanoff-cases/1765731270134-j3.png",
     ],
     results: [
       { label: "Year", value: "2025" },
-      { label: "Region", value: "USA" },
-      { label: "AI", value: "GPT-4" },
-      { label: "Savings", value: "$2K+/year" },
+      { label: "Go-live", value: "4-6 weeks" },
+      { label: "Integration", value: "No core changes" },
+      { label: "AI accuracy", value: "95%+" },
     ],
-    tags: ["AI", "FinTech", "SaaS", "Accounting", "Framer", "USA"],
+    tags: ["AI", "FinTech", "Embedded Banking", "Accounting", "Tax Compliance", "USA"],
     duration: "3 months",
     team: "1 person",
     year: "2025",
+    projectUrl: "https://jupid.com/",
   },
   {
     slug: "priboy-hotels",

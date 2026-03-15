@@ -106,6 +106,10 @@ export default async function CaseStudyPage({ params }: Props) {
   const currentIndex = casesData.findIndex((c) => c.slug === slug)
   const prevCase = currentIndex > 0 ? casesData[currentIndex - 1] : null
   const nextCase = currentIndex < casesData.length - 1 ? casesData[currentIndex + 1] : null
+  const mediaAfterHero = (caseStudy.videos ?? []).filter((media) => media !== caseStudy.image)
+  const isJupidCase = caseStudy.slug === "jupid-platform"
+  const mediaRow = isJupidCase ? mediaAfterHero.slice(0, 2) : []
+  const mediaRest = isJupidCase ? mediaAfterHero.slice(2) : mediaAfterHero
 
   return (
     <>
@@ -154,7 +158,7 @@ export default async function CaseStudyPage({ params }: Props) {
               <div className="flex flex-wrap gap-3 mt-6">
                 {caseStudy.projectUrl && (
                   <Button size="lg" className="gap-2" asChild>
-                    <a href={caseStudy.projectUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={caseStudy.projectUrl} target="_blank" rel="nofollow noopener noreferrer">
                       Смотреть проект
                       <ExternalLink className="w-4 h-4" />
                     </a>
@@ -173,48 +177,86 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Main Videos/Image */}
+        {/* Main media: hero image first, then additional videos/images */}
         <section className="pb-12 sm:pb-16 md:pb-20">
           <div className="container mx-auto space-y-6">
-            {caseStudy.videos && caseStudy.videos.length > 0 ? (
-              caseStudy.videos.map((video, index) => (
-                <div key={index} className="relative w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
+            <div className="w-full rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
+              {caseStudy.image?.endsWith(".mp4") ? (
+                <video
+                  src={caseStudy.image}
+                  autoPlay
+                  loop
+                  playsInline
+                  controls
+                  title={caseStudy.title}
+                  className="w-full h-auto"
+                />
+              ) : (
+                <Image
+                  src={caseStudy.image || "/placeholder.svg"}
+                  alt={caseStudy.title || "Кейс YappiX"}
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto"
+                  sizes="(max-width: 1280px) 100vw, 1280px"
+                  priority
+                />
+              )}
+            </div>
+
+            {mediaRow.length > 0 && (
+              <div className="grid md:grid-cols-2 gap-6">
+                {mediaRow.map((media, index) => (
+                  <div key={`row-${index}`} className="w-full rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
+                    {media.endsWith(".mp4") ? (
+                      <video
+                        src={media}
+                        autoPlay={index === 0}
+                        loop
+                        playsInline
+                        controls
+                        title={`${caseStudy.title} — видео ${index + 1}`}
+                        className="w-full h-auto"
+                      />
+                    ) : (
+                      <Image
+                        src={media}
+                        alt={`${caseStudy.title} — превью продукта ${index + 1}`}
+                        width={1920}
+                        height={1080}
+                        className="w-full h-auto"
+                        sizes="(max-width: 1280px) 100vw, 1280px"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {mediaRest.map((media, index) => (
+              <div key={index} className="w-full rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
+                {media.endsWith(".mp4") ? (
                   <video
-                    src={video}
-                    autoPlay={index === 0}
+                    src={media}
+                    autoPlay={mediaRow.length === 0 && index === 0}
                     loop
                     playsInline
                     controls
-                    title={`${caseStudy.title} — видео ${index + 1}`}
-                    className="object-contain w-full h-full"
-                  />
-                </div>
-              ))
-            ) : (
-              <div className="w-full rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border">
-                {caseStudy.image?.endsWith('.mp4') ? (
-                  <video
-                    src={caseStudy.image}
-                    autoPlay
-                    loop
-                    playsInline
-                    controls
-                    title={caseStudy.title}
+                    title={`${caseStudy.title} — видео ${index + mediaRow.length + 1}`}
                     className="w-full h-auto"
                   />
                 ) : (
                   <Image
-                    src={caseStudy.image || "/placeholder.svg"}
-                    alt={caseStudy.title || "Кейс YappiX"}
+                    src={media}
+                    alt={`${caseStudy.title} — превью продукта ${index + mediaRow.length + 1}`}
                     width={1920}
                     height={1080}
                     className="w-full h-auto"
                     sizes="(max-width: 1280px) 100vw, 1280px"
-                    priority
                   />
                 )}
               </div>
-            )}
+            ))}
           </div>
         </section>
 
