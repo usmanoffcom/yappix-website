@@ -621,3 +621,15 @@ export function getCaseBySlugEn(slug: string): CaseStudy | undefined {
 export function getAllCaseSlugsEn(): string[] {
   return casesDataEn.map((c) => c.slug)
 }
+
+if (typeof process !== "undefined") {
+  const { casesData } = require("./cases-data") as { casesData: CaseStudy[] }
+  for (const enCase of casesDataEn) {
+    const ruCase = casesData.find((c: CaseStudy) => c.slug === enCase.slug)
+    if (ruCase && ruCase.title === enCase.title) {
+      throw new Error(
+        `[cases-data] Duplicate H1/title between RU and EN for slug "${enCase.slug}": "${enCase.title}". RU title must differ from EN.`
+      )
+    }
+  }
+}

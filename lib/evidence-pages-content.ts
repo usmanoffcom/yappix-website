@@ -221,10 +221,10 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
     },
     "security-compliance": {
       key: "security-compliance",
-      title: "Security & Compliance — baseline безопасности | YappiX",
+      title: "Безопасность и комплаенс — baseline контролей | YappiX",
       description:
-        "Публичный baseline Security & Compliance: управление доступами, данные, логирование, security headers и готовность к инцидентам.",
-      h1: "Security & Compliance baseline",
+        "Публичный baseline безопасности и комплаенса: управление доступами, данные, логирование, security headers и готовность к инцидентам.",
+      h1: "Безопасность и комплаенс: baseline контролей",
       intro:
         "Мы проектируем AI-решения с управляемостью и контролем рисков: от доступа и логов до формализованной эскалации инцидентов.",
       canonicalPath: "/security-compliance",
@@ -524,5 +524,17 @@ export const evidencePageKeys: EvidencePageKey[] = [
 
 export function getEvidencePageContent(locale: EvidenceLocale, key: EvidencePageKey): EvidencePageContent {
   return evidencePagesByLocale[locale][key]
+}
+
+if (typeof process !== "undefined") {
+  for (const key of evidencePageKeys) {
+    const ruH1 = evidencePagesByLocale.ru[key].h1
+    const enH1 = evidencePagesByLocale.en[key].h1
+    if (ruH1 === enH1) {
+      throw new Error(
+        `[evidence-pages-content] Duplicate H1 between RU and EN for "${key}": "${ruH1}". RU H1 must differ from EN H1.`
+      )
+    }
+  }
 }
 
