@@ -6,30 +6,6 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Home, ArrowLeft, Search, MessageCircle } from "lucide-react"
 
-export const metadata = {
-  title: "404 — Страница не найдена | YappiX",
-  description: "Запрашиваемая страница не найдена. Вернитесь на главную или воспользуйтесь навигацией.",
-  robots: {
-    index: false,
-    follow: true,
-  },
-  openGraph: {
-    title: "404 — Страница не найдена",
-    description: "Запрашиваемая страница не найдена на сайте YappiX.",
-    type: "website",
-    url: "https://yappix.ru/404",
-    siteName: "YappiX",
-    images: [
-      {
-        url: "/icon-512x512.png",
-        width: 512,
-        height: 512,
-        alt: "YappiX",
-      },
-    ],
-  },
-}
-
 export default function NotFound() {
   return (
     <>
