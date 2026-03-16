@@ -345,6 +345,14 @@ export default async function CaseStudyPage({ params }: Props) {
                   </CardContent>
                 </Card>
               </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/roi-methodology">Методика расчёта ROI →</Link>
+                </Button>
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/evidence">Evidence Hub →</Link>
+                </Button>
+              </div>
             </div>
           </section>
         )}
@@ -364,6 +372,46 @@ export default async function CaseStudyPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {/* Architecture */}
+        {caseStudy.architecture && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-5">Архитектура</h2>
+              <p className="text-body leading-relaxed max-w-3xl">{caseStudy.architecture}</p>
+            </div>
+          </section>
+        )}
+
+        {/* How we measured */}
+        {caseStudy.measurement && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-5">Как измеряли</h2>
+              <p className="text-body leading-relaxed max-w-3xl">{caseStudy.measurement}</p>
+            </div>
+          </section>
+        )}
+
+        {/* Risks & QA */}
+        {caseStudy.risks && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-5">Риски и контроль качества</h2>
+              <p className="text-body leading-relaxed max-w-3xl">{caseStudy.risks}</p>
+            </div>
+          </section>
+        )}
+
+        {/* What's next */}
+        {caseStudy.nextSteps && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-5">Что дальше</h2>
+              <p className="text-body leading-relaxed max-w-3xl">{caseStudy.nextSteps}</p>
+            </div>
+          </section>
+        )}
 
         {/* Gallery */}
         {caseStudy.gallery.length > 0 && (
@@ -475,6 +523,22 @@ export default async function CaseStudyPage({ params }: Props) {
         </article>
       </main>
       <Footer />
+
+      {/* BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Главная", item: "https://yappix.ru" },
+              { "@type": "ListItem", position: 2, name: "Кейсы", item: "https://yappix.ru/kejsy" },
+              { "@type": "ListItem", position: 3, name: caseStudy.title, item: `https://yappix.ru/kejsy/${slug}` },
+            ],
+          }),
+        }}
+      />
     </>
   )
 }

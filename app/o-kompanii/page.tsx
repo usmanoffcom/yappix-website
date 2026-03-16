@@ -9,14 +9,14 @@ import { Award, Users, Rocket, Globe, CheckCircle } from "lucide-react"
 export const metadata: Metadata = {
   title: "О компании YappiX — резиденты Сколково | IT-студия",
   description:
-    "YappiX — IT-студия полного цикла. Резиденты Сколково с 2020. Офисы в России, США, Турции, Сербии, Казахстане. 250+ проектов, 50+ специалистов.",
+    "YappiX — AI-first delivery company. Резиденты Сколково. Внедряем автоматизацию и AI-контуры с измеримым ROI. 250+ проектов, 5 локаций.",
   keywords: ["YappiX", "IT компания", "Сколково", "веб-студия", "разработка на заказ", "аутсорсинг"],
   alternates: {
     canonical: "https://yappix.ru/o-kompanii",
   },
   openGraph: {
     title: "О компании YappiX — резиденты Сколково",
-    description: "IT-студия полного цикла. Резиденты Сколково. 250+ проектов, 50+ специалистов, офисы в 5 странах.",
+    description: "AI-first delivery company. Резиденты Сколково. 250+ проектов, измеримый ROI, прозрачный SLA.",
     type: "website",
     url: "https://yappix.ru/o-kompanii",
     siteName: "YappiX",
@@ -33,15 +33,15 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "О компании YappiX — резиденты Сколково",
-    description: "IT-студия полного цикла. 250+ проектов, офисы в 5 странах.",
+    description: "AI-first delivery company. 250+ проектов, 5 локаций.",
   },
 }
 
 const stats = [
   { value: "250+", label: "Проектов", icon: Rocket },
-  { value: "50+", label: "Специалистов", icon: Users },
-  { value: "5", label: "Офисов", icon: Globe },
+  { value: "5", label: "Локаций", icon: Globe },
   { value: "10+", label: "Лет опыта", icon: Award },
+  { value: "AI-first", label: "Модель delivery", icon: Users },
 ]
 
 const milestones = [
@@ -49,8 +49,8 @@ const milestones = [
   { year: "2017", title: "Гранты", description: "Получение грантов от ФСИ и патентов" },
   { year: "2019", title: "Инвестиции", description: "Привлечение 1-го раунда инвестиций на YappiX CMS" },
   { year: "2021", title: "Сколково и рост", description: "Получили статус резидента Сколково, привлекли 2-й раунд инвестиций для масштабирования" },
-  { year: "2022", title: "Международная экспансия", description: "Выход на международный рынок, открытие офисов в США и Турции" },
-  { year: "2025", title: "AI-трансформация", description: "Внедрение AI-инструментов, офисы в 5 локациях, обход санкций, масштабирование команды" },
+  { year: "2022", title: "Международная экспансия", description: "Выход на международный рынок, локации в США и Турции" },
+  { year: "2025", title: "AI-трансформация", description: "Внедрение AI-инструментов, 5 локаций, масштабирование delivery" },
 ]
 
 const values = [
@@ -101,8 +101,8 @@ export default function AboutPage() {
                   Создаём цифровые продукты быстрее с AI
                 </h1>
                 <p className="text-body-lg mb-8 text-pretty">
-                  YappiX — IT-студия полного цикла. Резиденты Сколково. Используем AI-инструменты для 7-12-кратного
-                  ускорения разработки без потери качества.
+                  YappiX — AI-first delivery company. Резиденты Сколково. Внедряем автоматизацию и AI-контуры
+                  с измеримым ROI, контролем качества и прозрачным SLA. Core-команда + проверенная сеть специалистов.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button size="lg" asChild>
@@ -169,8 +169,8 @@ export default function AboutPage() {
                       от UX-исследований до дизайн-системы и фронтенда.
                     </p>
                     <p>
-                      В 2025 году перешел на модель "компании одного человека", используя AI-агентов для ускорения разработки.
-                      Мой подход: минимальная команда, максимум автоматизации, фокус на результат.
+                      В 2025 году перевёл компанию на AI-first delivery: core-команда + сеть проверенных специалистов
+                      + AI-ускорение на каждом этапе. Этот подход даёт enterprise-качество с прозрачными SLA и артефактами.
                     </p>
                     <p>
                       <strong>Stack:</strong> Figma, Next.js, TypeScript, Framer, Cursor AI, Claude

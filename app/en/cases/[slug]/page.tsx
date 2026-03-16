@@ -352,6 +352,42 @@ export default async function CaseStudyEnPage({ params }: Props) {
           </div>
         </section>
 
+        {caseStudy.architecture && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-5">Architecture</h2>
+              <p className="text-body leading-relaxed max-w-3xl">{caseStudy.architecture}</p>
+            </div>
+          </section>
+        )}
+
+        {caseStudy.measurement && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-5">How We Measured</h2>
+              <p className="text-body leading-relaxed max-w-3xl">{caseStudy.measurement}</p>
+            </div>
+          </section>
+        )}
+
+        {caseStudy.risks && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-5">Risks & Quality Control</h2>
+              <p className="text-body leading-relaxed max-w-3xl">{caseStudy.risks}</p>
+            </div>
+          </section>
+        )}
+
+        {caseStudy.nextSteps && (
+          <section className="pb-12 sm:pb-16 md:pb-20">
+            <div className="container mx-auto">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-5">What&apos;s Next</h2>
+              <p className="text-body leading-relaxed max-w-3xl">{caseStudy.nextSteps}</p>
+            </div>
+          </section>
+        )}
+
         {caseStudy.gallery.length > 0 && (
           <section className="pb-12 sm:pb-16 md:pb-20">
             <div className="container mx-auto">
@@ -457,6 +493,22 @@ export default async function CaseStudyEnPage({ params }: Props) {
         </article>
       </main>
       <FooterEn />
+
+      {/* BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://yappix.ru/en" },
+              { "@type": "ListItem", position: 2, name: "Cases", item: "https://yappix.ru/en/cases" },
+              { "@type": "ListItem", position: 3, name: caseStudy.title, item: `https://yappix.ru/en/cases/${slug}` },
+            ],
+          }),
+        }}
+      />
     </>
   )
 }

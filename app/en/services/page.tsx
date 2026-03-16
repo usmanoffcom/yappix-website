@@ -3,12 +3,12 @@ import Link from "next/link"
 import { HeaderEn } from "@/components/header-en"
 import { FooterEn } from "@/components/footer-en"
 import { Button } from "@/components/ui/button"
-import { Globe, Smartphone, Bot, Cloud, CreditCard, Server, Search, Share2, ArrowRight } from "lucide-react"
+import { Globe, Smartphone, Bot, Cloud, CreditCard, Server, Search, Share2, ArrowRight, Database, LineChart, Palette, ShieldCheck } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "IT Services with AI-First Approach — Development, SEO, DevOps | YappiX",
   description:
-    "Full range of AI-accelerated IT services: web development, mobile apps, AI chatbots, SaaS, FinTech, DevOps, SEO, SMM. 7-12x faster delivery.",
+    "Full range of AI-accelerated IT services: web development, mobile apps, AI chatbots, SaaS, FinTech, DevOps, SEO, SMM, integrations, analytics, UX/UI design, cybersecurity. 7-12x faster delivery.",
   alternates: {
     canonical: "https://yappix.ru/en/services",
   },
@@ -88,6 +88,38 @@ const services = [
     tags: ["VK Ads", "Telegram", "TikTok", "AI Content"],
     price: "from $440/mo",
   },
+  {
+    icon: Database,
+    title: "Integrations & API",
+    description:
+      "Integration with 1C, CRM, ERP, marketplaces. REST, GraphQL, gRPC. AI-powered data flow monitoring.",
+    tags: ["1C", "Bitrix24", "Kafka", "GraphQL"],
+    price: "from $880",
+  },
+  {
+    icon: LineChart,
+    title: "Data Analytics",
+    description:
+      "BI dashboards, predictive analytics, ML models. Transform raw data into actionable business insights.",
+    tags: ["Python", "Tableau", "ClickHouse", "ML"],
+    price: "from $1,100",
+  },
+  {
+    icon: Palette,
+    title: "UX/UI Design",
+    description:
+      "UX research, prototyping, design systems, branding. AI generation speeds up the process 5x.",
+    tags: ["Figma", "Framer", "v0.dev", "Midjourney"],
+    price: "from $550",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Cybersecurity",
+    description:
+      "Security audits, pentests, AI threat monitoring. Compliance with GDPR, PCI DSS, SOC 2.",
+    tags: ["Pentest", "OWASP", "GDPR", "PCI DSS"],
+    price: "from $1,100",
+  },
 ]
 
 export default function ServicesEnPage() {
@@ -126,7 +158,7 @@ export default function ServicesEnPage() {
         {/* Services Grid */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service) => (
                 <div
                   key={service.title}

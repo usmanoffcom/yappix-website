@@ -130,16 +130,24 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "YappiX",
+              alternateName: "ООО ЯППИКС",
               url: "https://yappix.ru",
-              logo: "https://yappix.ru/logo.png",
-              description: "IT-студия полного цикла. Разработка веб-сайтов, приложений, AI-решений.",
+              logo: "https://yappix.ru/images/logo-002.png",
+              description: "Внедряем автоматизацию и AI-контуры с измеримым ROI, контролем качества и прозрачным SLA.",
               foundingDate: "2018",
               founders: [
                 {
                   "@type": "Person",
-                  name: "YappiX Team",
+                  name: "Ренат Усманов",
+                  jobTitle: "Генеральный директор",
                 },
               ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+7-495-128-98-48",
+                contactType: "sales",
+                availableLanguage: ["Russian", "English"],
+              },
               address: [
                 {
                   "@type": "PostalAddress",
@@ -174,6 +182,10 @@ export default function RootLayout({
                 "FinTech решения",
                 "SEO продвижение",
                 "SMM маркетинг",
+                "Интеграции и API",
+                "Аналитика данных",
+                "UX/UI дизайн",
+                "Кибербезопасность",
               ],
             }),
           }}

@@ -12,7 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import { Menu, Phone, ArrowRight, Globe, Code, Bot, Cloud, Landmark, Server, Search, Share2, Store } from "lucide-react"
+import { Menu, Phone, ArrowRight, Globe, Code, Bot, Cloud, Landmark, Server, Search, Share2, Database, LineChart, Palette, ShieldCheck } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Logo } from "./logo"
 
@@ -70,6 +70,30 @@ const servicesByLocale: Record<Locale, ServiceItem[]> = {
       desc: "Маркетинг в социальных сетях",
       icon: Share2,
     },
+    {
+      href: "/uslugi/integracii-i-api",
+      label: "Интеграции и API",
+      desc: "1C, CRM, ERP, REST, GraphQL",
+      icon: Database,
+    },
+    {
+      href: "/uslugi/analitika-dannyh",
+      label: "Аналитика данных",
+      desc: "BI-дашборды, ML, предиктив",
+      icon: LineChart,
+    },
+    {
+      href: "/uslugi/ux-ui-dizajn",
+      label: "UX/UI дизайн",
+      desc: "Исследования, прототипы, дизайн-системы",
+      icon: Palette,
+    },
+    {
+      href: "/uslugi/kiberbezopasnost",
+      label: "Кибербезопасность",
+      desc: "Аудит, пентесты, 152-ФЗ, GDPR",
+      icon: ShieldCheck,
+    },
   ],
   en: [
     { href: "/en/services", label: "Web Development", desc: "Corporate sites, landing pages, e-commerce", icon: Globe },
@@ -80,6 +104,27 @@ const servicesByLocale: Record<Locale, ServiceItem[]> = {
     { href: "/en/services", label: "DevOps", desc: "CI/CD, infrastructure, monitoring", icon: Server },
     { href: "/en/services", label: "SEO", desc: "Search optimization and analytics", icon: Search },
     { href: "/en/services", label: "SMM", desc: "Social media marketing", icon: Share2 },
+    { href: "/en/services", label: "Integrations & API", desc: "1C, CRM, ERP, REST, GraphQL", icon: Database },
+    { href: "/en/services", label: "Data Analytics", desc: "BI dashboards, ML, predictive", icon: LineChart },
+    { href: "/en/services", label: "UX/UI Design", desc: "Research, prototypes, design systems", icon: Palette },
+    { href: "/en/services", label: "Cybersecurity", desc: "Audit, pentests, GDPR", icon: ShieldCheck },
+  ],
+}
+
+type TrustItem = { href: string; label: string }
+
+const trustByLocale: Record<Locale, TrustItem[]> = {
+  ru: [
+    { href: "/evidence", label: "Evidence Hub" },
+    { href: "/security-compliance", label: "Security & Compliance" },
+    { href: "/sla-support", label: "SLA & Support" },
+    { href: "/roi-methodology", label: "ROI Methodology" },
+  ],
+  en: [
+    { href: "/en/evidence", label: "Evidence Hub" },
+    { href: "/en/security-compliance", label: "Security & Compliance" },
+    { href: "/en/sla-support", label: "SLA & Support" },
+    { href: "/en/roi-methodology", label: "ROI Methodology" },
   ],
 }
 
@@ -87,13 +132,11 @@ const navByLocale: Record<Locale, NavItem[]> = {
   ru: [
     { href: "/kejsy", label: "Кейсы" },
     { href: "/o-kompanii", label: "О нас" },
-    { href: "/karera", label: "Карьера" },
     { href: "/kontakty", label: "Контакты" },
   ],
   en: [
     { href: "/en/cases", label: "Cases" },
     { href: "/en/about", label: "About" },
-    { href: "/en/career", label: "Career" },
     { href: "/en/contact", label: "Contact" },
   ],
 }
@@ -110,7 +153,6 @@ const textByLocale = {
     mobileLang: "🇬🇧 English version",
     freeCall: "Бесплатно по России",
     openMenu: "Открыть меню",
-    templates: { href: "/shablony", label: "Шаблоны" },
     logoHref: "/",
   },
   en: {
@@ -124,7 +166,6 @@ const textByLocale = {
     mobileLang: "🇷🇺 Russian version",
     freeCall: "Free in Russia",
     openMenu: "Open menu",
-    templates: { href: "/en/templates", label: "Templates" },
     logoHref: "/en",
   },
 } as const
@@ -164,19 +205,47 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                     {t.services}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-popover text-popover-foreground border shadow-lg rounded-md mt-1.5">
-                    <ul className="grid w-[540px] gap-2 p-5 md:grid-cols-2">
-                      {services.map((service) => (
-                        <li key={`${service.href}-${service.label}`}>
+                    <div className="max-h-[calc(100vh-5rem)] overflow-y-auto overscroll-contain">
+                      <ul className="grid w-[540px] gap-2 p-5 md:grid-cols-2">
+                        {services.map((service) => (
+                          <li key={`${service.href}-${service.label}`}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={service.href}
+                                className="flex items-start gap-3 select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-muted/50 group [&_svg]:text-primary"
+                              >
+                                <service.icon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                                <div>
+                                  <span className="text-sm font-medium block text-foreground">{service.label}</span>
+                                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{service.desc}</p>
+                                </div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            <NavigationMenu viewport={false}>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="bg-transparent text-muted-foreground hover:text-foreground px-4 py-2">
+                    {locale === "ru" ? "Доказательства" : "Evidence"}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="bg-popover text-popover-foreground border shadow-lg rounded-md mt-1.5">
+                    <ul className="grid w-[280px] gap-1 p-3">
+                      {trustByLocale[locale].map((item) => (
+                        <li key={item.href}>
                           <NavigationMenuLink asChild>
                             <Link
-                              href={service.href}
-                              className="flex items-start gap-3 select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-muted/50 group [&_svg]:text-primary"
+                              href={item.href}
+                              className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-muted/50 text-sm font-medium text-foreground"
                             >
-                              <service.icon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                              <div>
-                                <span className="text-sm font-medium block text-foreground">{service.label}</span>
-                                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{service.desc}</p>
-                              </div>
+                              {item.label}
                             </Link>
                           </NavigationMenuLink>
                         </li>
@@ -196,14 +265,6 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                 {item.label}
               </Link>
             ))}
-
-            <Link
-              href={t.templates.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-md hover:bg-muted/50 flex items-center gap-1.5 whitespace-nowrap"
-            >
-              <Store className="w-4 h-4" />
-              {t.templates.label}
-            </Link>
           </div>
 
           <div className="hidden min-[1100px]:flex items-center gap-4">
@@ -285,17 +346,6 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                         <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                       </Link>
                     ))}
-                    <Link
-                      href={t.templates.href}
-                      onClick={() => setIsOpen(false)}
-                      className="flex items-center justify-between py-3 px-3 -mx-3 rounded-lg text-foreground hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className="flex items-center gap-2">
-                        <Store className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                        <span className="text-base font-medium">{t.templates.label}</span>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                    </Link>
                   </div>
                 </div>
               </div>

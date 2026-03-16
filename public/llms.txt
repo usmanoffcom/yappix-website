@@ -17,7 +17,12 @@
 - [SaaS / PaaS](https://yappix.ru/uslugi/saas-paas): облачные платформы, подписная модель
 - [FinTech](https://yappix.ru/uslugi/fintech): платёжные системы, банкинг, KYC/AML
 - [DevOps](https://yappix.ru/uslugi/devops): CI/CD, Docker, Kubernetes, AWS, Terraform
-- [SEO и SMM](https://yappix.ru/uslugi/seo-prodvizhenie): продвижение в Яндексе и Google, таргет
+- [SEO продвижение](https://yappix.ru/uslugi/seo-prodvizhenie): продвижение в Яндексе и Google
+- [SMM маркетинг](https://yappix.ru/uslugi/smm): VK, Telegram, TikTok, YouTube, таргет
+- [Интеграции и API](https://yappix.ru/uslugi/integracii-i-api): 1C, CRM, ERP, REST, GraphQL
+- [Аналитика данных](https://yappix.ru/uslugi/analitika-dannyh): BI-дашборды, ML, предиктивная аналитика
+- [UX/UI дизайн](https://yappix.ru/uslugi/ux-ui-dizajn): исследования, прототипы, дизайн-системы
+- [Кибербезопасность](https://yappix.ru/uslugi/kiberbezopasnost): аудит, пентесты, 152-ФЗ, GDPR
 
 ## Key Information
 

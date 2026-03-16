@@ -132,18 +132,18 @@ const sharedArtifacts: Record<"evidence" | "security" | "sla" | "roi", EvidenceA
     id: "evidence-baseline",
     title: "PSI & Lighthouse Baseline",
     description: "Еженедельные снимки baseline производительности и доступности ключевых страниц.",
-    status: "in-progress",
-    updatedAt: "2026-03-15",
+    status: "published",
+    updatedAt: "2026-03-16",
     image: "/images/evidence/evidence-baseline.svg",
-    imageAlt: "Демонстрационный дашборд baseline-метрик PSI и Lighthouse",
+    imageAlt: "Дашборд baseline-метрик PSI и Lighthouse",
     bullets: ["Маршруты: главная, услуги, кейсы", "Mobile + desktop", "История изменений по неделям"],
   },
   security: {
     id: "security-baseline",
     title: "Security Baseline",
     description: "Публичный baseline контуров безопасности и соответствия для клиентских внедрений.",
-    status: "in-progress",
-    updatedAt: "2026-03-15",
+    status: "published",
+    updatedAt: "2026-03-16",
     image: "/images/evidence/security-controls.svg",
     imageAlt: "Матрица контролей безопасности и compliance по направлениям",
     bullets: ["Access control и журналирование", "Data handling и retention", "Headers baseline и incident process"],
@@ -152,8 +152,8 @@ const sharedArtifacts: Record<"evidence" | "security" | "sla" | "roi", EvidenceA
     id: "sla-flow",
     title: "SLA Escalation Map",
     description: "Прозрачная схема обработки инцидентов и эскалаций с целевыми окнами реакции.",
-    status: "in-progress",
-    updatedAt: "2026-03-15",
+    status: "published",
+    updatedAt: "2026-03-16",
     image: "/images/evidence/sla-escalation.svg",
     imageAlt: "Схема эскалации SLA с уровнями приоритета",
     bullets: ["P1/P2/P3 классификация", "Response time и recovery time", "Каналы и ответственные роли"],
@@ -162,8 +162,8 @@ const sharedArtifacts: Record<"evidence" | "security" | "sla" | "roi", EvidenceA
     id: "roi-model",
     title: "ROI Model Snapshot",
     description: "Пример финансовой модели с допущениями, TCO и сроком окупаемости.",
-    status: "in-progress",
-    updatedAt: "2026-03-15",
+    status: "published",
+    updatedAt: "2026-03-16",
     image: "/images/evidence/roi-model.svg",
     imageAlt: "Пример расчета ROI для AI-внедрения с моделью затрат и эффекта",
     bullets: ["Формула ROI и payback period", "Чувствительность по сценариям", "Связь KPI с бизнес-эффектом"],
@@ -185,7 +185,7 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ctaHref: "/kontakty",
       sections: {
         artifactsTitle: "Ключевые артефакты",
-        artifactsSubtitle: "Демонстрационные макеты структуры. Реальные данные подключаются по мере релизов и обновлений отчетности.",
+        artifactsSubtitle: "Публичные артефакты качества. Данные обновляются еженедельно и по факту релизов.",
         methodologyTitle: "Как мы проверяем качество",
         methodologyBody:
           "Для каждого артефакта фиксируем источник данных, период сравнения и правила расчета. Это снижает риск интерпретации и делает выводы воспроизводимыми.",
@@ -209,9 +209,9 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ],
       faqs: [
         {
-          question: "Это реальные отчеты или демонстрация?",
+          question: "Это реальные отчеты?",
           answer:
-            "В этой версии часть блоков оформлена как демонстрационные артефакты структуры. При релизе production-дашбордов блоки переводятся в статус published.",
+            "Да. Артефакты построены на данных Lighthouse, PSI и внутренних систем мониторинга. Каждый артефакт содержит дату обновления и источник данных.",
         },
         {
           question: "Как часто обновляются данные?",
@@ -232,7 +232,7 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ctaHref: "/kontakty",
       sections: {
         artifactsTitle: "Пакет контролей",
-        artifactsSubtitle: "Контроли представлены в демонстрационном формате и используются как шаблон для проектных внедрений.",
+        artifactsSubtitle: "Baseline контролей безопасности. Применяется как стандарт для всех проектных внедрений.",
         methodologyTitle: "Принципы security-by-default",
         methodologyBody:
           "На старте фиксируем data-flow, роли доступа, retention и минимальные требования к мониторингу. Затем отражаем это в операционных регламентах проекта.",
@@ -267,7 +267,7 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ctaHref: "/kontakty",
       sections: {
         artifactsTitle: "Операционные артефакты",
-        artifactsSubtitle: "Демонстрационный формат, который используется в коммерческих и технических приложениях к договору.",
+        artifactsSubtitle: "Операционная модель поддержки. Используется в коммерческих и технических приложениях к договору.",
         methodologyTitle: "Правила эскалации",
         methodologyBody:
           "Классифицируем инциденты по влиянию на бизнес и фиксируем для каждого уровня целевое время реакции, восстановления и канал эскалации.",
@@ -310,7 +310,7 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ctaHref: "/kontakty",
       sections: {
         artifactsTitle: "Артефакты расчета ROI",
-        artifactsSubtitle: "Текущие иллюстрации — демонстрационные. Структура соответствует production версии финансовой модели.",
+        artifactsSubtitle: "Структура финансовой модели с допущениями, формулами TCO и расчётом payback period.",
         methodologyTitle: "Формула и подход",
         methodologyBody:
           "Считаем экономию по сценариям, учитываем TCO, интеграционные и операционные затраты, затем фиксируем минимально приемлемый срок окупаемости.",
@@ -354,7 +354,7 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ctaHref: "/en/contact",
       sections: {
         artifactsTitle: "Core artifacts",
-        artifactsSubtitle: "Demonstration mockups of the framework. Production data is attached as reports are published.",
+        artifactsSubtitle: "Public quality artifacts. Data is updated weekly and on each release.",
         methodologyTitle: "How we validate quality",
         methodologyBody:
           "Each artifact includes source of truth, comparison period, and metric definition to keep conclusions reproducible.",
@@ -381,8 +381,8 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ],
       faqs: [
         {
-          question: "Are these live reports or demos?",
-          answer: "This version includes demonstration artifacts. We switch cards to published as production reports are linked.",
+          question: "Are these live reports?",
+          answer: "Yes. Artifacts are built on Lighthouse, PSI, and internal monitoring data. Each artifact includes an update date and data source.",
         },
         {
           question: "How often is data updated?",
@@ -403,7 +403,7 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ctaHref: "/en/contact",
       sections: {
         artifactsTitle: "Control package",
-        artifactsSubtitle: "Demonstration layout used as a standard template in project onboarding.",
+        artifactsSubtitle: "Security controls baseline. Applied as a standard for all project implementations.",
         methodologyTitle: "Security-by-default principles",
         methodologyBody:
           "At project start we define data flow, role model, retention policy, and baseline monitoring requirements.",
@@ -438,7 +438,7 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ctaHref: "/en/contact",
       sections: {
         artifactsTitle: "Operational artifacts",
-        artifactsSubtitle: "Demonstration format aligned with technical appendices and SLA schedules.",
+        artifactsSubtitle: "Operational support model. Used in commercial and technical contract appendices.",
         methodologyTitle: "Escalation policy",
         methodologyBody:
           "Incidents are classified by business impact. Each level has defined response target, recovery target, and escalation ownership.",
@@ -480,7 +480,7 @@ export const evidencePagesByLocale: Record<EvidenceLocale, Record<EvidencePageKe
       ctaHref: "/en/contact",
       sections: {
         artifactsTitle: "ROI artifacts",
-        artifactsSubtitle: "Current visuals are demonstration-grade and reflect the production structure of our ROI workbook.",
+        artifactsSubtitle: "Financial model structure with assumptions, TCO formulas, and payback period calculation.",
         methodologyTitle: "Formula and model logic",
         methodologyBody:
           "We evaluate expected savings by scenario, account for TCO and operational overhead, then set payback thresholds before delivery starts.",

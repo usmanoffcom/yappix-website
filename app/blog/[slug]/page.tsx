@@ -288,13 +288,29 @@ export default async function BlogPostPage({ params }: { params: Params }) {
       </main>
       <Footer />
 
-      {/* JSON-LD Article Schema */}
+      {/* BreadcrumbList JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Article",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Главная", item: "https://yappix.ru" },
+              { "@type": "ListItem", position: 2, name: "Блог", item: "https://yappix.ru/blog" },
+              { "@type": "ListItem", position: 3, name: post.title, item: `https://yappix.ru/blog/${slug}` },
+            ],
+          }),
+        }}
+      />
+
+      {/* BlogPosting JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
             headline: post.title,
             description: post.metaDescription,
             image: post.image,

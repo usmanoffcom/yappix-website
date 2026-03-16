@@ -3,12 +3,12 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Globe, Smartphone, Bot, Cloud, CreditCard, Server, Search, Share2, ArrowRight } from "lucide-react"
+import { Globe, Smartphone, Bot, Cloud, CreditCard, Server, Search, Share2, ArrowRight, Database, LineChart, Palette, ShieldCheck } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "IT-услуги с AI-first подходом — Разработка, SEO, DevOps | YappiX",
   description:
-    "Полный спектр IT-услуг с AI-ускорением: веб-разработка, мобильные приложения, AI чат-боты, SaaS, FinTech, DevOps, SEO, SMM. Сроки в 7-12 раз быстрее рынка. 10+ лет опыта.",
+    "Полный спектр IT-услуг с AI-ускорением: веб-разработка, приложения, AI, SaaS, FinTech, DevOps, SEO, SMM, интеграции, аналитика, UX/UI, кибербезопасность. Сроки в 7-12 раз быстрее. 10+ лет опыта.",
   keywords: [
     "разработка сайтов AI",
     "создание мобильного приложения цена",
@@ -117,6 +117,42 @@ const services = [
     tags: ["VK Ads", "Telegram", "TikTok", "AI-контент"],
     price: "от 40 000 ₽/мес",
   },
+  {
+    icon: Database,
+    title: "Интеграции и API",
+    slug: "integracii-i-api",
+    description:
+      "Интеграция с 1C, CRM, ERP, маркетплейсами. REST, GraphQL, gRPC. AI-мониторинг потоков данных.",
+    tags: ["1C", "Битрикс24", "Kafka", "GraphQL"],
+    price: "от 80 000 ₽",
+  },
+  {
+    icon: LineChart,
+    title: "Аналитика данных",
+    slug: "analitika-dannyh",
+    description:
+      "BI-дашборды, предиктивная аналитика, ML-модели. Превращаем данные в управленческие решения.",
+    tags: ["Python", "Tableau", "ClickHouse", "ML"],
+    price: "от 100 000 ₽",
+  },
+  {
+    icon: Palette,
+    title: "UX/UI дизайн",
+    slug: "ux-ui-dizajn",
+    description:
+      "UX-исследования, прототипирование, дизайн-системы, брендинг. AI-генерация ускоряет процесс в 5 раз.",
+    tags: ["Figma", "Framer", "v0.dev", "Midjourney"],
+    price: "от 50 000 ₽",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Кибербезопасность",
+    slug: "kiberbezopasnost",
+    description:
+      "Аудит безопасности, пентесты, AI-мониторинг угроз. Соответствие 152-ФЗ, GDPR, PCI DSS.",
+    tags: ["Pentest", "OWASP", "152-ФЗ", "GDPR"],
+    price: "от 100 000 ₽",
+  },
 ]
 
 export default function UslugiPage() {
@@ -156,7 +192,7 @@ export default function UslugiPage() {
         {/* Services Grid */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service) => (
                 <Link
                   key={service.slug}

@@ -8,14 +8,14 @@ import { MapPin, Briefcase, Clock, Users, Zap, Heart, Globe, GraduationCap, Cale
 export const metadata: Metadata = {
   title: "Careers at YappiX — IT Studio Jobs",
   description:
-    "Open positions at YappiX: developers, designers, managers. Work from Skolkovo, remotely, or from offices in USA, Turkey, Serbia, Kazakhstan.",
+    "Open positions at YappiX: developers, designers, managers. Work from Skolkovo, remotely, or from locations in USA, Turkey, Serbia, Kazakhstan.",
   keywords: ["developer jobs", "IT careers", "Skolkovo jobs", "remote developer", "YappiX careers"],
   alternates: {
     canonical: "https://yappix.ru/en/career",
   },
   openGraph: {
     title: "Careers at YappiX — IT Studio Jobs",
-    description: "Open positions: developers, designers, managers. Work remotely or from offices in 5 countries.",
+    description: "Open positions: developers, designers, managers. Work remotely or from 5 locations.",
     type: "website",
     url: "https://yappix.ru/en/career",
     siteName: "YappiX",
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Careers at YappiX — IT Studio Jobs",
-    description: "Open positions at YappiX. Work from Skolkovo, remotely or from offices in 5 countries.",
+    description: "Open positions at YappiX. Work from Skolkovo, remotely or from 5 locations.",
   },
 }
 
 const benefits = [
   {
     icon: Globe,
-    title: "Remote or office",
-    description: "Work from wherever suits you: home, coworking, or office in 5 countries",
+    title: "Remote or location",
+    description: "Work from wherever suits you: home, coworking, or locations in 5 countries",
   },
   {
     icon: Zap,

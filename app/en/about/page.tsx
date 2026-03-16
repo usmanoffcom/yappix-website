@@ -9,13 +9,13 @@ import { Award, Users, Rocket, Globe, CheckCircle } from "lucide-react"
 export const metadata: Metadata = {
   title: "About YappiX — Skolkovo Residents | IT Studio",
   description:
-    "YappiX — Full-cycle IT studio. Skolkovo residents since 2020. Offices in Russia, USA, Turkey, Serbia, Kazakhstan. 250+ projects, 50+ specialists.",
+    "YappiX — AI-first delivery company. Skolkovo residents. We implement automation and AI contours with measurable ROI. 250+ projects, 5 locations.",
   alternates: {
     canonical: "https://yappix.ru/en/about",
   },
   openGraph: {
     title: "About YappiX — Skolkovo Residents",
-    description: "Full-cycle IT studio. Skolkovo residents. 250+ projects, offices in 5 countries.",
+    description: "AI-first delivery company. 250+ projects, 5 locations.",
     type: "website",
     url: "https://yappix.ru/en/about",
     siteName: "YappiX",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
 
 const stats = [
   { value: "250+", label: "Projects", icon: Rocket },
-  { value: "50+", label: "Specialists", icon: Users },
-  { value: "5", label: "Offices", icon: Globe },
+  { value: "5", label: "Locations", icon: Globe },
   { value: "10+", label: "Years of Experience", icon: Award },
+  { value: "AI-first", label: "Delivery Model", icon: Users },
 ]
 
 const milestones = [
@@ -36,8 +36,8 @@ const milestones = [
   { year: "2017", title: "Grants", description: "Received government innovation grants and patents" },
   { year: "2019", title: "Investment", description: "Raised 1st investment round for YappiX CMS" },
   { year: "2021", title: "Skolkovo & Growth", description: "Received Skolkovo resident status, raised 2nd investment round for scaling" },
-  { year: "2022", title: "Global Expansion", description: "Entered international markets, opened offices in USA and Turkey" },
-  { year: "2025", title: "AI Transformation", description: "Implemented AI tools across all processes, offices in 5 locations, team scaling" },
+  { year: "2022", title: "Global Expansion", description: "Entered international markets, locations in USA and Turkey" },
+  { year: "2025", title: "AI Transformation", description: "Implemented AI tools across all processes, 5 locations, team scaling" },
 ]
 
 const values = [
@@ -88,7 +88,7 @@ export default function AboutEnPage() {
                   Building Digital Products Faster with AI
                 </h1>
                 <p className="text-body-lg mb-8 text-pretty">
-                  YappiX — full-cycle IT studio. Skolkovo residents. We use AI tools for 7-12x development acceleration without compromising quality.
+                  YappiX — AI-first delivery company. Skolkovo residents. We implement automation and AI contours with measurable ROI, quality control, and transparent SLA. Core team + vetted specialist network.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button size="lg" asChild>
@@ -154,7 +154,7 @@ export default function AboutEnPage() {
                       Founder of YappiX and product designer with 10+ years of experience. Specializing in the full cycle: from UX research to design systems and frontend development.
                     </p>
                     <p>
-                      In 2025, transitioned to a &quot;one-person company&quot; model, using AI agents to accelerate development. My approach: minimal team, maximum automation, focus on results.
+                      In 2025, transitioned the company to AI-first delivery: core team + vetted specialist network + AI acceleration at every stage. This approach delivers enterprise quality with transparent SLAs and artifacts.
                     </p>
                     <p>
                       <strong>Stack:</strong> Figma, Next.js, TypeScript, Framer, Cursor AI, Claude

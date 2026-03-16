@@ -32,6 +32,12 @@ export interface CaseStudy {
   /** Ссылка на скачивание (Figma / LemonSqueezy) — кнопка в карточке деталей */
   productUrl?: string
   productLabel?: string
+  architecture?: string
+  measurement?: string
+  risks?: string
+  nextSteps?: string
+  relatedServices?: string[]
+  relatedArticles?: string[]
   /** Унифицированный evidence pack для кейсов с доказательной методикой */
   evidencePack?: {
     baseline: string
@@ -87,6 +93,12 @@ export const casesData: CaseStudy[] = [
     team: "1 человек",
     year: "2025",
     projectUrl: "https://myunion.pro/",
+    architecture: "Монолитный Next.js 14 App Router, GPT-4o через LangChain для обработки обращений, PostgreSQL + pgvector для RAG-поиска по документам профсоюза, AWS EC2 + RDS, CI/CD через GitHub Actions.",
+    measurement: "Сравниваем 8-недельный baseline до релиза с 8 неделями после стабилизации. Метрики: медиана TTR (тикеты), доля auto-resolved (логи ассистента), WAU/MAU (GA4). Сезонность учтена через сравнение аналогичных месяцев.",
+    risks: "Контроль галлюцинаций через ограничение контура данных и правила ответа. Регулярный аудит качества ответов по выборке. RBAC для доступа к персональным данным членов профсоюза. Ежемесячный пересмотр метрик качества.",
+    nextSteps: "Расширение RAG-контура на внутренние регламенты и законодательство. Интеграция с системой голосования. Внедрение SLO по времени ответа ассистента.",
+    relatedServices: ["ai-chat-boty", "razrabotka-sajtov"],
+    relatedArticles: ["vnedrenie-iskusstvennogo-intellekta-v-biznes"],
     evidencePack: {
       baseline: "Входящий поток обращений, время обработки и доля ручного маршрута",
       period: "Сравнение 8 недель до внедрения и 8 недель после стабилизации релиза",
@@ -228,6 +240,12 @@ export const casesData: CaseStudy[] = [
       { label: "Гостиница Priboy", url: "https://priboy1.ru/" },
       { label: "Отель Dvin", url: "https://hoteldvin.ru/" },
     ],
+    architecture: "Next.js SSG + ISR для 3 сайтов отелей, Яндекс.Метрика + GA4 для аналитики, VK Ads API для таргетированной рекламы, интеграция с booking engine для отслеживания прямых броней. SEO: семантическое ядро на 1200+ запросов.",
+    measurement: "Трафик: sessions из Яндекс.Метрики (фильтр organic, без роботов). Прямые брони: booking engine CRM, атрибуция по UTM + реферер. ТОП-3: позиции из Яндекс.Вебмастера по ядру из 85 приоритетных запросов, замер еженедельно.",
+    risks: "Мониторинг доступности 3 сайтов. Контроль позиций при обновлениях алгоритмов. Разделение аналитики по каждому отелю. A/B тестирование посадочных для VK Ads.",
+    nextSteps: "Расширение SEO-ядра на англоязычный трафик. Интеграция чат-бота для бронирования. Внедрение сквозной аналитики до уровня RevPAR.",
+    relatedServices: ["seo-prodvizhenie", "razrabotka-sajtov", "smm"],
+    relatedArticles: [],
     evidencePack: {
       baseline: "Органический трафик, прямые брони и позиции в поиске по геокластерам",
       period: "Сравнение 6 месяцев до запуска стратегии и 6 месяцев после",
@@ -327,6 +345,12 @@ export const casesData: CaseStudy[] = [
     team: "4 человека",
     year: "2024",
     projectUrl: "https://myolive.shop/",
+    architecture: "React SPA + Node.js REST API, PostgreSQL, Stripe для платежей, автогенерация PDF-сертификатов с QR-кодами через Puppeteer, CDN для медиа, Vercel для фронтенда.",
+    measurement: "Конверсия: purchase_completed / sessions (GA4). Средний чек: revenue / orders (Stripe Dashboard). Подарки: gift_purchase events. Период сравнения: 90 дней до и после релиза. Атрибуция — last-click, с фильтрацией ботов.",
+    risks: "Мониторинг доступности платёжного шлюза Stripe. Автоматические бэкапы БД сертификатов. Rate-limiting на генерацию PDF. Контроль целостности QR-кодов.",
+    nextSteps: "Интеграция трекера урожая с IoT-датчиками. Подписочная модель для ежегодных отчётов по дереву. Мультиязычный интерфейс.",
+    relatedServices: ["razrabotka-sajtov"],
+    relatedArticles: [],
     evidencePack: {
       baseline: "Конверсия витрины, средний чек и доля подарочных покупок",
       period: "Сравнение 90 дней до релиза и 90 дней после релиза",
@@ -497,6 +521,12 @@ export const casesData: CaseStudy[] = [
     duration: "3+ года",
     team: "8 человек",
     year: "2015–2022",
+    architecture: "Собственный компилятор, транспилирующий визуальный конструктор в нативный Swift/Kotlin код. Бэкенд: Node.js + MongoDB. CMS-панель: React. AR-модуль на ARKit/ARCore. Инфраструктура: AWS, CI/CD через Jenkins.",
+    measurement: "Продуктовые метрики: time-to-app (от брифа до публикации в сторе), число созданных приложений, стоимость R&D vs revenue. Не web-метрики, а инженерные и бизнес-показатели.",
+    risks: "Сложность поддержки кастомного компилятора при обновлениях iOS/Android SDK. Патентная защита ключевых алгоритмов. Зависимость от ручной верификации сгенерированного кода.",
+    nextSteps: "Продукт закрыт в 2022. Технологии и опыт перенесены в текущие проекты автоматизации: подходы к code generation и AI-контурам для delivery.",
+    relatedServices: ["mobilnye-prilozheniya", "saas-paas"],
+    relatedArticles: [],
     evidencePack: {
       baseline: "Скорость выпуска мобильных приложений и стоимость запуска MVP",
       period: "Сравнение проектных циклов до платформы и после внедрения CMS",

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Контакты YappiX — связаться с нами",
-    description: "Свяжитесь с YappiX: офисы в 5 странах, телефон, email, Telegram. Бесплатная консультация.",
+    description: "Свяжитесь с YappiX: 5 локаций, телефон, email, Telegram. Бесплатная консультация.",
     type: "website",
     url: "https://yappix.ru/kontakty",
     siteName: "YappiX",
@@ -105,7 +105,7 @@ const contactMethods = [
     icon: Clock,
     title: "Время работы",
     value: "24/7",
-    description: "Благодаря офисам в разных часовых поясах",
+    description: "Благодаря локациям в разных часовых поясах",
     href: null,
   },
 ]
@@ -261,7 +261,7 @@ export default function ContactsPage() {
 
               {/* Offices */}
               <div>
-                <h2 className="text-title text-foreground mb-6">Наши офисы</h2>
+                <h2 className="text-title text-foreground mb-6">Наши локации</h2>
                 <div className="space-y-4">
                   {offices.map((office) => (
                     <div key={office.city} className="p-6 bg-card border border-border rounded-xl">

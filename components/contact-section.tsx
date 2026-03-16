@@ -59,7 +59,7 @@ const contactContentByLocale = {
     quickContact: "Быстрая связь",
     telegramDesc: "Ответим за 5 минут",
     callLabel: "Позвонить",
-    ourOffices: "Наши офисы",
+    ourOffices: "Наши локации",
     bookCall: "Забронировать звонок",
     bookCallDesc: "Выберите удобное время для 30-минутной консультации с нашим экспертом",
     bookBtn: "Выбрать время",
@@ -89,7 +89,7 @@ const contactContentByLocale = {
     quickContact: "Quick Contact",
     telegramDesc: "Reply within 5 minutes",
     callLabel: "Call",
-    ourOffices: "Our Offices",
+    ourOffices: "Our Locations",
     bookCall: "Book a Call",
     bookCallDesc: "Choose a time for a 30-minute consultation with our expert",
     bookBtn: "Select Time",
@@ -351,6 +351,11 @@ export function ContactSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
                         </p>
                       </div>
                     )}
+
+                    <label className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer select-none">
+                      <input type="checkbox" name="nda" className="rounded border-border" />
+                      {locale === "ru" ? "Запросить NDA перед обсуждением" : "Request NDA before discussion"}
+                    </label>
 
                     <Button type="submit" className="w-full" disabled={isSubmitting}>
                       {isSubmitting ? t.sendingBtn : t.submitBtn}

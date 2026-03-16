@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { blogPosts, blogCategories } from '@/lib/blog-data'
 import { casesData } from '@/lib/cases-data'
+import { casesDataEn } from '@/lib/cases-data-en'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://yappix.ru'
@@ -89,6 +90,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/en/security-compliance`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
     { url: `${baseUrl}/en/sla-support`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
     { url: `${baseUrl}/en/roi-methodology`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${baseUrl}/avtomatizaciya-s-roi`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/upravlyaemyj-ai-kontur`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/rag-poisk-po-baze-znanij`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/en/roi-first-automation`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/en/controlled-ai-contour`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/en/rag-enterprise-knowledge-search`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
   ]
 
   // Services pages - используем реальные slug'и из servicesData
@@ -101,6 +108,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'devops',
     'seo-prodvizhenie',
     'smm',
+    'integracii-i-api',
+    'analitika-dannyh',
+    'ux-ui-dizajn',
+    'kiberbezopasnost',
   ]
 
   const servicesPages: MetadataRoute.Sitemap = servicesSlugs.map((slug) => ({
@@ -128,9 +139,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     }))
 
-  // Cases pages
+  // Cases pages (RU)
   const casesPages: MetadataRoute.Sitemap = casesData.map((caseItem) => ({
     url: `${baseUrl}/kejsy/${caseItem.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  // Cases pages (EN)
+  const casesEnPages: MetadataRoute.Sitemap = casesDataEn.map((caseItem) => ({
+    url: `${baseUrl}/en/cases/${caseItem.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
@@ -142,5 +161,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogPostsPages,
     ...blogCategoriesPages,
     ...casesPages,
+    ...casesEnPages,
   ]
 }

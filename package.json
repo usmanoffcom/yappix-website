@@ -5,6 +5,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "dev:clean": "rm -rf .next && next dev",
+    "dev:turbo": "next dev --turbo",
     "lint": "eslint .",
     "start": "next start -p 3001",
     "generate-icons": "node scripts/generate-icons.js",

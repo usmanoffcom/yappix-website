@@ -8,14 +8,14 @@ import { MapPin, Briefcase, Clock, Users, Zap, Heart, Globe, GraduationCap, Cale
 export const metadata: Metadata = {
   title: "Карьера в YappiX — вакансии IT-студии",
   description:
-    "Вакансии в YappiX: разработчики, дизайнеры, менеджеры. Работа в Сколково, удалённо или из офисов в США, Турции, Сербии, Казахстане.",
+    "Вакансии в YappiX: разработчики, дизайнеры, менеджеры. Работа в Сколково, удалённо или из локаций в США, Турции, Сербии, Казахстане.",
   keywords: ["вакансии разработчик", "работа в IT", "вакансии Сколково", "удалённая работа программист"],
   alternates: {
     canonical: "https://yappix.ru/karera",
   },
   openGraph: {
     title: "Карьера в YappiX — вакансии IT-студии",
-    description: "Вакансии: разработчики, дизайнеры, менеджеры. Работа в Сколково, удалённо, из офисов в 5 странах.",
+    description: "Вакансии: разработчики, дизайнеры, менеджеры. Работа в Сколково, удалённо, из 5 локаций.",
     type: "website",
     url: "https://yappix.ru/karera",
     siteName: "YappiX",
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Карьера в YappiX — вакансии IT-студии",
-    description: "Вакансии в YappiX. Работа в Сколково, удалённо или из офисов в 5 странах.",
+    description: "Вакансии в YappiX. Работа в Сколково, удалённо или из 5 локаций.",
   },
 }
 
 const benefits = [
   {
     icon: Globe,
-    title: "Удалёнка или офис",
-    description: "Работайте откуда удобно: дом, коворкинг или офис в 5 странах",
+    title: "Удалёнка или локация",
+    description: "Работайте откуда удобно: дом, коворкинг или локации в 5 странах",
   },
   { icon: Zap, title: "AI-инструменты", description: "Cursor, v0, ChatGPT — работаем с передовыми технологиями" },
   { icon: GraduationCap, title: "Обучение", description: "Бюджет на конференции, курсы, книги. Внутренние митапы" },

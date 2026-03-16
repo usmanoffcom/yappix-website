@@ -9,7 +9,7 @@ const contentByLocale = {
     badge: "Экономика автоматизации",
     title: "Где бизнес теряет деньги каждый день",
     subtitle:
-      "Ручные процессы масштабируются через людей. Мы масштабируем их через управляемую автоматизацию с измеримым результатом.",
+      "Мы внедряем автоматизацию и AI-контуры так, чтобы их можно было измерять, контролировать и спокойно эксплуатировать.",
     losses: [
       "Ручной поиск информации в документах и внутренних базах знаний",
       "Проверка договоров, отчётов и комплаенс-операции",
@@ -43,7 +43,7 @@ const contentByLocale = {
     badge: "Automation Economics",
     title: "Where Businesses Lose Money Every Day",
     subtitle:
-      "Manual operations scale through headcount. We scale them through controlled automation with measurable outcomes.",
+      "We implement automation and AI contours that can be measured, controlled, and reliably operated.",
     losses: [
       "Manual search in documents and internal knowledge bases",
       "Document checks and compliance operations",
