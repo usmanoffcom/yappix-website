@@ -3,6 +3,7 @@ import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 
 const TrustBadges = dynamic(() => import("@/components/trust-badges").then((m) => ({ default: m.TrustBadges })), { ssr: true })
+const FounderGreeting = dynamic(() => import("@/components/founder-greeting").then((m) => ({ default: m.FounderGreeting })), { ssr: true })
 const AutomationEconomicsSection = dynamic(() => import("@/components/automation-economics-section").then((m) => ({ default: m.AutomationEconomicsSection })), { ssr: true })
 const ServicesSection = dynamic(() => import("@/components/services-section").then((m) => ({ default: m.ServicesSection })), { ssr: true })
 const ProcessSection = dynamic(() => import("@/components/process-section").then((m) => ({ default: m.ProcessSection })), { ssr: true })
@@ -23,6 +24,7 @@ export default function HomePage() {
       <AutomationEconomicsSection />
       <ServicesSection />
       <ProcessSection />
+      <FounderGreeting />
       <CasesSection />
       <TechStack />
       <PricingSection />

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
@@ -170,13 +171,42 @@ const textByLocale = {
   },
 } as const
 
+/** EN path → RU path for language switcher (when on EN, link to same page in RU) */
+const enToRuPath: Record<string, string> = {
+  "/en": "/",
+  "/en/about": "/o-kompanii",
+  "/en/cases": "/kejsy",
+  "/en/contact": "/kontakty",
+  "/en/career": "/karera",
+  "/en/evidence": "/evidence",
+  "/en/security-compliance": "/security-compliance",
+  "/en/sla-support": "/sla-support",
+  "/en/roi-methodology": "/roi-methodology",
+  "/en/rag-enterprise-knowledge-search": "/rag-poisk-po-baze-znanij",
+  "/en/controlled-ai-contour": "/upravlyaemyj-ai-kontur",
+  "/en/roi-first-automation": "/avtomatizaciya-s-roi",
+  "/en/rekvizity": "/rekvizity",
+  "/en/templates": "/shablony",
+  "/en/services": "/uslugi",
+  "/en/founder": "/founder",
+}
+
+function getRuHref(pathname: string): string {
+  const exact = enToRuPath[pathname]
+  if (exact) return exact
+  if (pathname.startsWith("/en/cases/")) return pathname.replace(/^\/en\/cases/, "/kejsy")
+  return "/"
+}
+
 export function SiteHeader({ locale }: { locale: Locale }) {
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
   const services = servicesByLocale[locale]
   const navItems = navByLocale[locale]
   const t = textByLocale[locale]
+  const langHref = locale === "en" ? getRuHref(pathname ?? "") : t.langHref
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)
@@ -269,7 +299,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 
           <div className="hidden min-[1100px]:flex items-center gap-4">
             <Link
-              href={t.langHref}
+              href={langHref}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-1"
               title={t.langTitle}
             >
@@ -352,7 +382,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 
               <div className="border-t border-border/50 px-6 py-5 space-y-4 bg-muted/30">
                 <Link
-                  href={t.langHref}
+                  href={langHref}
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >

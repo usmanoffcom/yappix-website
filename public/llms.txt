@@ -32,4 +32,5 @@
 - [Блог](https://yappix.ru/blog)
 - [Контакты](https://yappix.ru/kontakty)
 - [О компании](https://yappix.ru/o-kompanii)
+- [Основатель — Ренат Усманов](https://yappix.ru/founder): founder YappiX, AI-first product developer, UX/UI и full stack
 - [English](https://yappix.ru/en)

@@ -162,27 +162,29 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-foreground mb-2">Ренат Усманов</h3>
-                  <p className="text-primary mb-4">CEO & Product Designer</p>
+                  <p className="text-primary mb-4">Founder & AI-first Product Developer</p>
                   <div className="space-y-4 text-muted-foreground">
                     <p>
-                      Основатель YappiX и продуктовый дизайнер с 10+ годами опыта. Специализируюсь на полном цикле:
-                      от UX-исследований до дизайн-системы и фронтенда.
+                      Founder YappiX с 20+ годами в digital. Прошёл путь от UX/UI до full stack
+                      разработки и запуска стартапов. Сегодня объединяю продуктовое мышление,
+                      дизайн и код с AI-first подходом.
                     </p>
                     <p>
-                      В 2025 году перевёл компанию на AI-first delivery: core-команда + сеть проверенных специалистов
-                      + AI-ускорение на каждом этапе. Этот подход даёт enterprise-качество с прозрачными SLA и артефактами.
+                      Перевёл компанию на AI-first delivery: core-команда + AI-ускорение на каждом
+                      этапе. Результат — enterprise-качество с прозрачными SLA, сроки в 3-5 раз
+                      быстрее рынка.
                     </p>
                     <p>
-                      <strong>Stack:</strong> Figma, Next.js, TypeScript, Framer, Cursor AI, Claude
+                      <strong>Stack:</strong> Figma, Next.js, TypeScript, Node.js, Cursor AI, Claude
                     </p>
-                    <div className="flex gap-4 mt-6">
-                      <Link href="https://usmanoff.com" target="_blank" className="text-primary hover:underline">
-                        Portfolio →
+                    <div className="flex flex-wrap gap-4 mt-6">
+                      <Link href="/founder" className="text-primary hover:underline font-medium">
+                        Подробнее обо мне →
                       </Link>
-                      <Link href="https://linkedin.com/in/usmanoffcom" target="_blank" className="text-primary hover:underline">
+                      <Link href="https://linkedin.com/in/usmanoffcom" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                         LinkedIn →
                       </Link>
-                      <Link href="https://github.com/usmanoffcom" target="_blank" className="text-primary hover:underline">
+                      <Link href="https://github.com/usmanoffcom" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                         GitHub →
                       </Link>
                     </div>

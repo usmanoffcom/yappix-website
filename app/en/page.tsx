@@ -5,6 +5,7 @@ import { TrustBadges } from "@/components/trust-badges"
 import { AutomationEconomicsSection } from "@/components/automation-economics-section"
 import { ServicesSection } from "@/components/services-section"
 import { ProcessSection } from "@/components/process-section"
+import { FounderGreeting } from "@/components/founder-greeting"
 import { CasesSection } from "@/components/cases-section"
 import { TechStack } from "@/components/tech-stack"
 import { PricingSection } from "@/components/pricing-section"
@@ -21,6 +22,7 @@ export default function HomeEnPage() {
       <AutomationEconomicsSection locale="en" />
       <ServicesSection locale="en" />
       <ProcessSection locale="en" />
+      <FounderGreeting locale="en" />
       <CasesSection locale="en" />
       <TechStack locale="en" />
       <PricingSection locale="en" />

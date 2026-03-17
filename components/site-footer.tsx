@@ -27,6 +27,7 @@ const footerLinksByLocale: Record<
     ],
     company: [
       { label: "О компании", href: "/o-kompanii" },
+      { label: "Основатель", href: "/founder" },
       { label: "Кейсы", href: "/kejsy" },
       { label: "Блог", href: "/blog" },
       { label: "Evidence Hub", href: "/evidence" },
@@ -58,6 +59,7 @@ const footerLinksByLocale: Record<
     ],
     company: [
       { label: "About Us", href: "/en/about" },
+      { label: "Founder", href: "/founder" },
       { label: "Cases", href: "/en/cases" },
       { label: "Blog", href: "/blog" },
       { label: "Evidence Hub", href: "/en/evidence" },
