@@ -140,7 +140,7 @@ export const blogPosts: BlogPost[] = [
       <p>Чтобы компанию воспринимали серьёзно на рынке AI-внедрений, нужно меньше говорить о технологиях и больше — о финансовой модели, ограничениях и эксплуатационной зрелости. Это и есть взрослая подача B2B-автоматизации.</p>
       <p>В Yappix мы запускаем AI-проекты только при наличии измеримого эффекта и прозрачной модели затрат.</p>
     `,
-    image: "/images/checkout_ai_2.mp4",
+    image: "/006.mp4",
     category: "Бизнес",
     tags: ["AI", "ROI", "Автоматизация", "RAG", "SLA", "Бизнес"],
     author: "YappiX Team",
@@ -990,7 +990,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Мониторинг и observability</h2>
       <p>С первого дня внедряйте: Sentry для ошибок, Posthog для аналитики, Grafana + Prometheus для метрик. Это сэкономит сотни часов при диагностике проблем.</p>
     `,
-    image: "/images/Cover3 1.jpg",
+    image: "/images/usmanoff-cases/1765733704154-Desktop_1.png",
     category: "Разработка",
     tags: ["SaaS", "Next.js", "PostgreSQL", "Kubernetes", "Архитектура"],
     author: "YappiX Team",
@@ -1047,7 +1047,7 @@ export const blogPosts: BlogPost[] = [
       <h2>С чего начать</h2>
       <p>Начните с пилота на ограниченном scope: один канал коммуникации, одна категория вопросов. Соберите метрики, докажите ROI, масштабируйте. Типичный пилот занимает 4-6 недель.</p>
     `,
-    image: "/images/mediamodifier_image.png",
+    image: "/images/05f1e332931093.589da5ec81ead.gif",
     category: "AI и ML",
     tags: ["AI", "Автоматизация", "LLM", "Чат-боты", "ROI"],
     author: "YappiX Team",
@@ -1174,7 +1174,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["ROI AI проекта", "расчёт окупаемости ИИ", "экономика AI внедрения", "финансовая модель AI"],
     excerpt: "Пошаговая методика расчёта ROI для AI-внедрения с формулами, примерами и шаблоном финансовой модели.",
     content: "<p>Статья в разработке. Скоро здесь появится подробная методика расчёта ROI для AI-проектов.</p>",
-    image: "/images/evidence/roi-model.svg",
+    image: "/images/generated/en-blog/ai-project-roi.png",
     category: "AI и ML",
     tags: ["ROI", "AI", "Экономика", "Методика"],
     author: "YappiX Team",
@@ -1190,7 +1190,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["окупаемость AI", "payback period ИИ", "внедрение AI примеры", "срок окупаемости автоматизации"],
     excerpt: "Формулы payback period, примеры из реальных проектов и типовые ошибки при расчёте окупаемости AI.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/roi-model.svg",
+    image: "/images/generated/en-blog/ai-payback-formulas.png",
     category: "Бизнес",
     tags: ["ROI", "AI", "Payback", "Бизнес-кейсы"],
     author: "YappiX Team",
@@ -1206,7 +1206,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["стоимость AI автоматизации", "цена AI чат-бота", "бюджет AI проекта", "TCO AI"],
     excerpt: "Разбор стоимости AI-автоматизации: от пилота до enterprise-внедрения. TCO, скрытые затраты, модели оплаты.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/roi-model.svg",
+    image: "/images/generated/en-blog/ai-automation-cost.png",
     category: "Бизнес",
     tags: ["AI", "Стоимость", "TCO", "Бюджет"],
     author: "YappiX Team",
@@ -1222,7 +1222,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["KPI AI проекта", "метрики AI", "эффективность AI", "контроль AI внедрения"],
     excerpt: "Какие KPI использовать для AI-проектов и как привязать метрики к реальному бизнес-эффекту.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/evidence-baseline.svg",
+    image: "/images/generated/en-blog/ai-kpi-framework.png",
     category: "AI и ML",
     tags: ["KPI", "AI", "Метрики", "Контроль"],
     author: "YappiX Team",
@@ -1238,7 +1238,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["экономический контракт AI", "SLA AI проект", "договор на AI внедрение"],
     excerpt: "Как зафиксировать результат AI-внедрения в договоре: baseline, KPI, stop/go и SLA.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/roi-model.svg",
+    image: "/images/generated/en-blog/ai-economic-contract.png",
     category: "Бизнес",
     tags: ["AI", "Контракт", "SLA", "ROI"],
     author: "YappiX Team",
@@ -1254,7 +1254,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["ошибки ROI AI", "расчёт ROI ошибки", "AI проект риски"],
     excerpt: "Типичные ошибки при расчёте ROI AI-проекта и как их избежать.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/roi-model.svg",
+    image: "/images/generated/en-blog/ai-roi-mistakes.png",
     category: "AI и ML",
     tags: ["ROI", "AI", "Ошибки", "Методика"],
     author: "YappiX Team",
@@ -1271,7 +1271,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["галлюцинации LLM", "контроль AI ответов", "RAG ограничения", "качество LLM"],
     excerpt: "Практические методы ограничения галлюцинаций LLM в production-системах.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/security-controls.svg",
+    image: "/images/generated/en-blog/llm-hallucination-control.png",
     category: "AI и ML",
     tags: ["LLM", "Галлюцинации", "RAG", "Качество"],
     author: "YappiX Team",
@@ -1287,7 +1287,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["RBAC AI", "контроль доступа AI", "безопасность AI системы", "IAM для AI"],
     excerpt: "Как реализовать разграничение доступа для AI-ассистентов в корпоративной среде.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/security-controls.svg",
+    image: "/images/generated/en-blog/ai-rbac-enterprise.png",
     category: "AI и ML",
     tags: ["RBAC", "AI", "Безопасность", "IAM"],
     author: "YappiX Team",
@@ -1303,7 +1303,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["логирование AI", "аудит AI ответов", "мониторинг AI", "observability LLM"],
     excerpt: "Зачем и как логировать ответы AI-ассистентов: структура, хранение и анализ.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/sla-escalation.svg",
+    image: "/images/generated/en-blog/ai-response-logging.png",
     category: "AI и ML",
     tags: ["Логирование", "AI", "Observability", "Аудит"],
     author: "YappiX Team",
@@ -1319,7 +1319,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["метрики качества LLM", "accuracy LLM", "оценка AI ответов", "faithfulness RAG"],
     excerpt: "Как измерять качество ответов LLM: ключевые метрики и методика оценки.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/evidence-baseline.svg",
+    image: "/images/generated/en-blog/llm-quality-metrics.png",
     category: "AI и ML",
     tags: ["LLM", "Метрики", "Качество", "Оценка"],
     author: "YappiX Team",
@@ -1335,7 +1335,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["SLO AI", "мониторинг AI сервисов", "наблюдаемость AI", "Prometheus AI"],
     excerpt: "Как задавать и мониторить SLO для AI-сервисов в production.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/sla-escalation.svg",
+    image: "/images/generated/en-blog/ai-service-slo.png",
     category: "DevOps",
     tags: ["SLO", "AI", "Мониторинг", "Prometheus"],
     author: "YappiX Team",
@@ -1351,7 +1351,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["безопасность AI", "security AI контур", "чеклист AI безопасность", "compliance AI"],
     excerpt: "Полный чеклист безопасности AI-контура для production-внедрений.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/security-controls.svg",
+    image: "/images/generated/en-blog/ai-security-architecture.png",
     category: "AI и ML",
     tags: ["Безопасность", "AI", "Чеклист", "Compliance"],
     author: "YappiX Team",
@@ -1368,7 +1368,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["RAG архитектура", "поиск по базе знаний", "корпоративный RAG", "RAG для бизнеса"],
     excerpt: "Как устроена RAG-архитектура для корпоративного поиска по документам.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/evidence-baseline.svg",
+    image: "/images/generated/en-blog/rag-business-architecture.png",
     category: "AI и ML",
     tags: ["RAG", "Архитектура", "LLM", "Поиск"],
     author: "YappiX Team",
@@ -1384,7 +1384,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["оценка качества RAG", "метрики RAG", "precision RAG", "faithfulness RAG"],
     excerpt: "Метрики и методика оценки качества RAG-систем: от precision@k до faithfulness.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/evidence-baseline.svg",
+    image: "/images/generated/en-blog/rag-quality-evaluation.png",
     category: "AI и ML",
     tags: ["RAG", "Метрики", "Качество", "Оценка"],
     author: "YappiX Team",
@@ -1400,7 +1400,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["RAG vs fine-tuning", "RAG или fine-tuning", "когда использовать RAG", "дообучение LLM"],
     excerpt: "Сравнение RAG и fine-tuning: когда выбрать RAG, а когда дообучение модели.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/evidence-baseline.svg",
+    image: "/images/generated/en-blog/rag-vs-finetuning-comparison.png",
     category: "AI и ML",
     tags: ["RAG", "Fine-tuning", "LLM", "Сравнение"],
     author: "YappiX Team",
@@ -1416,7 +1416,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["RAG интеграция CRM", "RAG ERP", "RAG 1C", "RAG Bitrix24"],
     excerpt: "Практическое руководство по интеграции RAG-системы с корпоративными CRM и ERP.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/evidence-baseline.svg",
+    image: "/images/generated/en-blog/rag-crm-erp-integration.png",
     category: "AI и ML",
     tags: ["RAG", "CRM", "ERP", "Интеграция"],
     author: "YappiX Team",
@@ -1432,7 +1432,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ["RAG поддержка", "база знаний поддержка", "автоматизация саппорта", "AI helpdesk"],
     excerpt: "Как внедрить RAG-поиск для автоматизации ответов в службе поддержки.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/sla-escalation.svg",
+    image: "/images/usmanoff-cases/1765729597092-0002.avif",
     category: "AI и ML",
     tags: ["RAG", "Поддержка", "Helpdesk", "Автоматизация"],
     author: "YappiX Team",
@@ -1448,13 +1448,104 @@ export const blogPosts: BlogPost[] = [
     keywords: ["RAG on-premise", "приватный RAG", "RAG безопасность", "self-hosted RAG"],
     excerpt: "Как развернуть RAG-систему в закрытом контуре с соблюдением требований безопасности.",
     content: "<p>Статья в разработке.</p>",
-    image: "/images/evidence/security-controls.svg",
+    image: "/003.mp4",
     category: "AI и ML",
     tags: ["RAG", "On-premise", "Безопасность", "Self-hosted"],
     author: "YappiX Team",
     authorRole: "AI-инженеры",
     publishedAt: "2026-03-16",
     readingTime: "9 мин",
+  },
+  {
+    slug: "ai-ide-i-platformy-dlya-koda-2026-sravnenie",
+    title: "AI-IDE и платформы для написания кода 2026: объективное сравнение",
+    metaTitle: "AI-IDE и code-writing платформы 2026 — сравнение Cursor, v0, n8n | YappiX",
+    metaDescription: "Объективное сравнение AI-инструментов для разработки в 2026: AI-IDE (Cursor, Copilot, Windsurf), prompt-to-app (v0), оркестрация (n8n). Таблицы возможностей, цен и enterprise.",
+    keywords: ["AI IDE", "Cursor", "v0", "n8n", "сравнение AI инструментов", "AI разработка 2026", "GitHub Copilot", "Windsurf"],
+    excerpt: "Четыре класса инструментов, которые «пишут код»: AI-IDE, облачные IDE с агентами, prompt-to-app и no-code оркестрация. Сравнительные таблицы и рекомендации по пилоту.",
+    content: `
+      <h2>Резюме</h2>
+      <p>AI-инструменты, которые пишут код, в 2026 делятся на четыре класса: (1) AI‑IDE для работы в существующем репозитории (Cursor, Windsurf, Copilot, JetBrains), (2) облачные IDE + агенты (Replit, Bolt — строят и деплоят в браузере), (3) prompt‑to‑app генераторы интерфейсов (v0, Figma Make, Builder), (4) no‑code оркестраторы автоматизаций (Make, n8n). Сравнивать их «в лоб» — ошибка: у каждого свой тип результата и рисков.</p>
+      <p>Качество упирается в модели и «обвязку» агента. Лидерборды (SWE-bench Verified) показывают сильные результаты у frontier-моделей (~70–75%+), но это не гарантия для конкретного продукта без своего процесса измерения.</p>
+      <p>Для B2B решают не «вау‑демки», а контролируемость: training opt‑out/ретенция, SSO/SCIM, аудит‑логи, политики и модель угроз (prompt injection), особенно при интеграциях через MCP.</p>
+      <p><strong>Пилот-трио для YappiX:</strong> Cursor (AI-IDE для мультифайловой работы в репо) + v0 (быстрые прототипы UI → PR) + n8n (оркестрация и повторяемые артефакты с Git-backed средами).</p>
+
+      <h2>Классификация: где живёт код и что разрешено AI</h2>
+      <p>Инструменты различаются по месту выполнения (локальный репо vs облачный воркспейс) и по действиям AI (подсказки в одном файле vs планирование, выполнение, тесты, деплой). MCP стал «универсальным коннектором» для контекста из внешних систем, но расширяет поверхность атак — нужна модель угроз.</p>
+      <p>Бенчмаркировать стоит <em>workflow</em>: время до зелёных тестов, число циклов агента, качество диффа, регрессии по безопасности, полная стоимость (включая перезапуски).</p>
+
+      <h2>Сравнение возможностей платформ</h2>
+      <p>Легенда: <strong>✓</strong> — встроено / first-class, <strong>△</strong> — частично / зависит от плана, <strong>—</strong> — не основной сценарий, <strong>BYO</strong> — bring your own (модель/инфра).</p>
+      <table>
+        <thead>
+          <tr><th>Платформа</th><th>Мультифайл в репо</th><th>Run/preview</th><th>CI/CD и Git</th><th>Тесты/отладка</th><th>Коллаборация</th><th>Плагины</th><th>Self-host</th><th>Выбор модели</th><th>Админ/аудит</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cursor</td><td>✓</td><td>△</td><td>✓</td><td>✓</td><td>✓</td><td>✓ (MCP)</td><td>△</td><td>✓</td><td>✓</td></tr>
+          <tr><td>GitHub Copilot</td><td>△</td><td>—</td><td>✓</td><td>△</td><td>✓</td><td>△</td><td>—</td><td>△</td><td>✓</td></tr>
+          <tr><td>Windsurf</td><td>✓</td><td>△</td><td>✓</td><td>✓</td><td>✓</td><td>△</td><td>—</td><td>✓</td><td>✓</td></tr>
+          <tr><td>JetBrains AI</td><td>△</td><td>—</td><td>✓</td><td>△</td><td>✓</td><td>△</td><td>—</td><td>△</td><td>△</td></tr>
+          <tr><td>Continue</td><td>✓</td><td>△</td><td>✓</td><td>△</td><td>△</td><td>✓</td><td>Local/BYO</td><td>BYO</td><td>BYO</td></tr>
+          <tr><td>Replit Agent</td><td>✓</td><td>✓</td><td>△</td><td>△</td><td>✓</td><td>△</td><td>—</td><td>△</td><td>✓</td></tr>
+          <tr><td>Bolt.new</td><td>△</td><td>✓</td><td>△</td><td>△</td><td>✓</td><td>△</td><td>△</td><td>△</td><td>△</td></tr>
+          <tr><td>v0</td><td>△</td><td>✓</td><td>✓ (GitHub)</td><td>△</td><td>✓</td><td>✓ (API)</td><td>—</td><td>△</td><td>✓</td></tr>
+          <tr><td>Figma Make</td><td>—</td><td>✓</td><td>△</td><td>—</td><td>✓</td><td>✓ (MCP)</td><td>—</td><td>△</td><td>✓</td></tr>
+          <tr><td>Builder Visual Copilot</td><td>△</td><td>△</td><td>✓</td><td>△</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Make.com</td><td>—</td><td>—</td><td>△</td><td>△</td><td>✓</td><td>✓</td><td>—</td><td>✓</td><td>✓</td></tr>
+          <tr><td>n8n</td><td>—</td><td>—</td><td>✓ (git envs)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Цены (публичные тарифы)</h2>
+      <table>
+        <thead>
+          <tr><th>Инструмент</th><th>Входной платный тариф</th><th>Командный тариф</th><th>Модель затрат</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cursor</td><td>$20/мес</td><td>$40/польз./мес</td><td>кредиты + модель</td></tr>
+          <tr><td>GitHub Copilot</td><td>$19/польз./мес (Business)</td><td>$39/польз./мес (Enterprise)</td><td>оверажи по запросам</td></tr>
+          <tr><td>v0</td><td>$20/мес (Premium)</td><td>$30/польз./мес (Team)</td><td>кредиты + контроль обучения</td></tr>
+          <tr><td>Bolt.new</td><td>токен-планы</td><td>Teams</td><td>токены</td></tr>
+          <tr><td>Replit</td><td>платные планы</td><td>enterprise</td><td>кредиты + хостинг</td></tr>
+          <tr><td>Make.com</td><td>платные тарифы</td><td>enterprise</td><td>кредиты за действие модуля</td></tr>
+          <tr><td>n8n (cloud)</td><td>€20/мес (Starter)</td><td>выше</td><td>по выполнениям; self-host опция</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Enterprise: обучение на данных, SSO, аудит, SOC</h2>
+      <table>
+        <thead>
+          <tr><th>Инструмент</th><th>Training opt-out</th><th>SSO</th><th>SCIM</th><th>Аудит-логи</th><th>SOC</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cursor</td><td>режим конфиденциальности + enterprise</td><td>✓</td><td>✓</td><td>✓</td><td>SOC 2 Type II</td></tr>
+          <tr><td>GitHub Copilot</td><td>Business/Enterprise не для обучения</td><td>✓</td><td>✓</td><td>✓</td><td>Trust centre</td></tr>
+          <tr><td>Windsurf</td><td>по плану (trust centre)</td><td>✓</td><td>✓</td><td>△</td><td>SOC 2 Type II</td></tr>
+          <tr><td>v0</td><td>Enterprise не для обучения</td><td>✓ (Vercel)</td><td>△</td><td>✓</td><td>по плану</td></tr>
+          <tr><td>Figma</td><td>контроль орг, trust centre</td><td>✓</td><td>✓</td><td>✓</td><td>SOC 2 Type II</td></tr>
+          <tr><td>Builder.io</td><td>«no data training» в enterprise</td><td>✓</td><td>△</td><td>△</td><td>SOC 2 Type II</td></tr>
+          <tr><td>Make.com</td><td>изолированный AWS + SLA</td><td>✓</td><td>△</td><td>✓</td><td>ISO 27001, SOC</td></tr>
+          <tr><td>n8n</td><td>SOC 2 отчёт для enterprise</td><td>△</td><td>—</td><td>△</td><td>SOC 2/SOC 3</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Риски и бенчмарки</h2>
+      <p>Главные риски: утечки данных и неясная ретенция; prompt injection (особенно с MCP); небезопасная обработка вывода AI; IP и лицензии; нелинейная стоимость при «зацикливании» агента. Нужны политики (SSO/SCIM/аудит), сканирование кода и измеримый процесс.</p>
+      <p>Публичные бенчмарки (SWE-bench Verified, EvalPlus) помогают выбрать модель. Сравнивать платформы честно можно только своим harness: один репо, одни задачи, правило «зелёные тесты или провал».</p>
+
+      <h2>Рекомендации: пилот Cursor + v0 + n8n</h2>
+      <p><strong>Cursor</strong> — базовая AI-IDE для мультифайловой работы в реальных репо; сильные enterprise-контроли и зрелый agent workflow.</p>
+      <p><strong>v0 (Vercel)</strong> — лучший «prompt → PR» ускоритель фронтенда для Next.js/React; синхронизация с GitHub, управление местами, явная политика по обучению по планам.</p>
+      <p><strong>n8n</strong> (self-host или enterprise) — оркестрация для повторяемых пайплайнов (проверки PR, контент, лиды) с Git-backed средами и сильной позицией по безопасности.</p>
+      <p>Успех пилота измерять: time-to-green-tests, доля задач за N итераций, частота откатов, security findings на 1k LOC; плюс бизнес-метрики и стоимость (токены/кредиты на задачу).</p>
+    `,
+    image: "/ИИ.png",
+    category: "AI и ML",
+    tags: ["AI", "IDE", "Cursor", "v0", "n8n", "сравнение", "разработка"],
+    author: "YappiX Team",
+    authorRole: "AI-лаборатория",
+    publishedAt: "2026-03-18",
+    readingTime: "14 мин",
   },
 ]
 

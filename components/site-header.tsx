@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { blogPostsEn } from "@/lib/blog-data-en"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import {
   NavigationMenu,
@@ -171,8 +172,8 @@ const textByLocale = {
   },
 } as const
 
-/** EN path → RU path for language switcher (when on EN, link to same page in RU) */
-const enToRuPath: Record<string, string> = {
+/** Static EN path → RU path for language switcher */
+const staticEnToRuPath: Record<string, string> = {
   "/en": "/",
   "/en/about": "/o-kompanii",
   "/en/cases": "/kejsy",
@@ -189,13 +190,49 @@ const enToRuPath: Record<string, string> = {
   "/en/templates": "/shablony",
   "/en/services": "/uslugi",
   "/en/founder": "/founder",
+  "/en/blog": "/blog",
+}
+
+const blogPathPairs = blogPostsEn.reduce(
+  (acc, post) => {
+    if (!post.ruSlug) return acc
+
+    acc.enToRu[`/en/blog/${post.slug}`] = `/blog/${post.ruSlug}`
+    acc.ruToEn[`/blog/${post.ruSlug}`] = `/en/blog/${post.slug}`
+
+    return acc
+  },
+  { enToRu: {} as Record<string, string>, ruToEn: {} as Record<string, string> },
+)
+
+const staticRuToEnPath: Record<string, string> = Object.fromEntries(
+  Object.entries(staticEnToRuPath).map(([enPath, ruPath]) => [ruPath, enPath]),
+) as Record<string, string>
+
+const enToRuPath: Record<string, string> = {
+  ...staticEnToRuPath,
+  ...blogPathPairs.enToRu,
+}
+
+const ruToEnPath: Record<string, string> = {
+  ...staticRuToEnPath,
+  ...blogPathPairs.ruToEn,
 }
 
 function getRuHref(pathname: string): string {
   const exact = enToRuPath[pathname]
   if (exact) return exact
   if (pathname.startsWith("/en/cases/")) return pathname.replace(/^\/en\/cases/, "/kejsy")
+  if (pathname.startsWith("/en/blog/")) return "/blog"
   return "/"
+}
+
+function getEnHref(pathname: string): string {
+  const exact = ruToEnPath[pathname]
+  if (exact) return exact
+  if (pathname.startsWith("/kejsy/")) return pathname.replace(/^\/kejsy/, "/en/cases")
+  if (pathname.startsWith("/blog/")) return "/en/blog"
+  return "/en"
 }
 
 export function SiteHeader({ locale }: { locale: Locale }) {
@@ -206,7 +243,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const services = servicesByLocale[locale]
   const navItems = navByLocale[locale]
   const t = textByLocale[locale]
-  const langHref = locale === "en" ? getRuHref(pathname ?? "") : t.langHref
+  const langHref = locale === "en" ? getRuHref(pathname ?? "") : getEnHref(pathname ?? "")
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)

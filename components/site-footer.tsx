@@ -61,7 +61,7 @@ const footerLinksByLocale: Record<
       { label: "About Us", href: "/en/about" },
       { label: "Founder", href: "/founder" },
       { label: "Cases", href: "/en/cases" },
-      { label: "Blog", href: "/blog" },
+      { label: "Blog", href: "/en/blog" },
       { label: "Evidence Hub", href: "/en/evidence" },
       { label: "Security & Compliance", href: "/en/security-compliance" },
       { label: "Templates", href: "/en/templates" },

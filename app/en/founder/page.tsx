@@ -163,8 +163,9 @@ export default function FounderEnPage() {
               <div>
                 <Badge variant="outline" className="mb-4">Founder story</Badge>
                 <h1 className="text-display text-foreground mb-6 text-balance">
-                  Renat Usmanov — Founder YappiX & AI-first product developer
+                  Founder YappiX & AI-first product developer
                 </h1>
+                <p className="text-xl text-muted-foreground mb-6 font-medium">Renat Usmanov</p>
                 <p className="text-body-lg mb-8 text-pretty max-w-2xl">
                   I help entrepreneurs and companies launch digital products faster: from idea and UX/UI to full stack development, AI integrations and release.
                 </p>

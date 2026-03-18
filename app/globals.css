@@ -276,6 +276,18 @@ html {
   @apply text-foreground;
 }
 
+/* Blog post header top meta (back link + category) fallback:
+   force vertical stacking even if old markup is still rendered */
+main.pt-20 article > header .max-w-3xl.mx-auto > a.inline-flex.items-center.gap-2.text-sm.text-muted-foreground.hover\:text-foreground {
+  display: inline-flex;
+  width: fit-content;
+}
+
+main.pt-20 article > header .max-w-3xl.mx-auto > a.inline-flex.items-center.gap-2.text-sm.text-muted-foreground.hover\:text-foreground + span.inline-block {
+  display: inline-block;
+  margin-top: 0.75rem;
+}
+
 .blog-content h2 {
   @apply text-2xl sm:text-3xl font-bold text-foreground mt-12 mb-6 leading-tight;
 }
@@ -337,8 +349,19 @@ html {
   @apply pl-6 my-8 border-l-4 border-primary/50 italic text-muted-foreground;
 }
 
+/* Обёртка таблицы: только она скроллится по горизонтали, не вся статья */
+.blog-table-scroll {
+  @apply overflow-x-auto min-w-0 my-8 -mx-4 px-4 sm:mx-0 sm:px-0;
+  /* чтобы последняя колонка не обрезала правую границу */
+  padding-right: 2px;
+}
+
 .blog-content table {
-  @apply w-full my-8 border-collapse bg-card rounded-xl overflow-hidden border border-border;
+  @apply bg-card rounded-xl border border-border;
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .blog-content thead {
@@ -346,11 +369,34 @@ html {
 }
 
 .blog-content th {
-  @apply px-4 py-3 text-left text-sm font-semibold text-foreground border-b border-border;
+  @apply px-4 py-3 text-left text-sm font-semibold text-foreground border-b border-r border-border;
+}
+
+.blog-content th:last-child {
+  @apply border-r border-border;
 }
 
 .blog-content td {
-  @apply px-4 py-3 text-sm text-muted-foreground border-b border-border last:border-b-0;
+  @apply px-4 py-3 text-sm text-muted-foreground border-b border-r border-border;
+}
+
+.blog-content td:last-child {
+  @apply border-r border-border;
+}
+
+/* Первая колонка фиксирована при горизонтальном скролле */
+.blog-content thead th:first-child {
+  @apply sticky left-0 z-[2] bg-secondary/50;
+  box-shadow: 4px 0 8px -2px rgba(0, 0, 0, 0.06);
+}
+
+.blog-content tbody td:first-child {
+  @apply sticky left-0 z-[1] bg-card;
+  box-shadow: 4px 0 8px -2px rgba(0, 0, 0, 0.06);
+}
+
+.blog-content tbody tr:hover td:first-child {
+  @apply bg-secondary/20;
 }
 
 .blog-content tbody tr {

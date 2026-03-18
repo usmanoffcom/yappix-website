@@ -2,68 +2,18 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { getBlogPostBySlug, blogPosts } from "@/lib/blog-data"
-import { getEnSlugByRuSlug } from "@/lib/blog-data-en"
-import { Calendar, Clock, ArrowLeft, Share2, ArrowRight, Globe, Smartphone, Bot, Server, Search, CreditCard, Rocket } from "lucide-react"
+import { HeaderEn } from "@/components/header-en"
+import { FooterEn } from "@/components/footer-en"
+import { getBlogPostBySlugEn, blogPostsEn } from "@/lib/blog-data-en"
+import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-// Маппинг категорий и тегов статей к услугам для перелинковки
-// Доступные услуги: razrabotka-sajtov, mobilnye-prilozheniya, ai-chat-boty, saas-paas, seo-prodvizhenie
-const relatedServicesMap: Record<string, { slug: string; title: string; icon: any; description: string }[]> = {
-  "Разработка": [
-    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "Лендинги, корпоративные сайты, e-commerce" },
-    { slug: "mobilnye-prilozheniya", title: "Мобильные приложения", icon: Smartphone, description: "iOS, Android, кроссплатформа" },
-  ],
-  "AI и ML": [
-    { slug: "ai-chat-boty", title: "AI-чат-боты", icon: Bot, description: "GPT, RAG, автоматизация поддержки" },
-    { slug: "saas-paas", title: "SaaS / PaaS разработка", icon: Server, description: "Облачные платформы и сервисы" },
-  ],
-  "DevOps": [
-    { slug: "saas-paas", title: "SaaS / PaaS разработка", icon: Server, description: "CI/CD, облачная инфраструктура" },
-    { slug: "razrabotka-sajtov", title: "Веб-разработка", icon: Globe, description: "Highload, масштабируемые системы" },
-  ],
-  "SEO": [
-    { slug: "seo-prodvizhenie", title: "SEO-продвижение", icon: Search, description: "Яндекс, Google, техническое SEO" },
-    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "SEO-ready сайты на Next.js" },
-  ],
-  "Бизнес": [
-    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "Лендинги, корпоративные сайты" },
-    { slug: "mobilnye-prilozheniya", title: "Мобильные приложения", icon: Smartphone, description: "MVP за 2-4 недели" },
-  ],
-  "Новости": [
-    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "AI-first подход, 7x-12x быстрее" },
-    { slug: "ai-chat-boty", title: "AI-решения", icon: Bot, description: "Чат-боты, автоматизация" },
-  ],
-}
-
-function getRelatedServices(category: string, tags: string[]) {
-  const services = [...(relatedServicesMap[category] || [])]
-  
-  // Добавляем услуги по тегам
-  if (tags.includes("FinTech") || tags.includes("Платежи")) {
-    services.push({ slug: "saas-paas", title: "SaaS / PaaS решения", icon: CreditCard, description: "Платёжные системы, финтех" })
-  }
-  if (tags.includes("MVP") || tags.includes("Стартапы")) {
-    services.push({ slug: "mobilnye-prilozheniya", title: "MVP за 7 дней", icon: Rocket, description: "Быстрый запуск продукта" })
-  }
-  if (tags.includes("SaaS") || tags.includes("Архитектура")) {
-    services.push({ slug: "saas-paas", title: "SaaS разработка", icon: Server, description: "Облачные продукты" })
-  }
-  
-  // Убираем дубликаты
-  return services.filter((service, index, self) => 
-    index === self.findIndex(s => s.slug === service.slug)
-  ).slice(0, 3)
-}
 
 type Params = Promise<{ slug: string }>
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params
-  const post = getBlogPostBySlug(slug)
-  if (!post) return { title: "Статья не найдена" }
+  const post = getBlogPostBySlugEn(slug)
+  if (!post) return { title: "Post not found" }
 
   return {
     title: post.metaTitle,
@@ -72,7 +22,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     authors: [{ name: post.author }],
     openGraph: {
       type: "article",
-      url: `https://yappix.ru/blog/${slug}`,
+      url: `https://yappix.ru/en/blog/${slug}`,
       siteName: "YappiX",
       title: post.title,
       description: post.metaDescription,
@@ -81,14 +31,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
           url: post.image.startsWith("http") ? post.image : `https://yappix.ru${post.image}`,
           width: 1200,
           height: 630,
-          alt: post.title || "Статья блога YappiX",
+          alt: post.title || "YappiX blog post",
         },
       ],
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.author],
       tags: post.tags,
-      locale: "ru_RU",
+      locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
@@ -97,42 +47,38 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       images: [post.image.startsWith("http") ? post.image : `https://yappix.ru${post.image}`],
     },
     alternates: {
-      canonical: `https://yappix.ru/blog/${slug}`,
-      ...(() => {
-        const enSlug = getEnSlugByRuSlug(slug)
-        return enSlug ? { languages: { "en-US": `https://yappix.ru/en/blog/${enSlug}` } } : {}
-      })(),
+      canonical: `https://yappix.ru/en/blog/${slug}`,
+      ...(post.ruSlug ? { languages: { "ru-RU": `https://yappix.ru/blog/${post.ruSlug}` } } : {}),
     },
   }
 }
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }))
+  return blogPostsEn.map((post) => ({ slug: post.slug }))
 }
 
-export default async function BlogPostPage({ params }: { params: Params }) {
+export default async function EnBlogPostPage({ params }: { params: Params }) {
   const { slug } = await params
-  const post = getBlogPostBySlug(slug)
+  const post = getBlogPostBySlugEn(slug)
   if (!post) notFound()
 
-  const relatedPosts = blogPosts.filter((p) => p.slug !== slug && p.category === post.category).slice(0, 3)
+  const relatedPosts = blogPostsEn.filter((p) => p.slug !== slug && p.category === post.category).slice(0, 3)
 
   return (
     <>
-      <Header />
+      <HeaderEn />
       <main className="pt-20">
-        {/* Article Header */}
         <article>
           <header className="py-12 md:py-20 bg-gradient-to-b from-primary/5 to-transparent">
             <div className="container mx-auto px-4">
               <div className="max-w-3xl mx-auto">
                 <div className="flex flex-col gap-3 mb-4">
                   <Link
-                    href="/blog"
+                    href="/en/blog"
                     className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground w-fit"
                   >
                     <ArrowLeft className="w-4 h-4" />
-                    Все статьи
+                    All posts
                   </Link>
                   <span className="inline-block w-fit px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
                     {post.category}
@@ -157,7 +103,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                   </div>
                   <span className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
-                    {new Date(post.publishedAt).toLocaleDateString("ru-RU", {
+                    {new Date(post.publishedAt).toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
@@ -172,7 +118,6 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             </div>
           </header>
 
-          {/* Featured Image */}
           <div className="container mx-auto px-4 -mt-4">
             <div className="max-w-4xl mx-auto">
               <div className="relative aspect-video rounded-xl overflow-hidden bg-card">
@@ -187,13 +132,18 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                     className="object-cover w-full h-full"
                   />
                 ) : (
-                  <Image src={post.image || "/placeholder.svg"} alt={post.title || "Статья блога YappiX"} fill className="object-cover" priority />
+                  <Image
+                    src={post.image || "/placeholder.svg"}
+                    alt={post.title || "YappiX blog post"}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 )}
               </div>
             </div>
           </div>
 
-          {/* Article Content */}
           <div className="py-12 md:py-16">
             <div className="container mx-auto px-4">
               <div className="max-w-3xl mx-auto blog-content">
@@ -210,7 +160,6 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             </div>
           </div>
 
-          {/* Tags & Share */}
           <div className="pb-12 border-b border-border">
             <div className="container mx-auto px-4">
               <div className="max-w-3xl mx-auto flex flex-wrap items-center justify-between gap-4">
@@ -223,55 +172,20 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                 </div>
                 <Button variant="outline" size="sm">
                   <Share2 className="w-4 h-4 mr-2" />
-                  Поделиться
+                  Share
                 </Button>
               </div>
             </div>
           </div>
         </article>
 
-        {/* Related Services - Перелинковка */}
-        {(() => {
-          const services = getRelatedServices(post.category, post.tags)
-          return services.length > 0 ? (
-            <section className="py-12 md:py-16 bg-card/50">
-              <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto">
-                  <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Связанные услуги</h2>
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {services.map((service) => (
-                      <Link
-                        key={service.slug}
-                        href={`/uslugi/${service.slug}`}
-                        className="group flex items-start gap-4 p-4 bg-background border border-border rounded-xl hover:border-primary/50 transition-all"
-                      >
-                        <div className="p-2 bg-primary/10 rounded-lg shrink-0">
-                          <service.icon className="w-5 h-5 text-primary" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="font-medium text-foreground group-hover:text-primary transition-colors flex items-center gap-1">
-                            {service.title}
-                            <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                          </h3>
-                          <p className="text-sm text-muted-foreground mt-1">{service.description}</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
-          ) : null
-        })()}
-
-        {/* Related Posts */}
         {relatedPosts.length > 0 && (
           <section className="py-16 md:py-24">
             <div className="container mx-auto px-4">
-              <h2 className="text-title text-foreground mb-8">Похожие статьи</h2>
+              <h2 className="text-title text-foreground mb-8">Related posts</h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedPosts.map((relatedPost) => (
-                  <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`} className="group">
+                  <Link key={relatedPost.slug} href={`/en/blog/${relatedPost.slug}`} className="group">
                     <article className="h-full bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors">
                       <div className="relative aspect-video bg-muted">
                         {relatedPost.image?.endsWith(".mp4") ? (
@@ -287,7 +201,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                         ) : (
                           <Image
                             src={relatedPost.image || "/placeholder.svg"}
-                            alt={relatedPost.title || "Статья блога YappiX"}
+                            alt={relatedPost.title || "YappiX blog post"}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />
@@ -307,22 +221,20 @@ export default async function BlogPostPage({ params }: { params: Params }) {
           </section>
         )}
 
-        {/* CTA */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-headline text-foreground mb-4">Нужна помощь с проектом?</h2>
+            <h2 className="text-headline text-foreground mb-4">Need help with a project?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Обсудим вашу задачу и предложим решение. Первая консультация бесплатно.
+              We can discuss your task and propose a solution. First consultation is free.
             </p>
             <Button size="lg" asChild>
-              <Link href="/kontakty">Связаться с нами</Link>
+              <Link href="/en/contact">Contact us</Link>
             </Button>
           </div>
         </section>
       </main>
-      <Footer />
+      <FooterEn />
 
-      {/* BreadcrumbList JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -330,15 +242,14 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Главная", item: "https://yappix.ru" },
-              { "@type": "ListItem", position: 2, name: "Блог", item: "https://yappix.ru/blog" },
-              { "@type": "ListItem", position: 3, name: post.title, item: `https://yappix.ru/blog/${slug}` },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://yappix.ru/en" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://yappix.ru/en/blog" },
+              { "@type": "ListItem", position: 3, name: post.title, item: `https://yappix.ru/en/blog/${slug}` },
             ],
           }),
         }}
       />
 
-      {/* BlogPosting JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -347,25 +258,16 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             "@type": "BlogPosting",
             headline: post.title,
             description: post.metaDescription,
-            image: post.image,
-            author: {
-              "@type": "Organization",
-              name: post.author,
-            },
+            image: post.image.startsWith("http") ? post.image : `https://yappix.ru${post.image}`,
+            author: { "@type": "Organization", name: post.author },
             publisher: {
               "@type": "Organization",
               name: "YappiX",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://yappix.ru/logo.png",
-              },
+              logo: { "@type": "ImageObject", url: "https://yappix.ru/logo.png" },
             },
             datePublished: post.publishedAt,
             dateModified: post.updatedAt || post.publishedAt,
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `https://yappix.ru/blog/${slug}`,
-            },
+            mainEntityOfPage: { "@type": "WebPage", "@id": `https://yappix.ru/en/blog/${slug}` },
           }),
         }}
       />

@@ -68,8 +68,9 @@ export default function FounderPage() {
               <div>
                 <Badge variant="outline" className="mb-4">Founder story</Badge>
                 <h1 className="text-display text-foreground mb-6 text-balance">
-                  Ренат Усманов — founder YappiX и AI-first product developer
+                  Founder YappiX и AI-first разработчик продуктов
                 </h1>
+                <p className="text-xl text-muted-foreground mb-6 font-medium">Ренат Усманов</p>
                 <p className="text-body-lg mb-8 text-pretty max-w-2xl">
                   Помогаю предпринимателям и компаниям быстрее запускать digital-продукты: от идеи и UX/UI до full stack разработки, AI-интеграций и релиза.
                 </p>

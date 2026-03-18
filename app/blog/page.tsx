@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "https://yappix.ru/blog",
+    languages: { "en-US": "https://yappix.ru/en/blog" },
   },
   openGraph: {
     title: "Блог о разработке, AI и технологиях — YappiX",

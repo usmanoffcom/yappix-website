@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { blogPosts, blogCategories } from '@/lib/blog-data'
+import { blogPostsEn } from '@/lib/blog-data-en'
 import { casesData } from '@/lib/cases-data'
 import { casesDataEn } from '@/lib/cases-data-en'
 
@@ -103,6 +104,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/en/roi-first-automation`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${baseUrl}/en/controlled-ai-contour`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${baseUrl}/en/rag-enterprise-knowledge-search`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/en/blog`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
   ]
 
   // Services pages - используем реальные slug'и из servicesData
@@ -131,6 +133,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Blog posts
   const blogPostsPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt || post.publishedAt),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  // EN blog posts
+  const blogPostsEnPages: MetadataRoute.Sitemap = blogPostsEn.map((post) => ({
+    url: `${baseUrl}/en/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt || post.publishedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
@@ -166,6 +176,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...mainPages,
     ...servicesPages,
     ...blogPostsPages,
+    ...blogPostsEnPages,
     ...blogCategoriesPages,
     ...casesPages,
     ...casesEnPages,
