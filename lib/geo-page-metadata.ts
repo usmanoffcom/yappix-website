@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import type { GeoCity } from "@/lib/geo-landing-data"
+import { getGeoSeoExtra } from "@/lib/geo-seo-extras"
 
 const base = "https://yappix.ru"
 
@@ -12,10 +13,17 @@ export function buildGeoMetadata(geo: GeoCity, locale: "ru" | "en"): Metadata {
   const canonical = isRu ? ruUrl : enUrl
   const ogLocale = isRu ? "ru_RU" : "en_US"
   const countryLabel = isRu ? geo.countryRu : geo.countryEn
+  const extra = getGeoSeoExtra(geo.slugRu)
+  const keywords = extra
+    ? isRu
+      ? extra.keywordsRu
+      : extra.keywordsEn
+    : undefined
 
   return {
     title,
     description,
+    ...(keywords?.length ? { keywords } : {}),
     alternates: {
       canonical,
       languages: {

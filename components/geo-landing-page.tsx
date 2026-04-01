@@ -2,7 +2,10 @@ import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { HeaderEn } from "@/components/header-en"
 import { HeroSection } from "@/components/hero-section"
+import { GeoFaqSection } from "@/components/geo-faq-section"
 import type { GeoCity } from "@/lib/geo-landing-data"
+import { getGeoSeoExtra } from "@/lib/geo-seo-extras"
+import { buildGeoStructuredData } from "@/lib/geo-json-ld"
 
 const TrustBadges = dynamic(() => import("@/components/trust-badges").then((m) => ({ default: m.TrustBadges })), { ssr: true })
 const FounderGreeting = dynamic(() => import("@/components/founder-greeting").then((m) => ({ default: m.FounderGreeting })), { ssr: true })
@@ -27,16 +30,31 @@ export function GeoLandingPage({ geo, locale }: Props) {
   const isRu = locale === "ru"
   const headline = isRu ? geo.headlineRu : geo.headlineEn
   const desc = isRu ? geo.descRu : geo.descEn
-  const country = isRu ? geo.countryRu : geo.countryEn
   const geoSlug = isRu ? geo.slugRu : geo.slugEn
   const url = isRu
     ? `https://yappix.ru/razrabotka-sajtov-${geo.slugRu}`
     : `https://yappix.ru/en/software-development-${geo.slugEn}`
 
+  const seoExtra = getGeoSeoExtra(geo.slugRu)
+  const faqItems = seoExtra?.faq ?? []
+  const faqForJson = faqItems.map((item) => ({
+    question: isRu ? item.qRu : item.qEn,
+    answer: isRu ? item.aRu : item.aEn,
+  }))
+
+  const structuredData = buildGeoStructuredData({
+    geo,
+    locale,
+    pageUrl: url,
+    faq: faqForJson,
+    homeLabel: isRu ? "Главная" : "Home",
+  })
+
   return (
     <main className="min-h-screen bg-background">
       {isRu ? <Header /> : <HeaderEn />}
       <HeroSection locale={locale} geoHeadline={headline} geoDesc={desc} />
+      {faqItems.length > 0 ? <GeoFaqSection geo={geo} locale={locale} items={faqItems} /> : null}
       <TrustBadges locale={locale} />
       <AutomationEconomicsSection locale={locale} />
       <ServicesSection locale={locale} />
@@ -53,23 +71,7 @@ export function GeoLandingPage({ geo, locale }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: `YappiX — ${country}`,
-            image: "https://yappix.ru/logo.png",
-            telephone: geo.phone,
-            email: geo.email,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: isRu ? geo.addressRu : geo.addressEn,
-              addressCountry: geo.countryCode,
-            },
-            areaServed: { "@type": "Country", name: geo.countryEn },
-            url,
-            openingHours: "Mo-Su 00:00-24:00",
-            priceRange: "$$",
-          }),
+          __html: JSON.stringify(structuredData),
         }}
       />
     </main>
