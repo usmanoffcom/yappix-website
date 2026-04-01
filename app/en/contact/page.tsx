@@ -32,15 +32,17 @@ const offices = [
     city: "Delaware, USA",
     address: "1209 Orange Street, Wilmington, DE 19801",
     phone: "+1 302 123-4567",
-    email: "contact@yappix.studio",
+    email: "sales@yappix.ru",
     timezone: "UTC-5",
+    geoHref: "/en/software-development-usa",
   },
   {
     city: "Germany",
     address: "Representative office",
     phone: "+49 176 86222823",
-    email: "contact@yappix.studio",
+    email: "sales@yappix.ru",
     timezone: "UTC+1",
+    geoHref: "/en/software-development-germany",
   },
   {
     city: "Moscow, Russia",
@@ -48,27 +50,31 @@ const offices = [
     phone: "+7 995 095 5593",
     email: "sales@yappix.ru",
     timezone: "UTC+3",
+    geoHref: "/en/software-development-moscow",
   },
   {
     city: "Istanbul, Turkey",
     address: "Maslak Mahallesi, Buyukdere Caddesi, No: 255",
     phone: "+90 534 087 59 56",
-    email: "contact@yappix.studio",
+    email: "sales@yappix.ru",
     timezone: "UTC+3",
+    geoHref: "/en/software-development-turkey",
   },
   {
     city: "Belgrade, Serbia",
     address: "Bulevar Mihajla Pupina 10a, Novi Beograd",
     phone: "+381 63 1780824",
-    email: "contact@yappix.studio",
+    email: "sales@yappix.ru",
     timezone: "UTC+1",
+    geoHref: "/en/software-development-serbia",
   },
   {
     city: "Almaty, Kazakhstan",
     address: "Almaty",
     phone: "+7 995 095 5593",
-    email: "contact@yappix.studio",
+    email: "sales@yappix.ru",
     timezone: "UTC+6",
+    geoHref: "/en/software-development-kazakhstan",
   },
 ]
 
@@ -83,9 +89,9 @@ const contactMethods = [
   {
     icon: Mail,
     title: "Email",
-    value: "contact@yappix.studio",
+    value: "sales@yappix.ru",
     description: "We reply within 2 hours",
-    href: "mailto:contact@yappix.studio",
+    href: "mailto:sales@yappix.ru",
   },
   {
     icon: MessageCircle,
@@ -256,24 +262,24 @@ export default function ContactEnPage() {
                 <h2 className="text-title text-foreground mb-6">Our Locations</h2>
                 <div className="space-y-4">
                   {offices.map((office) => (
-                    <div key={office.city} className="p-6 bg-card border border-border rounded-xl">
+                    <Link
+                      key={office.city}
+                      href={office.geoHref}
+                      className="block p-6 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors"
+                    >
                       <div className="flex items-start gap-3">
                         <MapPin className="w-5 h-5 text-primary mt-1 shrink-0" />
                         <div>
                           <h3 className="font-semibold text-foreground">{office.city}</h3>
                           <p className="text-sm text-muted-foreground mt-1">{office.address}</p>
                           <div className="flex flex-wrap gap-4 mt-3 text-sm">
-                            <Link href={`tel:${office.phone.replace(/\s/g, "")}`} className="text-primary hover:underline">
-                              {office.phone}
-                            </Link>
-                            <Link href={`mailto:${office.email}`} className="text-primary hover:underline">
-                              {office.email}
-                            </Link>
+                            <span className="text-primary">{office.phone}</span>
+                            <span className="text-primary">{office.email}</span>
                             <span className="text-muted-foreground">{office.timezone}</span>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
 

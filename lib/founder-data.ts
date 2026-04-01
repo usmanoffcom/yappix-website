@@ -146,7 +146,7 @@ export const founderMethod: MethodCard[] = [
 export const founderMetrics: MetricCard[] = [
   { value: "20+", label: "лет в digital и product-среде" },
   { value: "250+", label: "проектов реализовано" },
-  { value: "5", label: "локаций (США, РФ, Турция, Сербия, Казахстан)" },
+  { value: "6", label: "локаций (США, РФ, Германия, Турция, Сербия, Казахстан)" },
   { value: "AI-first", label: "подход к каждому проекту" },
   { value: "7-12×", label: "ускорение с AI-инструментами" },
   { value: "Сколково", label: "резидент фонда" },

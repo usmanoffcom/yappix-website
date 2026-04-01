@@ -9,7 +9,7 @@ import { Award, Users, Rocket, Globe, CheckCircle } from "lucide-react"
 export const metadata: Metadata = {
   title: "О компании YappiX — резиденты Сколково | IT-студия",
   description:
-    "YappiX — AI-first delivery company. Резиденты Сколково. Внедряем автоматизацию и AI-контуры с измеримым ROI. 250+ проектов, 5 локаций.",
+    "YappiX — AI-first delivery company. Резиденты Сколково. Внедряем автоматизацию и AI-контуры с измеримым ROI. 250+ проектов, 6 локаций.",
   keywords: ["YappiX", "IT компания", "Сколково", "веб-студия", "разработка на заказ", "аутсорсинг"],
   alternates: {
     canonical: "https://yappix.ru/o-kompanii",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "О компании YappiX — резиденты Сколково",
-    description: "AI-first delivery company. 250+ проектов, 5 локаций.",
+    description: "AI-first delivery company. 250+ проектов, 6 локаций.",
   },
 }
 
@@ -50,7 +50,7 @@ const milestones = [
   { year: "2019", title: "Инвестиции", description: "Привлечение 1-го раунда инвестиций на YappiX CMS" },
   { year: "2021", title: "Сколково и рост", description: "Получили статус резидента Сколково, привлекли 2-й раунд инвестиций для масштабирования" },
   { year: "2022", title: "Международная экспансия", description: "Выход на международный рынок, локации в США и Турции" },
-  { year: "2025", title: "AI-трансформация", description: "Внедрение AI-инструментов, 5 локаций, масштабирование delivery" },
+  { year: "2025", title: "AI-трансформация", description: "Внедрение AI-инструментов, 6 локаций, масштабирование delivery" },
 ]
 
 const values = [
@@ -335,7 +335,7 @@ export default function AboutPage() {
                 "10+ лет опыта — многолетний опыт разработки и проверенные решения",
                 "AI-инструменты — разработка в 7-12 раз быстрее и дешевле",
                 "MVP за 7 дней — тестовая неделя с гарантией возврата",
-                "Офисы в 5 странах — удобные часовые пояса",
+                "Офисы в 6 странах — удобные часовые пояса",
                 "Все способы оплаты — включая крипто",
                 "250+ проектов — опыт в любой отрасли",
               ].map((item) => (

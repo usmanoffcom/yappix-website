@@ -9,13 +9,13 @@ import { Award, Users, Rocket, Globe, CheckCircle } from "lucide-react"
 export const metadata: Metadata = {
   title: "About YappiX — Skolkovo Residents | IT Studio",
   description:
-    "YappiX — AI-first delivery company. Skolkovo residents. We implement automation and AI contours with measurable ROI. 250+ projects, 5 locations.",
+    "YappiX — AI-first delivery company. Skolkovo residents. We implement automation and AI contours with measurable ROI. 250+ projects, 6 locations.",
   alternates: {
     canonical: "https://yappix.ru/en/about",
   },
   openGraph: {
     title: "About YappiX — Skolkovo Residents",
-    description: "AI-first delivery company. 250+ projects, 5 locations.",
+    description: "AI-first delivery company. 250+ projects, 6 locations.",
     type: "website",
     url: "https://yappix.ru/en/about",
     siteName: "YappiX",
@@ -37,7 +37,7 @@ const milestones = [
   { year: "2019", title: "Investment", description: "Raised 1st investment round for YappiX CMS" },
   { year: "2021", title: "Skolkovo & Growth", description: "Received Skolkovo resident status, raised 2nd investment round for scaling" },
   { year: "2022", title: "Global Expansion", description: "Entered international markets, locations in USA and Turkey" },
-  { year: "2025", title: "AI Transformation", description: "Implemented AI tools across all processes, 5 locations, team scaling" },
+  { year: "2025", title: "AI Transformation", description: "Implemented AI tools across all processes, 6 locations, team scaling" },
 ]
 
 const values = [
@@ -287,7 +287,7 @@ export default function AboutEnPage() {
                 "10+ years of experience — proven solutions",
                 "AI tools — 7-12x faster and cheaper development",
                 "MVP in 7 days — trial week with money-back guarantee",
-                "Offices in 5 countries — convenient time zones",
+                "Offices in 6 countries — convenient time zones",
                 "All payment methods — including crypto",
                 "250+ projects — experience in any industry",
               ].map((item) => (

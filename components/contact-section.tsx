@@ -18,18 +18,20 @@ import { reachGoal } from "@/lib/mail-ru-goal"
 
 const officesByLocale = {
   ru: [
-    { country: "🇷🇺 Россия", city: "Москва, Сколково" },
-    { country: "🇺🇸 США", city: "Delaware" },
-    { country: "🇹🇷 Турция", city: "Стамбул" },
-    { country: "🇷🇸 Сербия", city: "Белград" },
-    { country: "🇰🇿 Казахстан", city: "Алматы" },
+    { country: "🇷🇺 Россия", city: "Москва, Сколково", geoHref: "/razrabotka-sajtov-moskva" },
+    { country: "🇺🇸 США", city: "Delaware", geoHref: "/razrabotka-sajtov-ssha" },
+    { country: "🇩🇪 Германия", city: "Представительство", geoHref: "/razrabotka-sajtov-germaniya" },
+    { country: "🇹🇷 Турция", city: "Стамбул", geoHref: "/razrabotka-sajtov-turciya" },
+    { country: "🇷🇸 Сербия", city: "Белград", geoHref: "/razrabotka-sajtov-serbiya" },
+    { country: "🇰🇿 Казахстан", city: "Алматы", geoHref: "/razrabotka-sajtov-kazahstan" },
   ],
   en: [
-    { country: "🇷🇺 Russia", city: "Moscow, Skolkovo" },
-    { country: "🇺🇸 USA", city: "Delaware" },
-    { country: "🇹🇷 Turkey", city: "Istanbul" },
-    { country: "🇷🇸 Serbia", city: "Belgrade" },
-    { country: "🇰🇿 Kazakhstan", city: "Almaty" },
+    { country: "🇷🇺 Russia", city: "Moscow, Skolkovo", geoHref: "/en/software-development-moscow" },
+    { country: "🇺🇸 USA", city: "Delaware", geoHref: "/en/software-development-usa" },
+    { country: "🇩🇪 Germany", city: "Representative office", geoHref: "/en/software-development-germany" },
+    { country: "🇹🇷 Turkey", city: "Istanbul", geoHref: "/en/software-development-turkey" },
+    { country: "🇷🇸 Serbia", city: "Belgrade", geoHref: "/en/software-development-serbia" },
+    { country: "🇰🇿 Kazakhstan", city: "Almaty", geoHref: "/en/software-development-kazakhstan" },
   ],
 }
 
@@ -96,8 +98,24 @@ const contactContentByLocale = {
   },
 }
 
-export function ContactSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
-  const offices = officesByLocale[locale]
+export function ContactSection({
+  locale = "ru",
+  geoPhone,
+  geoSlug,
+}: {
+  locale?: "ru" | "en"
+  geoPhone?: string
+  /** RU or EN path segment (e.g. ssha / usa) — matches `geoHref` for office sort on geo landings */
+  geoSlug?: string
+}) {
+  const allOffices = officesByLocale[locale]
+  const offices = geoSlug
+    ? [...allOffices].sort((a, b) => {
+        const aMatch = a.geoHref.includes(geoSlug) ? 0 : 1
+        const bMatch = b.geoHref.includes(geoSlug) ? 0 : 1
+        return aMatch - bMatch
+      })
+    : allOffices
   const t = contactContentByLocale[locale]
   const recaptchaContext = useGoogleReCaptcha()
   const executeRecaptcha = recaptchaContext?.executeRecaptcha
@@ -394,13 +412,13 @@ export function ContactSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
                   </div>
                 </Link>
                 <Link 
-                  href="tel:+79950955593"
+                  href={`tel:${(geoPhone || "+7 995 095 55 93").replace(/[\s()-]/g, "")}`}
                   className="group inline-flex items-center justify-start gap-3 whitespace-nowrap rounded-md text-sm font-medium transition-all border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground active:bg-accent/90 active:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 h-auto py-4 px-6"
                 >
                   <Phone className="w-5 h-5 text-primary group-hover:text-accent-foreground transition-colors shrink-0" />
                   <div className="text-left">
                     <div className="font-semibold text-foreground group-hover:text-accent-foreground transition-colors">{t.callLabel}</div>
-                    <div className="text-xs text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">+7 995 095 55 93</div>
+                    <div className="text-xs text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">{geoPhone || "+7 995 095 55 93"}</div>
                   </div>
                 </Link>
               </div>
@@ -424,12 +442,22 @@ export function ContactSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
                 <MapPin className="w-5 h-5 text-primary" />
                 {t.ourOffices}
               </h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {offices.map((office, index) => (
-                  <div key={index} className="p-4 rounded-xl bg-secondary/50 border border-border">
-                    <div className="font-medium text-foreground">{office.country}</div>
-                    <div className="text-sm text-muted-foreground">{office.city}</div>
-                  </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {offices.map((office) => (
+                  <Link
+                    key={`${office.country}-${office.city}`}
+                    href={office.geoHref}
+                    className="block"
+                  >
+                    <Card className="bg-secondary/50 border-border shadow-sm hover:border-primary/50 transition-colors h-full">
+                      <CardContent className="p-4">
+                        <div className="font-medium text-foreground text-sm leading-snug">
+                          {office.country}
+                        </div>
+                        <div className="text-xs text-muted-foreground mt-1">{office.city}</div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 ))}
               </div>
             </div>

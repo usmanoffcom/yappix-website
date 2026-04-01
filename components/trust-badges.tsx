@@ -5,13 +5,13 @@ const badgesByLocale = {
     { icon: Building2, title: "Работаем от бизнес-задачи", description: "Сначала процесс и экономика, затем технология" },
     { icon: Award, title: "Прозрачный ROI", description: "Финансовая модель и критерии окупаемости до старта" },
     { icon: Rocket, title: "Управляемый AI-контур", description: "Доступы, логирование, качество ответов, SLA" },
-    { icon: Globe, title: "5 локаций", description: "США, Россия, Турция, Сербия, Казахстан" },
+    { icon: Globe, title: "6 локаций", description: "США, Россия, Германия, Турция, Сербия, Казахстан" },
   ],
   en: [
     { icon: Building2, title: "We start from the business task", description: "Process and economics first, then technology" },
     { icon: Award, title: "Transparent ROI", description: "Financial model and payback criteria before we start" },
     { icon: Rocket, title: "Controlled AI contour", description: "Access control, logging, answer quality, SLA" },
-    { icon: Globe, title: "5 locations", description: "USA, Russia, Turkey, Serbia, Kazakhstan" },
+    { icon: Globe, title: "6 locations", description: "USA, Russia, Germany, Turkey, Serbia, Kazakhstan" },
   ],
 }
 

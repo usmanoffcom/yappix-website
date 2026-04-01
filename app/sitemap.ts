@@ -3,6 +3,7 @@ import { blogPosts, blogCategories } from '@/lib/blog-data'
 import { blogPostsEn } from '@/lib/blog-data-en'
 import { casesData } from '@/lib/cases-data'
 import { casesDataEn } from '@/lib/cases-data-en'
+import { geoCities } from '@/lib/geo-landing-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://yappix.ru'
@@ -172,6 +173,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  const geoPages: MetadataRoute.Sitemap = geoCities.flatMap((city) => [
+    {
+      url: `${baseUrl}/razrabotka-sajtov-${city.slugRu}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/en/software-development-${city.slugEn}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+  ])
+
   return [
     ...mainPages,
     ...servicesPages,
@@ -180,5 +196,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogCategoriesPages,
     ...casesPages,
     ...casesEnPages,
+    ...geoPages,
   ]
 }

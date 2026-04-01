@@ -96,7 +96,7 @@ const founderMethodEn = [
 const founderMetricsEn = [
   { value: "20+", label: "years in digital and product" },
   { value: "250+", label: "projects delivered" },
-  { value: "5", label: "locations (USA, Russia, Turkey, Serbia, Kazakhstan)" },
+  { value: "6", label: "locations (USA, Russia, Germany, Turkey, Serbia, Kazakhstan)" },
   { value: "AI-first", label: "approach to every project" },
   { value: "7-12×", label: "acceleration with AI tools" },
   { value: "Skolkovo", label: "fund resident" },

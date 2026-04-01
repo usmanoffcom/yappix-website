@@ -80,8 +80,9 @@ const content = {
   },
 } as const
 
-export function HeroSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
-  const t = content[locale]
+export function HeroSection({ locale = "ru", geoHeadline, geoDesc }: { locale?: "ru" | "en"; geoHeadline?: string; geoDesc?: string }) {
+  const base = content[locale]
+  const t = geoHeadline ? { ...base, headline: geoHeadline, desc: geoDesc ?? base.desc } : base
   const [splineReady, setSplineReady] = useState(false)
 
   // Spline сильно грузит главный поток (TBT). Грузим только через 10s, чтобы страница успела стать интерактивной.
