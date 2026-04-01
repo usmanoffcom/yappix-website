@@ -11,8 +11,24 @@ export function middleware(request: NextRequest) {
   return NextResponse.next()
 }
 
-// Один паттерн: любой регистр «llms» + .txt (16 вариантов). Канонический /llms.txt ниже не редиректим.
-// Не использовать redirects() в next.config — matching без учёта регистра ломает /llms.txt.
+// Все 16 регистров llms.txt — только литерал (Next.js не поддерживает spread/import в matcher — сбрасывает config).
 export const config = {
-  matcher: ["/([Ll])([Ll])([Mm])([Ss])\\.txt"],
+  matcher: [
+    "/llms.txt",
+    "/llmS.txt",
+    "/llMs.txt",
+    "/llMS.txt",
+    "/lLms.txt",
+    "/lLmS.txt",
+    "/lLMs.txt",
+    "/lLMS.txt",
+    "/Llms.txt",
+    "/LlmS.txt",
+    "/LlMs.txt",
+    "/LlMS.txt",
+    "/LLms.txt",
+    "/LLmS.txt",
+    "/LLMs.txt",
+    "/LLMS.txt",
+  ],
 }
