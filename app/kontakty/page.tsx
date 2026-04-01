@@ -13,14 +13,14 @@ import { TelegramLeadLink } from "@/components/telegram-lead-link"
 export const metadata: Metadata = {
   title: "Контакты YappiX — связаться с нами | IT-студия",
   description:
-      "Свяжитесь с YappiX: телефон, email, Telegram. Офисы в Москве, Delaware, Istanbul, Belgrade, Казахстане. Бесплатная консультация по вашему проекту.",
+      "Свяжитесь с YappiX: телефон, email, Telegram. Офисы в Москве, Delaware, Германии, Istanbul, Belgrade, Казахстане. Бесплатная консультация по вашему проекту.",
   keywords: ["контакты YappiX", "связаться с веб-студией", "заказать разработку", "консультация по разработке"],
   alternates: {
     canonical: "https://yappix.ru/kontakty",
   },
   openGraph: {
     title: "Контакты YappiX — связаться с нами",
-    description: "Свяжитесь с YappiX: 5 локаций, телефон, email, Telegram. Бесплатная консультация.",
+    description: "Свяжитесь с YappiX: 6 локаций, телефон, email, Telegram. Бесплатная консультация.",
     type: "website",
     url: "https://yappix.ru/kontakty",
     siteName: "YappiX",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Контакты YappiX — связаться с нами",
-    description: "Офисы в 5 странах. Бесплатная консультация по вашему проекту.",
+    description: "Офисы в 6 странах. Бесплатная консультация по вашему проекту.",
   },
 }
 
@@ -55,6 +55,13 @@ const offices = [
     phone: "+1 302 123-4567",
     email: "contact@yappix.studio",
     timezone: "UTC-5",
+  },
+  {
+    city: "Германия",
+    address: "Представительство",
+    phone: "+49 176 86222823",
+    email: "contact@yappix.studio",
+    timezone: "UTC+1",
   },
   {
     city: "Istanbul, Турция",
@@ -367,7 +374,7 @@ export default function ContactsPage() {
             "@type": "LocalBusiness",
             name: "YappiX",
             image: "https://yappix.ru/logo.png",
-            telephone: "+7-995-095-5593",
+            telephone: "+7-995-095-5593, +49-176-86222823",
             email: "sales@yappix.ru",
             address: {
               "@type": "PostalAddress",

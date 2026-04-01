@@ -11,24 +11,8 @@ export function middleware(request: NextRequest) {
   return NextResponse.next()
 }
 
-// Статический список: все варианты регистра «llms» кроме /llms.txt (Next требует статический matcher).
-// Не использовать redirects() в next.config для этих путей — matching там без учёта регистра и ломает /llms.txt.
+// Один паттерн: любой регистр «llms» + .txt (16 вариантов). Канонический /llms.txt ниже не редиректим.
+// Не использовать redirects() в next.config — matching без учёта регистра ломает /llms.txt.
 export const config = {
-  matcher: [
-    "/Llms.txt",
-    "/lLms.txt",
-    "/LLms.txt",
-    "/llMs.txt",
-    "/LlMs.txt",
-    "/lLMs.txt",
-    "/LLMs.txt",
-    "/llmS.txt",
-    "/LlmS.txt",
-    "/lLmS.txt",
-    "/LLmS.txt",
-    "/llMS.txt",
-    "/LlMS.txt",
-    "/lLMS.txt",
-    "/LLMS.txt",
-  ],
+  matcher: ["/([Ll])([Ll])([Mm])([Ss])\\.txt"],
 }

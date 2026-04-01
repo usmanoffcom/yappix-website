@@ -12,13 +12,13 @@ import { TelegramLeadLink } from "@/components/telegram-lead-link"
 export const metadata: Metadata = {
   title: "Contact YappiX — Get in Touch | IT Studio",
   description:
-    "Contact YappiX: phone, email, Telegram. Offices in Moscow, Delaware, Istanbul, Belgrade, Kazakhstan. Free project consultation.",
+    "Contact YappiX: phone, email, Telegram. Offices in Moscow, Delaware, Germany, Istanbul, Belgrade, Kazakhstan. Free project consultation.",
   alternates: {
     canonical: "https://yappix.ru/en/contact",
   },
   openGraph: {
     title: "Contact YappiX — Get in Touch",
-    description: "Contact YappiX: 5 locations, phone, email, Telegram. Free consultation.",
+    description: "Contact YappiX: 6 locations, phone, email, Telegram. Free consultation.",
     type: "website",
     url: "https://yappix.ru/en/contact",
     siteName: "YappiX",
@@ -34,6 +34,13 @@ const offices = [
     phone: "+1 302 123-4567",
     email: "contact@yappix.studio",
     timezone: "UTC-5",
+  },
+  {
+    city: "Germany",
+    address: "Representative office",
+    phone: "+49 176 86222823",
+    email: "contact@yappix.studio",
+    timezone: "UTC+1",
   },
   {
     city: "Moscow, Russia",
