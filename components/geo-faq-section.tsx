@@ -30,7 +30,7 @@ export function GeoFaqSection({
       className="border-b border-border/60 bg-muted/20"
       aria-labelledby="geo-faq-heading"
     >
-      <div className="container mx-auto px-4 py-14 md:py-18 max-w-3xl">
+      <div className="container mx-auto px-4 py-14 md:py-16 max-w-3xl">
         <div className="mb-8 md:mb-10">
           <h2
             id="geo-faq-heading"
@@ -46,7 +46,10 @@ export function GeoFaqSection({
             const a = isRu ? item.aRu : item.aEn
             return (
               <li key={i}>
-                <details className="group rounded-lg border border-border/80 bg-background/80 px-4 py-3 open:shadow-sm transition-shadow">
+                <details
+                  suppressHydrationWarning
+                  className="group rounded-lg border border-border/80 bg-background/80 px-4 py-3 open:shadow-sm transition-shadow"
+                >
                   <summary className="cursor-pointer list-none font-medium text-foreground pr-6 [&::-webkit-details-marker]:hidden flex items-start justify-between gap-2">
                     <span>{q}</span>
                     <span className="text-muted-foreground shrink-0 text-lg leading-none group-open:rotate-45 transition-transform">

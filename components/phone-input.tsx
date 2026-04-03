@@ -20,13 +20,11 @@ export function PhoneInputField({
   className,
   placeholder = "Телефон"
 }: PhoneInputFieldProps) {
-  const [country, setCountry] = useState<Country>("RU")
-  
-  // Автоопределение страны по IP (опционально)
-  useEffect(() => {
-    // Можно добавить определение страны по IP
-  }, [])
-  
+  const [country] = useState<Country>("RU")
+  /** PhoneInput даёт разную разметку SSR/CSR — до гидратации показываем нативный input. */
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
   const handleChange = (newValue: string | undefined) => {
     if (newValue) {
       // Конвертация 89XX в +79XX для российских номеров
@@ -41,16 +39,38 @@ export function PhoneInputField({
 
   const isValid = value ? isValidPhoneNumber(value) : true
 
+  const shellClass = cn(
+    "flex items-center w-full rounded-md border bg-input px-3 py-2 text-sm transition-colors",
+    "focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
+    error || (!isValid && value) ? "border-red-500" : "border-border",
+    className
+  )
+
+  if (!mounted) {
+    return (
+      <div className="space-y-1">
+        <div className={shellClass}>
+          <input
+            type="tel"
+            name="phone"
+            autoComplete="tel"
+            className="bg-transparent outline-none w-full text-foreground placeholder:text-muted-foreground"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder={placeholder}
+          />
+        </div>
+        {error && <p className="text-xs text-red-500">{error}</p>}
+        {!isValid && value && !error && (
+          <p className="text-xs text-red-500">Некорректный номер телефона</p>
+        )}
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-1">
-      <div
-        className={cn(
-          "flex items-center w-full rounded-md border bg-input px-3 py-2 text-sm transition-colors",
-          "focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
-          error || (!isValid && value) ? "border-red-500" : "border-border",
-          className
-        )}
-      >
+      <div className={shellClass}>
         <PhoneInput
           international
           countryCallingCodeEditable={false}
