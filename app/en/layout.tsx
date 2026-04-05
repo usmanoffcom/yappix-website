@@ -2,43 +2,44 @@ import type React from "react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://yappix.ru'),
-  title: "YappiX — We automate software and web service development and calculate the economics of AI implementation",
+  metadataBase: new URL("https://yappix.ru"),
+  title: "YappiX — AI-first product engineering (UAE · Europe · US)",
   description:
-    "We automate software and web service development processes and calculate the economics of AI implementation. Full-cycle IT studio. Skolkovo residents. MVP in 7 days with money-back guarantee.",
+    "AI-first product engineering for founders and B2B teams: MVP and SaaS, AI/RAG, and a transparent delivery process — from Dubai to Europe and the US.",
   keywords: [
-    "web development",
-    "mobile apps",
-    "AI chatbots",
-    "SaaS development",
-    "FinTech",
-    "DevOps",
-    "IT outsourcing",
+    "AI-first development",
     "MVP development",
+    "SaaS development",
+    "RAG implementation",
+    "CTO as a Service",
+    "product engineering",
+    "UAE",
+    "Europe",
+    "United States",
     "startup development",
-    "AI solutions",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://yappix.ru/en",
     siteName: "YappiX",
-    title: "YappiX — We automate software and web service development and calculate the economics of AI implementation",
-    description: "We automate software and web service development and calculate the economics of AI implementation. Skolkovo residents. MVP in 7 days with money-back guarantee.",
+    title: "YappiX — AI-first product engineering (UAE · Europe · US)",
+    description:
+      "Ship web products, MVPs, and AI-powered systems with a transparent process — distributed team, clear artifacts, measurable outcomes.",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "YappiX - IT Studio",
+        alt: "YappiX — IT studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     images: ["/og.png"],
-    title: "YappiX — We automate software and web service development and the economics of AI implementation",
-    description: "We automate software and web service development and calculate the economics of AI implementation. Skolkovo residents.",
+    title: "YappiX — AI-first product engineering",
+    description: "MVP, SaaS, AI/RAG, and delivery you can inspect — UAE, Europe, US.",
   },
   alternates: {
     canonical: "https://yappix.ru/en",

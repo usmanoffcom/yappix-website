@@ -4,6 +4,8 @@ import { blogPostsEn } from '@/lib/blog-data-en'
 import { casesData } from '@/lib/cases-data'
 import { casesDataEn } from '@/lib/cases-data-en'
 import { geoCities } from '@/lib/geo-landing-data'
+import { geoMoneyPages } from '@/lib/geo-money-pages-data'
+import { geoMoneyPagesEn } from '@/lib/geo-money-pages-data-en'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://yappix.ru'
@@ -82,6 +84,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.4,
     },
+    { url: `${baseUrl}/process`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/ai-first-razrabotka`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/mvp-i-zapusk-produkta`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/vnedrenie-ai-i-rag`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/cto-as-a-service`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/stoimost-i-sroki-razrabotki`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/kejsy-i-metodologiya`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${baseUrl}/en`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
     { url: `${baseUrl}/en/cases`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${baseUrl}/en/templates`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
@@ -91,6 +100,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/en/services`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: `${baseUrl}/en/career`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
     { url: `${baseUrl}/en/rekvizity`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.6 },
+    { url: `${baseUrl}/en/process`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.85 },
+    { url: `${baseUrl}/en/ai-first-razrabotka`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/en/mvp-i-zapusk-produkta`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/en/vnedrenie-ai-i-rag`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/en/cto-as-a-service`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/en/stoimost-i-sroki-razrabotki`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: `${baseUrl}/en/kejsy-i-metodologiya`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${baseUrl}/evidence`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${baseUrl}/security-compliance`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
     { url: `${baseUrl}/sla-support`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
@@ -188,6 +204,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ])
 
+  const geoMoneyPagesUrls: MetadataRoute.Sitemap = geoMoneyPages.map((page) => ({
+    url: `${baseUrl}${page.canonicalPath}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }))
+
+  const geoMoneyPagesEnUrls: MetadataRoute.Sitemap = geoMoneyPagesEn.map((page) => ({
+    url: `${baseUrl}${page.canonicalPath}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }))
+
   return [
     ...mainPages,
     ...servicesPages,
@@ -197,5 +227,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...casesPages,
     ...casesEnPages,
     ...geoPages,
+    ...geoMoneyPagesUrls,
+    ...geoMoneyPagesEnUrls,
   ]
 }

@@ -1,17 +1,22 @@
+import dynamic from "next/dynamic"
 import { HeaderEn } from "@/components/header-en"
-import { FooterEn } from "@/components/footer-en"
 import { HeroSection } from "@/components/hero-section"
-import { TrustBadges } from "@/components/trust-badges"
-import { AutomationEconomicsSection } from "@/components/automation-economics-section"
-import { ServicesSection } from "@/components/services-section"
-import { ProcessSection } from "@/components/process-section"
-import { FounderGreeting } from "@/components/founder-greeting"
-import { CasesSection } from "@/components/cases-section"
-import { TechStack } from "@/components/tech-stack"
-import { PricingSection } from "@/components/pricing-section"
-import { ShowcaseGallery } from "@/components/showcase-gallery"
-import { TemplatesSection } from "@/components/templates-section"
-import { ContactSection } from "@/components/contact-section"
+import { TargetAudienceSection } from "@/components/target-audience-section"
+import { WhatWeDoSection } from "@/components/what-we-do-section"
+import { WhyYappixSection } from "@/components/why-yappix-section"
+import { FinalCtaSection } from "@/components/final-cta-section"
+
+const TrustBadges = dynamic(() => import("@/components/trust-badges").then((m) => ({ default: m.TrustBadges })), { ssr: true })
+const FounderGreeting = dynamic(() => import("@/components/founder-greeting").then((m) => ({ default: m.FounderGreeting })), { ssr: true })
+const ServicesSection = dynamic(() => import("@/components/services-section").then((m) => ({ default: m.ServicesSection })), { ssr: true })
+const ProcessSection = dynamic(() => import("@/components/process-section").then((m) => ({ default: m.ProcessSection })), { ssr: true })
+const CasesSection = dynamic(() => import("@/components/cases-section").then((m) => ({ default: m.CasesSection })), { ssr: true })
+const TechStack = dynamic(() => import("@/components/tech-stack").then((m) => ({ default: m.TechStack })), { ssr: true })
+const PricingSection = dynamic(() => import("@/components/pricing-section").then((m) => ({ default: m.PricingSection })), { ssr: true })
+const ShowcaseGallery = dynamic(() => import("@/components/showcase-gallery").then((m) => ({ default: m.ShowcaseGallery })), { ssr: true })
+const TemplatesSection = dynamic(() => import("@/components/templates-section").then((m) => ({ default: m.TemplatesSection })), { ssr: true })
+const ContactSection = dynamic(() => import("@/components/contact-section").then((m) => ({ default: m.ContactSection })), { ssr: true })
+const FooterEn = dynamic(() => import("@/components/footer-en").then((m) => ({ default: m.FooterEn })), { ssr: true })
 
 export default function HomeEnPage() {
   return (
@@ -19,15 +24,18 @@ export default function HomeEnPage() {
       <HeaderEn />
       <HeroSection locale="en" />
       <TrustBadges locale="en" />
-      <AutomationEconomicsSection locale="en" />
+      <TargetAudienceSection locale="en" />
+      <WhatWeDoSection locale="en" />
       <ServicesSection locale="en" />
       <ProcessSection locale="en" />
+      <WhyYappixSection locale="en" />
       <FounderGreeting locale="en" />
       <CasesSection locale="en" />
       <TechStack locale="en" />
       <PricingSection locale="en" />
       <ShowcaseGallery locale="en" />
       <TemplatesSection locale="en" excludeSlugs={["yandex-go-scooters"]} />
+      <FinalCtaSection locale="en" />
       <ContactSection locale="en" />
       <FooterEn />
     </main>

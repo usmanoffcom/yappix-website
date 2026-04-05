@@ -41,40 +41,44 @@ function LazySpline({ scene, className = "", shouldLoad }: { scene: string; clas
 
 const content = {
   ru: {
-    badge1: "AI-автоматизация процессов",
-    badge2: "ROI до старта проекта",
-    badge3: "Безопасность и SLA",
-    headline: "Автоматизируем процессы разработки программного обеспечения, веб сервисов и считаем экономику внедрения ИИ.",
-    desc: "Разрабатываем сайты, приложения и AI-контуры для снижения операционных затрат. Проектируем решения с прогнозируемым ROI, контролем доступа, логированием и измеримыми метриками качества.",
-    cta1: "Рассчитать экономию",
-    cta2: "Обсудить задачу",
-    stat1Value: "360 000 ₽",
-    stat1Label: "Потери/мес до автоматизации",
-    stat2Value: "до 240 000 ₽",
-    stat2Label: "Экономия/мес после внедрения",
-    stat3Value: "3–5 мес",
-    stat3Label: "Средний срок окупаемости",
-    stat4Value: "до 70%",
-    stat4Label: "Сокращение ручных операций",
-    contactHref: "#contact",
-    casesHref: "/kontakty",
+    badge1: "AI-first product engineering",
+    badge2: "MVP, SaaS, AI-автоматизация",
+    badge3: "ОАЭ · Европа · США",
+    headline: "AI-first разработка продуктов для бизнеса",
+    desc: "Помогаем фаундерам и компаниям запускать MVP, SaaS, клиентские кабинеты и AI-автоматизацию без тяжёлого enterprise-цикла и бесконечной пересборки.",
+    cta1: "Обсудить проект",
+    cta2: "Посмотреть кейсы",
+    cta3: "Оценить MVP за 24 часа",
+    mvpEstimateHref: "/kontakty",
+    stat1Value: "MVP",
+    stat1Label: "Запуск продукта за недели, а не месяцы",
+    stat2Value: "AI",
+    stat2Label: "RAG, ассистенты и автоматизация",
+    stat3Value: "SaaS",
+    stat3Label: "Кабинеты, панели и B2B-сервисы",
+    stat4Value: "3 рынка",
+    stat4Label: "ОАЭ, Европа и США",
+    contactHref: "/kontakty",
+    casesHref: "/kejsy",
   },
   en: {
-    badge1: "AI process automation",
-    badge2: "ROI before project start",
-    badge3: "Security and SLA",
-    headline: "We automate software and web service development processes and calculate the economics of AI implementation.",
-    desc: "We build websites, apps and AI contours to cut operational costs. We design solutions with predictable ROI, access control, logging and measurable quality metrics.",
-    cta1: "Calculate savings",
-    cta2: "Discuss your task",
-    stat1Value: "360,000 ₽",
-    stat1Label: "Monthly losses before automation",
-    stat2Value: "up to 240,000 ₽",
-    stat2Label: "Monthly savings after launch",
-    stat3Value: "3–5 months",
-    stat3Label: "Typical payback period",
-    stat4Value: "up to 70%",
-    stat4Label: "Reduction in manual operations",
+    badge1: "AI-first product engineering",
+    badge2: "MVP, SaaS, AI automation",
+    badge3: "UAE · Europe · US",
+    headline: "AI-first product engineering for serious launches",
+    desc: "We help founders and teams ship MVPs, SaaS, client portals, and AI automation without a heavy enterprise cycle or endless rebuilds.",
+    cta1: "Discuss your project",
+    cta2: "View case studies",
+    cta3: "Get an MVP estimate in 24h",
+    mvpEstimateHref: "/en/contact",
+    stat1Value: "MVP",
+    stat1Label: "Ship in weeks, not quarters",
+    stat2Value: "AI",
+    stat2Label: "RAG, copilots, automation",
+    stat3Value: "SaaS",
+    stat3Label: "Dashboards, portals, B2B",
+    stat4Value: "3 markets",
+    stat4Label: "UAE, Europe, United States",
     contactHref: "/en/contact",
     casesHref: "/en/cases",
   },
@@ -134,7 +138,7 @@ export function HeroSection({ locale = "ru", geoHeadline, geoDesc }: { locale?: 
             <p className="text-body-lg max-w-2xl xl:max-w-none mx-auto xl:mx-0 mb-8 sm:mb-10 text-pretty animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
               {t.desc}
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center xl:justify-start animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center xl:justify-start animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
               <Button size="lg" asChild className="text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14">
                 <Link href={t.contactHref}>
                   {t.cta1}
@@ -145,6 +149,12 @@ export function HeroSection({ locale = "ru", geoHeadline, geoDesc }: { locale?: 
                 <Link href={t.casesHref}>
                   <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   {t.cta2}
+                </Link>
+              </Button>
+              <Button size="lg" variant="secondary" asChild className="text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14">
+                <Link href={t.mvpEstimateHref}>
+                  {t.cta3}
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Link>
               </Button>
             </div>

@@ -23,11 +23,15 @@ export interface BlogCategory {
 
 export const blogCategories: BlogCategory[] = [
   { name: "Все статьи", slug: "" },
+  { name: "MVP и запуск", slug: "mvp-zapusk" },
+  { name: "AI и автоматизация", slug: "ai-avtomatizaciya" },
+  { name: "CTO и delivery", slug: "cto-delivery" },
+  { name: "Стоимость и экономика", slug: "stoimost-ekonomika" },
+  { name: "ОАЭ и бизнес за рубежом", slug: "oae-biznes-za-rubezhom" },
+  { name: "Кейсы и методология", slug: "kejsy-metodologiya" },
   { name: "Новости", slug: "novosti" },
   { name: "Разработка", slug: "razrabotka" },
   { name: "AI и ML", slug: "ai-ml" },
-  { name: "DevOps", slug: "devops" },
-  { name: "SEO", slug: "seo" },
   { name: "Бизнес", slug: "biznes" },
 ]
 
@@ -1546,6 +1550,810 @@ export const blogPosts: BlogPost[] = [
     authorRole: "AI-лаборатория",
     publishedAt: "2026-03-18",
     readingTime: "14 мин",
+  },
+
+  // ——— Cluster 1: MVP и запуск ———
+  {
+    slug: "kak-ponyat-nuzhen-li-mvp",
+    title: "Как понять, нужен ли вам MVP или уже полноценный продукт",
+    metaTitle: "Как понять, нужен ли вам MVP или уже полноценный продукт | YappiX",
+    metaDescription: "Разбираемся, когда стоит идти путём MVP, а когда бизнесу уже нужен полноценный продукт с первой версии.",
+    keywords: ["нужен ли mvp", "mvp или продукт", "когда делать mvp", "запуск стартапа"],
+    excerpt: "Разбираемся, когда стоит идти путём MVP, а когда бизнесу уже нужен полноценный продукт с первой версии.",
+    content: `
+      <h2>Как понять, нужен ли вам MVP или уже полноценный продукт</h2>
+      <p>Не каждый проект начинается с MVP — иногда рынок и аудитория уже понятны, и нужна сразу рабочая версия. Но часто наоборот: запускать «всё и сразу» — верный способ потерять время и деньги.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a>.</p>
+    `,
+    image: "/blog/kak-ponyat-nuzhen-li-mvp.webp",
+    category: "mvp-zapusk",
+    tags: ["MVP", "запуск продукта", "стартап", "стратегия"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "skolko-stoit-mvp-v-2026",
+    title: "Сколько стоит MVP в 2026 году и из чего складывается цена",
+    metaTitle: "Сколько стоит MVP в 2026 году и из чего складывается цена | YappiX",
+    metaDescription: "Разбираем реальную стоимость MVP в 2026 году: что влияет на бюджет, где можно сэкономить и за что точно придётся платить.",
+    keywords: ["стоимость mvp 2026", "сколько стоит mvp", "бюджет на mvp", "цена разработки mvp"],
+    excerpt: "Разбираем реальную стоимость MVP в 2026 году: что влияет на бюджет, где можно сэкономить и за что точно придётся платить.",
+    content: `
+      <h2>Сколько стоит MVP в 2026 году и из чего складывается цена</h2>
+      <p>Цена MVP зависит не от количества экранов, а от сложности бизнес-логики, интеграций и уровня продуктовой проработки. Разбираем, из чего реально складывается бюджет.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/stoimost-i-sroki-razrabotki">Стоимость и сроки разработки</a>.</p>
+    `,
+    image: "/blog/skolko-stoit-mvp-v-2026.webp",
+    category: "mvp-zapusk",
+    tags: ["MVP", "стоимость", "бюджет", "разработка"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "pochemu-startapy-teryayut-vremya-do-zapuska",
+    title: "Почему стартапы сливают месяцы на лишнюю разработку до первого запуска",
+    metaTitle: "Почему стартапы сливают месяцы на лишнюю разработку до первого запуска | YappiX",
+    metaDescription: "Почему стартапы тратят месяцы на разработку до первого запуска и как этого избежать с помощью правильного подхода к MVP.",
+    keywords: ["стартап запуск", "лишняя разработка", "быстрый запуск mvp", "ошибки стартапов"],
+    excerpt: "Почему стартапы тратят месяцы на разработку до первого запуска и как этого избежать с помощью правильного подхода к MVP.",
+    content: `
+      <h2>Почему стартапы сливают месяцы на лишнюю разработку до первого запуска</h2>
+      <p>Типичная ошибка — пытаться выпустить «идеальную» первую версию. В итоге запуск откладывается, бюджет растёт, а рынок так и не протестирован.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a>.</p>
+    `,
+    image: "/blog/pochemu-startapy-teryayut-vremya-do-zapuska.webp",
+    category: "mvp-zapusk",
+    tags: ["стартап", "MVP", "запуск", "time-to-market"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "chto-podgotovit-do-starta-razrabotki",
+    title: "Что нужно подготовить фаундеру до старта разработки",
+    metaTitle: "Что нужно подготовить фаундеру до старта разработки | YappiX",
+    metaDescription: "Чек-лист для фаундера: что подготовить до начала разработки, чтобы не терять время и бюджет на старте проекта.",
+    keywords: ["подготовка к разработке", "чек-лист фаундера", "до старта разработки", "планирование продукта"],
+    excerpt: "Чек-лист для фаундера: что подготовить до начала разработки, чтобы не терять время и бюджет на старте проекта.",
+    content: `
+      <h2>Что нужно подготовить фаундеру до старта разработки</h2>
+      <p>Многие фаундеры приходят к команде разработки с идеей, но без минимального набора артефактов. Это замедляет старт и увеличивает стоимость discovery-фазы.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
+    `,
+    image: "/blog/chto-podgotovit-do-starta-razrabotki.webp",
+    category: "mvp-zapusk",
+    tags: ["фаундер", "подготовка", "разработка", "процесс"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kogda-sayt-stanovitsya-produktom",
+    title: "Когда сайт уже не сайт, а начало продукта",
+    metaTitle: "Когда сайт уже не сайт, а начало продукта | YappiX",
+    metaDescription: "Как понять, что ваш сайт перерос формат промо-страницы и пора превращать его в полноценный цифровой продукт.",
+    keywords: ["сайт как продукт", "от сайта к продукту", "разработка сайтов", "цифровой продукт"],
+    excerpt: "Как понять, что ваш сайт перерос формат промо-страницы и пора превращать его в полноценный цифровой продукт.",
+    content: `
+      <h2>Когда сайт уже не сайт, а начало продукта</h2>
+      <p>Сначала это был лендинг. Потом добавился личный кабинет, потом интеграции. Момент, когда сайт становится продуктом — важно не упустить.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/uslugi/razrabotka-sajtov">Разработка сайтов</a>.</p>
+    `,
+    image: "/blog/kogda-sayt-stanovitsya-produktom.webp",
+    category: "mvp-zapusk",
+    tags: ["сайт", "продукт", "разработка сайтов", "трансформация"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-zapuskat-produkt-bez-bolshoy-komandy",
+    title: "Как запускать digital-продукт без полной команды в штате",
+    metaTitle: "Как запускать digital-продукт без полной команды в штате | YappiX",
+    metaDescription: "Как запустить цифровой продукт, если у вас нет собственной dev-команды: модели аутстаффа, CTO as a Service и продуктовый партнёр.",
+    keywords: ["запуск без команды", "digital продукт", "cto as a service", "аутстафф разработки"],
+    excerpt: "Как запустить цифровой продукт, если у вас нет собственной dev-команды: модели аутстаффа, CTO as a Service и продуктовый партнёр.",
+    content: `
+      <h2>Как запускать digital-продукт без полной команды в штате</h2>
+      <p>Не у каждого стартапа есть ресурсы на полноценную in-house команду. Но это не повод откладывать запуск — главное выбрать правильную модель работы.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/eu/cto-as-a-service-dlya-startapa">CTO as a Service для стартапа</a>.</p>
+    `,
+    image: "/blog/kak-zapuskat-produkt-bez-bolshoy-komandy.webp",
+    category: "mvp-zapusk",
+    tags: ["запуск продукта", "CTO as a Service", "аутстафф", "стартап"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+
+  // ——— Cluster 2: AI automation и RAG ———
+  {
+    slug: "kogda-biznesu-realno-nuzhen-ai",
+    title: "Когда бизнесу реально нужен AI, а когда это просто дорогая игрушка",
+    metaTitle: "Когда бизнесу реально нужен AI, а когда это просто дорогая игрушка | YappiX",
+    metaDescription: "Как отличить реальную потребность бизнеса в AI от хайпа: критерии, примеры и антипаттерны внедрения.",
+    keywords: ["ai для бизнеса", "когда нужен ai", "внедрение ai", "ai или хайп"],
+    excerpt: "Как отличить реальную потребность бизнеса в AI от хайпа: критерии, примеры и антипаттерны внедрения.",
+    content: `
+      <h2>Когда бизнесу реально нужен AI, а когда это просто дорогая игрушка</h2>
+      <p>AI — мощный инструмент, но не универсальное решение. Прежде чем инвестировать в внедрение, важно понять, где AI даст измеримый эффект, а где станет дорогой демонстрацией.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/vnedrenie-ai-i-rag">Внедрение AI и RAG</a>.</p>
+    `,
+    image: "/blog/kogda-biznesu-realno-nuzhen-ai.webp",
+    category: "ai-avtomatizaciya",
+    tags: ["AI", "бизнес", "внедрение", "автоматизация"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "chto-takoe-rag-prostymi-slovami",
+    title: "Что такое RAG простыми словами и где он даёт эффект",
+    metaTitle: "Что такое RAG простыми словами и где он даёт эффект | YappiX",
+    metaDescription: "Объясняем RAG (Retrieval-Augmented Generation) без технического жаргона: как работает, где применяется и какой эффект даёт бизнесу.",
+    keywords: ["что такое rag", "rag простыми словами", "retrieval augmented generation", "rag для бизнеса"],
+    excerpt: "Объясняем RAG без технического жаргона: как работает, где применяется и какой эффект даёт бизнесу.",
+    content: `
+      <h2>Что такое RAG простыми словами и где он даёт эффект</h2>
+      <p>RAG — это способ «подключить» LLM к вашим данным, чтобы модель отвечала не из общих знаний, а на основе конкретной базы документов, политик или FAQ.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/usa/rag-i-vnutrenniy-ai-pomoshchnik">RAG и внутренний AI-помощник</a>.</p>
+    `,
+    image: "/blog/chto-takoe-rag-prostymi-slovami.webp",
+    category: "ai-avtomatizaciya",
+    tags: ["RAG", "AI", "LLM", "автоматизация"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-vnedrit-vnutrennego-ai-pomoshchnika",
+    title: "Как внедрить внутреннего AI-помощника для команды",
+    metaTitle: "Как внедрить внутреннего AI-помощника для команды | YappiX",
+    metaDescription: "Пошаговый подход к внедрению внутреннего AI-ассистента: от выбора данных до интеграции в рабочие процессы команды.",
+    keywords: ["ai помощник для команды", "внутренний ai ассистент", "внедрение ai помощника", "корпоративный ai"],
+    excerpt: "Пошаговый подход к внедрению внутреннего AI-ассистента: от выбора данных до интеграции в рабочие процессы команды.",
+    content: `
+      <h2>Как внедрить внутреннего AI-помощника для команды</h2>
+      <p>Внутренний AI-помощник экономит часы на поиске информации, ответах на повторяющиеся вопросы и онбординге. Но внедрение требует чёткого плана.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/usa/rag-i-vnutrenniy-ai-pomoshchnik">RAG и внутренний AI-помощник</a>.</p>
+    `,
+    image: "/blog/kak-vnedrit-vnutrennego-ai-pomoshchnika.webp",
+    category: "ai-avtomatizaciya",
+    tags: ["AI-помощник", "RAG", "автоматизация", "команда"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kakie-dannye-nuzhny-dlya-ai-assistenta",
+    title: "Какие данные нужны компании перед запуском AI-ассистента",
+    metaTitle: "Какие данные нужны компании перед запуском AI-ассистента | YappiX",
+    metaDescription: "Какие данные нужно подготовить перед запуском AI-ассистента: форматы, объём, качество и требования к безопасности.",
+    keywords: ["данные для ai", "подготовка данных ai", "ai ассистент данные", "безопасность данных ai"],
+    excerpt: "Какие данные нужно подготовить перед запуском AI-ассистента: форматы, объём, качество и требования к безопасности.",
+    content: `
+      <h2>Какие данные нужны компании перед запуском AI-ассистента</h2>
+      <p>AI-ассистент хорош ровно настолько, насколько хороши данные, на которых он работает. Без подготовки данных любой проект обречён на низкое качество ответов.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/security-compliance">Безопасность и compliance</a>.</p>
+    `,
+    image: "/blog/kakie-dannye-nuzhny-dlya-ai-assistenta.webp",
+    category: "ai-avtomatizaciya",
+    tags: ["данные", "AI-ассистент", "безопасность", "подготовка"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-schitat-effekt-ot-ai-proekta",
+    title: "Как считать эффект от AI-проекта, а не верить презентациям",
+    metaTitle: "Как считать эффект от AI-проекта, а не верить презентациям | YappiX",
+    metaDescription: "Метрики и подходы для измерения реального эффекта от AI-проекта: ROI, time-to-value и бизнес-метрики.",
+    keywords: ["roi ai проекта", "эффект от ai", "метрики ai", "измерение ai"],
+    excerpt: "Метрики и подходы для измерения реального эффекта от AI-проекта: ROI, time-to-value и бизнес-метрики.",
+    content: `
+      <h2>Как считать эффект от AI-проекта, а не верить презентациям</h2>
+      <p>Многие AI-проекты оцениваются по «вау-эффекту» на демо. Но бизнесу нужны измеримые результаты: сколько сэкономлено, ускорено, автоматизировано.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/roi-methodology">Методология ROI</a>.</p>
+    `,
+    image: "/blog/kak-schitat-effekt-ot-ai-proekta.webp",
+    category: "ai-avtomatizaciya",
+    tags: ["AI", "ROI", "метрики", "эффективность"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "gde-ai-realno-razgruzhaet-protsessy",
+    title: "Где AI реально разгружает поддержку, продажи и внутренние процессы",
+    metaTitle: "Где AI реально разгружает поддержку, продажи и внутренние процессы | YappiX",
+    metaDescription: "Конкретные сценарии применения AI в поддержке, продажах и внутренних процессах: что автоматизировать в первую очередь.",
+    keywords: ["ai в поддержке", "ai в продажах", "автоматизация процессов ai", "ai для бизнеса"],
+    excerpt: "Конкретные сценарии применения AI в поддержке, продажах и внутренних процессах: что автоматизировать в первую очередь.",
+    content: `
+      <h2>Где AI реально разгружает поддержку, продажи и внутренние процессы</h2>
+      <p>AI лучше всего работает там, где есть повторяемые задачи, большой объём данных и высокая цена ошибки или задержки. Разбираем конкретные сценарии.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/vnedrenie-ai-i-rag">Внедрение AI и RAG</a>.</p>
+    `,
+    image: "/blog/gde-ai-realno-razgruzhaet-protsessy.webp",
+    category: "ai-avtomatizaciya",
+    tags: ["AI", "поддержка", "продажи", "автоматизация"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+
+  // ——— Cluster 3: CTO / delivery / rebuild ———
+  {
+    slug: "kogda-nuzhen-cto-as-a-service",
+    title: "Когда компании нужен CTO as a Service",
+    metaTitle: "Когда компании нужен CTO as a Service | YappiX",
+    metaDescription: "Признаки того, что вашему бизнесу нужен внешний CTO: от потери контроля над разработкой до масштабирования продукта.",
+    keywords: ["cto as a service", "внешний cto", "когда нужен cto", "технический директор на аутсорсе"],
+    excerpt: "Признаки того, что вашему бизнесу нужен внешний CTO: от потери контроля над разработкой до масштабирования продукта.",
+    content: `
+      <h2>Когда компании нужен CTO as a Service</h2>
+      <p>Не каждой компании нужен CTO в штате, но каждому продукту нужен человек, который отвечает за техническую стратегию и качество delivery.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/cto-as-a-service">CTO as a Service</a>.</p>
+    `,
+    image: "/blog/kogda-nuzhen-cto-as-a-service.webp",
+    category: "cto-delivery",
+    tags: ["CTO as a Service", "delivery", "управление", "продукт"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-ponyat-chto-podryadchik-ne-stroit-produkt",
+    title: "Как понять, что ваш подрядчик не строит продукт, а просто пишет часы",
+    metaTitle: "Как понять, что ваш подрядчик не строит продукт, а просто пишет часы | YappiX",
+    metaDescription: "Красные флаги в работе с подрядчиком: как отличить продуктовую команду от исполнителя, который просто списывает часы.",
+    keywords: ["подрядчик разработка", "как выбрать подрядчика", "красные флаги разработки", "продуктовая команда"],
+    excerpt: "Красные флаги в работе с подрядчиком: как отличить продуктовую команду от исполнителя, который просто списывает часы.",
+    content: `
+      <h2>Как понять, что ваш подрядчик не строит продукт, а просто пишет часы</h2>
+      <p>Когда подрядчик не задаёт вопросов про бизнес-метрики и не предлагает урезать скоуп — это тревожный сигнал. Разбираем ключевые признаки.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/kejsy-i-metodologiya">Кейсы и методология</a>.</p>
+    `,
+    image: "/blog/kak-ponyat-chto-podryadchik-ne-stroit-produkt.webp",
+    category: "cto-delivery",
+    tags: ["подрядчик", "delivery", "кейсы", "методология"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "pochemu-proekty-sryvayutsya-dazhe-s-bolshoy-komandoy",
+    title: "Почему проекты срываются даже с большой командой",
+    metaTitle: "Почему проекты срываются даже с большой командой | YappiX",
+    metaDescription: "Почему большая команда не гарантирует результат: типичные причины срыва сроков и потери фокуса в разработке.",
+    keywords: ["срыв проекта", "проблемы разработки", "большая команда", "управление разработкой"],
+    excerpt: "Почему большая команда не гарантирует результат: типичные причины срыва сроков и потери фокуса в разработке.",
+    content: `
+      <h2>Почему проекты срываются даже с большой командой</h2>
+      <p>Больше людей ≠ быстрее результат. Часто именно рост команды приводит к размыванию ответственности и потере фокуса.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
+    `,
+    image: "/blog/pochemu-proekty-sryvayutsya-dazhe-s-bolshoy-komandoy.webp",
+    category: "cto-delivery",
+    tags: ["управление", "команда", "delivery", "процесс"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-perestroit-haotichnuyu-razrabotku",
+    title: "Как перестроить хаотичную разработку в управляемый delivery",
+    metaTitle: "Как перестроить хаотичную разработку в управляемый delivery | YappiX",
+    metaDescription: "Пошаговый план перехода от хаотичной разработки к управляемому delivery: процессы, роли и инструменты.",
+    keywords: ["хаотичная разработка", "управляемый delivery", "процессы разработки", "наведение порядка"],
+    excerpt: "Пошаговый план перехода от хаотичной разработки к управляемому delivery: процессы, роли и инструменты.",
+    content: `
+      <h2>Как перестроить хаотичную разработку в управляемый delivery</h2>
+      <p>Если каждый спринт — сюрприз, а релизы выходят «когда получится», пора менять подход. Разбираем, как навести порядок без остановки разработки.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
+    `,
+    image: "/blog/kak-perestroit-haotichnuyu-razrabotku.webp",
+    category: "cto-delivery",
+    tags: ["delivery", "процесс", "управление", "разработка"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kogda-pora-perezapuskat-produkt",
+    title: "Когда пора перезапускать продукт, а не чинить его по кускам",
+    metaTitle: "Когда пора перезапускать продукт, а не чинить его по кускам | YappiX",
+    metaDescription: "Как понять, что продукт пора перезапускать: признаки технического и продуктового долга, который уже не починить патчами.",
+    keywords: ["перезапуск продукта", "технический долг", "rebuild продукта", "когда переписывать"],
+    excerpt: "Как понять, что продукт пора перезапускать: признаки технического и продуктового долга, который уже не починить патчами.",
+    content: `
+      <h2>Когда пора перезапускать продукт, а не чинить его по кускам</h2>
+      <p>Иногда дешевле и быстрее перезапустить продукт на новом стеке, чем бесконечно латать старый. Разбираем критерии для принятия этого решения.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/eu/perezapusk-digital-produkta">Перезапуск digital-продукта</a>.</p>
+    `,
+    image: "/blog/kogda-pora-perezapuskat-produkt.webp",
+    category: "cto-delivery",
+    tags: ["перезапуск", "rebuild", "технический долг", "продукт"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-zayti-v-chuzhoy-problemnyy-proekt",
+    title: "Как быстро зайти в чужой проблемный проект и навести порядок",
+    metaTitle: "Как быстро зайти в чужой проблемный проект и навести порядок | YappiX",
+    metaDescription: "Методология входа в проблемный проект: аудит, приоритизация, стабилизация и переход к управляемому delivery.",
+    keywords: ["проблемный проект", "аудит проекта", "спасение проекта", "вход в проект"],
+    excerpt: "Методология входа в проблемный проект: аудит, приоритизация, стабилизация и переход к управляемому delivery.",
+    content: `
+      <h2>Как быстро зайти в чужой проблемный проект и навести порядок</h2>
+      <p>Вам передали проект в плохом состоянии — непонятная архитектура, нет документации, команда демотивирована. С чего начать?</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/eu/cto-as-a-service-dlya-startapa">CTO as a Service для стартапа</a>.</p>
+    `,
+    image: "/blog/kak-zayti-v-chuzhoy-problemnyy-proekt.webp",
+    category: "cto-delivery",
+    tags: ["проблемный проект", "аудит", "CTO as a Service", "стабилизация"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+
+  // ——— Cluster 4: Стоимость и экономика ———
+  {
+    slug: "skolko-stoit-razrabotka-sayta-v-2026",
+    title: "Сколько стоит разработка сайта для бизнеса в 2026 году",
+    metaTitle: "Сколько стоит разработка сайта для бизнеса в 2026 году | YappiX",
+    metaDescription: "Реальная стоимость разработки бизнес-сайта в 2026 году: от лендинга до корпоративного портала с интеграциями.",
+    keywords: ["стоимость разработки сайта", "сколько стоит сайт 2026", "цена сайта для бизнеса", "разработка сайтов"],
+    excerpt: "Реальная стоимость разработки бизнес-сайта в 2026 году: от лендинга до корпоративного портала с интеграциями.",
+    content: `
+      <h2>Сколько стоит разработка сайта для бизнеса в 2026 году</h2>
+      <p>Цена сайта зависит от десятков факторов: сложность дизайна, количество интеграций, необходимость CMS, SEO-оптимизация. Разбираем по категориям.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/uslugi/razrabotka-sajtov">Разработка сайтов</a>.</p>
+    `,
+    image: "/blog/skolko-stoit-razrabotka-sayta-v-2026.webp",
+    category: "stoimost-ekonomika",
+    tags: ["стоимость", "разработка сайтов", "бюджет", "2026"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "pochemu-deshevyy-podryad-dorozhe",
+    title: "Почему дешёвый подряд на разработку потом обходится дороже",
+    metaTitle: "Почему дешёвый подряд на разработку потом обходится дороже | YappiX",
+    metaDescription: "Скрытые расходы дешёвой разработки: технический долг, переделки, потеря времени и репутации.",
+    keywords: ["дешёвая разработка", "скрытые расходы", "технический долг", "почему дёшево дорого"],
+    excerpt: "Скрытые расходы дешёвой разработки: технический долг, переделки, потеря времени и репутации.",
+    content: `
+      <h2>Почему дешёвый подряд на разработку потом обходится дороже</h2>
+      <p>Экономия на разработке часто оборачивается двойными расходами: на переделку, на стабилизацию, на потерянных клиентов из-за багов.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/kejsy-i-metodologiya">Кейсы и методология</a>.</p>
+    `,
+    image: "/blog/pochemu-deshevyy-podryad-dorozhe.webp",
+    category: "stoimost-ekonomika",
+    tags: ["стоимость", "подряд", "технический долг", "качество"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-schitat-stoimost-ai-avtomatizacii",
+    title: "Как считать стоимость AI-автоматизации без фантазий",
+    metaTitle: "Как считать стоимость AI-автоматизации без фантазий | YappiX",
+    metaDescription: "Реалистичный подход к оценке стоимости AI-автоматизации: инфраструктура, данные, разработка и поддержка.",
+    keywords: ["стоимость ai автоматизации", "цена ai проекта", "бюджет ai", "roi ai"],
+    excerpt: "Реалистичный подход к оценке стоимости AI-автоматизации: инфраструктура, данные, разработка и поддержка.",
+    content: `
+      <h2>Как считать стоимость AI-автоматизации без фантазий</h2>
+      <p>Стоимость AI-проекта — это не только разработка модели. Это данные, инфраструктура, интеграция, мониторинг и поддержка. Считаем честно.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/roi-methodology">Методология ROI</a>.</p>
+    `,
+    image: "/blog/kak-schitat-stoimost-ai-avtomatizacii.webp",
+    category: "stoimost-ekonomika",
+    tags: ["AI", "стоимость", "ROI", "автоматизация"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "iz-chego-skladyvayutsya-sroki-saas",
+    title: "Из чего складываются сроки запуска SaaS или кабинета",
+    metaTitle: "Из чего складываются сроки запуска SaaS или кабинета | YappiX",
+    metaDescription: "Разбираем, из чего складываются реальные сроки запуска SaaS-платформы или личного кабинета: фазы, зависимости, риски.",
+    keywords: ["сроки запуска saas", "сроки разработки кабинета", "время разработки saas", "планирование saas"],
+    excerpt: "Разбираем, из чего складываются реальные сроки запуска SaaS-платформы или личного кабинета.",
+    content: `
+      <h2>Из чего складываются сроки запуска SaaS или кабинета</h2>
+      <p>Запуск SaaS — это не только код. Это дизайн, интеграции, биллинг, безопасность, тестирование и онбординг первых пользователей.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/usa/razrabotka-saas-i-lichnyh-kabinetov">Разработка SaaS и личных кабинетов</a>.</p>
+    `,
+    image: "/blog/iz-chego-skladyvayutsya-sroki-saas.webp",
+    category: "stoimost-ekonomika",
+    tags: ["SaaS", "сроки", "личный кабинет", "планирование"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "pochemu-bystro-i-deshevo-lomaet-produkt",
+    title: "Почему «быстро и дёшево» почти всегда ломает продукт",
+    metaTitle: "Почему «быстро и дёшево» почти всегда ломает продукт | YappiX",
+    metaDescription: "Почему подход «быстро и дёшево» в разработке приводит к техническому долгу, потере пользователей и удорожанию продукта.",
+    keywords: ["быстро и дешево разработка", "качество vs скорость", "технический долг", "ошибки разработки"],
+    excerpt: "Почему подход «быстро и дёшево» в разработке приводит к техническому долгу и удорожанию продукта.",
+    content: `
+      <h2>Почему «быстро и дёшево» почти всегда ломает продукт</h2>
+      <p>«Быстро и дёшево» — самая дорогая стратегия в долгосрочной перспективе. Разбираем, почему и какие альтернативы работают лучше.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a>.</p>
+    `,
+    image: "/blog/pochemu-bystro-i-deshevo-lomaet-produkt.webp",
+    category: "stoimost-ekonomika",
+    tags: ["качество", "стоимость", "MVP", "технический долг"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kogda-sobirat-produkt-poetapno",
+    title: "Когда имеет смысл собирать продукт поэтапно, а не сразу целиком",
+    metaTitle: "Когда имеет смысл собирать продукт поэтапно, а не сразу целиком | YappiX",
+    metaDescription: "Поэтапная разработка vs «всё сразу»: когда инкрементальный подход экономит бюджет и ускоряет time-to-market.",
+    keywords: ["поэтапная разработка", "инкрементальный подход", "mvp этапы", "разработка по частям"],
+    excerpt: "Поэтапная разработка vs «всё сразу»: когда инкрементальный подход экономит бюджет и ускоряет time-to-market.",
+    content: `
+      <h2>Когда имеет смысл собирать продукт поэтапно, а не сразу целиком</h2>
+      <p>Поэтапный подход позволяет запускаться быстрее, получать обратную связь и корректировать курс. Но не всегда он подходит — разбираем критерии.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a>.</p>
+    `,
+    image: "/blog/kogda-sobirat-produkt-poetapno.webp",
+    category: "stoimost-ekonomika",
+    tags: ["поэтапная разработка", "MVP", "time-to-market", "стратегия"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+
+  // ——— Cluster 5: ОАЭ и русскоязычный бизнес за рубежом ———
+  {
+    slug: "kak-vybrat-russkoyazychnuyu-it-komandu-v-oae",
+    title: "Как выбрать русскоязычную IT-команду в ОАЭ",
+    metaTitle: "Как выбрать русскоязычную IT-команду в ОАЭ | YappiX",
+    metaDescription: "Критерии выбора русскоязычной IT-команды в ОАЭ: опыт, процессы, коммуникация и понимание локального рынка.",
+    keywords: ["it команда оаэ", "русскоязычная разработка оаэ", "выбор it команды дубай", "разработка в оаэ"],
+    excerpt: "Критерии выбора русскоязычной IT-команды в ОАЭ: опыт, процессы, коммуникация и понимание локального рынка.",
+    content: `
+      <h2>Как выбрать русскоязычную IT-команду в ОАЭ</h2>
+      <p>Рынок ОАЭ растёт, и всё больше русскоязычных предпринимателей ищут технологических партнёров на месте. Но как отличить продуктовую команду от фрилансеров?</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/oae/russkaya-komanda-razrabotki-v-oae">Русская команда разработки в ОАЭ</a>.</p>
+    `,
+    image: "/blog/kak-vybrat-russkoyazychnuyu-it-komandu-v-oae.webp",
+    category: "oae-biznes-za-rubezhom",
+    tags: ["ОАЭ", "IT-команда", "русскоязычный бизнес", "Дубай"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "chto-nuzhno-biznesu-v-oae-ot-digital-komandy",
+    title: "Что обычно нужно бизнесу в ОАЭ от digital-команды на старте",
+    metaTitle: "Что обычно нужно бизнесу в ОАЭ от digital-команды на старте | YappiX",
+    metaDescription: "Типичные потребности бизнеса в ОАЭ на старте: от MVP и сайта до автоматизации процессов и интеграций.",
+    keywords: ["бизнес оаэ digital", "digital команда дубай", "it потребности оаэ", "старт бизнеса оаэ"],
+    excerpt: "Типичные потребности бизнеса в ОАЭ на старте: от MVP и сайта до автоматизации процессов и интеграций.",
+    content: `
+      <h2>Что обычно нужно бизнесу в ОАЭ от digital-команды на старте</h2>
+      <p>Бизнес в ОАЭ на старте обычно нуждается в быстром запуске: сайт, CRM, автоматизация и MVP. Разбираем типичный набор задач.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/oae/razrabotka-mvp-v-dubae">Разработка MVP в Дубае</a>.</p>
+    `,
+    image: "/blog/chto-nuzhno-biznesu-v-oae-ot-digital-komandy.webp",
+    category: "oae-biznes-za-rubezhom",
+    tags: ["ОАЭ", "digital", "старт бизнеса", "MVP"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-zapuskat-mvp-dlya-rynka-oae",
+    title: "Как запускать MVP для рынка ОАЭ",
+    metaTitle: "Как запускать MVP для рынка ОАЭ | YappiX",
+    metaDescription: "Особенности запуска MVP для рынка ОАЭ: локализация, платёжные системы, регуляторика и культурные нюансы.",
+    keywords: ["mvp оаэ", "запуск продукта дубай", "mvp для рынка оаэ", "стартап в оаэ"],
+    excerpt: "Особенности запуска MVP для рынка ОАЭ: локализация, платёжные системы, регуляторика и культурные нюансы.",
+    content: `
+      <h2>Как запускать MVP для рынка ОАЭ</h2>
+      <p>Запуск MVP в ОАЭ имеет свою специфику: мультиязычность, локальные платёжные системы и высокие ожидания от UX. Разбираем ключевые моменты.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/oae/razrabotka-mvp-v-dubae">Разработка MVP в Дубае</a>.</p>
+    `,
+    image: "/blog/kak-zapuskat-mvp-dlya-rynka-oae.webp",
+    category: "oae-biznes-za-rubezhom",
+    tags: ["ОАЭ", "MVP", "Дубай", "запуск"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kogda-biznesu-v-evrope-nuzhen-product-partner",
+    title: "Когда русскоязычному бизнесу в Европе нужен product partner, а не просто подрядчик",
+    metaTitle: "Когда русскоязычному бизнесу в Европе нужен product partner, а не просто подрядчик | YappiX",
+    metaDescription: "Почему русскоязычному бизнесу в Европе выгоднее работать с продуктовым партнёром, а не с обычным подрядчиком.",
+    keywords: ["product partner европа", "русскоязычный бизнес европа", "подрядчик vs партнёр", "разработка для европы"],
+    excerpt: "Почему русскоязычному бизнесу в Европе выгоднее работать с продуктовым партнёром, а не с обычным подрядчиком.",
+    content: `
+      <h2>Когда русскоязычному бизнесу в Европе нужен product partner, а не просто подрядчик</h2>
+      <p>Подрядчик выполняет задания. Продуктовый партнёр помогает принимать решения, приоритизировать и выстраивать стратегию. Для бизнеса за рубежом это критически важно.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/eu/perezapusk-digital-produkta">Перезапуск digital-продукта</a>.</p>
+    `,
+    image: "/blog/kogda-biznesu-v-evrope-nuzhen-product-partner.webp",
+    category: "oae-biznes-za-rubezhom",
+    tags: ["Европа", "product partner", "русскоязычный бизнес", "подрядчик"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-sobrat-digital-kontur-dlya-mezhdunarodnoy-kompanii",
+    title: "Как собрать удобный digital-контур для компании, работающей между странами",
+    metaTitle: "Как собрать удобный digital-контур для компании, работающей между странами | YappiX",
+    metaDescription: "Как выстроить единый digital-контур для международной компании: инструменты, интеграции и процессы.",
+    keywords: ["digital контур", "международная компания", "it инфраструктура", "между странами"],
+    excerpt: "Как выстроить единый digital-контур для международной компании: инструменты, интеграции и процессы.",
+    content: `
+      <h2>Как собрать удобный digital-контур для компании, работающей между странами</h2>
+      <p>Когда команда и клиенты разбросаны по разным странам, нужен единый digital-контур: от коммуникаций до учёта и аналитики.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
+    `,
+    image: "/blog/kak-sobrat-digital-kontur-dlya-mezhdunarodnoy-kompanii.webp",
+    category: "oae-biznes-za-rubezhom",
+    tags: ["международный бизнес", "digital", "инфраструктура", "процесс"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "pochemu-founderam-za-rubezhom-nuzhna-produktovaya-komanda",
+    title: "Почему фаундерам за рубежом нужен не «исполнитель», а внятная продуктовая команда",
+    metaTitle: "Почему фаундерам за рубежом нужен не «исполнитель», а внятная продуктовая команда | YappiX",
+    metaDescription: "Почему фаундерам за рубежом критически важна продуктовая команда, а не просто исполнитель: контекст, стратегия, delivery.",
+    keywords: ["фаундер за рубежом", "продуктовая команда", "исполнитель vs команда", "стартап за границей"],
+    excerpt: "Почему фаундерам за рубежом критически важна продуктовая команда, а не просто исполнитель.",
+    content: `
+      <h2>Почему фаундерам за рубежом нужен не «исполнитель», а внятная продуктовая команда</h2>
+      <p>Когда фаундер работает из другой страны, ему нужна команда, которая понимает продукт, а не просто выполняет таски. Разница — в результате.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/cto-as-a-service">CTO as a Service</a>.</p>
+    `,
+    image: "/blog/pochemu-founderam-za-rubezhom-nuzhna-produktovaya-komanda.webp",
+    category: "oae-biznes-za-rubezhom",
+    tags: ["фаундер", "за рубежом", "продуктовая команда", "CTO as a Service"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+
+  // ——— Cluster 6: Кейсы и методология ———
+  {
+    slug: "kak-my-ocenivaem-proekt-do-starta",
+    title: "Как мы оцениваем проект до старта работ",
+    metaTitle: "Как мы оцениваем проект до старта работ | YappiX",
+    metaDescription: "Наш процесс оценки проекта до старта: discovery, технический аудит, оценка рисков и формирование roadmap.",
+    keywords: ["оценка проекта", "discovery фаза", "аудит проекта", "до старта работ"],
+    excerpt: "Наш процесс оценки проекта до старта: discovery, технический аудит, оценка рисков и формирование roadmap.",
+    content: `
+      <h2>Как мы оцениваем проект до старта работ</h2>
+      <p>Перед стартом мы проводим discovery: анализируем бизнес-контекст, технические ограничения, риски и формируем реалистичный roadmap.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
+    `,
+    image: "/blog/kak-my-ocenivaem-proekt-do-starta.webp",
+    category: "kejsy-metodologiya",
+    tags: ["оценка", "discovery", "процесс", "roadmap"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "chto-dolzhno-byt-v-normalnom-keyse",
+    title: "Что должно быть в нормальном кейсе digital-команды",
+    metaTitle: "Что должно быть в нормальном кейсе digital-команды | YappiX",
+    metaDescription: "Что отличает хороший кейс от маркетинговой обёртки: метрики, методология, честный разбор и уроки.",
+    keywords: ["кейс digital команды", "как оценить кейс", "портфолио разработки", "хороший кейс"],
+    excerpt: "Что отличает хороший кейс от маркетинговой обёртки: метрики, методология, честный разбор и уроки.",
+    content: `
+      <h2>Что должно быть в нормальном кейсе digital-команды</h2>
+      <p>Кейс — это не красивые скриншоты. Это описание проблемы, подхода, метрик и результата. Разбираем, на что обращать внимание.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/kejsy-i-metodologiya">Кейсы и методология</a>.</p>
+    `,
+    image: "/blog/chto-dolzhno-byt-v-normalnom-keyse.webp",
+    category: "kejsy-metodologiya",
+    tags: ["кейсы", "методология", "портфолио", "метрики"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "pochemu-keysy-bez-metodiki-malo-chto-znachat",
+    title: "Почему кейсы без методики измерения мало что значат",
+    metaTitle: "Почему кейсы без методики измерения мало что значат | YappiX",
+    metaDescription: "Почему кейсы без измеримых результатов и описания методологии — просто маркетинг, а не доказательство компетенций.",
+    keywords: ["кейсы без метрик", "методика измерения", "доказательство результата", "roi кейсы"],
+    excerpt: "Почему кейсы без измеримых результатов и описания методологии — просто маркетинг, а не доказательство компетенций.",
+    content: `
+      <h2>Почему кейсы без методики измерения мало что значат</h2>
+      <p>«Увеличили конверсию на 300%» — красиво, но без контекста и методики это пустые цифры. Разбираем, как читать кейсы критически.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/roi-methodology">Методология ROI</a>.</p>
+    `,
+    image: "/blog/pochemu-keysy-bez-metodiki-malo-chto-znachat.webp",
+    category: "kejsy-metodologiya",
+    tags: ["кейсы", "ROI", "методология", "измерение"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kak-my-schitaem-impact-ot-pererabotki-produkta",
+    title: "Как мы считаем impact от переработки продукта",
+    metaTitle: "Как мы считаем impact от переработки продукта | YappiX",
+    metaDescription: "Наша методология измерения impact от переработки продукта: baseline, метрики, A/B-тесты и бизнес-результаты.",
+    keywords: ["impact переработки", "измерение результата", "метрики продукта", "roi переработки"],
+    excerpt: "Наша методология измерения impact от переработки продукта: baseline, метрики, A/B-тесты и бизнес-результаты.",
+    content: `
+      <h2>Как мы считаем impact от переработки продукта</h2>
+      <p>Переработка продукта должна давать измеримый результат. Мы фиксируем baseline до старта и отслеживаем ключевые метрики после каждого этапа.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/roi-methodology">Методология ROI</a>.</p>
+    `,
+    image: "/blog/kak-my-schitaem-impact-ot-pererabotki-produkta.webp",
+    category: "kejsy-metodologiya",
+    tags: ["impact", "ROI", "метрики", "переработка"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "kakie-artefakty-poluchaet-klient",
+    title: "Какие артефакты должен получать клиент на каждом этапе",
+    metaTitle: "Какие артефакты должен получать клиент на каждом этапе | YappiX",
+    metaDescription: "Список артефактов, которые клиент должен получать на каждом этапе разработки: от discovery до post-launch.",
+    keywords: ["артефакты разработки", "этапы разработки", "что получает клиент", "прозрачность разработки"],
+    excerpt: "Список артефактов, которые клиент должен получать на каждом этапе разработки: от discovery до post-launch.",
+    content: `
+      <h2>Какие артефакты должен получать клиент на каждом этапе</h2>
+      <p>Прозрачность — основа доверия. На каждом этапе клиент должен получать конкретные артефакты: от документации до демо и метрик.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
+    `,
+    image: "/blog/kakie-artefakty-poluchaet-klient.webp",
+    category: "kejsy-metodologiya",
+    tags: ["артефакты", "процесс", "прозрачность", "delivery"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "chem-otlichaetsya-ai-first-delivery",
+    title: "Чем отличается AI-first delivery от обычной подрядной разработки",
+    metaTitle: "Чем отличается AI-first delivery от обычной подрядной разработки | YappiX",
+    metaDescription: "Ключевые отличия AI-first delivery от классического подряда: скорость, инструменты, процессы и результат.",
+    keywords: ["ai-first delivery", "ai разработка", "отличие от подряда", "современная разработка"],
+    excerpt: "Ключевые отличия AI-first delivery от классического подряда: скорость, инструменты, процессы и результат.",
+    content: `
+      <h2>Чем отличается AI-first delivery от обычной подрядной разработки</h2>
+      <p>AI-first delivery — это не просто «используем ChatGPT». Это другой подход к проектированию, генерации кода, тестированию и документации.</p>
+      <!-- PLACEHOLDER: fill article body -->
+      <h2>Как это связано с вашим продуктом</h2>
+      <p>Подробнее о нашем подходе — на странице <a href="/ai-first-razrabotka">AI-first разработка</a>.</p>
+    `,
+    image: "/blog/chem-otlichaetsya-ai-first-delivery.webp",
+    category: "kejsy-metodologiya",
+    tags: ["AI-first", "delivery", "разработка", "методология"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-05",
+    readingTime: "8 мин",
   },
 ]
 

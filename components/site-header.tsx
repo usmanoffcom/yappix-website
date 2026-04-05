@@ -25,64 +25,40 @@ type ServiceItem = { href: string; label: string; desc: string; icon: typeof Glo
 const servicesByLocale: Record<Locale, ServiceItem[]> = {
   ru: [
     {
+      href: "/mvp-i-zapusk-produkta",
+      label: "MVP и запуск продукта",
+      desc: "Быстрый запуск от идеи до рабочего продукта",
+      icon: Globe,
+    },
+    {
+      href: "/uslugi/ai-chat-boty",
+      label: "AI-ассистенты и RAG",
+      desc: "Автоматизация, поиск по знаниям, AI-помощники",
+      icon: Bot,
+    },
+    {
       href: "/uslugi/razrabotka-sajtov",
       label: "Разработка сайтов",
-      desc: "Корпоративные сайты, лендинги, интернет-магазины",
-      icon: Globe,
+      desc: "Продуктовые сайты, кабинеты, B2B-системы",
+      icon: Code,
+    },
+    {
+      href: "/uslugi/saas-paas",
+      label: "SaaS и кабинеты",
+      desc: "B2B-сервисы, панели управления, клиентские системы",
+      icon: Cloud,
+    },
+    {
+      href: "/cto-as-a-service",
+      label: "CTO as a Service",
+      desc: "Техническая стратегия и delivery для стартапа",
+      icon: Server,
     },
     {
       href: "/uslugi/mobilnye-prilozheniya",
       label: "Мобильные приложения",
       desc: "iOS, Android, кроссплатформенные решения",
-      icon: Code,
-    },
-    {
-      href: "/uslugi/ai-chat-boty",
-      label: "AI чат-боты",
-      desc: "Интеллектуальные ассистенты и автоматизация",
-      icon: Bot,
-    },
-    {
-      href: "/uslugi/saas-paas",
-      label: "SaaS / PaaS",
-      desc: "Облачные продукты и платформы",
-      icon: Cloud,
-    },
-    {
-      href: "/uslugi/fintech",
-      label: "FinTech",
-      desc: "Платёжные системы и финансовые решения",
       icon: Landmark,
-    },
-    {
-      href: "/uslugi/devops",
-      label: "DevOps",
-      desc: "CI/CD, инфраструктура, мониторинг",
-      icon: Server,
-    },
-    {
-      href: "/uslugi/seo-prodvizhenie",
-      label: "SEO продвижение",
-      desc: "Поисковая оптимизация и аналитика",
-      icon: Search,
-    },
-    {
-      href: "/uslugi/smm",
-      label: "SMM",
-      desc: "Маркетинг в социальных сетях",
-      icon: Share2,
-    },
-    {
-      href: "/uslugi/integracii-i-api",
-      label: "Интеграции и API",
-      desc: "1C, CRM, ERP, REST, GraphQL",
-      icon: Database,
-    },
-    {
-      href: "/uslugi/analitika-dannyh",
-      label: "Аналитика данных",
-      desc: "BI-дашборды, ML, предиктив",
-      icon: LineChart,
     },
     {
       href: "/uslugi/ux-ui-dizajn",
@@ -91,25 +67,36 @@ const servicesByLocale: Record<Locale, ServiceItem[]> = {
       icon: Palette,
     },
     {
+      href: "/uslugi/fintech",
+      label: "FinTech",
+      desc: "Платёжные системы и финансовые решения",
+      icon: Database,
+    },
+    {
+      href: "/uslugi/integracii-i-api",
+      label: "Интеграции и API",
+      desc: "CRM, ERP, REST, GraphQL",
+      icon: LineChart,
+    },
+    {
       href: "/uslugi/kiberbezopasnost",
       label: "Кибербезопасность",
-      desc: "Аудит, пентесты, 152-ФЗ, GDPR",
+      desc: "Аудит, пентесты, GDPR",
       icon: ShieldCheck,
     },
   ],
   en: [
-    { href: "/en/services", label: "Web Development", desc: "Corporate sites, landing pages, e-commerce", icon: Globe },
-    { href: "/en/services", label: "Mobile Apps", desc: "iOS, Android, cross-platform solutions", icon: Code },
-    { href: "/en/services", label: "AI Chatbots", desc: "Intelligent assistants and automation", icon: Bot },
-    { href: "/en/services", label: "SaaS / PaaS", desc: "Cloud products and platforms", icon: Cloud },
-    { href: "/en/services", label: "FinTech", desc: "Payment systems and financial solutions", icon: Landmark },
-    { href: "/en/services", label: "DevOps", desc: "CI/CD, infrastructure, monitoring", icon: Server },
-    { href: "/en/services", label: "SEO", desc: "Search optimization and analytics", icon: Search },
-    { href: "/en/services", label: "SMM", desc: "Social media marketing", icon: Share2 },
-    { href: "/en/services", label: "Integrations & API", desc: "1C, CRM, ERP, REST, GraphQL", icon: Database },
-    { href: "/en/services", label: "Data Analytics", desc: "BI dashboards, ML, predictive", icon: LineChart },
-    { href: "/en/services", label: "UX/UI Design", desc: "Research, prototypes, design systems", icon: Palette },
-    { href: "/en/services", label: "Cybersecurity", desc: "Audit, pentests, GDPR", icon: ShieldCheck },
+    { href: "/en/mvp-i-zapusk-produkta", label: "MVP & product launch", desc: "From idea to a shippable product without enterprise drag", icon: Globe },
+    { href: "/en/vnedrenie-ai-i-rag", label: "AI & RAG implementation", desc: "Assistants, knowledge search, automation with guardrails", icon: Bot },
+    { href: "/en/ai-first-razrabotka", label: "AI-first engineering", desc: "How we ship faster without sacrificing quality", icon: Code },
+    { href: "/en/cto-as-a-service", label: "CTO as a Service", desc: "Architecture, hiring, delivery for founders", icon: Server },
+    { href: "/en/stoimost-i-sroki-razrabotki", label: "Cost & timeline", desc: "What drives price and delivery time", icon: Cloud },
+    { href: "/en/kejsy-i-metodologiya", label: "Cases & methodology", desc: "Evidence, metrics, artifacts", icon: LineChart },
+    { href: "/en/process", label: "Delivery process", desc: "Six stages from discovery to evolution", icon: Palette },
+    { href: "/en/services", label: "Services overview", desc: "Web, mobile, SaaS, AI, FinTech, DevOps", icon: Landmark },
+    { href: "/en/rag-enterprise-knowledge-search", label: "Enterprise RAG", desc: "Knowledge search architecture and quality", icon: Database },
+    { href: "/en/roi-first-automation", label: "ROI-first automation", desc: "Economics before code", icon: Search },
+    { href: "/en/controlled-ai-contour", label: "Controlled AI contour", desc: "Security, RBAC, quality metrics", icon: ShieldCheck },
   ],
 }
 
@@ -224,6 +211,9 @@ function getRuHref(pathname: string): string {
   if (exact) return exact
   if (pathname.startsWith("/en/cases/")) return pathname.replace(/^\/en\/cases/, "/kejsy")
   if (pathname.startsWith("/en/blog/")) return "/blog"
+  if (pathname.startsWith("/en/") && pathname.length > 4) {
+    return pathname.slice(3)
+  }
   return "/"
 }
 
@@ -232,6 +222,9 @@ function getEnHref(pathname: string): string {
   if (exact) return exact
   if (pathname.startsWith("/kejsy/")) return pathname.replace(/^\/kejsy/, "/en/cases")
   if (pathname.startsWith("/blog/")) return "/en/blog"
+  if (pathname.startsWith("/") && pathname !== "/" && !pathname.startsWith("/en")) {
+    return `/en${pathname}`
+  }
   return "/en"
 }
 

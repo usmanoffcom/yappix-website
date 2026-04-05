@@ -7,16 +7,20 @@ import { Button } from "@/components/ui/button"
 import { Award, Users, Rocket, Globe, CheckCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "О компании YappiX — резиденты Сколково | IT-студия",
+  title: "О компании YappiX — product engineering команда с AI-first подходом",
   description:
-    "YappiX — AI-first delivery company. Резиденты Сколково. Внедряем автоматизацию и AI-контуры с измеримым ROI. 250+ проектов, 6 локаций.",
-  keywords: ["YappiX", "IT компания", "Сколково", "веб-студия", "разработка на заказ", "аутсорсинг"],
+    "YappiX — компактная product engineering команда, которая помогает фаундерам и компаниям запускать MVP, SaaS, клиентские кабинеты и AI-автоматизацию в ОАЭ, Европе и США.",
+  keywords: ["YappiX", "product engineering", "AI-first", "команда разработки", "MVP", "SaaS", "AI автоматизация"],
   alternates: {
     canonical: "https://yappix.ru/o-kompanii",
+    languages: {
+      "ru-RU": "https://yappix.ru/o-kompanii",
+      "en-US": "https://yappix.ru/en/about",
+    },
   },
   openGraph: {
-    title: "О компании YappiX — резиденты Сколково",
-    description: "AI-first delivery company. Резиденты Сколково. 250+ проектов, измеримый ROI, прозрачный SLA.",
+    title: "YappiX — product engineering команда с AI-first подходом",
+    description: "Компактная product engineering команда для фаундеров и компаний. MVP, SaaS, AI-автоматизация.",
     type: "website",
     url: "https://yappix.ru/o-kompanii",
     siteName: "YappiX",
@@ -32,15 +36,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "О компании YappiX — резиденты Сколково",
-    description: "AI-first delivery company. 250+ проектов, 6 локаций.",
+    title: "YappiX — product engineering команда с AI-first подходом",
+    description: "Компактная product engineering команда для фаундеров и компаний в ОАЭ, Европе и США.",
   },
 }
 
 const stats = [
-  { value: "250+", label: "Проектов", icon: Rocket },
-  { value: "5", label: "Локаций", icon: Globe },
-  { value: "10+", label: "Лет опыта", icon: Award },
+  { value: "250+", label: "Запущенных проектов", icon: Rocket },
+  { value: "3 рынка", label: "ОАЭ, Европа, США", icon: Globe },
+  { value: "10+", label: "Лет в product engineering", icon: Award },
   { value: "AI-first", label: "Модель delivery", icon: Users },
 ]
 
@@ -55,20 +59,20 @@ const milestones = [
 
 const values = [
   {
-    title: "Скорость",
-    description: "Используем AI для 7x-12x ускорения разработки. MVP за 7 дней — реальность, не маркетинг.",
+    title: "Продуктовый фокус",
+    description: "Мы не продаём часы — мы собираем работающий продукт. UX, продуктовая логика и разработка идут в одной цепочке.",
   },
   {
-    title: "Качество",
-    description: "Не жертвуем качеством ради скорости. Code review, тесты, CI/CD — стандарт на всех проектах.",
+    title: "AI-first delivery",
+    description: "AI-инструменты на каждом этапе: от прототипирования до код-ревью. Это не замена разработчиков, а ускорение.",
   },
   {
     title: "Прозрачность",
-    description: "Фиксированная цена в договоре. Тестовая неделя с возможностью возврата. Регулярные демо.",
+    description: "Понятные этапы, фиксированные артефакты, регулярные демо. Заказчик видит прогресс, а не отчёты.",
   },
   {
-    title: "Партнёрство",
-    description: "Не просто исполнители — партнёры. Советуем, как сделать лучше, даже если это не в нашу пользу.",
+    title: "Партнёрство, а не подряд",
+    description: "Советуем, как сделать лучше, отговариваем от лишнего. Фокус на экономику запуска, а не на раздувание скоупа.",
   },
 ]
 
@@ -98,11 +102,12 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-display text-foreground mb-6 text-balance">
-                  Создаём цифровые продукты быстрее с AI
+                  YappiX — product engineering команда с AI-first подходом
                 </h1>
                 <p className="text-body-lg mb-8 text-pretty">
-                  YappiX — AI-first delivery company. Резиденты Сколково. Внедряем автоматизацию и AI-контуры
-                  с измеримым ROI, контролем качества и прозрачным SLA. Core-команда + проверенная сеть специалистов.
+                  Мы работаем как компактная product engineering команда с подключаемой сетью проверенных специалистов.
+                  Для клиентов это означает не &ldquo;агентство ради агентства&rdquo;, а управляемую систему запуска:
+                  UX, продуктовая логика, разработка, AI-ускорение и понятный delivery.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button size="lg" asChild>
@@ -195,12 +200,38 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* When useful */}
+        <section className="py-16 md:py-24 bg-primary/5">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-headline text-foreground mb-6">Когда мы полезны</h2>
+            <p className="text-lg text-muted-foreground mb-10">
+              YappiX особенно полезен, когда нужно быстро собрать MVP, пересобрать проблемный продукт,
+              внедрить AI-модуль или заменить хаотичную подрядную разработку на системную delivery-модель.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                "Нужно быстро собрать и запустить MVP",
+                "Текущий продукт не даёт результата и требует пересборки",
+                "Хотите внедрить AI-ассистента, RAG или автоматизацию",
+                "Нужен технический партнёр вместо хаотичного подряда",
+                "Запускаете SaaS, кабинет или внутренний сервис",
+                "Нужен CTO as a service на старте",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3 p-4 bg-card border border-border rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                  <span className="text-foreground">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Values */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-headline text-foreground mb-4">Наши ценности</h2>
+            <h2 className="text-headline text-foreground mb-4">Как мы работаем</h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
-              Принципы, которыми мы руководствуемся в работе с клиентами и внутри команды.
+              Принципы, которыми руководствуемся в работе с клиентами и внутри команды.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               {values.map((value) => (
@@ -332,12 +363,12 @@ export default function AboutPage() {
             <h2 className="text-headline text-foreground mb-12">Почему YappiX</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                "10+ лет опыта — многолетний опыт разработки и проверенные решения",
-                "AI-инструменты — разработка в 7-12 раз быстрее и дешевле",
-                "MVP за 7 дней — тестовая неделя с гарантией возврата",
-                "Офисы в 6 странах — удобные часовые пояса",
-                "Все способы оплаты — включая крипто",
-                "250+ проектов — опыт в любой отрасли",
+                "AI-first delivery — AI-инструменты на каждом этапе разработки",
+                "UX + продукт + код — в одной цепочке без потерь",
+                "Фокус на запуск — экономика продукта важнее количества часов",
+                "Понятные этапы — артефакты и демо на каждой стадии",
+                "3 рынка — работаем с ОАЭ, Европой и США",
+                "Bilingual коммуникация — русский и английский без барьеров",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 p-4 bg-background border border-border rounded-lg">
                   <CheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />
@@ -351,13 +382,20 @@ export default function AboutPage() {
         {/* CTA */}
         <section className="py-16 md:py-24 bg-primary/5">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-headline text-foreground mb-4">Готовы к сотрудничеству?</h2>
+            <h2 className="text-headline text-foreground mb-4">
+              Если продукт надо запускать, а не обсуждать месяцами
+            </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Расскажите о вашем проекте — предложим решение и назовём точные сроки.
+              Разберём задачу: MVP, продуктовый редизайн, AI-модуль или пересборка текущей архитектуры.
             </p>
-            <Button size="lg" asChild>
-              <Link href="/kontakty">Связаться с нами</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" asChild>
+                <Link href="/kontakty">Обсудить проект</Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/process">Как мы работаем</Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>

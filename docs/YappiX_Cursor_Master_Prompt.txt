@@ -1,0 +1,59 @@
+You are working on yappix.ru.
+
+Goal:
+Reposition YappiX away from generic high-competition RF web studio SEO and rebuild the site around a sharper strategy:
+AI-first product engineering for founders and companies in UAE, Europe and the US, especially Russian-speaking and bilingual buyers.
+
+Important:
+Do not produce vague SEO improvements.
+Do not invent unsupported metrics, compliance claims or fake client evidence.
+Do not expand generic SEO/SMM positioning.
+Do not create fluff content.
+Do not overuse generic “full-cycle agency” language.
+RU first. EN later.
+
+Primary business positioning:
+YappiX helps founders and companies launch MVPs, SaaS products, client portals, internal systems and AI automation faster through product logic, UX and AI-assisted delivery.
+
+Target priorities:
+1. UAE / Dubai
+2. Europe / Cyprus / relocation markets
+3. US / English-speaking pages later
+
+Tasks:
+1. Rewrite homepage metadata and hero according to the implementation file.
+2. Rewrite About page according to the implementation file.
+3. Reframe service pages:
+   - website development
+   - mobile apps
+   - AI automation / chatbots
+4. Create new page /process.
+5. Create the following new RU pages:
+   - /oae/razrabotka-mvp-v-dubae
+   - /oae/russkaya-komanda-razrabotki-v-oae
+   - /oae/vnedrenie-ai-v-biznes-v-oae
+   - /eu/cto-as-a-service-dlya-startapa
+   - /eu/perezapusk-digital-produkta
+   - /eu/ai-avtomatizaciya-dlya-biznesa
+   - /usa/product-team-dlya-russkoyazychnogo-foundera
+   - /usa/razrabotka-saas-i-lichnyh-kabinetov
+   - /usa/rag-i-vnutrenniy-ai-pomoshchnik
+6. Create the following RU pillar pages:
+   - /ai-first-razrabotka
+   - /mvp-i-zapusk-produkta
+   - /vnedrenie-ai-i-rag
+   - /cto-as-a-service
+   - /stoimost-i-sroki-razrabotki
+   - /kejsy-i-metodologiya
+7. Build internal linking:
+   - homepage -> pillars -> geo pages -> services -> cases -> blog
+   - every article must link to one service and one pillar
+8. Add article entries for the 36 blog posts listed in the implementation file.
+9. Add metadata, OpenGraph, canonical and breadcrumb schema where appropriate.
+10. Keep EN work in backlog. Implement RU first.
+
+Output format:
+- First show implementation plan with exact affected routes/files/components.
+- Then implement in phases.
+- After each phase output changed files and short summary.
+- Mark every placeholder that needs manual business validation.

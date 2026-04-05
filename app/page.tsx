@@ -1,10 +1,13 @@
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
+import { TargetAudienceSection } from "@/components/target-audience-section"
+import { WhatWeDoSection } from "@/components/what-we-do-section"
+import { WhyYappixSection } from "@/components/why-yappix-section"
+import { FinalCtaSection } from "@/components/final-cta-section"
 
 const TrustBadges = dynamic(() => import("@/components/trust-badges").then((m) => ({ default: m.TrustBadges })), { ssr: true })
 const FounderGreeting = dynamic(() => import("@/components/founder-greeting").then((m) => ({ default: m.FounderGreeting })), { ssr: true })
-const AutomationEconomicsSection = dynamic(() => import("@/components/automation-economics-section").then((m) => ({ default: m.AutomationEconomicsSection })), { ssr: true })
 const ServicesSection = dynamic(() => import("@/components/services-section").then((m) => ({ default: m.ServicesSection })), { ssr: true })
 const ProcessSection = dynamic(() => import("@/components/process-section").then((m) => ({ default: m.ProcessSection })), { ssr: true })
 const CasesSection = dynamic(() => import("@/components/cases-section").then((m) => ({ default: m.CasesSection })), { ssr: true })
@@ -21,15 +24,18 @@ export default function HomePage() {
       <Header />
       <HeroSection />
       <TrustBadges />
-      <AutomationEconomicsSection />
+      <TargetAudienceSection />
+      <WhatWeDoSection />
       <ServicesSection />
       <ProcessSection />
+      <WhyYappixSection />
       <FounderGreeting />
       <CasesSection />
       <TechStack />
       <PricingSection />
       <ShowcaseGallery />
       <TemplatesSection excludeSlugs={["yandex-go-scooters"]} />
+      <FinalCtaSection />
       <ContactSection />
       <Footer />
     </main>

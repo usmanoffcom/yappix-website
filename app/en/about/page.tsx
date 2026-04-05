@@ -7,20 +7,41 @@ import { Button } from "@/components/ui/button"
 import { Award, Users, Rocket, Globe, CheckCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "About YappiX — Skolkovo Residents | IT Studio",
+  title: "About YappiX — AI-first product engineering team",
   description:
-    "YappiX — AI-first delivery company. Skolkovo residents. We implement automation and AI contours with measurable ROI. 250+ projects, 6 locations.",
+    "YappiX is a compact product engineering team helping founders and companies ship MVPs, SaaS, client portals, and AI automation in the UAE, Europe, and the US — with clear delivery and evidence.",
+  keywords: [
+    "YappiX",
+    "product engineering",
+    "AI-first",
+    "MVP development",
+    "SaaS development",
+    "UAE",
+    "Europe",
+    "United States",
+  ],
   alternates: {
     canonical: "https://yappix.ru/en/about",
+    languages: {
+      "ru-RU": "https://yappix.ru/o-kompanii",
+      "en-US": "https://yappix.ru/en/about",
+    },
   },
   openGraph: {
-    title: "About YappiX — Skolkovo Residents",
-    description: "AI-first delivery company. 250+ projects, 6 locations.",
+    title: "About YappiX — AI-first product engineering team",
+    description:
+      "Compact product engineering for MVPs, SaaS, and AI — UAE, Europe, US. Skolkovo resident company.",
     type: "website",
     url: "https://yappix.ru/en/about",
     siteName: "YappiX",
     locale: "en_US",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "YappiX" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "YappiX — About" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About YappiX — AI-first product engineering",
+    description: "MVPs, SaaS, AI/RAG, and transparent delivery for international founders.",
+    images: ["/og.png"],
   },
 }
 

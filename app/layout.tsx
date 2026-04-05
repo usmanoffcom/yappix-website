@@ -20,25 +20,24 @@ const _geistMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yappix.ru'),
-  title: "YappiX — Автоматизируем процессы разработки ПО, веб-сервисов и считаем экономику внедрения ИИ",
+  title: "YappiX — AI-first разработка MVP, SaaS и AI-решений для бизнеса в ОАЭ, Европе и США",
   description:
-    "Автоматизируем процессы разработки программного обеспечения, веб-сервисов и считаем экономику внедрения ИИ. IT-студия полного цикла. Резиденты Сколково. MVP за 7 дней с гарантией возврата.",
+    "Проектируем и запускаем MVP, SaaS, клиентские кабинеты и AI-автоматизацию для бизнеса. YappiX — команда product development для фаундеров и компаний в ОАЭ, Европе и США.",
   keywords: [
-    "разработка сайтов",
-    "веб-разработка",
-    "мобильные приложения",
-    "AI чат-боты",
-    "искусственный интеллект",
-    "SaaS разработка",
-    "FinTech",
-    "DevOps",
-    "SEO продвижение",
-    "SMM",
-    "IT аутсорсинг",
-    "Сколково",
-    "веб-студия Москва",
+    "AI-first разработка",
     "разработка MVP",
-    "стартап разработка",
+    "SaaS разработка",
+    "AI автоматизация",
+    "RAG внедрение",
+    "product engineering",
+    "CTO as a service",
+    "разработка для стартапов",
+    "русскоязычная команда разработки ОАЭ",
+    "клиентские кабинеты",
+    "product development",
+    "AI-ассистент для бизнеса",
+    "запуск продукта",
+    "UX продуктовый дизайн",
   ],
   authors: [{ name: "YappiX" }],
   creator: "YappiX",
@@ -74,21 +73,21 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     url: "https://yappix.ru",
     siteName: "YappiX",
-    title: "YappiX — Автоматизируем процессы разработки ПО, веб-сервисов и считаем экономику внедрения ИИ",
-    description: "Автоматизируем процессы разработки ПО, веб-сервисов и считаем экономику внедрения ИИ. Резиденты Сколково. MVP за 7 дней с гарантией возврата.",
+    title: "YappiX — AI-first разработка MVP, SaaS и AI-решений для бизнеса в ОАЭ, Европе и США",
+    description: "Проектируем и запускаем MVP, SaaS, клиентские кабинеты и AI-автоматизацию для бизнеса. Команда product development для фаундеров в ОАЭ, Европе и США.",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "YappiX - IT-студия",
+        alt: "YappiX — AI-first product engineering",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "YappiX — Автоматизируем процессы разработки ПО и считаем экономику внедрения ИИ",
-    description: "Автоматизируем процессы разработки ПО, веб-сервисов и считаем экономику внедрения ИИ. Резиденты Сколково.",
+    title: "YappiX — AI-first разработка MVP, SaaS и AI-решений для бизнеса",
+    description: "Проектируем и запускаем MVP, SaaS, клиентские кабинеты и AI-автоматизацию. Команда product development для фаундеров в ОАЭ, Европе и США.",
     images: ["/og.png"],
   },
   alternates: {
@@ -98,11 +97,7 @@ export const metadata: Metadata = {
       "en-US": "https://yappix.ru/en",
     },
   },
-  verification: {
-    google: "google-site-verification-code",
-    yandex: "yandex-verification-code",
-  },
-  generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export const viewport: Viewport = {
@@ -128,12 +123,25 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "YappiX",
+              url: "https://yappix.ru",
+              inLanguage: ["ru-RU", "en-US"],
+              publisher: { "@type": "Organization", name: "YappiX", url: "https://yappix.ru" },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
               "@type": "Organization",
               name: "YappiX",
               alternateName: "ООО ЯППИКС",
               url: "https://yappix.ru",
               logo: "https://yappix.ru/images/logo-002.png",
-              description: "Внедряем автоматизацию и AI-контуры с измеримым ROI, контролем качества и прозрачным SLA.",
+              description: "AI-first команда, которая помогает фаундерам и компаниям быстрее запускать и перестраивать digital-продукты: MVP, SaaS, клиентские кабинеты и AI-автоматизацию.",
               foundingDate: "2018",
               founders: [
                 {
@@ -172,20 +180,16 @@ export default function RootLayout({
                 },
               ],
               sameAs: ["https://t.me/yappix", "https://vk.com/yappix", "https://linkedin.com/company/yappix"],
-              areaServed: ["RU", "KZ", "BY", "UZ", "AM", "GE", "AZ"],
+              areaServed: ["AE", "CY", "DE", "US", "RU", "KZ", "RS", "GE", "TR"],
               serviceType: [
+                "AI-first product engineering",
+                "MVP разработка и запуск",
+                "SaaS и клиентские кабинеты",
+                "AI-автоматизация и RAG",
+                "CTO as a Service",
+                "Product redesign и UX",
                 "Разработка веб-сайтов",
                 "Разработка мобильных приложений",
-                "AI и машинное обучение",
-                "DevOps услуги",
-                "SaaS разработка",
-                "FinTech решения",
-                "SEO продвижение",
-                "SMM маркетинг",
-                "Интеграции и API",
-                "Аналитика данных",
-                "UX/UI дизайн",
-                "Кибербезопасность",
               ],
             }),
           }}

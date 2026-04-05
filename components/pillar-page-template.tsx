@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight } from "lucide-react"
 import type { PillarPage } from "@/lib/pillar-pages-data"
+import { getCaseBySlug } from "@/lib/cases-data"
 
 interface PillarPageTemplateProps {
   content: PillarPage
@@ -51,11 +52,15 @@ export function PillarPageTemplate({ content, locale }: PillarPageTemplateProps)
               {locale === "ru" ? "Связанные кейсы" : "Related Cases"}
             </h2>
             <div className="flex flex-wrap gap-3">
-              {content.relatedCases.map((slug) => (
-                <Button key={slug} variant="outline" asChild>
-                  <Link href={`${casesBase}/${slug}`}>{slug}</Link>
-                </Button>
-              ))}
+              {content.relatedCases.map((slug) => {
+                const c = getCaseBySlug(slug)
+                const label = c?.title ?? slug
+                return (
+                  <Button key={slug} variant="outline" asChild className="h-auto min-h-10 max-w-full whitespace-normal text-left py-2 px-4">
+                    <Link href={`${casesBase}/${slug}`}>{label}</Link>
+                  </Button>
+                )
+              })}
             </div>
           </div>
         </section>
