@@ -65,12 +65,10 @@ export function ProcessSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
 
         <div className="max-w-3xl lg:max-w-4xl mx-auto">
           {steps.map((step, index) => (
-            <div key={index}
-              
-              
-              
-              
-              className="relative flex gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-8 sm:pb-10 lg:pb-12 last:pb-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div
+              key={index}
+              className="relative flex gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-8 sm:pb-10 lg:pb-12 last:pb-0 animate-in fade-in slide-in-from-bottom-4 duration-500"
+            >
               {/* Timeline */}
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">

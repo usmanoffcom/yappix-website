@@ -16,6 +16,7 @@ const _onest = Onest({
 const _geistMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-geist-mono",
 })
 
 export const metadata: Metadata = {
@@ -195,7 +196,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${_onest.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body
+        className={`${_onest.variable} ${_geistMono.variable} ${_onest.className} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         <GoogleAnalytics />
         <YandexMetrika />
         <MailRuTop />

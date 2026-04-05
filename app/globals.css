@@ -1,4 +1,8 @@
 @import "tailwindcss";
+/* Явные источники классов: иначе v4 может не подхватить новые страницы/компоненты и «сломается» внешний вид */
+@source "./**/*.{js,ts,jsx,tsx,mdx}";
+@source "../components/**/*.{js,ts,jsx,tsx,mdx}";
+@source "../lib/**/*.{js,ts,jsx,tsx}";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -75,8 +79,9 @@
 }
 
 @theme inline {
-  --font-sans: "Onest", "Onest Fallback", system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  /* См. app/layout.tsx: body получает ${_onest.variable} — без var(--font-onest) шрифт Next.js не подставлялся в font-sans */
+  --font-sans: var(--font-onest, ui-sans-serif), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono, ui-monospace), ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
