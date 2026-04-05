@@ -6,7 +6,7 @@ import { DeferredRecaptchaWrapper } from "@/components/deferred-recaptcha-wrappe
 import { GoogleAnalytics } from "@/components/google-analytics"
 import { YandexMetrika } from "@/components/yandex-metrika"
 import { MailRuTop } from "@/components/mail-ru-top"
-import "./globals.css"
+import "./layout.css"
 
 const _onest = Onest({
   subsets: ["latin", "cyrillic"],

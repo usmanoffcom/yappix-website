@@ -1,0 +1,2 @@
+/* Entry for root layout styles — имя файла совпадает с `/_next/static/css/app/layout.css` в dev (импорт только `globals.css` давал 404 на layout.css). */
+@import "./globals.css";
