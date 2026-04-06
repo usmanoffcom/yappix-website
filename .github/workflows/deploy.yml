@@ -1,9 +1,8 @@
-# Production: SSH → bash scripts/deploy.sh (см. scripts/deploy.sh)
+# Production: только вручную (кнопка Run workflow) или с сервера: cd /var/www/yappix.ru && git fetch && git reset --hard origin/main && bash scripts/deploy.sh
+# Автодеплой по push в main отключён — деплойте сами, когда нужно.
 name: Deploy to production
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:
