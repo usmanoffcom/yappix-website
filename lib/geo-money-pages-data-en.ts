@@ -124,7 +124,7 @@ export const geoMoneyPagesEn: GeoMoneyPage[] = [
     region: "eu",
     title: "CTO as a Service for startups | YappiX",
     description:
-      "Technical strategy, architecture, hiring, and delivery — without hiring a full-time CTO too early.",
+      "Part-time CTO for European startups: roadmap and stack choices, team interviews, and shipping rhythm — senior technical partner before you hire full-time in-house.",
     h1: "CTO as a Service for startups",
     offer:
       "We help you assemble technical strategy, architecture, team, and delivery — without hiring a full-time CTO at the earliest stage.",

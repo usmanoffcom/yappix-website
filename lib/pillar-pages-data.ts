@@ -486,7 +486,7 @@ export const pillarPagesByLocale: Record<PillarLocale, Record<PillarSlug, Pillar
       slug: "cto-service",
       title: "CTO as a Service — technical strategy for startups | YappiX",
       description:
-        "Technical strategy, architecture, hiring, and delivery — without hiring a full-time CTO too early.",
+        "Fractional CTO leadership for growing teams: product architecture, delivery discipline, code review, and hiring support — without a full-time executive hire.",
       h1: "CTO as a Service: technical strategy without a full-time CTO",
       intro:
         "Early on, a full-time CTO is expensive and often unnecessary. We join as a technical partner: architecture, delivery discipline, and hiring support — focused on shipping, not slides.",
