@@ -69,27 +69,55 @@ if [ -n "$SS_OUT" ]; then
   sleep 3
 fi
 
-# ─── Start next directly (not via npm — avoids orphan child processes) ───
+# ─── Start ───
 pm2 start node_modules/.bin/next --name yappix-ru -- start -p 3001
-sleep 10
+echo "==> waiting for Next.js to start..."
+sleep 5
 
-echo "==> pm2 error log:"
-pm2 logs yappix-ru --err --lines 5 --nostream 2>/dev/null || true
-echo "==> pm2 status:"
-pm2 show yappix-ru 2>/dev/null | grep -E "status|uptime|restart" || true
+# Check if process is alive
+for i in 1 2 3 4; do
+  STATUS=$(pm2 show yappix-ru 2>/dev/null | grep "status" | head -1 || echo "unknown")
+  echo "==> attempt $i: $STATUS"
+  if echo "$STATUS" | grep -q "online"; then
+    break
+  fi
+  sleep 5
+done
+
+echo "==> pm2 error log (last 15):"
+pm2 logs yappix-ru --err --lines 15 --nostream 2>/dev/null || true
+echo "==> pm2 out log (last 5):"
+pm2 logs yappix-ru --out --lines 5 --nostream 2>/dev/null || true
+
+echo "==> pm2 full status:"
+pm2 show yappix-ru 2>/dev/null | grep -E "status|uptime|restart|script|exec_cwd|node.js|pid " || true
+
+# Save PM2 process list so it survives server reboot
+pm2 save 2>/dev/null || true
 
 # ─── Nginx cache flush ───
 sudo rm -rf /var/cache/nginx 2>/dev/null || true
 sudo nginx -s reload 2>/dev/null || sudo systemctl reload nginx 2>/dev/null || true
 
 # ─── Smoke test ───
-SMOKE=$(curl -s --max-time 10 http://localhost:3001/ 2>&1 || true)
-CDN_COUNT=$(echo "$SMOKE" | grep -c "cdn\.yappix\.ru" || true)
-echo "==> cdn refs in response: $CDN_COUNT"
-if [ "$CDN_COUNT" -gt 0 ]; then
-  echo "BROKEN"
+echo "==> smoke test localhost:3001"
+HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 http://localhost:3001/ 2>&1 || echo "000")
+echo "==> HTTP status: $HTTP_CODE"
+if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "301" ] || [ "$HTTP_CODE" = "308" ]; then
+  SMOKE=$(curl -s --max-time 15 http://localhost:3001/ 2>&1 || true)
+  CDN_COUNT=$(echo "$SMOKE" | grep -c "cdn\.yappix\.ru" || true)
+  echo "==> cdn refs: $CDN_COUNT"
+  if [ "$CDN_COUNT" -eq 0 ]; then
+    echo "==> SITE IS CLEAN AND RUNNING"
+  else
+    echo "==> SITE RUNNING BUT CDN REFS FOUND"
+  fi
 else
-  echo "==> SITE IS CLEAN"
+  echo "==> SITE NOT RESPONDING (HTTP $HTTP_CODE)"
+  echo "==> checking what is on port 3001:"
+  ss -tlnp 2>/dev/null | grep 3001 || echo "(nothing on port 3001)"
+  echo "==> pm2 restart count:"
+  pm2 show yappix-ru 2>/dev/null | grep "restart" || true
 fi
 
 echo "==> deploy ok | $(git rev-parse --short HEAD)"
