@@ -11,7 +11,7 @@
     "start": "next start -p 3001",
     "generate-icons": "node scripts/generate-icons.js",
     "convert-icons": "node scripts/convert-icons-to-png.js",
-    "deploy": "ssh ${DEPLOY_USER:-deploy}@${DEPLOY_HOST} 'cd /var/www/yappix.ru && git pull origin main && pnpm install --frozen-lockfile && pnpm run build && pm2 restart yappix-ru'"
+    "deploy": "ssh ${DEPLOY_USER:-deploy}@${DEPLOY_HOST} 'set -euo pipefail && cd /var/www/yappix.ru && git fetch origin main && git reset --hard origin/main && export NODE_OPTIONS=--max-old-space-size=4096 && pnpm install --frozen-lockfile && pnpm run build && pm2 restart yappix-ru'"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

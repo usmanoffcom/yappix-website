@@ -45,7 +45,7 @@ const blogCoverByCategory: Record<string, string> = {
 }
 
 /** Уникальные обложки для SEO-кластерных статей (не дублируем один файл на разные slug). */
-const blogClusterCoverBySlug: Record<string, string> = {
+export const blogClusterCoverBySlug: Record<string, string> = {
   "kak-ponyat-nuzhen-li-mvp": "/images/blog-covers/mvp-launch.png",
   "skolko-stoit-mvp-v-2026": "/images/blog-covers/ai-automation.png",
   "pochemu-startapy-teryayut-vremya-do-zapuska": "/images/blog-covers/cto-delivery.png",

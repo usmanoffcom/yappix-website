@@ -1,4 +1,4 @@
-import { blogPosts } from "@/lib/blog-data"
+import { blogClusterCoverBySlug, blogPosts } from "@/lib/blog-data"
 
 export interface BlogPostEn {
   slug: string
@@ -434,7 +434,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
         <li><a href="/blog/razrabotka-sajtov-na-zakaz-2026">Русская версия</a></li>
       </ul>
     `,
-    image: "/images/blog-covers/web-development.png",
+    image: blogClusterCoverBySlug["razrabotka-sajtov-na-zakaz-2026"],
     category: "Development",
     tags: ["custom website development", "MVP", "B2B", "delivery"],
     author: "YappiX Team",
@@ -470,7 +470,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
         <li><a href="/blog/korporativnye-sajty-dlya-biznesa">Русская версия</a></li>
       </ul>
     `,
-    image: "/images/blog-covers/web-development.png",
+    image: blogClusterCoverBySlug["korporativnye-sajty-dlya-biznesa"],
     category: "Business",
     tags: ["corporate websites", "B2B", "SEO", "growth"],
     author: "YappiX Team",
@@ -506,7 +506,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
         <li><a href="/blog/internet-magaziny-na-nextjs">Русская версия</a></li>
       </ul>
     `,
-    image: "/images/blog-covers/ecommerce.png",
+    image: blogClusterCoverBySlug["internet-magaziny-na-nextjs"],
     category: "Development",
     tags: ["e-commerce", "online store", "SEO", "integrations"],
     author: "YappiX Team",
@@ -542,7 +542,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
         <li><a href="/blog/mobilnye-prilozheniya-na-zakaz-pod-klyuch">Русская версия</a></li>
       </ul>
     `,
-    image: "/images/blog-covers/mobile-apps.png",
+    image: blogClusterCoverBySlug["mobilnye-prilozheniya-na-zakaz-pod-klyuch"],
     category: "Development",
     tags: ["mobile apps", "mobile MVP", "product-first", "delivery"],
     author: "YappiX Team",
@@ -578,7 +578,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
         <li><a href="/blog/razrabotka-mvp-poshagovo">Русская версия</a></li>
       </ul>
     `,
-    image: "/images/blog-covers/mvp-launch.png",
+    image: blogClusterCoverBySlug["razrabotka-mvp-poshagovo"],
     category: "Business",
     tags: ["MVP", "product launch", "delivery", "validation"],
     author: "YappiX Team",
@@ -614,7 +614,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
         <li><a href="/blog/razrabotka-saas-platform-dlya-b2b">Русская версия</a></li>
       </ul>
     `,
-    image: "/images/blog-covers/saas-platform.png",
+    image: blogClusterCoverBySlug["razrabotka-saas-platform-dlya-b2b"],
     category: "Business",
     tags: ["SaaS", "B2B", "architecture", "operations"],
     author: "YappiX Team",
@@ -650,7 +650,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
         <li><a href="/blog/vnedrenie-ii-v-biznes-protsessy">Русская версия</a></li>
       </ul>
     `,
-    image: "/images/blog-covers/ai-automation.png",
+    image: blogClusterCoverBySlug["vnedrenie-ii-v-biznes-protsessy"],
     category: "AI & ML",
     tags: ["AI implementation", "automation", "ROI", "business processes"],
     author: "YappiX Team",
@@ -686,7 +686,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
         <li><a href="/blog/ai-chat-boty-dlya-kompaniy">Русская версия</a></li>
       </ul>
     `,
-    image: "/images/blog-covers/ai-chatbot.png",
+    image: blogClusterCoverBySlug["ai-chat-boty-dlya-kompaniy"],
     category: "AI & ML",
     tags: ["AI chatbot", "RAG", "support automation", "operations"],
     author: "YappiX Team",
@@ -722,7 +722,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
         <li><a href="/blog/avtomatizaciya-biznes-processov-s-ai">Русская версия</a></li>
       </ul>
     `,
-    image: "/images/blog-covers/process-automation.png",
+    image: blogClusterCoverBySlug["avtomatizaciya-biznes-processov-s-ai"],
     category: "AI & ML",
     tags: ["business process automation", "AI", "operations", "ROI"],
     author: "YappiX Team",

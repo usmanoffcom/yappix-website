@@ -1,23 +1,48 @@
+# Production: SSH → /var/www/yappix.ru → pnpm build → pm2 restart yappix-ru
+# If this job fails, the site keeps serving the previous build (looks like "old code").
+# Check the failed job log on GitHub; common causes: SSH/firewall, git pull conflicts,
+# pnpm not in non-interactive PATH, OOM during `next build`, lockfile out of sync.
 name: Deploy to production
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production-yappix
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.3
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          command_timeout: 45m
           script: |
-            set -e
+            set -euo pipefail
             cd /var/www/yappix.ru
-            git pull origin main
+            # Non-login SSH shells often skip ~/.profile — load nvm if present
+            export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+            if [ -s "$NVM_DIR/nvm.sh" ]; then
+              # shellcheck source=/dev/null
+              . "$NVM_DIR/nvm.sh"
+            fi
+            export PATH="$HOME/.local/share/pnpm:$PATH"
+            echo "==> node: $(command -v node && node -v || echo missing)"
+            echo "==> pnpm: $(command -v pnpm && pnpm -v || echo missing)"
+            echo "==> before: $(git rev-parse --short HEAD)"
+            git fetch origin main
+            git reset --hard origin/main
+            echo "==> checkout: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
+            export NODE_OPTIONS="${NODE_OPTIONS:--max-old-space-size=4096}"
             pnpm install --frozen-lockfile
             pnpm run build
             pm2 restart yappix-ru
+            echo "==> deploy ok"
