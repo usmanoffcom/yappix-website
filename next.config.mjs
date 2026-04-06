@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-// CDN (опционально): NEXT_PUBLIC_CDN_URL только если на этапе build и на CDN настроен CORS для yappix.ru
-// (иначе браузер блокирует шрифты и чанки с другого origin → ChunkLoadError). См. .env.production.example.
+// CDN: NEXT_PUBLIC_CDN_URL при build → assetPrefix. Нужен CORS на cdn для origin yappix.ru — deploy/nginx-cdn-cors.conf
 const cdnUrl = (process.env.NEXT_PUBLIC_CDN_URL || '').trim()
 
 const nextConfig = {
