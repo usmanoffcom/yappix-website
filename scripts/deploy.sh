@@ -23,20 +23,20 @@ echo "==> checkout: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
 
 if [ -f .env.production ]; then
   set -a
-  # shellcheck disable=SC1091
+  # shellcheck source=/dev/null
   source .env.production
   set +a
 fi
-# assetPrefix на cdn.* — на границе CDN обязателен CORS для https://yappix.ru (deploy/nginx-cdn-cors.conf).
-# Safety: CDN assetPrefix выключен по умолчанию, чтобы исключить CORS/404 на чанках и шрифтах.
-# Включать только явным флагом ENABLE_CDN_ASSETPREFIX=1 и рабочим NEXT_PUBLIC_CDN_URL.
-if [ "${ENABLE_CDN_ASSETPREFIX:-0}" = "1" ] && [ -n "${NEXT_PUBLIC_CDN_URL:-}" ]; then
-  echo "==> CDN assetPrefix: enabled (${NEXT_PUBLIC_CDN_URL})"
-else
-  # IMPORTANT: Next.js reads .env.production during build; empty string blocks accidental re-enable from file.
-  export NEXT_PUBLIC_CDN_URL=""
-  echo "==> CDN assetPrefix: disabled (serving static from yappix.ru)"
+
+# Nuclear: strip NEXT_PUBLIC_CDN_URL from .env.production so Next.js cannot read it at build time.
+if [ -f .env.production ] && grep -q 'NEXT_PUBLIC_CDN_URL' .env.production; then
+  echo "==> purging NEXT_PUBLIC_CDN_URL from .env.production"
+  sed -i '/NEXT_PUBLIC_CDN_URL/d' .env.production
 fi
+# Belt-and-suspenders: override in env so Next.js build sees empty value.
+export NEXT_PUBLIC_CDN_URL=""
+unset ENABLE_CDN_ASSETPREFIX 2>/dev/null || true
+echo "==> CDN assetPrefix: disabled (serving static from yappix.ru)"
 
 if [ -z "${NODE_OPTIONS:-}" ]; then
   export NODE_OPTIONS="--max-old-space-size=4096"

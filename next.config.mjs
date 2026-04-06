@@ -4,7 +4,7 @@
 // This prevents chunk/font loading from cdn.yappix.ru during outages.
 
 const nextConfig = {
-  assetPrefix: undefined,
+  assetPrefix: '',
 
   /** Three.js / R3F ship modern ESM — без transpile Webpack иногда даёт runtime `reading 'call'` на чанках */
   transpilePackages: ['@splinetool/react-spline', '@splinetool/runtime', 'gsap', 'react-google-recaptcha-v3'],
