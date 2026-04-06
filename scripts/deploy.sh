@@ -28,8 +28,11 @@ if [ -f .env.production ]; then
   set +a
 fi
 # assetPrefix на cdn.* — на границе CDN обязателен CORS для https://yappix.ru (deploy/nginx-cdn-cors.conf).
-export NEXT_PUBLIC_CDN_URL="${NEXT_PUBLIC_CDN_URL:-https://cdn.yappix.ru}"
-echo "==> NEXT_PUBLIC_CDN_URL: ${NEXT_PUBLIC_CDN_URL}"
+if [ -n "${NEXT_PUBLIC_CDN_URL:-}" ]; then
+  echo "==> NEXT_PUBLIC_CDN_URL: ${NEXT_PUBLIC_CDN_URL}"
+else
+  echo "==> NEXT_PUBLIC_CDN_URL: (unset) — assetPrefix disabled, serving static from yappix.ru"
+fi
 
 if [ -z "${NODE_OPTIONS:-}" ]; then
   export NODE_OPTIONS="--max-old-space-size=4096"
