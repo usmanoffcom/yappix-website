@@ -1,7 +1,4 @@
-# Production: SSH → /var/www/yappix.ru → pnpm build → pm2 restart yappix-ru
-# If this job fails, the site keeps serving the previous build (looks like "old code").
-# Check the failed job log on GitHub; common causes: SSH/firewall, git pull conflicts,
-# pnpm not in non-interactive PATH, OOM during `next build`, lockfile out of sync.
+# Production: SSH → bash scripts/deploy.sh (см. scripts/deploy.sh)
 name: Deploy to production
 
 on:
@@ -28,34 +25,7 @@ jobs:
           script: |
             set -euo pipefail
             cd /var/www/yappix.ru
-            # Non-login SSH shells often skip ~/.profile — load nvm if present
-            export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
-            if [ -s "$NVM_DIR/nvm.sh" ]; then
-              # shellcheck source=/dev/null
-              . "$NVM_DIR/nvm.sh"
-            fi
-            export PATH="$HOME/.local/share/pnpm:$PATH"
-            echo "==> node: $(command -v node && node -v || echo missing)"
-            echo "==> pnpm: $(command -v pnpm && pnpm -v || echo missing)"
-            echo "==> before: $(git rev-parse --short HEAD)"
+            # Сначала подтянуть репозиторий — на сервере должен быть актуальный scripts/deploy.sh
             git fetch origin main
             git reset --hard origin/main
-            echo "==> checkout: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
-            # Avoid bash parameter-expansion quirks that can turn "--max" into "-max"
-            if [ -z "${NODE_OPTIONS:-}" ]; then
-              export NODE_OPTIONS="--max-old-space-size=4096"
-            fi
-            echo "==> NODE_OPTIONS: ${NODE_OPTIONS}"
-            # CDN (next.config assetPrefix): подставляется в бандл при build; на сервере можно задать в .env.production
-            if [ -f .env.production ]; then
-              set -a
-              # shellcheck disable=SC1091
-              . ./.env.production
-              set +a
-            fi
-            export NEXT_PUBLIC_CDN_URL="${NEXT_PUBLIC_CDN_URL:-https://cdn.yappix.ru}"
-            echo "==> NEXT_PUBLIC_CDN_URL: ${NEXT_PUBLIC_CDN_URL}"
-            pnpm install --frozen-lockfile
-            pnpm run build
-            pm2 restart yappix-ru
-            echo "==> deploy ok"
+            bash scripts/deploy.sh

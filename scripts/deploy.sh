@@ -1,10 +1,26 @@
 #!/usr/bin/env bash
-# Запуск на сервере: cd /var/www/yappix.ru && ./scripts/deploy.sh
-# Или с локальной машины: ssh user@host 'cd /var/www/yappix.ru && ./scripts/deploy.sh'
-set -e
+# Единая точка деплоя: /var/www/yappix.ru (CI и ручной SSH).
+# Не используйте устаревший ./deploy.sh в корне без обёртки — он заменён на вызов этого файла.
+set -euo pipefail
+
 cd /var/www/yappix.ru
 
-# CDN для assetPrefix (next.config): задаётся на build; переопределите в .env.production при необходимости
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  # shellcheck source=/dev/null
+  . "$NVM_DIR/nvm.sh"
+fi
+export PATH="${HOME}/.local/share/pnpm:${PATH}"
+
+echo "==> node: $(command -v node && node -v || echo missing)"
+echo "==> pnpm: $(command -v pnpm && pnpm -v || echo missing)"
+echo "==> before: $(git rev-parse --short HEAD 2>/dev/null || echo '?')"
+
+git fetch origin main
+git reset --hard origin/main
+
+echo "==> checkout: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
+
 if [ -f .env.production ]; then
   set -a
   # shellcheck disable=SC1091
@@ -12,9 +28,20 @@ if [ -f .env.production ]; then
   set +a
 fi
 export NEXT_PUBLIC_CDN_URL="${NEXT_PUBLIC_CDN_URL:-https://cdn.yappix.ru}"
+echo "==> NEXT_PUBLIC_CDN_URL: ${NEXT_PUBLIC_CDN_URL}"
 
-git pull origin main
+if [ -z "${NODE_OPTIONS:-}" ]; then
+  export NODE_OPTIONS="--max-old-space-size=4096"
+fi
+echo "==> NODE_OPTIONS: ${NODE_OPTIONS}"
+
+echo "==> clean .next (избегаем залипшей инкрементальной сборки)"
+rm -rf .next
+
 pnpm install --frozen-lockfile
 pnpm run build
+
 pm2 restart yappix-ru
-echo "Deploy done."
+
+echo "==> deploy ok | running: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
+pm2 describe yappix-ru 2>/dev/null | head -20 || true
