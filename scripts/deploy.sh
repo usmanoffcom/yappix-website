@@ -74,23 +74,28 @@ pm2 start npm --name yappix-ru -- start
 echo "==> waiting for Next.js to start..."
 sleep 5
 
-# Check if process is alive
-for i in 1 2 3 4; do
-  STATUS=$(pm2 show yappix-ru 2>/dev/null | grep "status" | head -1 || echo "unknown")
-  echo "==> attempt $i: $STATUS"
-  if echo "$STATUS" | grep -q "online"; then
+# Check PM2 is actually online (not errored/stopped)
+PM2_OK=0
+for i in 1 2 3 4 5 6; do
+  PM2_LINE=$(pm2 show yappix-ru 2>/dev/null | grep -E "status.*online|status.*errored|status.*stopped" | head -1 || true)
+  echo "==> attempt $i: $PM2_LINE"
+  if echo "$PM2_LINE" | grep -q "online"; then
+    PM2_OK=1
     break
   fi
   sleep 5
 done
 
-echo "==> pm2 error log (last 15):"
-pm2 logs yappix-ru --err --lines 15 --nostream 2>/dev/null || true
-echo "==> pm2 out log (last 5):"
-pm2 logs yappix-ru --out --lines 5 --nostream 2>/dev/null || true
+echo "==> pm2 error log (last 20):"
+pm2 logs yappix-ru --err --lines 20 --nostream 2>/dev/null || true
+echo "==> pm2 out log (last 10):"
+pm2 logs yappix-ru --out --lines 10 --nostream 2>/dev/null || true
 
-echo "==> pm2 full status:"
-pm2 show yappix-ru 2>/dev/null | grep -E "status|uptime|restart|script|exec_cwd|node.js|pid " || true
+if [ "$PM2_OK" != "1" ]; then
+  echo "==> DEPLOY FAILED: yappix-ru is not online in PM2"
+  pm2 show yappix-ru 2>/dev/null || true
+  exit 1
+fi
 
 # Save PM2 process list so it survives server reboot
 pm2 save 2>/dev/null || true
@@ -99,25 +104,22 @@ pm2 save 2>/dev/null || true
 sudo rm -rf /var/cache/nginx 2>/dev/null || true
 sudo nginx -s reload 2>/dev/null || sudo systemctl reload nginx 2>/dev/null || true
 
-# ─── Smoke test ───
+# ─── Smoke test (must succeed or CI fails) ───
 echo "==> smoke test localhost:3001"
-HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 http://localhost:3001/ 2>&1 || echo "000")
+HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 http://127.0.0.1:3001/ 2>&1 || echo "000")
 echo "==> HTTP status: $HTTP_CODE"
-if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "301" ] || [ "$HTTP_CODE" = "308" ]; then
-  SMOKE=$(curl -s --max-time 15 http://localhost:3001/ 2>&1 || true)
-  CDN_COUNT=$(echo "$SMOKE" | grep -c "cdn\.yappix\.ru" || true)
-  echo "==> cdn refs: $CDN_COUNT"
-  if [ "$CDN_COUNT" -eq 0 ]; then
-    echo "==> SITE IS CLEAN AND RUNNING"
-  else
-    echo "==> SITE RUNNING BUT CDN REFS FOUND"
-  fi
-else
-  echo "==> SITE NOT RESPONDING (HTTP $HTTP_CODE)"
-  echo "==> checking what is on port 3001:"
-  ss -tlnp 2>/dev/null | grep 3001 || echo "(nothing on port 3001)"
-  echo "==> pm2 restart count:"
-  pm2 show yappix-ru 2>/dev/null | grep "restart" || true
+if [ "$HTTP_CODE" != "200" ] && [ "$HTTP_CODE" != "301" ] && [ "$HTTP_CODE" != "308" ]; then
+  echo "==> DEPLOY FAILED: origin returned HTTP $HTTP_CODE"
+  ss -tlnp 2>/dev/null | grep 3001 || true
+  exit 1
+fi
+
+SMOKE=$(curl -s --max-time 30 http://127.0.0.1:3001/ 2>&1 || true)
+CDN_COUNT=$(echo "$SMOKE" | grep -c "cdn\.yappix\.ru" || true)
+echo "==> cdn refs in HTML: $CDN_COUNT"
+if [ "$CDN_COUNT" -gt 0 ]; then
+  echo "==> DEPLOY FAILED: HTML still references cdn.yappix.ru"
+  exit 1
 fi
 
 echo "==> deploy ok | $(git rev-parse --short HEAD)"
