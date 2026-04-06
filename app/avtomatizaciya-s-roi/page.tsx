@@ -3,6 +3,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { PillarPageTemplate } from "@/components/pillar-page-template"
 import { pillarPagesByLocale } from "@/lib/pillar-pages-data"
+import { pillarSocialMetadata } from "@/lib/og-metadata"
 
 const content = pillarPagesByLocale.ru["roi-automation"]
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   title: content.title,
   description: content.description,
   alternates: { canonical: `https://yappix.ru${content.canonicalPath}`, languages: { "en-US": "https://yappix.ru/en/roi-first-automation" } },
-  openGraph: { title: content.h1, description: content.description, type: "website", url: `https://yappix.ru${content.canonicalPath}`, siteName: "YappiX", locale: "ru_RU" },
+  ...pillarSocialMetadata(content, "ru_RU"),
 }
 
 export default function Page() {

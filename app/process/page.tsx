@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
+import { standardSocialMetadata } from "@/lib/og-metadata"
 import { ArrowRight, Search, Lightbulb, Layout, Cpu, CheckSquare, HeartHandshake } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -12,14 +13,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yappix.ru/process",
   },
-  openGraph: {
-    title: "Как работает YappiX — этапы, сроки и delivery-процесс",
-    description: "6 этапов запуска продукта: discovery, product logic, UX, AI-assisted delivery, QA и поддержка.",
-    type: "website",
-    url: "https://yappix.ru/process",
-    siteName: "YappiX",
+  ...standardSocialMetadata({
+    title: "Как работает YappiX — этапы, сроки, артефакты и delivery-процесс",
+    description:
+      "Как мы запускаем продукт: от discovery до поддержки. 6 этапов, понятные артефакты на каждой стадии, AI-assisted delivery.",
+    canonicalUrl: "https://yappix.ru/process",
     locale: "ru_RU",
-  },
+    ogTitle: "Как работает YappiX — этапы, сроки и delivery-процесс",
+    ogDescription: "6 этапов запуска продукта: discovery, product logic, UX, AI-assisted delivery, QA и поддержка.",
+  }),
 }
 
 const stages = [
