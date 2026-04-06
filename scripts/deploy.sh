@@ -65,7 +65,23 @@ fi
 
 pm2 delete yappix-ru 2>/dev/null || true
 pm2 start npm --name yappix-ru -- start
-sleep 3
+sleep 5
+
+echo "==> pm2 error log (last 15 lines):"
+pm2 logs yappix-ru --err --lines 15 --nostream 2>/dev/null || true
+
+echo "==> clearing nginx proxy cache (if any)"
+sudo rm -rf /var/cache/nginx 2>/dev/null || rm -rf /tmp/nginx_cache 2>/dev/null || true
+sudo nginx -s reload 2>/dev/null || sudo systemctl reload nginx 2>/dev/null || true
+echo "==> nginx reloaded"
+
+echo "==> smoke test: curl localhost for cdn refs"
+if curl -s --max-time 5 http://localhost:3001/ 2>/dev/null | grep -q "cdn\.yappix\.ru"; then
+  echo "PROBLEM: cdn.yappix.ru STILL in live response from localhost:3001!"
+  curl -s --max-time 5 http://localhost:3001/ 2>/dev/null | grep -o 'cdn\.yappix\.ru' | head -3
+else
+  echo "OK: no cdn.yappix.ru in localhost response"
+fi
 
 echo "==> deploy ok | running: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
 pm2 describe yappix-ru 2>/dev/null | head -20 || true

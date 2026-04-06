@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-// Incident mode: hard-disable CDN assetPrefix until CDN path is stable.
-// This prevents chunk/font loading from cdn.yappix.ru during outages.
-
 const nextConfig = {
   assetPrefix: '',
 
@@ -35,10 +32,6 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'yappix.ru',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.yappix.ru',
       },
       {
         protocol: 'https',
