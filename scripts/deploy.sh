@@ -70,7 +70,7 @@ if [ -n "$SS_OUT" ]; then
 fi
 
 # ─── Start ───
-pm2 start node_modules/.bin/next --name yappix-ru -- start -p 3001
+pm2 start npm --name yappix-ru -- start
 echo "==> waiting for Next.js to start..."
 sleep 5
 
