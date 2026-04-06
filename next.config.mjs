@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
-// CDN: включить только когда настроены 1) отдача _next/static с CDN 2) CORS: Access-Control-Allow-Origin: https://yappix.ru
-// Сейчас выключен — статика с yappix.ru. Включить: NEXT_PUBLIC_CDN_URL=https://cdn.yappix.ru
+// CDN: `NEXT_PUBLIC_CDN_URL` на этапе `pnpm run build` (см. .env.production.example, scripts/deploy.sh).
+// На CDN должен быть доступен тот же `/_next/static/*`, что и на origin; при кросс-домене — CORS для yappix.ru.
 const cdnUrl = (process.env.NEXT_PUBLIC_CDN_URL || '').trim()
 
 const nextConfig = {

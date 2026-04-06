@@ -41,7 +41,20 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             echo "==> checkout: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
-            export NODE_OPTIONS="${NODE_OPTIONS:--max-old-space-size=4096}"
+            # Avoid bash parameter-expansion quirks that can turn "--max" into "-max"
+            if [ -z "${NODE_OPTIONS:-}" ]; then
+              export NODE_OPTIONS="--max-old-space-size=4096"
+            fi
+            echo "==> NODE_OPTIONS: ${NODE_OPTIONS}"
+            # CDN (next.config assetPrefix): подставляется в бандл при build; на сервере можно задать в .env.production
+            if [ -f .env.production ]; then
+              set -a
+              # shellcheck disable=SC1091
+              . ./.env.production
+              set +a
+            fi
+            export NEXT_PUBLIC_CDN_URL="${NEXT_PUBLIC_CDN_URL:-https://cdn.yappix.ru}"
+            echo "==> NEXT_PUBLIC_CDN_URL: ${NEXT_PUBLIC_CDN_URL}"
             pnpm install --frozen-lockfile
             pnpm run build
             pm2 restart yappix-ru
