@@ -63,22 +63,35 @@ else
   echo "OK: no cdn.yappix.ru in built HTML"
 fi
 
+echo "==> stopping ALL processes on port 3001"
+pm2 stop yappix-ru 2>/dev/null || true
 pm2 delete yappix-ru 2>/dev/null || true
-pm2 start npm --name yappix-ru -- start
-sleep 5
-
-echo "==> pm2 error log (last 15 lines):"
-pm2 logs yappix-ru --err --lines 15 --nostream 2>/dev/null || true
+sleep 2
+# Kill ANY orphan process still holding port 3001
+fuser -k 3001/tcp 2>/dev/null || true
+lsof -ti:3001 | xargs kill -9 2>/dev/null || true
+sleep 2
+echo "==> port 3001 check: $(lsof -ti:3001 2>/dev/null || echo 'free')"
 
 echo "==> clearing nginx proxy cache (if any)"
-sudo rm -rf /var/cache/nginx 2>/dev/null || rm -rf /tmp/nginx_cache 2>/dev/null || true
-sudo nginx -s reload 2>/dev/null || sudo systemctl reload nginx 2>/dev/null || true
+rm -rf /var/cache/nginx 2>/dev/null || true
+rm -rf /tmp/nginx_cache 2>/dev/null || true
+nginx -s reload 2>/dev/null || systemctl reload nginx 2>/dev/null || true
 echo "==> nginx reloaded"
 
+pm2 start npm --name yappix-ru -- start
+sleep 8
+
+echo "==> pm2 status:"
+pm2 status yappix-ru 2>/dev/null | head -10 || true
+echo "==> pm2 error log (last 10 lines):"
+pm2 logs yappix-ru --err --lines 10 --nostream 2>/dev/null || true
+
 echo "==> smoke test: curl localhost for cdn refs"
-if curl -s --max-time 5 http://localhost:3001/ 2>/dev/null | grep -q "cdn\.yappix\.ru"; then
-  echo "PROBLEM: cdn.yappix.ru STILL in live response from localhost:3001!"
-  curl -s --max-time 5 http://localhost:3001/ 2>/dev/null | grep -o 'cdn\.yappix\.ru' | head -3
+SMOKE=$(curl -s --max-time 10 http://localhost:3001/ 2>&1)
+if echo "$SMOKE" | grep -q "cdn\.yappix\.ru"; then
+  echo "PROBLEM: cdn.yappix.ru STILL in live response!"
+  echo "$SMOKE" | grep -o 'cdn\.yappix\.ru' | head -3
 else
   echo "OK: no cdn.yappix.ru in localhost response"
 fi
