@@ -33,7 +33,8 @@ fi
 if [ "${ENABLE_CDN_ASSETPREFIX:-0}" = "1" ] && [ -n "${NEXT_PUBLIC_CDN_URL:-}" ]; then
   echo "==> CDN assetPrefix: enabled (${NEXT_PUBLIC_CDN_URL})"
 else
-  unset NEXT_PUBLIC_CDN_URL
+  # IMPORTANT: Next.js reads .env.production during build; empty string blocks accidental re-enable from file.
+  export NEXT_PUBLIC_CDN_URL=""
   echo "==> CDN assetPrefix: disabled (serving static from yappix.ru)"
 fi
 
