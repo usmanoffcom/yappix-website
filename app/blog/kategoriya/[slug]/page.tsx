@@ -14,6 +14,74 @@ interface CategoryPageProps {
   }
 }
 
+/** Уникальные meta + текст раздела по slug категории (посты хранят category как slug, не как name). */
+const CATEGORY_SEO: Record<
+  string,
+  {
+    metaDescription: string
+    intro: string
+  }
+> = {
+  "mvp-zapusk": {
+    metaDescription:
+      "MVP, запуск продукта и time-to-market: гипотезы, scope, метрики успеха, типичные ошибки фаундеров и как выйти на рынок без лишней разработки. Гайды и разборы от команды YappiX (AI-first delivery, ОАЭ, Европа, США).",
+    intro:
+      "Материалы про MVP и запуск: от проверки идеи до первых пользователей — без бесконечной пересборки и «идеального» релиза в вакууме.",
+  },
+  "ai-avtomatizaciya": {
+    metaDescription:
+      "AI, RAG и автоматизация для бизнеса: внедрение ассистентов, поиск по базе знаний, качество ответов, ROI и безопасность контуров. Практические статьи YappiX по LLM, процессам и интеграциям с CRM/ERP.",
+    intro:
+      "Статьи про внедрение AI и автоматизацию процессов: когда технология окупается, как считать эффект и что важно для безопасного production.",
+  },
+  "cto-delivery": {
+    metaDescription:
+      "CTO, delivery и управление разработкой: подрядчики vs продуктовая команда, архитектура, срывы сроков, перезапуск продукта и зрелость процессов. Опыт YappiX в запуске и сопровождении digital-продуктов.",
+    intro:
+      "Разборы про CTO as a Service, delivery и ответственность за продукт: как не потерять бюджет и сроки на пути к релизу.",
+  },
+  "stoimost-ekonomika": {
+    metaDescription:
+      "Стоимость разработки, бюджеты SaaS и экономика AI: из чего складывается цена, как оценить сроки, как считать ROI автоматизации и когда «дешево» обходится дороже. Практические заметки YappiX для фаундеров и заказчиков.",
+    intro:
+      "Материалы про деньги и сроки: прозрачная модель оценки, типовые статьи расходов и как связать инвестиции в разработку с метриками бизнеса.",
+  },
+  "oae-biznes-za-rubezhom": {
+    metaDescription:
+      "ОАЭ, Европа и международный бизнес: запуск MVP, digital-команда для фаундеров за рубежом, нюансы коммуникации и выбора IT-партнёра. Статьи YappiX для компаний в Дубае, ЕС и смежных рынках.",
+    intro:
+      "Заметки про запуск и сопровождение продуктов, когда команда и клиенты в разных юрисдикциях — и нужен предсказуемый digital-контур.",
+  },
+  "kejsy-metodologiya": {
+    metaDescription:
+      "Кейсы, методология и доказательства результата: как читать портфолио, какие артефакты важны на этапах, impact и метрики переработки продукта. Материалы YappiX про честные кейсы и измеримый delivery.",
+    intro:
+      "Про то, как мы оцениваем проекты, что считаем сильным кейсом и как связываем методологию с реальными цифрами для заказчика.",
+  },
+  novosti: {
+    metaDescription:
+      "Новости YappiX: обновления студии, продукты, партнёрства и участие в программах для стартапов. Короткие заметки о том, что происходит в команде и вокруг проектов.",
+    intro: "Следите за последними новостями и достижениями YappiX — от обновлений продуктов до партнёрств и грантовых программ.",
+  },
+  razrabotka: {
+    metaDescription:
+      "Веб и мобильная разработка, архитектура и инженерные практики: Next.js, React, производительность, безопасность и типовые решения для продуктовых команд. Статьи блога YappiX с упором на практику.",
+    intro:
+      "Практические руководства по разработке сайтов и приложений, архитектуре систем и инженерным решениям — от команды с сотнями запущенных проектов.",
+  },
+  "ai-ml": {
+    metaDescription:
+      "ИИ и ML в продакшене: LLM, RAG, оценка качества ответов, RBAC, логирование и SLO для AI-сервисов. Технические и продуктовые статьи YappiX для команд, которые внедряют модели в реальный бизнес.",
+    intro:
+      "Статьи об искусственном интеллекте и машинном обучении: от архитектуры RAG до контроля качества и безопасности AI-контуров.",
+  },
+  biznes: {
+    metaDescription:
+      "Бизнес, стартапы и продукт: стратегия запуска, юнит-экономика, работа с инвесторами и масштабирование digital-продуктов. Материалы блога YappiX для фаундеров и руководителей.",
+    intro: "Бизнес-статьи: стартапы, инвестиции, масштабирование и продуктовая разработка в реальных условиях рынка.",
+  },
+}
+
 // Generate static params for all categories
 export async function generateStaticParams() {
   return blogCategories
@@ -33,25 +101,21 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     }
   }
 
-  const categoryDescriptions: Record<string, string> = {
-    novosti: "Последние новости YappiX: обновления, достижения, партнёрства. Следите за развитием IT-студии.",
-    razrabotka: "Статьи о веб-разработке, мобильных приложениях, архитектуре и лучших практиках программирования.",
-    "ai-ml": "Искусственный интеллект и машинное обучение: AI-агенты, LLM, RAG-системы, автоматизация бизнеса.",
-    devops: "DevOps практики: CI/CD, Kubernetes, Docker, облачная инфраструктура, мониторинг и автоматизация.",
-    seo: "SEO-оптимизация для Next.js, React, продвижение в Яндекс и Google, Core Web Vitals.",
-    biznes: "Бизнес-статьи: стартапы, инвестиции, масштабирование, продуктовая разработка.",
-  }
+  const seo = CATEGORY_SEO[params.slug]
+  const description =
+    seo?.metaDescription ??
+    `Статьи и разборы в категории «${category.name}» в блоге YappiX: практические рекомендации по разработке продуктов, AI и запуску для бизнеса в ОАЭ, Европе и США.`
 
   return {
-    title: `${category.name} — Блог YappiX | Статьи и руководства`,
-    description: categoryDescriptions[params.slug] || `Статьи в категории "${category.name}" от IT-студии YappiX`,
-    keywords: [category.name, "YappiX блог", "IT статьи", "разработка", "технологии"],
+    title: `${category.name} — блог YappiX: статьи и руководства`,
+    description,
+    keywords: [category.name, "YappiX блог", "IT статьи", "разработка продуктов", "AI"],
     alternates: {
       canonical: `https://yappix.ru/blog/kategoriya/${params.slug}`,
     },
     openGraph: {
-      title: `${category.name} — Блог YappiX`,
-      description: categoryDescriptions[params.slug] || `Статьи в категории "${category.name}"`,
+      title: `${category.name} — блог YappiX`,
+      description,
       type: "website",
       url: `https://yappix.ru/blog/kategoriya/${params.slug}`,
       siteName: "YappiX",
@@ -67,10 +131,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     notFound()
   }
 
-  // Filter posts by category
+  // Посты хранят category как slug (например mvp-zapusk), а не как отображаемое имя
   const categoryPosts = blogPosts.filter(
-    (post) => post.category.toLowerCase() === category.name.toLowerCase() ||
-              post.category === category.name
+    (post) => post.category === category.slug || post.category === category.name,
   )
 
   return (
@@ -103,7 +166,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               {category.name}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl">
-              {getCategoryDescription(params.slug)}
+              {getCategoryIntro(params.slug)}
             </p>
 
             {/* Category Navigation */}
@@ -215,7 +278,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 .filter((cat) => cat.slug !== "" && cat.slug !== params.slug)
                 .map((cat) => {
                   const count = blogPosts.filter(
-                    (post) => post.category.toLowerCase() === cat.name.toLowerCase() || post.category === cat.name
+                    (post) => post.category === cat.slug || post.category === cat.name,
                   ).length
                   return (
                     <Link
@@ -242,7 +305,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             name: `${category.name} — Блог YappiX`,
-            description: getCategoryDescription(params.slug),
+            description: getCategoryIntro(params.slug),
             url: `https://yappix.ru/blog/kategoriya/${params.slug}`,
             isPartOf: {
               "@type": "Blog",
@@ -274,14 +337,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   )
 }
 
-function getCategoryDescription(slug: string): string {
-  const descriptions: Record<string, string> = {
-    novosti: "Следите за последними новостями и достижениями YappiX. Обновления продуктов, партнёрства, участие в грантах и венчурных программах.",
-    razrabotka: "Практические руководства по веб-разработке, мобильным приложениям, архитектуре систем. Советы от команды YappiX с опытом 250+ проектов.",
-    "ai-ml": "Статьи об искусственном интеллекте и машинном обучении. AI-агенты, LLM-интеграции, RAG-системы, автоматизация бизнес-процессов.",
-    devops: "DevOps лучшие практики: CI/CD пайплайны, Kubernetes, Docker, облачная инфраструктура AWS и GCP, мониторинг и observability.",
-    seo: "SEO-оптимизация для современных веб-приложений. Next.js, React SSR, Core Web Vitals, продвижение в Яндекс и Google.",
-    biznes: "Бизнес и стартапы: привлечение инвестиций, масштабирование, продуктовая разработка, опыт резидента Сколково.",
-  }
-  return descriptions[slug] || "Статьи и руководства от IT-студии YappiX"
+function getCategoryIntro(slug: string): string {
+  const seo = CATEGORY_SEO[slug]
+  if (seo) return seo.intro
+  return "Статьи и руководства от команды YappiX — AI-first product engineering для бизнеса в ОАЭ, Европе и США."
 }
