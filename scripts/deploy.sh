@@ -27,8 +27,13 @@ if [ -f .env.production ]; then
   source .env.production
   set +a
 fi
-export NEXT_PUBLIC_CDN_URL="${NEXT_PUBLIC_CDN_URL:-https://cdn.yappix.ru}"
-echo "==> NEXT_PUBLIC_CDN_URL: ${NEXT_PUBLIC_CDN_URL}"
+# Без дефолта: assetPrefix на другой хост ломает сайт без CORS на CDN (шрифты/chunks с cdn.*).
+# Включайте только в .env.production после настройки CDN: Access-Control-Allow-Origin: https://yappix.ru
+if [ -n "${NEXT_PUBLIC_CDN_URL:-}" ]; then
+  echo "==> NEXT_PUBLIC_CDN_URL: ${NEXT_PUBLIC_CDN_URL}"
+else
+  echo "==> NEXT_PUBLIC_CDN_URL: (unset) — статика с yappix.ru, без assetPrefix"
+fi
 
 if [ -z "${NODE_OPTIONS:-}" ]; then
   export NODE_OPTIONS="--max-old-space-size=4096"

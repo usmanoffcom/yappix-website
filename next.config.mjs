@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
-// CDN: `NEXT_PUBLIC_CDN_URL` на этапе `pnpm run build` (см. .env.production.example, scripts/deploy.sh).
-// На CDN должен быть доступен тот же `/_next/static/*`, что и на origin; при кросс-домене — CORS для yappix.ru.
+// CDN (опционально): NEXT_PUBLIC_CDN_URL только если на этапе build и на CDN настроен CORS для yappix.ru
+// (иначе браузер блокирует шрифты и чанки с другого origin → ChunkLoadError). См. .env.production.example.
 const cdnUrl = (process.env.NEXT_PUBLIC_CDN_URL || '').trim()
 
 const nextConfig = {
