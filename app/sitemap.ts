@@ -90,6 +90,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly' as const,
       priority: 0.4,
     },
+    {
+      url: `${baseUrl}/en/oferta`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
     { url: `${baseUrl}/process`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${baseUrl}/ai-first-razrabotka`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${baseUrl}/mvp-i-zapusk-produkta`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },

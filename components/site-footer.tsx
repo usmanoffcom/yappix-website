@@ -71,7 +71,7 @@ const footerLinksByLocale: Record<
     ],
     legal: [
       { label: "Privacy Policy", href: "/en/privacy-policy" },
-      { label: "Terms of Service", href: "/oferta" },
+      { label: "Terms of Service", href: "/en/oferta" },
       { label: "Company Details", href: "/en/rekvizity" },
     ],
   },

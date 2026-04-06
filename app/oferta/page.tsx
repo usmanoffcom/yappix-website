@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   keywords: ["оферта YappiX", "публичная оферта", "условия оказания услуг", "договор"],
   alternates: {
     canonical: "https://yappix.ru/oferta",
+    languages: {
+      "ru-RU": "https://yappix.ru/oferta",
+      "en-US": "https://yappix.ru/en/oferta",
+      "x-default": "https://yappix.ru/oferta",
+    },
   },
   openGraph: {
     title: "Публичная оферта YappiX",
