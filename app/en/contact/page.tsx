@@ -240,7 +240,7 @@ export default function ContactEnPage() {
                     />
                     <Label htmlFor="privacy" className="text-sm text-muted-foreground">
                       I agree to the processing of personal data in accordance with the{" "}
-                      <Link href="/politika-konfidencialnosti" className="text-primary hover:underline">
+                      <Link href="/en/privacy-policy" className="text-primary hover:underline">
                         privacy policy
                       </Link>
                     </Label>

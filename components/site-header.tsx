@@ -17,6 +17,7 @@ import {
 import { Menu, Phone, ArrowRight, Globe, Code, Bot, Cloud, Landmark, Server, Search, Share2, Database, LineChart, Palette, ShieldCheck } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Logo } from "./logo"
+import { geoEnPathToRu, geoRuPathToEn } from "@/lib/locale-path-mapping"
 
 type Locale = "ru" | "en"
 type NavItem = { href: string; label: string }
@@ -178,6 +179,7 @@ const staticEnToRuPath: Record<string, string> = {
   "/en/services": "/uslugi",
   "/en/founder": "/founder",
   "/en/blog": "/blog",
+  "/en/privacy-policy": "/politika-konfidencialnosti",
 }
 
 const blogPathPairs = blogPostsEn.reduce(
@@ -211,6 +213,8 @@ function getRuHref(pathname: string): string {
   if (exact) return exact
   if (pathname.startsWith("/en/cases/")) return pathname.replace(/^\/en\/cases/, "/kejsy")
   if (pathname.startsWith("/en/blog/")) return "/blog"
+  const geoRu = geoEnPathToRu(pathname)
+  if (geoRu) return geoRu
   if (pathname.startsWith("/en/") && pathname.length > 4) {
     return pathname.slice(3)
   }
@@ -222,6 +226,10 @@ function getEnHref(pathname: string): string {
   if (exact) return exact
   if (pathname.startsWith("/kejsy/")) return pathname.replace(/^\/kejsy/, "/en/cases")
   if (pathname.startsWith("/blog/")) return "/en/blog"
+  if (pathname === "/uslugi" || pathname.startsWith("/uslugi/")) return "/en/services"
+  if (pathname === "/politika-konfidencialnosti") return "/en/privacy-policy"
+  const geoEn = geoRuPathToEn(pathname)
+  if (geoEn) return geoEn
   if (pathname.startsWith("/") && pathname !== "/" && !pathname.startsWith("/en")) {
     return `/en${pathname}`
   }

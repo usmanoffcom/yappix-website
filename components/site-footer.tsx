@@ -70,7 +70,7 @@ const footerLinksByLocale: Record<
       { label: "Contact", href: "/en/contact" },
     ],
     legal: [
-      { label: "Privacy Policy", href: "/politika-konfidencialnosti" },
+      { label: "Privacy Policy", href: "/en/privacy-policy" },
       { label: "Terms of Service", href: "/oferta" },
       { label: "Company Details", href: "/en/rekvizity" },
     ],

@@ -87,7 +87,7 @@ const contactContentByLocale = {
     errorDefault: "Send failed. Try again later or contact us by phone.",
     privacyPre: "By submitting you agree to our",
     privacyLink: "Privacy Policy",
-    privacyHref: "/politika-konfidencialnosti",
+    privacyHref: "/en/privacy-policy",
     quickContact: "Quick Contact",
     telegramDesc: "Reply within 5 minutes",
     callLabel: "Call",

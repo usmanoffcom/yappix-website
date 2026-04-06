@@ -299,6 +299,16 @@ const nextConfig = {
         destination: '/uslugi/devops',
         permanent: true,
       },
+      // EN mirror paths that never existed (language switcher used /en + RU path) → valid EN URLs
+      { source: '/en/uslugi', destination: '/en/services', permanent: true },
+      { source: '/en/uslugi/:path*', destination: '/en/services', permanent: true },
+      { source: '/en/politika-konfidencialnosti', destination: '/en/privacy-policy', permanent: true },
+      { source: '/en/razrabotka-sajtov-moskva', destination: '/en/software-development-moscow', permanent: true },
+      { source: '/en/razrabotka-sajtov-ssha', destination: '/en/software-development-usa', permanent: true },
+      { source: '/en/razrabotka-sajtov-germaniya', destination: '/en/software-development-germany', permanent: true },
+      { source: '/en/razrabotka-sajtov-turciya', destination: '/en/software-development-turkey', permanent: true },
+      { source: '/en/razrabotka-sajtov-serbiya', destination: '/en/software-development-serbia', permanent: true },
+      { source: '/en/razrabotka-sajtov-kazahstan', destination: '/en/software-development-kazakhstan', permanent: true },
     ]
   },
 }
