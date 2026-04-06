@@ -46,10 +46,26 @@ echo "==> NODE_OPTIONS: ${NODE_OPTIONS}"
 echo "==> clean .next (избегаем залипшей инкрементальной сборки)"
 rm -rf .next
 
+echo "==> next.config.mjs assetPrefix line:"
+grep -n "assetPrefix" next.config.mjs || echo "(not found)"
+
 pnpm install --frozen-lockfile
 pnpm run build
 
-pm2 restart yappix-ru
+echo "==> built assetPrefix in .next/required-server-files.json:"
+node -e "const c=JSON.parse(require('fs').readFileSync('.next/required-server-files.json','utf8')); console.log('assetPrefix:', JSON.stringify(c.config.assetPrefix))"
+
+echo "==> checking built index.html for cdn.yappix.ru:"
+if grep -q "cdn\.yappix\.ru" .next/server/app/index.html 2>/dev/null; then
+  echo "PROBLEM: cdn.yappix.ru FOUND in built HTML!"
+  grep -o 'https://cdn\.yappix\.ru[^"]*' .next/server/app/index.html | head -3
+else
+  echo "OK: no cdn.yappix.ru in built HTML"
+fi
+
+pm2 delete yappix-ru 2>/dev/null || true
+pm2 start npm --name yappix-ru -- start
+sleep 3
 
 echo "==> deploy ok | running: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
 pm2 describe yappix-ru 2>/dev/null | head -20 || true
