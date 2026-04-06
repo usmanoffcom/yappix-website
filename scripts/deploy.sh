@@ -35,11 +35,13 @@ echo "==> stopping yappix-ru"
 pm2 delete yappix-ru 2>/dev/null || true
 sleep 1
 
-# Kill anything on port 3001
+# Kill orphan next-server processes on port 3001
 kill_port() {
-  for pid in $(sudo lsof -ti:3001 2>/dev/null || lsof -ti:3001 2>/dev/null || true); do
+  pkill -9 -f "next-server.*3001" 2>/dev/null || true
+  pkill -9 -f "next-start.*3001" 2>/dev/null || true
+  for pid in $(ss -tlnp 2>/dev/null | grep ':3001 ' | grep -oP 'pid=\K[0-9]+' || true); do
     echo "    kill $pid"
-    sudo kill -9 "$pid" 2>/dev/null || kill -9 "$pid" 2>/dev/null || true
+    kill -9 "$pid" 2>/dev/null || true
   done
 }
 kill_port
@@ -67,8 +69,8 @@ if [ -n "$SS_OUT" ]; then
   sleep 3
 fi
 
-# ─── Start ───
-pm2 start npm --name yappix-ru -- start
+# ─── Start next directly (not via npm — avoids orphan child processes) ───
+pm2 start node_modules/.bin/next --name yappix-ru -- start -p 3001
 sleep 10
 
 echo "==> pm2 error log:"
