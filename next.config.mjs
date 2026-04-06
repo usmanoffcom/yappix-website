@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-// CDN: NEXT_PUBLIC_CDN_URL при build → assetPrefix. Нужен CORS на cdn для origin yappix.ru — deploy/nginx-cdn-cors.conf
-const cdnUrl = (process.env.NEXT_PUBLIC_CDN_URL || '').trim()
+// Incident mode: hard-disable CDN assetPrefix until CDN path is stable.
+// This prevents chunk/font loading from cdn.yappix.ru during outages.
 
 const nextConfig = {
-  assetPrefix: cdnUrl ? cdnUrl.replace(/\/$/, '') : undefined,
+  assetPrefix: undefined,
 
   /** Three.js / R3F ship modern ESM — без transpile Webpack иногда даёт runtime `reading 'call'` на чанках */
   transpilePackages: ['@splinetool/react-spline', '@splinetool/runtime', 'gsap', 'react-google-recaptcha-v3'],
