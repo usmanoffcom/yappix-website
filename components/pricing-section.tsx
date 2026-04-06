@@ -45,7 +45,7 @@ export function PricingSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
           {plans.map((plan, index) => (
             <div key={index} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
               <Card
-                className={`h-full flex flex-col ${plan.popular ? "border-primary bg-primary/5 relative" : "border-border bg-card"}`}
+                className={`h-full flex flex-col ${plan.popular ? "glass-strong !border-primary/40 !bg-primary/[0.06] relative" : ""}`}
               >
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">

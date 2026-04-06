@@ -60,8 +60,9 @@ const copy: Record<
 export function TargetAudienceSection({ locale = "ru" }: { locale?: Locale }) {
   const t = copy[locale]
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 relative bg-[url('/abstract-background-4480x2520-11615.png')] bg-cover bg-center bg-no-repeat">
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-headline text-foreground mb-4">{t.h2}</h2>
           <p className="text-body-lg max-w-3xl mx-auto">{t.lead}</p>
@@ -71,7 +72,7 @@ export function TargetAudienceSection({ locale = "ru" }: { locale?: Locale }) {
             <Link
               key={item.title}
               href={item.href}
-              className="group p-6 md:p-8 bg-card border border-border rounded-2xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+              className="group glass p-6 md:p-8 rounded-2xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 mb-5">
                 <item.icon className="w-6 h-6 text-primary" />

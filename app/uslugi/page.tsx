@@ -6,24 +6,26 @@ import { Button } from "@/components/ui/button"
 import { Globe, Smartphone, Bot, Cloud, CreditCard, Server, Search, Share2, ArrowRight, Database, LineChart, Palette, ShieldCheck } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "IT-услуги с AI-first подходом — Разработка, SEO, DevOps | YappiX",
+  title: "Разработка сайтов на заказ, MVP, SaaS, AI чат-боты — услуги YappiX",
   description:
-    "Полный спектр IT-услуг с AI-ускорением: веб-разработка, приложения, AI, SaaS, FinTech, DevOps, SEO, SMM, интеграции, аналитика, UX/UI, кибербезопасность. Сроки в 7-12 раз быстрее. 10+ лет опыта.",
+    "Сайты и интернет-магазины, мобильные приложения, MVP и SaaS, внедрение ИИ и автоматизация процессов — полный цикл под ключ.",
   keywords: [
-    "разработка сайтов AI",
-    "создание мобильного приложения цена",
-    "AI чат-бот разработка GPT",
-    "SaaS разработка под ключ",
-    "DevOps услуги Kubernetes",
-    "SEO продвижение AI",
-    "AI-first разработка",
+    "разработка сайтов на заказ",
+    "корпоративные сайты",
+    "интернет-магазины",
+    "мобильные приложения на заказ",
+    "разработка MVP",
+    "разработка SaaS",
+    "внедрение ИИ в бизнес",
+    "AI чат-боты",
+    "автоматизация бизнес-процессов",
   ],
   alternates: {
     canonical: "https://yappix.ru/uslugi",
   },
   openGraph: {
-    title: "IT-услуги с AI-first подходом — YappiX",
-    description: "Полный спектр IT-услуг с AI-ускорением: разработка сайтов, приложений, AI чат-боты. Сроки в 7-12 раз быстрее.",
+    title: "Разработка сайтов на заказ, MVP, SaaS и AI — YappiX",
+    description: "Корпоративные сайты, интернет-магазины, мобильные приложения, MVP, SaaS, внедрение ИИ в бизнес и автоматизация процессов.",
     type: "website",
     url: "https://yappix.ru/uslugi",
     siteName: "YappiX",
@@ -39,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IT-услуги с AI-first подходом — YappiX",
-    description: "Полный спектр IT-услуг с AI-ускорением. Сроки в 7-12 раз быстрее рынка.",
+    title: "Разработка сайтов на заказ и AI-автоматизация — YappiX",
+    description: "Корпоративные сайты, интернет-магазины, мобильные приложения, MVP, SaaS и AI чат-боты.",
   },
 }
 
@@ -50,7 +52,7 @@ const services = [
     title: "Разработка сайтов",
     slug: "razrabotka-sajtov",
     description:
-      "AI-first разработка: лендинги, корпоративные сайты, интернет-магазины. Cursor AI + v0.dev = сроки в 7-12 раз быстрее. SEO из коробки.",
+      "Лендинги, корпоративные сайты и e-commerce на современном стеке (Next.js, Cursor, v0.dev): короткие итерации, техническое SEO и скорость загрузки с первого релиза.",
     tags: ["Next.js", "React", "Cursor AI", "v0.dev"],
     price: "от 62 500 ₽",
   },
@@ -171,11 +173,10 @@ export default function UslugiPage() {
                 AI-First подход
               </div>
               <h1 className="text-display text-foreground mb-6 text-balance">
-                IT-услуги с AI-ускорением
+                Сайты, приложения, MVP, SaaS и внедрение ИИ
               </h1>
               <p className="text-body-lg mb-8 text-pretty">
-                Полный цикл разработки цифровых продуктов с AI-first подходом. Используем Cursor AI, v0.dev, ChatGPT — 
-                разрабатываем в 7-12 раз быстрее при том же качестве. 10+ лет опыта, 250+ проектов.
+                От лендинга до сложного продукта: веб и мобайл, облачные сервисы, ассистенты и автоматизация процессов. Работаем как product engineering — с метриками, а не только с ТЗ.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
@@ -250,6 +251,45 @@ export default function UslugiPage() {
                 <p className="font-semibold text-foreground">ROI Methodology</p>
                 <p className="text-sm text-muted-foreground mt-2">Как считаем экономику внедрения AI</p>
               </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-12 md:py-16 border-t border-border bg-card/30">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Направления и материалы</h2>
+            <p className="text-muted-foreground mb-8 max-w-3xl">
+              Быстрые переходы к основным услугам и статьям — на русском и на английском.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="rounded-xl border border-border bg-background p-5">
+                <h3 className="font-semibold text-foreground mb-3">На русском</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link className="text-primary hover:underline" href="/uslugi/razrabotka-sajtov">Разработка сайтов на заказ</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/razrabotka-sajtov">Корпоративные сайты</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/razrabotka-sajtov">Интернет-магазины</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/mobilnye-prilozheniya">Мобильные приложения на заказ</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/mvp-i-zapusk-produkta">Разработка MVP</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/saas-paas">Разработка SaaS</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/vnedrenie-ai-i-rag">Внедрение ИИ в бизнес</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/ai-chat-boty">AI чат-боты</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/avtomatizaciya-s-roi">Автоматизация бизнес-процессов</Link></li>
+                </ul>
+              </div>
+              <div className="rounded-xl border border-border bg-background p-5">
+                <h3 className="font-semibold text-foreground mb-3">In English</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link className="text-primary hover:underline" href="/en/services">Custom website development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/services">Corporate website development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/services">E-commerce website development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/services">Custom mobile app development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/mvp-i-zapusk-produkta">MVP development services</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/usa/razrabotka-saas-i-lichnyh-kabinetov">SaaS development services</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/vnedrenie-ai-i-rag">AI implementation in business</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/vnedrenie-ai-i-rag">AI chatbot development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/roi-first-automation">Business process automation</Link></li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

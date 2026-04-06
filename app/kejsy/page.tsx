@@ -290,8 +290,8 @@ export default function CasesPage() {
               </div>
               <div>
                 <Clock className="w-8 h-8 text-primary mx-auto mb-4" />
-                <p className="text-4xl font-bold text-foreground mb-2">7x-12x</p>
-                <p className="text-muted-foreground">Быстрее с AI</p>
+                <p className="text-4xl font-bold text-foreground mb-2">AI-first</p>
+                <p className="text-muted-foreground">Короче циклы разработки</p>
               </div>
               <div>
                 <Users className="w-8 h-8 text-primary mx-auto mb-4" />

@@ -18,18 +18,19 @@ const badgesByLocale = {
 export function TrustBadges({ locale = "ru" }: { locale?: "ru" | "en" }) {
   const badges = badgesByLocale[locale]
   return (
-    <section className="py-10 sm:py-12 md:py-16 border-y border-border bg-card/50">
+    <section className="py-12 sm:py-16 md:py-20 border-y border-white/[0.06] glass-subtle">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {badges.map((badge, index) => (
-            <div key={index} className="flex items-start gap-3 sm:gap-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <badge.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+            <div
+              key={index}
+              className="group relative glass rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+            >
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                <badge.icon className="h-6 w-6 text-primary" />
               </div>
-              <div>
-                <h3 className="font-semibold text-foreground text-sm sm:text-base leading-tight">{badge.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">{badge.description}</p>
-              </div>
+              <h3 className="text-base sm:text-lg font-semibold text-foreground leading-tight">{badge.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{badge.description}</p>
             </div>
           ))}
         </div>

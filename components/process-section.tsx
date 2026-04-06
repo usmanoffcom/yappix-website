@@ -32,7 +32,7 @@ export function ProcessSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
   const head = processHeadByLocale[locale]
   const fallback = videoFallback[locale]
   return (
-    <section id="process" className="section-padding bg-card/30">
+    <section id="process" className="section-padding glass-subtle">
       <div className="container mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 lg:mb-16">
           <Badge variant="outline" className="mb-3 sm:mb-4">
@@ -46,7 +46,7 @@ export function ProcessSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
 
         {/* Video Player */}
         <div className="max-w-4xl mx-auto mb-10 sm:mb-12 lg:mb-16 px-4">
-          <div className="relative aspect-video rounded-2xl overflow-hidden border border-border/50 bg-black/50 shadow-2xl shadow-primary/5 animate-in fade-in slide-in-from-bottom-4 duration-500 hover:shadow-primary/10 transition-shadow">
+          <div className="relative aspect-video rounded-2xl overflow-hidden border border-border/50 bg-black/50 shadow-2xl shadow-primary/5 hover:shadow-primary/10 transition-shadow">
             <video
               className="w-full h-full object-contain"
               controls
@@ -67,7 +67,7 @@ export function ProcessSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="relative flex gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-8 sm:pb-10 lg:pb-12 last:pb-0 animate-in fade-in slide-in-from-bottom-4 duration-500"
+              className="relative flex gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-8 sm:pb-10 lg:pb-12 last:pb-0"
             >
               {/* Timeline */}
               <div className="flex flex-col items-center">

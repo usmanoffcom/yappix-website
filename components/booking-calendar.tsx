@@ -15,12 +15,55 @@ const timeSlots = Array.from({ length: 21 }, (_, i) => {
   return `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`
 })
 
+const bookingUi = {
+  ru: {
+    title: "Забронировать звонок",
+    description: "Выберите удобное время для 30-минутной консультации. Мы свяжемся с вами в выбранное время.",
+    successTitle: "Звонок забронирован!",
+    successLine: "Мы свяжемся с вами",
+    at: "в",
+    pickDate: "Выберите дату *",
+    pickTime: "Выберите время *",
+    contactsTitle: "Ваши контакты",
+    nameLabel: "ФИО *",
+    namePlaceholder: "Иван Иванов",
+    emailLabel: "Email *",
+    phoneLabel: "Телефон *",
+    phonePlaceholder: "+7 (___) ___-__-__",
+    submit: "Забронировать звонок",
+    submitting: "Отправка...",
+    error: "Ошибка отправки. Попробуйте позже или свяжитесь по телефону.",
+    locale: "ru-RU" as const,
+  },
+  en: {
+    title: "Book a Call",
+    description: "Pick a time for a 30-minute consultation. We’ll reach you at the scheduled time.",
+    successTitle: "Call booked!",
+    successLine: "We’ll contact you on",
+    at: "at",
+    pickDate: "Select a date *",
+    pickTime: "Select a time *",
+    contactsTitle: "Your details",
+    nameLabel: "Full name *",
+    namePlaceholder: "Jane Doe",
+    emailLabel: "Email *",
+    phoneLabel: "Phone *",
+    phonePlaceholder: "+1 (___) ___-____",
+    submit: "Confirm booking",
+    submitting: "Sending...",
+    error: "Could not submit. Try again later or call us.",
+    locale: "en-US" as const,
+  },
+} as const
+
 interface BookingCalendarProps {
   isOpen: boolean
   onClose: () => void
+  locale?: "ru" | "en"
 }
 
-export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
+export function BookingCalendar({ isOpen, onClose, locale = "ru" }: BookingCalendarProps) {
+  const ui = bookingUi[locale]
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [selectedTime, setSelectedTime] = useState<string>("")
   const [formData, setFormData] = useState({
@@ -52,7 +95,7 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
   const availableDates = getAvailableDates()
 
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString("ru-RU", {
+    return date.toLocaleDateString(ui.locale, {
       weekday: "short",
       day: "numeric",
       month: "long",
@@ -106,16 +149,14 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Calendar className="w-5 h-5" />
-            Забронировать звонок
+            {ui.title}
           </DialogTitle>
-          <DialogDescription>
-            Выберите удобное время для 30-минутной консультации. Мы свяжемся с вами в выбранное время.
-          </DialogDescription>
+          <DialogDescription>{ui.description}</DialogDescription>
         </DialogHeader>
 
         {submitStatus === "success" ? (
@@ -123,16 +164,17 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
               <Send className="w-8 h-8 text-green-500" />
             </div>
-            <h3 className="text-xl font-semibold text-foreground mb-2">Звонок забронирован!</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-2">{ui.successTitle}</h3>
             <p className="text-muted-foreground">
-              Мы свяжемся с вами {selectedDate && formatDate(selectedDate)} в {selectedTime}
+              {ui.successLine}{" "}
+              {selectedDate && formatDate(selectedDate)} {ui.at} {selectedTime}
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Выбор даты */}
             <div className="space-y-3">
-              <Label className="text-foreground">Выберите дату *</Label>
+              <Label className="text-foreground">{ui.pickDate}</Label>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-h-48 overflow-y-auto">
                 {availableDates.map((date, index) => {
                   const isSelected =
@@ -154,10 +196,10 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
                       } ${isToday ? "ring-2 ring-primary/20" : ""}`}
                     >
                       <div className="font-medium">
-                        {date.toLocaleDateString("ru-RU", { day: "numeric", month: "short" })}
+                        {date.toLocaleDateString(ui.locale, { day: "numeric", month: "short" })}
                       </div>
                       <div className="text-xs opacity-75">
-                        {date.toLocaleDateString("ru-RU", { weekday: "short" })}
+                        {date.toLocaleDateString(ui.locale, { weekday: "short" })}
                       </div>
                     </button>
                   )
@@ -170,7 +212,7 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
               <div className="space-y-3">
                 <Label className="text-foreground flex items-center gap-2">
                   <Clock className="w-4 h-4" />
-                  Выберите время *
+                  {ui.pickTime}
                 </Label>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
                   {timeSlots.map((time) => (
@@ -194,15 +236,15 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
             {/* Форма контактов */}
             {selectedDate && selectedTime && (
               <div className="space-y-4 pt-4 border-t border-border">
-                <h3 className="font-semibold text-foreground">Ваши контакты</h3>
+                <h3 className="font-semibold text-foreground">{ui.contactsTitle}</h3>
 
                 <div className="space-y-2">
                   <Label htmlFor="booking-name" className="text-foreground">
-                    ФИО *
+                    {ui.nameLabel}
                   </Label>
                   <Input
                     id="booking-name"
-                    placeholder="Иван Иванов"
+                    placeholder={ui.namePlaceholder}
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -213,7 +255,7 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="booking-email" className="text-foreground">
-                      Email *
+                      {ui.emailLabel}
                     </Label>
                     <Input
                       id="booking-email"
@@ -228,12 +270,12 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
 
                   <div className="space-y-2">
                     <Label htmlFor="booking-phone" className="text-foreground">
-                      Телефон *
+                      {ui.phoneLabel}
                     </Label>
                     <Input
                       id="booking-phone"
                       type="tel"
-                      placeholder="+7 (___) ___-__-__"
+                      placeholder={ui.phonePlaceholder}
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -243,13 +285,11 @@ export function BookingCalendar({ isOpen, onClose }: BookingCalendarProps) {
                 </div>
 
                 {submitStatus === "error" && (
-                  <p className="text-sm text-red-500">
-                    Ошибка отправки. Попробуйте позже или свяжитесь по телефону.
-                  </p>
+                  <p className="text-sm text-red-500">{ui.error}</p>
                 )}
 
                 <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? "Отправка..." : "Забронировать звонок"}
+                  {isSubmitting ? ui.submitting : ui.submit}
                   <Send className="w-4 h-4 ml-2" />
                 </Button>
               </div>

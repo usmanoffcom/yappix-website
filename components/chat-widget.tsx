@@ -277,7 +277,7 @@ export function ChatWidget() {
           onClick={() => setIsOpen(true)}
           aria-label="Открыть чат"
           title="Открыть чат"
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary to-pink-600 text-white shadow-lg shadow-primary/25 flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
+          className="fixed bottom-6 right-6 z-[1100] w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-primary to-pink-600 text-white shadow-lg shadow-primary/25 flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
         >
           <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
           <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-background animate-pulse" />
@@ -286,7 +286,7 @@ export function ChatWidget() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[400px] h-[500px] sm:h-[550px] bg-card border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[1100] w-[calc(100vw-2rem)] sm:w-[400px] h-[500px] sm:h-[550px] bg-card border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-primary/10 to-pink-600/10">
             <div className="flex items-center gap-3">

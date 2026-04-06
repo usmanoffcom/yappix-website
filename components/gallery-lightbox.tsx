@@ -101,7 +101,7 @@ export function GalleryWithLightbox({ images, title, locale = "ru" }: GalleryWit
       {/* Lightbox Modal */}
       {lightboxOpen && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+          className="fixed inset-0 z-[1200] bg-black/95 flex items-center justify-center"
           onClick={closeLightbox}
         >
           {/* Close button */}

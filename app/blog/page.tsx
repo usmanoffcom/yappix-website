@@ -186,6 +186,71 @@ export default function BlogPage() {
           </div>
         </section>
 
+        <section className="py-12 md:py-16 border-t border-b border-border bg-card/30">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Гайды по направлениям</h2>
+            <p className="text-muted-foreground mb-6 max-w-3xl">
+              Подборка материалов по основным темам и ссылкам на услуги.
+            </p>
+            <div className="rounded-xl border border-border bg-background p-5 max-w-2xl">
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link className="text-primary hover:underline" href="/blog/razrabotka-sajtov-na-zakaz-2026">
+                    Разработка сайтов на заказ
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/blog/korporativnye-sajty-dlya-biznesa">
+                    Корпоративные сайты
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/blog/internet-magaziny-na-nextjs">
+                    Интернет-магазины
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/blog/mobilnye-prilozheniya-na-zakaz-pod-klyuch">
+                    Мобильные приложения на заказ
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/blog/razrabotka-mvp-poshagovo">
+                    Разработка MVP
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/blog/razrabotka-saas-platform-dlya-b2b">
+                    Разработка SaaS
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/blog/vnedrenie-ii-v-biznes-protsessy">
+                    Внедрение ИИ в бизнес
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/blog/ai-chat-boty-dlya-kompaniy">
+                    AI чат-боты
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/blog/avtomatizaciya-biznes-processov-s-ai">
+                    Автоматизация бизнес-процессов
+                  </Link>
+                </li>
+              </ul>
+              <p className="mt-5 pt-5 border-t border-border text-sm text-muted-foreground">
+                <span lang="en">English blog — </span>
+                <Link href="/en/blog" className="text-primary hover:underline">
+                  yappix.ru/en/blog
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Newsletter */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 text-center">

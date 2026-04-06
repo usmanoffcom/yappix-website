@@ -2,6 +2,8 @@ import { Zap, Link2, Target, FileCheck, Globe } from "lucide-react"
 
 type Locale = "ru" | "en"
 
+const VIDEO_SRC = "/images/001.mp4"
+
 const copy: Record<Locale, { h2: string; reasons: { icon: typeof Zap; text: string }[] }> = {
   ru: {
     h2: "Почему YappiX",
@@ -28,18 +30,38 @@ const copy: Record<Locale, { h2: string; reasons: { icon: typeof Zap; text: stri
 export function WhyYappixSection({ locale = "ru" }: { locale?: Locale }) {
   const t = copy[locale]
   return (
-    <section className="py-16 md:py-24">
+    <section className="glass-subtle py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-headline text-foreground mb-12 text-center">{t.h2}</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto">
-          {t.reasons.map((item) => (
-            <div key={item.text} className="flex items-start gap-4 p-5 bg-card border border-border rounded-xl">
-              <div className="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10">
-                <item.icon className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-foreground text-sm md:text-base">{item.text}</span>
-            </div>
-          ))}
+        <h2 className="text-headline text-foreground mb-10 text-center md:mb-12">{t.h2}</h2>
+
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          <ul className="flex flex-col gap-2 md:gap-3">
+            {t.reasons.map((item) => (
+              <li key={item.text}>
+                <div className="flex items-center gap-4 glass rounded-2xl p-4 transition-all duration-300 md:p-5">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 md:h-14 md:w-14">
+                    <item.icon className="h-6 w-6 text-primary md:h-7 md:w-7" />
+                  </div>
+                  <span className="text-left text-base font-medium text-foreground md:text-lg">{item.text}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div
+            className="relative aspect-video w-full overflow-hidden rounded-2xl glass"
+            aria-hidden
+          >
+            <video
+              className="h-full w-full object-cover"
+              src={VIDEO_SRC}
+              muted
+              loop
+              playsInline
+              autoPlay
+              preload="metadata"
+            />
+          </div>
         </div>
       </div>
     </section>

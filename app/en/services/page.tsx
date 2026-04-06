@@ -6,15 +6,26 @@ import { Button } from "@/components/ui/button"
 import { Globe, Smartphone, Bot, Cloud, CreditCard, Server, Search, Share2, ArrowRight, Database, LineChart, Palette, ShieldCheck } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "IT Services with AI-First Approach — Development, SEO, DevOps | YappiX",
+  title: "Custom Website, Mobile, MVP, SaaS & AI Services | YappiX",
   description:
-    "Full range of AI-accelerated IT services: web development, mobile apps, AI chatbots, SaaS, FinTech, DevOps, SEO, SMM, integrations, analytics, UX/UI design, cybersecurity. 7-12x faster delivery.",
+    "Websites and e-commerce, mobile apps, MVP and SaaS, AI assistants and process automation — end-to-end delivery.",
+  keywords: [
+    "custom website development",
+    "corporate website development",
+    "e-commerce website development",
+    "custom mobile app development",
+    "MVP development services",
+    "SaaS development services",
+    "AI implementation in business",
+    "AI chatbot development",
+    "business process automation",
+  ],
   alternates: {
     canonical: "https://yappix.ru/en/services",
   },
   openGraph: {
-    title: "IT Services with AI-First Approach — YappiX",
-    description: "Full range of AI-accelerated IT services. 7-12x faster delivery.",
+    title: "Custom Development, MVP, SaaS and AI Services — YappiX",
+    description: "Corporate websites, e-commerce, custom mobile apps, MVP and SaaS, AI chatbots, and process automation.",
     type: "website",
     url: "https://yappix.ru/en/services",
     siteName: "YappiX",
@@ -28,7 +39,7 @@ const services = [
     icon: Globe,
     title: "Web Development",
     description:
-      "AI-first development: landing pages, corporate websites, e-commerce. Cursor AI + v0.dev = 7-12x faster delivery. SEO included.",
+      "Landing pages, corporate sites, and e-commerce on a modern stack (Next.js, Cursor, v0.dev): short iterations, technical SEO, and performance from day one.",
     tags: ["Next.js", "React", "Cursor AI", "v0.dev"],
     price: "from $690",
   },
@@ -138,10 +149,10 @@ export default function ServicesEnPage() {
                 AI-First Approach
               </div>
               <h1 className="text-display text-foreground mb-6 text-balance">
-                IT Services with AI Acceleration
+                Websites, apps, MVP, SaaS & AI
               </h1>
               <p className="text-body-lg mb-8 text-pretty">
-                Full-cycle digital product development with an AI-first approach. We use Cursor AI, v0.dev, ChatGPT — delivering 7-12x faster at the same quality. 10+ years of experience, 250+ projects.
+                From landing pages to complex products: web and mobile, cloud services, assistants, and workflow automation. We work as a product engineering partner — with metrics, not checkbox requirements alone.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
@@ -214,6 +225,45 @@ export default function ServicesEnPage() {
                 <p className="font-semibold text-foreground">ROI Methodology</p>
                 <p className="text-sm text-muted-foreground mt-2">How we model AI economics</p>
               </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-12 md:py-16 border-t border-border bg-card/30">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Topics and resources</h2>
+            <p className="text-muted-foreground mb-8 max-w-3xl">
+              Shortcuts to core service and article pages in both languages.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="rounded-xl border border-border bg-background p-5">
+                <h3 className="font-semibold text-foreground mb-3">In English</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link className="text-primary hover:underline" href="/en/services">Custom website development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/services">Corporate website development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/services">E-commerce website development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/services">Custom mobile app development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/mvp-i-zapusk-produkta">MVP development services</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/usa/razrabotka-saas-i-lichnyh-kabinetov">SaaS development services</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/vnedrenie-ai-i-rag">AI implementation in business</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/vnedrenie-ai-i-rag">AI chatbot development</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/en/roi-first-automation">Business process automation</Link></li>
+                </ul>
+              </div>
+              <div className="rounded-xl border border-border bg-background p-5">
+                <h3 className="font-semibold text-foreground mb-3">На русском</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link className="text-primary hover:underline" href="/uslugi/razrabotka-sajtov">Разработка сайтов на заказ</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/razrabotka-sajtov">Корпоративные сайты</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/razrabotka-sajtov">Интернет-магазины</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/mobilnye-prilozheniya">Мобильные приложения на заказ</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/mvp-i-zapusk-produkta">Разработка MVP</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/saas-paas">Разработка SaaS</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/vnedrenie-ai-i-rag">Внедрение ИИ в бизнес</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/uslugi/ai-chat-boty">AI чат-боты</Link></li>
+                  <li><Link className="text-primary hover:underline" href="/avtomatizaciya-s-roi">Автоматизация бизнес-процессов</Link></li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

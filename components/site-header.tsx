@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { blogPostsEn } from "@/lib/blog-data-en"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import {
@@ -247,14 +247,14 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-[1000] overflow-visible transition-all duration-300",
         isScrolled
-          ? "bg-background/95 backdrop-blur-xl border-b border-border/50"
-          : "bg-background/80 backdrop-blur-sm",
+          ? "bg-black/60 backdrop-blur-2xl border-b border-white/[0.06]"
+          : "bg-transparent",
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center justify-between h-16 min-[1100px]:h-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+        <nav className="flex items-center justify-between h-16 min-[1100px]:h-20 overflow-visible">
           <Logo href={t.logoHref} />
 
           <div className="hidden min-[1100px]:flex items-center gap-1">
@@ -264,7 +264,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                   <NavigationMenuTrigger className="bg-transparent text-muted-foreground hover:text-foreground px-4 py-2">
                     {t.services}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-popover text-popover-foreground border shadow-lg rounded-md mt-1.5">
+                  <NavigationMenuContent className="!bg-[#0d0d14] border border-white/[0.08] shadow-2xl shadow-black/60 text-popover-foreground rounded-xl mt-1.5">
                     <div className="max-h-[calc(100vh-5rem)] overflow-y-auto overscroll-contain">
                       <ul className="grid w-[540px] gap-2 p-5 md:grid-cols-2">
                         {services.map((service) => (
@@ -296,7 +296,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                   <NavigationMenuTrigger className="bg-transparent text-muted-foreground hover:text-foreground px-4 py-2">
                     {locale === "ru" ? "Доказательства" : "Evidence"}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-popover text-popover-foreground border shadow-lg rounded-md mt-1.5">
+                  <NavigationMenuContent className="!bg-[#0d0d14] border border-white/[0.08] shadow-2xl shadow-black/60 text-popover-foreground rounded-xl mt-1.5">
                     <ul className="grid w-[280px] gap-1 p-3">
                       {trustByLocale[locale].map((item) => (
                         <li key={item.href}>
@@ -352,16 +352,22 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative min-[1100px]:hidden">
+              <button
+                type="button"
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "relative min-[1100px]:hidden",
+                )}
+              >
                 <Menu className="w-6 h-6" />
                 <span className="sr-only">{t.openMenu}</span>
-              </Button>
+              </button>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-full sm:w-[380px] bg-background border-l border-border/50 p-0 flex flex-col"
+              className="w-full sm:w-[380px] bg-black/80 backdrop-blur-2xl border-l border-white/[0.06] p-0 flex flex-col"
             >
-              <SheetHeader className="px-6 py-5 border-b border-border/50">
+              <SheetHeader className="px-6 py-5 border-b border-white/[0.06]">
                 <SheetTitle className="sr-only">{t.openMenu}</SheetTitle>
                 <div className="flex items-center justify-between">
                   <Logo href={t.logoHref} />
@@ -410,7 +416,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                 </div>
               </div>
 
-              <div className="border-t border-border/50 px-6 py-5 space-y-4 bg-muted/30">
+              <div className="border-t border-white/[0.06] px-6 py-5 space-y-4 bg-white/[0.03]">
                 <Link
                   href={langHref}
                   onClick={() => setIsOpen(false)}

@@ -169,8 +169,8 @@ export function CasesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
         {/* Cases Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {cases.map((caseItem, index) => (
-            <Link key={index} href={`${casesBase}/${caseItem.slug}`} className="animate-in fade-in slide-in-from-bottom-4 duration-500 block">
-              <Card className="overflow-hidden bg-card border-border hover:border-primary/30 transition-colors group !p-0 !gap-0 cursor-pointer h-full">
+            <Link key={index} href={`${casesBase}/${caseItem.slug}`} className="block">
+              <Card className="overflow-hidden glass hover:border-primary/30 transition-all group !p-0 !gap-0 cursor-pointer h-full">
                 {/* Image or Video */}
                 {caseItem.video ? (
                   <VideoCard src={caseItem.video} title={caseItem.title} />

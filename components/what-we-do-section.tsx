@@ -3,6 +3,8 @@ import { Rocket, Monitor, Bot, Palette, Users } from "lucide-react"
 
 type Locale = "ru" | "en"
 
+const VIDEO_SRC = "/images/002.mp4"
+
 const copy: Record<Locale, { h2: string; items: { icon: typeof Rocket; title: string; href: string }[] }> = {
   ru: {
     h2: "Что мы делаем",
@@ -29,22 +31,43 @@ const copy: Record<Locale, { h2: string; items: { icon: typeof Rocket; title: st
 export function WhatWeDoSection({ locale = "ru" }: { locale?: Locale }) {
   const t = copy[locale]
   return (
-    <section className="py-16 md:py-24 bg-card">
+    <section className="glass-subtle py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-headline text-foreground mb-12 text-center">{t.h2}</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-          {t.items.map((item) => (
-            <Link
-              key={item.title}
-              href={item.href}
-              className="group flex flex-col items-center text-center p-5 md:p-6 bg-background border border-border rounded-2xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
-            >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 mb-4">
-                <item.icon className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-sm md:text-base font-semibold text-foreground group-hover:text-primary transition-colors">{item.title}</h3>
-            </Link>
-          ))}
+        <h2 className="text-headline text-foreground mb-10 text-center md:mb-12">{t.h2}</h2>
+
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          <ul className="flex flex-col gap-2 md:gap-3">
+            {t.items.map((item) => (
+              <li key={item.title}>
+                <Link
+                  href={item.href}
+                  className="group flex items-center gap-4 glass rounded-2xl p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 md:p-5"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 md:h-14 md:w-14">
+                    <item.icon className="h-6 w-6 text-primary md:h-7 md:w-7" />
+                  </div>
+                  <span className="text-left text-base font-semibold text-foreground transition-colors group-hover:text-primary md:text-lg">
+                    {item.title}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div
+            className="relative aspect-video w-full overflow-hidden rounded-2xl glass"
+            aria-hidden
+          >
+            <video
+              className="h-full w-full object-cover"
+              src={VIDEO_SRC}
+              muted
+              loop
+              playsInline
+              autoPlay
+              preload="metadata"
+            />
+          </div>
         </div>
       </div>
     </section>

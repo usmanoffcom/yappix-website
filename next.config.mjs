@@ -7,6 +7,9 @@ const cdnUrl = (process.env.NEXT_PUBLIC_CDN_URL || '').trim()
 const nextConfig = {
   assetPrefix: cdnUrl ? cdnUrl.replace(/\/$/, '') : undefined,
 
+  /** Three.js / R3F ship modern ESM — без transpile Webpack иногда даёт runtime `reading 'call'` на чанках */
+  transpilePackages: ['@splinetool/react-spline', '@splinetool/runtime', 'gsap', 'react-google-recaptcha-v3'],
+
   // TypeScript configuration
   typescript: {
     // Enable type checking in build

@@ -31,7 +31,7 @@ export function TemplatesSection({ locale = "ru", excludeSlugs }: { locale?: "ru
     : templatesByLocale[locale])
   const head = templatesHeadByLocale[locale]
   return (
-    <section className="py-16 md:py-24 bg-card">
+    <section className="py-16 md:py-24 glass-subtle">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-end mb-12">
           <div>
@@ -44,7 +44,7 @@ export function TemplatesSection({ locale = "ru", excludeSlugs }: { locale?: "ru
         <div className="grid md:grid-cols-2 min-[1280px]:grid-cols-3 gap-8">
           {templates.map((template) => (
             <Link key={template.slug} href={template.link} className="group">
-              <article className="h-full bg-background border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors">
+              <article className="h-full glass rounded-xl overflow-hidden hover:border-primary/50 transition-all">
                 <div className="relative aspect-video bg-black overflow-hidden">
                   {template.image?.endsWith('.mp4') ? (
                     <video
@@ -61,6 +61,7 @@ export function TemplatesSection({ locale = "ru", excludeSlugs }: { locale?: "ru
                       src={template.image || "/placeholder.svg"}
                       alt={template.title || "Шаблон YappiX"}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1279px) 50vw, 33vw"
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   )}

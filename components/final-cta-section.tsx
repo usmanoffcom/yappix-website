@@ -26,7 +26,7 @@ const copy: Record<Locale, { h2: string; p: string; primary: string; secondary: 
 export function FinalCtaSection({ locale = "ru" }: { locale?: Locale }) {
   const t = copy[locale]
   return (
-    <section className="py-16 md:py-24 bg-primary/5">
+    <section className="py-16 md:py-24 bg-primary/5 backdrop-blur-lg">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-headline text-foreground mb-4">{t.h2}</h2>
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">{t.p}</p>

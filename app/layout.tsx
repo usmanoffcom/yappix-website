@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Onest, JetBrains_Mono } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
 import { ChatWidgetWrapper } from "@/components/chat-widget-wrapper"
 import { DeferredRecaptchaWrapper } from "@/components/deferred-recaptcha-wrapper"
 import { GoogleAnalytics } from "@/components/google-analytics"
@@ -25,8 +26,16 @@ export const metadata: Metadata = {
   description:
     "Проектируем и запускаем MVP, SaaS, клиентские кабинеты и AI-автоматизацию для бизнеса. YappiX — команда product development для фаундеров и компаний в ОАЭ, Европе и США.",
   keywords: [
-    "AI-first разработка",
+    "разработка сайтов на заказ",
+    "корпоративные сайты",
+    "интернет-магазины",
+    "мобильные приложения на заказ",
     "разработка MVP",
+    "разработка SaaS",
+    "внедрение ИИ в бизнес",
+    "AI чат-боты",
+    "автоматизация бизнес-процессов",
+    "AI-first разработка",
     "SaaS разработка",
     "AI автоматизация",
     "RAG внедрение",
@@ -200,13 +209,15 @@ export default function RootLayout({
         className={`${_onest.variable} ${_geistMono.variable} ${_onest.className} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <GoogleAnalytics />
-        <YandexMetrika />
-        <MailRuTop />
-        <DeferredRecaptchaWrapper>
-          {children}
-          <ChatWidgetWrapper />
-        </DeferredRecaptchaWrapper>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
+          <GoogleAnalytics />
+          <YandexMetrika />
+          <MailRuTop />
+          <DeferredRecaptchaWrapper>
+            {children}
+            <ChatWidgetWrapper />
+          </DeferredRecaptchaWrapper>
+        </ThemeProvider>
       </body>
     </html>
   )

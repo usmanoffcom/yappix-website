@@ -8,6 +8,7 @@ import {
   validateEmail as validateEmailFn,
   validatePhone
 } from "@/lib/validation"
+import { escapeTelegramHtml } from "@/lib/telegram-html"
 
 // Telegram Bot Config
 const TELEGRAM_BOT_TOKEN = "8317760178:AAEUGZWwyAWBaHVW-umTrV29V3FcCTCIRyQ"
@@ -41,7 +42,9 @@ async function sendToTelegram(message: string): Promise<boolean> {
       }
     )
     const data = await response.json()
-    console.log("Telegram response:", data)
+    if (!data.ok) {
+      console.error("Telegram sendMessage failed:", JSON.stringify(data))
+    }
     return data.ok === true
   } catch (error) {
     console.error("Telegram error:", error)
@@ -145,16 +148,22 @@ export async function POST(request: NextRequest) {
     // Format message for Telegram (единый формат: время + источник + данные)
     const ts = new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" })
     const recaptchaLine = recaptchaOk ? "✅ reCAPTCHA пройдена" : recaptchaToken ? "⚠️ reCAPTCHA не пройдена" : "⚠️ Без reCAPTCHA"
+    const safeName = escapeTelegramHtml(String(name))
+    const safeEmail = email ? escapeTelegramHtml(String(email)) : ""
+    const safePhone = formattedPhone ? escapeTelegramHtml(String(formattedPhone)) : ""
+    const safeCompany = company ? escapeTelegramHtml(String(company)) : ""
+    const safeMessage = escapeTelegramHtml(String(message))
+
     const telegramMessage = `
 🕐 ${ts} · <b>Лид с сайта</b> yappix.ru
 
-👤 <b>Имя:</b> ${name}
-${email ? `📧 <b>Email:</b> ${email}` : ""}
-${formattedPhone ? `📱 <b>Телефон:</b> ${formattedPhone}` : ""}
-${company ? `🏢 <b>Компания:</b> ${company}` : ""}
+👤 <b>Имя:</b> ${safeName}
+${safeEmail ? `📧 <b>Email:</b> ${safeEmail}` : ""}
+${safePhone ? `📱 <b>Телефон:</b> ${safePhone}` : ""}
+${safeCompany ? `🏢 <b>Компания:</b> ${safeCompany}` : ""}
 
 💬 <b>Сообщение:</b>
-${message}
+${safeMessage}
 
 ${recaptchaLine}
     `.trim()

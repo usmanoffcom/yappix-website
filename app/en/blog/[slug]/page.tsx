@@ -177,6 +177,28 @@ export default async function EnBlogPostPage({ params }: { params: Params }) {
               </div>
             </div>
           </div>
+
+          <div className="pt-10">
+            <div className="container mx-auto px-4">
+              <div className="max-w-3xl mx-auto rounded-xl border border-border bg-card p-5">
+                <h2 className="text-xl font-semibold text-foreground mb-3">Related pages</h2>
+                <ul className="space-y-2 text-sm">
+                  <li><Link href="/en/services" className="text-primary hover:underline">YappiX services</Link></li>
+                  <li><Link href="/en/mvp-i-zapusk-produkta" className="text-primary hover:underline">MVP development services</Link></li>
+                  <li><Link href="/en/vnedrenie-ai-i-rag" className="text-primary hover:underline">AI implementation in business</Link></li>
+                  <li><Link href="/en/blog" className="text-primary hover:underline">Blog (EN)</Link></li>
+                  <li><Link href="/blog" className="text-primary hover:underline">Блог (RU)</Link></li>
+                  {post.ruSlug && (
+                    <li>
+                      <Link href={`/blog/${post.ruSlug}`} className="text-primary hover:underline">
+                        Русская версия этой статьи
+                      </Link>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </div>
+          </div>
         </article>
 
         {relatedPosts.length > 0 && (

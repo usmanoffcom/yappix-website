@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   description:
     "AI-first product engineering for founders and B2B teams: MVP and SaaS, AI/RAG, and a transparent delivery process — from Dubai to Europe and the US.",
   keywords: [
+    "custom website development",
+    "corporate website development",
+    "e-commerce website development",
+    "custom mobile app development",
+    "MVP development services",
+    "SaaS development services",
+    "AI implementation in business",
+    "AI chatbot development",
+    "business process automation",
     "AI-first development",
     "MVP development",
     "SaaS development",

@@ -228,7 +228,7 @@ export function ContactSection({
   }, [formData, executeRecaptcha, locale])
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-card/30">
+    <section id="contact" className="py-20 md:py-32 glass-subtle">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <Badge variant="outline" className="mb-4">
@@ -244,7 +244,7 @@ export function ContactSection({
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <Card className="bg-card border-border">
+            <Card className="glass-strong">
               <CardHeader>
                 <CardTitle className="text-foreground">{t.cardTitle}</CardTitle>
                 <CardDescription className="text-muted-foreground">
@@ -403,7 +403,7 @@ export function ContactSection({
                   href="https://t.me/yappix_bot" 
                   target="_blank"
                   onClick={() => reachGoal("lead")}
-                  className="group inline-flex items-center justify-start gap-3 whitespace-nowrap rounded-md text-sm font-medium transition-all border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground active:bg-accent/90 active:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 h-auto py-4 px-6"
+                  className="group inline-flex items-center justify-start gap-3 whitespace-nowrap rounded-md text-sm font-medium transition-all glass hover:bg-white/[0.1] hover:text-accent-foreground active:bg-white/[0.08] disabled:pointer-events-none disabled:opacity-50 h-auto py-4 px-6"
                 >
                   <MessageCircle className="w-5 h-5 text-primary group-hover:text-accent-foreground transition-colors shrink-0" />
                   <div className="text-left">
@@ -413,7 +413,7 @@ export function ContactSection({
                 </Link>
                 <Link 
                   href={`tel:${(geoPhone || "+7 995 095 55 93").replace(/[\s()-]/g, "")}`}
-                  className="group inline-flex items-center justify-start gap-3 whitespace-nowrap rounded-md text-sm font-medium transition-all border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground active:bg-accent/90 active:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 h-auto py-4 px-6"
+                  className="group inline-flex items-center justify-start gap-3 whitespace-nowrap rounded-md text-sm font-medium transition-all glass hover:bg-white/[0.1] hover:text-accent-foreground active:bg-white/[0.08] disabled:pointer-events-none disabled:opacity-50 h-auto py-4 px-6"
                 >
                   <Phone className="w-5 h-5 text-primary group-hover:text-accent-foreground transition-colors shrink-0" />
                   <div className="text-left">
@@ -449,7 +449,7 @@ export function ContactSection({
                     href={office.geoHref}
                     className="block"
                   >
-                    <Card className="bg-secondary/50 border-border shadow-sm hover:border-primary/50 transition-colors h-full">
+                    <Card className="glass hover:border-primary/50 transition-all h-full">
                       <CardContent className="p-4">
                         <div className="font-medium text-foreground text-sm leading-snug">
                           {office.country}
@@ -480,7 +480,11 @@ export function ContactSection({
         </div>
       </div>
 
-      <BookingCalendar isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+      <BookingCalendar
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+        locale={locale}
+      />
     </section>
   )
 }

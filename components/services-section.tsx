@@ -50,8 +50,8 @@ const servicesByLocale = {
 } as const
 
 const sectionByLocale = {
-  ru: { badge: "Услуги", headline: "Сохраняем разработку, усиливаем автоматизацией", body: "Делаем сайты, приложения и SaaS, а также внедряем AI-контуры в процессы: от поиска информации до комплаенса и клиентского сервиса. Каждая услуга поставляется с измеримым ROI, baseline безопасности и наблюдаемым AI-контуром." },
-  en: { badge: "Services", headline: "We keep development, we add automation", body: "We build sites, apps and SaaS, and deploy AI contours into processes: from information search to compliance and customer service. Every service is delivered with measurable ROI, a security baseline, and an observable AI contour." },
+  ru: { badge: "Услуги", headline: "Продуктовая разработка и AI-автоматизация", body: "Сайты и веб-сервисы, мобильные приложения, MVP и SaaS, чат-боты и сценарии с ИИ — с понятной экономикой, безопасностью и измеримым эффектом." },
+  en: { badge: "Services", headline: "Product development and AI automation", body: "Websites and web services, mobile apps, MVPs and SaaS, AI assistants and workflows — with clear economics, security, and measurable impact." },
 }
 
 const popularLabel = { ru: "Популярно", en: "Popular" }
@@ -73,10 +73,10 @@ export function ServicesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 min-[1100px]:grid-cols-3 min-[1400px]:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 min-[1100px]:grid-cols-3 3xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {services.map((service, index) => (
-            <Link key={index} href={service.href} className="animate-in fade-in slide-in-from-bottom-4 duration-500 block">
-              <Card className="h-full bg-card hover:bg-secondary/50 transition-colors border-border group cursor-pointer hover:border-primary/30">
+            <Link key={index} href={service.href} className="block">
+              <Card className="h-full glass hover:bg-white/[0.08] transition-all group cursor-pointer hover:border-primary/30">
                 <CardHeader className="pb-3 sm:pb-4">
                   <div className="flex items-start justify-between gap-2">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors flex-shrink-0">

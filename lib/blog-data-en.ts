@@ -236,7 +236,7 @@ const curatedBlogPostsEn: BlogPostEn[] = [
       <p><strong>WordPress/Tilda</strong> — cheaper at start, limited customisation. <strong>Next.js/React</strong> — higher cost, faster, SEO-friendly, no ceiling.</p>
 
       <h2>How YappiX reduces cost by 30-50%</h2>
-      <p>With an <strong>AI-first approach</strong> we use: <strong>v0.dev</strong> — UI generation in hours; <strong>Cursor</strong> — AI-assisted code 7-12× faster; <strong>Component library</strong> — 200+ projects. Time saved = lower price for the client.</p>
+      <p>With an <strong>AI-first approach</strong> we use: <strong>v0.dev</strong> — UI generation in hours; <strong>Cursor</strong> — AI-assisted coding for faster iteration; <strong>Component library</strong> — 200+ projects. Time saved = lower price for the client.</p>
 
       <h2>Why market prices vary so much</h2>
       <p><strong>Freelancer</strong> — cheap but risks on timeline, support and code quality. <strong>Web studio</strong> — balance of price and quality, guarantees, support. <strong>Agency</strong> — premium quality, premium brand markup.</p>
@@ -352,10 +352,10 @@ const curatedBlogPostsEn: BlogPostEn[] = [
       <p>Design, development, responsive layout, basic SEO, analytics, training, warranty support (e.g. 3 months). Often not included: hosting, domain, content, ongoing SEO.</p>
 
       <h2>How to save</h2>
-      <p>Use templates (save 30-50% on design), prepare content yourself, start with an MVP, choose AI-first studios (7-12× faster development = lower cost).</p>
+      <p>Use templates (save 30-50% on design), prepare content yourself, start with an MVP, choose AI-first studios (shorter cycles usually mean lower total cost).</p>
 
       <h2>Order a website from YappiX</h2>
-      <p>YappiX is an IT studio with 10+ years of experience. We use an AI-first approach and deliver sites 7-12× faster at the same quality. Transparent pricing, fast timelines, money-back trial week. Submit a request for a free estimate within 24 hours.</p>
+      <p>YappiX is an IT studio with 10+ years of experience. We use an AI-first approach and keep timelines short without cutting quality. Transparent pricing, fast timelines, money-back trial week. Submit a request for a free estimate within 24 hours.</p>
     `,
     image: "/images/4cc28332931093.5c18cb73b0830.gif",
     category: "Development",
@@ -406,6 +406,330 @@ const curatedBlogPostsEn: BlogPostEn[] = [
     publishedAt: "2026-02-01",
     readingTime: "11 min",
   },
+  {
+    slug: "custom-website-development-guide-2026",
+    ruSlug: "razrabotka-sajtov-na-zakaz-2026",
+    title: "Custom website development in 2026: how to hire right and control delivery",
+    metaTitle: "Custom website development in 2026 — delivery and vendor checklist | YappiX",
+    metaDescription:
+      "A practical guide to custom website development: brief, scope, MVP logic, timeline control and internal linking strategy.",
+    keywords: ["custom website development", "website development services", "build website for business", "web development agency"],
+    excerpt:
+      "Step-by-step framework for custom website development with predictable scope, timeline, and measurable outcomes.",
+    content: `
+      <h2>When custom website development is the right choice</h2>
+      <p>Custom development makes sense when your website is part of the business model: lead generation, partner portal, customer account area, or service workflows.</p>
+      <h3>Execution checklist</h3>
+      <ul>
+        <li>define target business actions;</li>
+        <li>map user funnel and page architecture;</li>
+        <li>estimate integrations (CRM, payments, analytics);</li>
+        <li>launch an MVP and validate conversion.</li>
+      </ul>
+      <h3>Related pages</h3>
+      <ul>
+        <li><a href="/en/services">Services overview</a></li>
+        <li><a href="/en/mvp-i-zapusk-produkta">MVP development services</a></li>
+        <li><a href="/en/blog/corporate-website-development-playbook">Corporate website development</a></li>
+        <li><a href="/blog/razrabotka-sajtov-na-zakaz-2026">Русская версия</a></li>
+      </ul>
+    `,
+    image: "/images/blog-covers/web-development.png",
+    category: "Development",
+    tags: ["custom website development", "MVP", "B2B", "delivery"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "8 min",
+  },
+  {
+    slug: "corporate-website-development-playbook",
+    ruSlug: "korporativnye-sajty-dlya-biznesa",
+    title: "Corporate website development playbook: structure, trust and SEO",
+    metaTitle: "Corporate website development — practical B2B playbook | YappiX",
+    metaDescription:
+      "How to build corporate websites that support sales: structure, trust assets, service pages and SEO clusters.",
+    keywords: ["corporate website development", "b2b corporate website", "business website", "corporate site SEO"],
+    excerpt:
+      "A practical model for corporate websites that generate demand instead of being a static company profile.",
+    content: `
+      <h2>Corporate website as a revenue system</h2>
+      <p>A strong corporate website explains the client's problem, solution, proof, and next step. It should connect service pages, cases, process, and trust evidence.</p>
+      <h3>Core components</h3>
+      <ul>
+        <li>commercial service pages with intent-focused copy;</li>
+        <li>case studies with measurable outcomes;</li>
+        <li>security, SLA and process transparency pages;</li>
+        <li>blog posts linked to services and landing pages.</li>
+      </ul>
+      <h3>Related pages</h3>
+      <ul>
+        <li><a href="/en/services">Services overview</a></li>
+        <li><a href="/en/cases">Case studies</a></li>
+        <li><a href="/en/evidence">Evidence Hub</a></li>
+        <li><a href="/blog/korporativnye-sajty-dlya-biznesa">Русская версия</a></li>
+      </ul>
+    `,
+    image: "/images/blog-covers/web-development.png",
+    category: "Business",
+    tags: ["corporate websites", "B2B", "SEO", "growth"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "8 min",
+  },
+  {
+    slug: "ecommerce-development-nextjs-guide",
+    ruSlug: "internet-magaziny-na-nextjs",
+    title: "E-commerce development in 2026: launch model without technical debt",
+    metaTitle: "E-commerce website development in 2026 — architecture and SEO | YappiX",
+    metaDescription:
+      "How to build e-commerce systems: catalog, checkout, integrations, search, and SEO-ready category architecture.",
+    keywords: ["ecommerce website development", "online store development", "ecommerce architecture", "nextjs ecommerce"],
+    excerpt:
+      "A practical approach to launching e-commerce platforms with stable operations and scalable SEO structure.",
+    content: `
+      <h2>E-commerce is operations plus product</h2>
+      <p>Successful online stores depend on catalog performance, checkout reliability, integrations, and search visibility — not visuals alone.</p>
+      <h3>What to design early</h3>
+      <ul>
+        <li>category and product SEO structure;</li>
+        <li>checkout and payment flow;</li>
+        <li>CRM/ERP and stock synchronization;</li>
+        <li>support automation scenarios.</li>
+      </ul>
+      <h3>Related pages</h3>
+      <ul>
+        <li><a href="/en/services">Services overview</a></li>
+        <li><a href="/en/blog/ai-chatbot-development-for-business">AI chatbot development</a></li>
+        <li><a href="/en/vnedrenie-ai-i-rag">AI implementation in business</a></li>
+        <li><a href="/blog/internet-magaziny-na-nextjs">Русская версия</a></li>
+      </ul>
+    `,
+    image: "/images/blog-covers/ecommerce.png",
+    category: "Development",
+    tags: ["e-commerce", "online store", "SEO", "integrations"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "9 min",
+  },
+  {
+    slug: "custom-mobile-app-development-guide",
+    ruSlug: "mobilnye-prilozheniya-na-zakaz-pod-klyuch",
+    title: "Custom mobile app development: when mobile-first is really justified",
+    metaTitle: "Custom mobile app development — product-first decision model | YappiX",
+    metaDescription:
+      "How to decide if your business needs a custom mobile app and how to launch with controlled scope and timeline.",
+    keywords: ["custom mobile app development", "mobile app development services", "mobile MVP", "build app for business"],
+    excerpt:
+      "A product-first framework for custom mobile app development with clear value scenarios and controlled release scope.",
+    content: `
+      <h2>Start from user context, not from platform hype</h2>
+      <p>Mobile-first is justified when usage happens in motion and platform features (push, camera, location, offline) directly affect business value.</p>
+      <h3>Decision framework</h3>
+      <ul>
+        <li>define high-frequency mobile scenarios;</li>
+        <li>compare mobile vs web cost and speed;</li>
+        <li>ship minimum flow first;</li>
+        <li>scale after measurable adoption.</li>
+      </ul>
+      <h3>Related pages</h3>
+      <ul>
+        <li><a href="/en/services">Services overview</a></li>
+        <li><a href="/en/mvp-i-zapusk-produkta">MVP development services</a></li>
+        <li><a href="/en/blog/mvp-development-roadmap">MVP roadmap</a></li>
+        <li><a href="/blog/mobilnye-prilozheniya-na-zakaz-pod-klyuch">Русская версия</a></li>
+      </ul>
+    `,
+    image: "/images/blog-covers/mobile-apps.png",
+    category: "Development",
+    tags: ["mobile apps", "mobile MVP", "product-first", "delivery"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "8 min",
+  },
+  {
+    slug: "mvp-development-roadmap",
+    ruSlug: "razrabotka-mvp-poshagovo",
+    title: "MVP development roadmap: how to launch in 4-8 weeks",
+    metaTitle: "MVP development roadmap — scope, timeline and validation | YappiX",
+    metaDescription:
+      "A practical MVP roadmap for founders and product teams: prioritize scope, validate hypotheses, and scale by metrics.",
+    keywords: ["MVP development services", "MVP roadmap", "startup MVP", "product launch MVP"],
+    excerpt:
+      "How to structure MVP delivery from hypothesis to measurable launch without overbuilding.",
+    content: `
+      <h2>MVP is a validation system</h2>
+      <p>The goal is not to replicate the final product, but to validate demand with the minimum functional scope and clear success metrics.</p>
+      <h3>Roadmap</h3>
+      <ol>
+        <li>define hypothesis and success metric;</li>
+        <li>limit scope to critical user flow;</li>
+        <li>ship analytics and feedback loop;</li>
+        <li>decide scale-up from evidence.</li>
+      </ol>
+      <h3>Related pages</h3>
+      <ul>
+        <li><a href="/en/mvp-i-zapusk-produkta">MVP & product launch</a></li>
+        <li><a href="/en/stoimost-i-sroki-razrabotki">Cost & timeline</a></li>
+        <li><a href="/en/blog/saas-development-for-b2b-guide">SaaS development</a></li>
+        <li><a href="/blog/razrabotka-mvp-poshagovo">Русская версия</a></li>
+      </ul>
+    `,
+    image: "/images/blog-covers/mvp-launch.png",
+    category: "Business",
+    tags: ["MVP", "product launch", "delivery", "validation"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "8 min",
+  },
+  {
+    slug: "saas-development-for-b2b-guide",
+    ruSlug: "razrabotka-saas-platform-dlya-b2b",
+    title: "SaaS development for B2B: architecture and go-to-market operations",
+    metaTitle: "SaaS development services for B2B — architecture and launch | YappiX",
+    metaDescription:
+      "How to build B2B SaaS systems: tenancy, access model, billing, integrations, and operational scaling.",
+    keywords: ["SaaS development services", "B2B SaaS development", "build SaaS platform", "multi-tenant SaaS"],
+    excerpt:
+      "A practical guide to B2B SaaS delivery from architecture decisions to commercial operations.",
+    content: `
+      <h2>B2B SaaS requires operational architecture</h2>
+      <p>Beyond features, B2B SaaS must include tenant model, access control, billing, auditability, and service reliability.</p>
+      <h3>Key design points</h3>
+      <ul>
+        <li>tenant isolation and data boundaries;</li>
+        <li>RBAC and audit trails;</li>
+        <li>subscription logic and billing;</li>
+        <li>integration and support model.</li>
+      </ul>
+      <h3>Related pages</h3>
+      <ul>
+        <li><a href="/en/usa/razrabotka-saas-i-lichnyh-kabinetov">SaaS development services</a></li>
+        <li><a href="/en/cto-as-a-service">CTO as a Service</a></li>
+        <li><a href="/en/blog/ai-implementation-in-business-guide">AI implementation in business</a></li>
+        <li><a href="/blog/razrabotka-saas-platform-dlya-b2b">Русская версия</a></li>
+      </ul>
+    `,
+    image: "/images/blog-covers/saas-platform.png",
+    category: "Business",
+    tags: ["SaaS", "B2B", "architecture", "operations"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "9 min",
+  },
+  {
+    slug: "ai-implementation-in-business-guide",
+    ruSlug: "vnedrenie-ii-v-biznes-protsessy",
+    title: "AI implementation in business: where ROI appears first",
+    metaTitle: "AI implementation in business — practical ROI-first guide | YappiX",
+    metaDescription:
+      "How to prioritize AI implementation in business processes and measure financial effect from pilot to scaling.",
+    keywords: ["AI implementation in business", "AI for business", "business AI automation", "AI ROI"],
+    excerpt:
+      "A practical framework for implementing AI in business processes with measurable economics.",
+    content: `
+      <h2>Choose processes with clear cost baseline</h2>
+      <p>Start where repetitive operations and labor cost are visible: support, document handling, internal search, and standard response drafting.</p>
+      <h3>Pilot priorities</h3>
+      <ul>
+        <li>ticket triage and support response acceleration;</li>
+        <li>document review assistance;</li>
+        <li>knowledge-base search and retrieval;</li>
+        <li>quality monitoring and escalation.</li>
+      </ul>
+      <h3>Related pages</h3>
+      <ul>
+        <li><a href="/en/vnedrenie-ai-i-rag">AI & RAG implementation</a></li>
+        <li><a href="/en/roi-first-automation">Business process automation</a></li>
+        <li><a href="/en/blog/ai-chatbot-development-for-business">AI chatbot development</a></li>
+        <li><a href="/blog/vnedrenie-ii-v-biznes-protsessy">Русская версия</a></li>
+      </ul>
+    `,
+    image: "/images/blog-covers/ai-automation.png",
+    category: "AI & ML",
+    tags: ["AI implementation", "automation", "ROI", "business processes"],
+    author: "YappiX Team",
+    authorRole: "AI Lab",
+    publishedAt: "2026-04-06",
+    readingTime: "8 min",
+  },
+  {
+    slug: "ai-chatbot-development-for-business",
+    ruSlug: "ai-chat-boty-dlya-kompaniy",
+    title: "AI chatbot development for business: from FAQ bot to operational assistant",
+    metaTitle: "AI chatbot development for business — architecture and rollout | YappiX",
+    metaDescription:
+      "How to design AI chatbot solutions with RAG, quality controls, integrations, and SLA-backed operations.",
+    keywords: ["AI chatbot development", "AI chatbot for business", "RAG chatbot", "enterprise assistant"],
+    excerpt:
+      "A practical model for deploying AI chatbots that deliver measurable support and operations impact.",
+    content: `
+      <h2>Most chatbots fail because they stay at FAQ level</h2>
+      <p>Operational assistants require RAG, routing rules, logging, quality review, and integration into service workflows.</p>
+      <h3>Production-ready components</h3>
+      <ul>
+        <li>knowledge retrieval layer;</li>
+        <li>response quality controls and fallback;</li>
+        <li>CRM/helpdesk integration;</li>
+        <li>monitoring and support model.</li>
+      </ul>
+      <h3>Related pages</h3>
+      <ul>
+        <li><a href="/en/vnedrenie-ai-i-rag">AI & RAG implementation</a></li>
+        <li><a href="/en/rag-enterprise-knowledge-search">Enterprise RAG</a></li>
+        <li><a href="/en/blog/business-process-automation-with-ai">Business process automation</a></li>
+        <li><a href="/blog/ai-chat-boty-dlya-kompaniy">Русская версия</a></li>
+      </ul>
+    `,
+    image: "/images/blog-covers/ai-chatbot.png",
+    category: "AI & ML",
+    tags: ["AI chatbot", "RAG", "support automation", "operations"],
+    author: "YappiX Team",
+    authorRole: "AI Lab",
+    publishedAt: "2026-04-06",
+    readingTime: "8 min",
+  },
+  {
+    slug: "business-process-automation-with-ai",
+    ruSlug: "avtomatizaciya-biznes-processov-s-ai",
+    title: "Business process automation with AI: rollout roadmap for leaders",
+    metaTitle: "Business process automation with AI — rollout roadmap | YappiX",
+    metaDescription:
+      "A four-step roadmap for AI-based business process automation: audit, pilot, KPI validation, and scaling.",
+    keywords: ["business process automation", "AI process automation", "workflow automation AI", "AI operations"],
+    excerpt:
+      "How to roll out AI automation across business processes with clear KPI gates and ROI checkpoints.",
+    content: `
+      <h2>Automation starts with process prioritization</h2>
+      <p>Rank processes by economic potential and operational risk. Launch one controlled pilot before scaling across teams.</p>
+      <h3>Four-step rollout</h3>
+      <ol>
+        <li>audit time/cost losses;</li>
+        <li>run pilot with strict KPI;</li>
+        <li>validate ROI and quality metrics;</li>
+        <li>scale to adjacent workflows.</li>
+      </ol>
+      <h3>Related pages</h3>
+      <ul>
+        <li><a href="/en/roi-first-automation">ROI-first automation</a></li>
+        <li><a href="/en/controlled-ai-contour">Controlled AI contour</a></li>
+        <li><a href="/en/blog/ai-implementation-in-business-guide">AI implementation in business</a></li>
+        <li><a href="/blog/avtomatizaciya-biznes-processov-s-ai">Русская версия</a></li>
+      </ul>
+    `,
+    image: "/images/blog-covers/process-automation.png",
+    category: "AI & ML",
+    tags: ["business process automation", "AI", "operations", "ROI"],
+    author: "YappiX Team",
+    authorRole: "AI Lab",
+    publishedAt: "2026-04-06",
+    readingTime: "8 min",
+  },
 ]
 
 const categoryMap: Record<string, string> = {
@@ -446,6 +770,47 @@ const titleOverrides: Record<string, string> = {
   "integraciya-rag-s-crm-erp": "Integrating RAG with CRM and ERP systems",
   "poisk-po-baze-znanij-dlya-podderzhki": "Knowledge base search for support teams",
   "privatnyj-rag-on-prem": "Private on-prem RAG: architecture and implementation",
+  "pochemu-ai-proekty-ne-okupayutsya-i-kak-etogo-izbezhat": "Why AI projects fail to pay off — and how to fix it",
+  "vnedrenie-iskusstvennogo-intellekta-v-biznes": "Enterprise AI adoption: roadmap and governance",
+  "kak-zakazat-sajt-poshagovaya-instrukciya": "How to order a website: step-by-step checklist",
+  "skolko-stoit-razrabotka-sayta-v-2026": "Website development cost in 2026 — pricing breakdown",
+  "ai-agenty-v-biznese-prakticheskoe-rukovodstvo": "AI agents in business: practical playbook",
+  "ai-ide-i-platformy-dlya-koda-2026-sravnenie": "AI IDEs and code platforms 2026 — comparison",
+  "kak-ponyat-nuzhen-li-mvp": "How to tell if you need an MVP",
+  "skolko-stoit-mvp-v-2026": "MVP cost in 2026 — realistic ranges",
+  "pochemu-startapy-teryayut-vremya-do-zapuska": "Why startups lose time before launch",
+  "chto-podgotovit-do-starta-razrabotki": "What to prepare before development starts",
+  "kogda-sayt-stanovitsya-produktom": "When a website becomes a product",
+  "kak-zapuskat-produkt-bez-bolshoy-komandy": "How to ship a product without a large team",
+  "kogda-biznesu-realno-nuzhen-ai": "When a business truly needs AI",
+  "chto-takoe-rag-prostymi-slovami": "What is RAG in plain language",
+  "kak-vnedrit-vnutrennego-ai-pomoshchnika": "How to deploy an internal AI assistant",
+  "kakie-dannye-nuzhny-dlya-ai-assistenta": "What data an AI assistant needs",
+  "kak-schitat-effekt-ot-ai-proekta": "How to measure impact from an AI project",
+  "gde-ai-realno-razgruzhaet-protsessy": "Where AI actually removes operational load",
+  "kogda-nuzhen-cto-as-a-service": "When CTO as a Service makes sense",
+  "kak-ponyat-chto-podryadchik-ne-stroit-produkt": "How to spot a vendor that does not build a product",
+  "pochemu-proekty-sryvayutsya-dazhe-s-bolshoy-komandoy": "Why projects fail even with a big team",
+  "kak-perestroit-haotichnuyu-razrabotku": "How to fix chaotic engineering delivery",
+  "kogda-pora-perezapuskat-produkt": "When to reboot a product",
+  "kak-zayti-v-chuzhoy-problemnyy-proekt": "How to join a troubled project safely",
+  "pochemu-deshevyy-podryad-dorozhe": "Why cheap outsourcing costs more",
+  "kak-schitat-stoimost-ai-avtomatizacii": "How to estimate AI automation cost",
+  "iz-chego-skladyvayutsya-sroki-saas": "What drives SaaS delivery timelines",
+  "pochemu-bystro-i-deshevo-lomaet-produkt": "Why fast and cheap breaks products",
+  "kogda-sobirat-produkt-poetapno": "When to build a product in phases",
+  "kak-vybrat-russkoyazychnuyu-it-komandu-v-oae": "How to choose a Russian-speaking IT team in the UAE",
+  "chto-nuzhno-biznesu-v-oae-ot-digital-komandy": "What UAE businesses need from a digital team",
+  "kak-zapuskat-mvp-dlya-rynka-oae": "How to launch an MVP for the UAE market",
+  "kogda-biznesu-v-evrope-nuzhen-product-partner": "When European businesses need a product partner",
+  "kak-sobrat-digital-kontur-dlya-mezhdunarodnoy-kompanii": "Building a digital footprint for an international company",
+  "pochemu-founderam-za-rubezhom-nuzhna-produktovaya-komanda": "Why founders abroad need a product team",
+  "kak-my-ocenivaem-proekt-do-starta": "How we estimate a project before kickoff",
+  "chto-dolzhno-byt-v-normalnom-keyse": "What a strong case study should include",
+  "pochemu-keysy-bez-metodiki-malo-chto-znachat": "Why case studies without methodology mean little",
+  "kak-my-schitaem-impact-ot-pererabotki-produkta": "How we measure impact from a product rework",
+  "kakie-artefakty-poluchaet-klient": "Deliverables clients receive from YappiX",
+  "chem-otlichaetsya-ai-first-delivery": "What AI-first delivery means in practice",
 }
 
 const imageOverrides: Record<string, string> = {
@@ -473,6 +838,40 @@ function fallbackTitleFromSlug(slug: string): string {
     .replace(/\b\w/g, (char) => char.toUpperCase())
 }
 
+function enKeywordsFromTitle(title: string, category: string): string[] {
+  const stop = new Set([
+    "the",
+    "a",
+    "an",
+    "for",
+    "and",
+    "or",
+    "with",
+    "from",
+    "how",
+    "to",
+    "in",
+    "of",
+    "on",
+    "at",
+    "by",
+    "vs",
+    "is",
+    "are",
+    "what",
+    "when",
+    "your",
+    "our",
+  ])
+  const words = title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 2 && !stop.has(w))
+  const base = [...new Set([...words, category.toLowerCase(), "YappiX", "guide", "software"])]
+  return base.slice(0, 12)
+}
+
 function readingTimeToEn(readingTime: string): string {
   return readingTime.replace("мин", "min")
 }
@@ -480,21 +879,28 @@ function readingTimeToEn(readingTime: string): string {
 function createAutoEnPost(ruPost: (typeof blogPosts)[number]): BlogPostEn {
   const title = titleOverrides[ruPost.slug] ?? fallbackTitleFromSlug(ruPost.slug)
   const category = categoryMap[ruPost.category] ?? "Insights"
-  const excerpt = `English version of the article on ${title.toLowerCase()}. Practical recommendations, metrics, and implementation details from YappiX experience.`
+  const metaDescription = `${title}: scope, ROI, risks, and delivery checkpoints — practical notes from YappiX. Full detail in the Russian article.`.slice(
+    0,
+    165,
+  )
+  const excerpt = metaDescription
 
   return {
     slug: ruPost.slug,
     ruSlug: ruPost.slug,
     title,
     metaTitle: `${title} | YappiX`,
-    metaDescription: excerpt,
-    keywords: [...ruPost.tags.slice(0, 6), "YappiX", "English article"],
+    metaDescription,
+    keywords: enKeywordsFromTitle(title, category),
     excerpt,
     content: `
-      <h2>${title}</h2>
-      <p>This article explains practical approaches, mistakes to avoid, and working implementation patterns used by YappiX in real projects.</p>
-      <p>We focus on measurable outcomes: delivery speed, quality control, security constraints, and financial impact for business teams.</p>
-      <p>If you want a custom plan for your case, contact YappiX and we will prepare a roadmap with scope, timeline, and ROI assumptions.</p>
+      <h2>What this guide covers</h2>
+      <p>We focus on measurable outcomes: delivery speed, quality control, security constraints, and business impact — not buzzwords.</p>
+      <h2>Practical recommendations</h2>
+      <p>We outline common pitfalls, checkpoints before scaling, and how to validate ROI with a clear baseline.</p>
+      <h2>Need a tailored plan?</h2>
+      <p><a href="/en/contact">Contact YappiX</a> — we can scope timeline, team model, and economics for your case.</p>
+      <p class="text-sm text-muted-foreground mt-6">For the full in-depth article, read the <a href="/blog/${ruPost.slug}">Russian version</a>.</p>
     `,
     image: imageOverrides[ruPost.slug] ?? ruPost.image,
     category,

@@ -33,7 +33,7 @@ const relatedServicesMap: Record<string, { slug: string; title: string; icon: an
     { slug: "mobilnye-prilozheniya", title: "Мобильные приложения", icon: Smartphone, description: "MVP за 2-4 недели" },
   ],
   "Новости": [
-    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "AI-first подход, 7x-12x быстрее" },
+    { slug: "razrabotka-sajtov", title: "Разработка сайтов", icon: Globe, description: "Современный стек и короткие циклы" },
     { slug: "ai-chat-boty", title: "AI-решения", icon: Bot, description: "Чат-боты, автоматизация" },
   ],
 }
@@ -116,6 +116,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
   if (!post) notFound()
 
   const relatedPosts = blogPosts.filter((p) => p.slug !== slug && p.category === post.category).slice(0, 3)
+  const enAlternateSlug = getEnSlugByRuSlug(slug)
 
   return (
     <>
@@ -225,6 +226,28 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                   <Share2 className="w-4 h-4 mr-2" />
                   Поделиться
                 </Button>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-10">
+            <div className="container mx-auto px-4">
+              <div className="max-w-3xl mx-auto rounded-xl border border-border bg-card p-5">
+                <h2 className="text-xl font-semibold text-foreground mb-3">Ещё по теме</h2>
+                <ul className="space-y-2 text-sm">
+                  <li><Link href="/uslugi" className="text-primary hover:underline">Услуги YappiX</Link></li>
+                  <li><Link href="/mvp-i-zapusk-produkta" className="text-primary hover:underline">Разработка MVP</Link></li>
+                  <li><Link href="/vnedrenie-ai-i-rag" className="text-primary hover:underline">Внедрение ИИ в бизнес</Link></li>
+                  <li><Link href="/blog" className="text-primary hover:underline">Блог (RU)</Link></li>
+                  <li><Link href="/en/blog" className="text-primary hover:underline">Blog (EN)</Link></li>
+                  {enAlternateSlug && (
+                    <li>
+                      <Link href={`/en/blog/${enAlternateSlug}`} className="text-primary hover:underline">
+                        English version of this article
+                      </Link>
+                    </li>
+                  )}
+                </ul>
               </div>
             </div>
           </div>
@@ -347,7 +370,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             "@type": "BlogPosting",
             headline: post.title,
             description: post.metaDescription,
-            image: post.image,
+            image: post.image.startsWith("http") ? post.image : `https://yappix.ru${post.image}`,
             author: {
               "@type": "Organization",
               name: post.author,

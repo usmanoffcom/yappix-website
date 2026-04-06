@@ -28,7 +28,7 @@ export function FounderGreeting({ locale = "ru" }: { locale?: "ru" | "en" }) {
   return (
     <section className="flex flex-col justify-center items-center w-full h-fit py-0">
       <div className="container mx-0 flex flex-col w-fit h-fit px-0">
-        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 p-6 sm:p-8 bg-card border border-border rounded-2xl">
+        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 p-6 sm:p-8 glass rounded-2xl">
           <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden shrink-0 ring-2 ring-primary/20">
             <Image
               src="/ru.png"

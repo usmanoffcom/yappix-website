@@ -5,6 +5,8 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Check, ArrowLeft } from "lucide-react"
+import { blogPosts } from "@/lib/blog-data"
+import { blogPostsEn } from "@/lib/blog-data-en"
 
 const servicesData: Record<
   string,
@@ -92,12 +94,12 @@ const servicesData: Record<
       {
         question: "Как AI ускоряет разработку сайта?",
         answer:
-          "Мы используем Cursor AI для генерации кода, v0.dev для быстрого прототипирования UI, ChatGPT для контента. Это сокращает сроки в 7-12 раз без потери качества — код проходит ревью опытными разработчиками.",
+          "Мы используем Cursor AI для генерации кода, v0.dev для быстрого прототипирования UI, ChatGPT для контента. Это существенно сокращает сроки без потери качества — код проходит ревью опытными разработчиками.",
       },
       {
         question: "Сколько времени занимает разработка сайта?",
         answer:
-          "С AI-подходом: лендинг — 5-7 дней, корпоративный сайт — 2-4 недели, интернет-магазин — 4-8 недель. Это в 7-12 раз быстрее традиционной разработки.",
+          "С AI-подходом: лендинг — 5-7 дней, корпоративный сайт — 2-4 недели, интернет-магазин — 4-8 недель. Это заметно быстрее классического цикла разработки.",
       },
       {
         question: "Что входит в стоимость?",
@@ -198,7 +200,7 @@ const servicesData: Record<
       {
         question: "Как AI ускоряет мобильную разработку?",
         answer:
-          "Cursor AI генерирует 60-70% бойлерплейт-кода: компоненты, навигация, API-клиенты. Разработчики проверяют и дорабатывают. Сроки сокращаются в 7-12 раз.",
+          "Cursor AI генерирует 60-70% бойлерплейт-кода: компоненты, навигация, API-клиенты. Разработчики проверяют и дорабатывают. Сроки сокращаются в разы.",
       },
       {
         question: "React Native или Flutter?",
@@ -218,7 +220,7 @@ const servicesData: Record<
     ],
     seoContent: `
       <h2>Разработка мобильных приложений с AI-first подходом</h2>
-      <p>YappiX создаёт мобильные приложения для iOS и Android с использованием AI-инструментов нового поколения. Это позволяет сократить сроки разработки в 7-12 раз и снизить стоимость MVP.</p>
+      <p>YappiX создаёт мобильные приложения для iOS и Android с использованием AI-инструментов нового поколения. Это позволяет сильно сократить сроки разработки и снизить стоимость MVP.</p>
       
       <h3>Кроссплатформенная vs нативная разработка</h3>
       <p>Мы специализируемся на кроссплатформенных решениях React Native и Flutter — один код работает на обеих платформах. При необходимости разрабатываем нативные приложения на Swift (iOS) и Kotlin (Android).</p>
@@ -598,7 +600,7 @@ const servicesData: Record<
     heroDescription:
       "SEO с AI-first подходом: AI анализирует конкурентов, генерирует контент-стратегии, оптимизирует тексты под поисковые системы. Рост органического трафика от 200% за 6 месяцев.",
     aiFirstDescription:
-      "AI-инструменты ускоряют SEO в 7-12 раз: автоматический сбор семантики, генерация SEO-текстов, анализ конкурентов, мониторинг позиций. Специалисты фокусируются на стратегии и качественном линкбилдинге.",
+      "AI-инструменты сильно ускоряют SEO: автоматический сбор семантики, генерация SEO-текстов, анализ конкурентов, мониторинг позиций. Специалисты фокусируются на стратегии и качественном линкбилдинге.",
     features: [
       "AI-анализ конкурентов и семантики",
       "Техническая оптимизация и Core Web Vitals",
@@ -632,7 +634,7 @@ const servicesData: Record<
     faq: [
       {
         question: "Как AI помогает в SEO?",
-        answer: "AI ускоряет рутинные задачи в 7-12 раз: сбор семантики, анализ конкурентов, генерация контента, мониторинг позиций. Специалисты фокусируются на стратегии и качественном линкбилдинге.",
+        answer: "AI ускоряет рутинные задачи в разы: сбор семантики, анализ конкурентов, генерация контента, мониторинг позиций. Специалисты фокусируются на стратегии и качественном линкбилдинге.",
       },
       {
         question: "Когда ждать результатов от SEO?",
@@ -682,7 +684,7 @@ const servicesData: Record<
     heroDescription:
       "SMM с AI-first подходом: AI генерирует идеи контента, создаёт тексты и визуалы, анализирует метрики. Специалисты фокусируются на стратегии и креативе.",
     aiFirstDescription:
-      "AI ускоряет SMM в 7-12 раз: генерация идей для постов, создание текстов, подбор визуалов, анализ конкурентов. Это позволяет публиковать больше качественного контента при тех же затратах.",
+      "AI сильно ускоряет SMM: генерация идей для постов, создание текстов, подбор визуалов, анализ конкурентов. Это позволяет публиковать больше качественного контента при тех же затратах.",
     features: [
       "AI-генерация контент-планов и идей",
       "Создание контента: AI-тексты + редактура, визуал, видео",
@@ -712,7 +714,7 @@ const servicesData: Record<
     faq: [
       {
         question: "Как AI помогает в SMM?",
-        answer: "AI генерирует идеи постов, пишет тексты, подбирает визуалы, анализирует конкурентов и метрики. Это позволяет публиковать в 7-12 раз больше контента при тех же затратах.",
+        answer: "AI генерирует идеи постов, пишет тексты, подбирает визуалы, анализирует конкурентов и метрики. Это позволяет публиковать заметно больше контента при тех же затратах.",
       },
       {
         question: "Какие соцсети сейчас актуальны в России?",
@@ -1016,6 +1018,97 @@ const servicesData: Record<
 
 type Params = Promise<{ slug: string }>
 
+const relatedPagesByServiceSlug: Record<
+  string,
+  {
+    ruPages: { label: string; href: string }[]
+    enPages: { label: string; href: string }[]
+    ruBlogSlugs: string[]
+    enBlogSlugs: string[]
+  }
+> = {
+  "razrabotka-sajtov": {
+    ruPages: [
+      { label: "Разработка сайтов на заказ", href: "/uslugi/razrabotka-sajtov" },
+      { label: "Корпоративные сайты", href: "/blog/korporativnye-sajty-dlya-biznesa" },
+      { label: "Интернет-магазины", href: "/blog/internet-magaziny-na-nextjs" },
+      { label: "Разработка MVP", href: "/mvp-i-zapusk-produkta" },
+    ],
+    enPages: [
+      { label: "Custom website development", href: "/en/blog/custom-website-development-guide-2026" },
+      { label: "Corporate website development", href: "/en/blog/corporate-website-development-playbook" },
+      { label: "E-commerce development", href: "/en/blog/ecommerce-development-nextjs-guide" },
+      { label: "MVP development services", href: "/en/mvp-i-zapusk-produkta" },
+    ],
+    ruBlogSlugs: ["razrabotka-sajtov-na-zakaz-2026", "korporativnye-sajty-dlya-biznesa", "internet-magaziny-na-nextjs"],
+    enBlogSlugs: ["custom-website-development-guide-2026", "corporate-website-development-playbook", "ecommerce-development-nextjs-guide"],
+  },
+  "mobilnye-prilozheniya": {
+    ruPages: [
+      { label: "Мобильные приложения на заказ", href: "/uslugi/mobilnye-prilozheniya" },
+      { label: "Разработка MVP", href: "/blog/razrabotka-mvp-poshagovo" },
+      { label: "Разработка SaaS", href: "/blog/razrabotka-saas-platform-dlya-b2b" },
+      { label: "Автоматизация процессов", href: "/avtomatizaciya-s-roi" },
+    ],
+    enPages: [
+      { label: "Custom mobile app development", href: "/en/blog/custom-mobile-app-development-guide" },
+      { label: "MVP development roadmap", href: "/en/blog/mvp-development-roadmap" },
+      { label: "SaaS development services", href: "/en/blog/saas-development-for-b2b-guide" },
+      { label: "Business process automation", href: "/en/roi-first-automation" },
+    ],
+    ruBlogSlugs: ["mobilnye-prilozheniya-na-zakaz-pod-klyuch", "razrabotka-mvp-poshagovo"],
+    enBlogSlugs: ["custom-mobile-app-development-guide", "mvp-development-roadmap"],
+  },
+  "saas-paas": {
+    ruPages: [
+      { label: "Разработка SaaS", href: "/uslugi/saas-paas" },
+      { label: "Разработка MVP", href: "/blog/razrabotka-mvp-poshagovo" },
+      { label: "Внедрение ИИ в бизнес", href: "/blog/vnedrenie-ii-v-biznes-protsessy" },
+      { label: "CTO as a Service", href: "/cto-as-a-service" },
+    ],
+    enPages: [
+      { label: "SaaS development services", href: "/en/blog/saas-development-for-b2b-guide" },
+      { label: "MVP development services", href: "/en/blog/mvp-development-roadmap" },
+      { label: "AI implementation in business", href: "/en/blog/ai-implementation-in-business-guide" },
+      { label: "CTO as a Service", href: "/en/cto-as-a-service" },
+    ],
+    ruBlogSlugs: ["razrabotka-saas-platform-dlya-b2b", "razrabotka-mvp-poshagovo"],
+    enBlogSlugs: ["saas-development-for-b2b-guide", "mvp-development-roadmap"],
+  },
+  "ai-chat-boty": {
+    ruPages: [
+      { label: "Внедрение ИИ в бизнес", href: "/blog/vnedrenie-ii-v-biznes-protsessy" },
+      { label: "AI чат-боты для компаний", href: "/blog/ai-chat-boty-dlya-kompaniy" },
+      { label: "Автоматизация бизнес-процессов", href: "/blog/avtomatizaciya-biznes-processov-s-ai" },
+      { label: "RAG-поиск по базе знаний", href: "/rag-poisk-po-baze-znanij" },
+    ],
+    enPages: [
+      { label: "AI implementation in business", href: "/en/blog/ai-implementation-in-business-guide" },
+      { label: "AI chatbot development", href: "/en/blog/ai-chatbot-development-for-business" },
+      { label: "Business process automation", href: "/en/blog/business-process-automation-with-ai" },
+      { label: "Enterprise RAG", href: "/en/rag-enterprise-knowledge-search" },
+    ],
+    ruBlogSlugs: ["vnedrenie-ii-v-biznes-protsessy", "ai-chat-boty-dlya-kompaniy", "avtomatizaciya-biznes-processov-s-ai"],
+    enBlogSlugs: ["ai-implementation-in-business-guide", "ai-chatbot-development-for-business", "business-process-automation-with-ai"],
+  },
+  default: {
+    ruPages: [
+      { label: "Разработка сайтов на заказ", href: "/uslugi/razrabotka-sajtov" },
+      { label: "Мобильные приложения на заказ", href: "/uslugi/mobilnye-prilozheniya" },
+      { label: "Разработка MVP", href: "/mvp-i-zapusk-produkta" },
+      { label: "Внедрение ИИ в бизнес", href: "/vnedrenie-ai-i-rag" },
+    ],
+    enPages: [
+      { label: "Custom website development", href: "/en/services" },
+      { label: "Custom mobile app development", href: "/en/services" },
+      { label: "MVP development services", href: "/en/mvp-i-zapusk-produkta" },
+      { label: "AI implementation in business", href: "/en/vnedrenie-ai-i-rag" },
+    ],
+    ruBlogSlugs: ["razrabotka-sajtov-na-zakaz-2026", "razrabotka-mvp-poshagovo", "vnedrenie-ii-v-biznes-protsessy"],
+    enBlogSlugs: ["custom-website-development-guide-2026", "mvp-development-roadmap", "ai-implementation-in-business-guide"],
+  },
+}
+
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params
   const service = servicesData[slug]
@@ -1060,6 +1153,13 @@ export default async function ServicePage({ params }: { params: Params }) {
   const { slug } = await params
   const service = servicesData[slug]
   if (!service) notFound()
+  const related = relatedPagesByServiceSlug[slug] ?? relatedPagesByServiceSlug.default
+  const ruClusterPosts = related.ruBlogSlugs
+    .map((postSlug) => blogPosts.find((post) => post.slug === postSlug))
+    .filter((post): post is (typeof blogPosts)[number] => Boolean(post))
+  const enClusterPosts = related.enBlogSlugs
+    .map((postSlug) => blogPostsEn.find((post) => post.slug === postSlug))
+    .filter((post): post is (typeof blogPostsEn)[number] => Boolean(post))
 
   return (
     <>
@@ -1216,6 +1316,67 @@ export default async function ServicePage({ params }: { params: Params }) {
             </div>
           </section>
         )}
+
+        <section className="py-12 md:py-16 border-t border-border bg-background">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Связанные страницы</h2>
+            <p className="text-muted-foreground mb-8 max-w-3xl">
+              Услуги и материалы на русском и английском — чтобы проще перейти к следующему шагу.
+            </p>
+            <div className="grid lg:grid-cols-2 gap-6 mb-6">
+              <div className="rounded-xl border border-border bg-card p-5">
+                <h3 className="font-semibold text-foreground mb-3">Русские страницы</h3>
+                <ul className="space-y-2 text-sm">
+                  {related.ruPages.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="text-primary hover:underline">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-5">
+                <h3 className="font-semibold text-foreground mb-3">English pages</h3>
+                <ul className="space-y-2 text-sm">
+                  {related.enPages.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="text-primary hover:underline">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="grid lg:grid-cols-2 gap-6">
+              <div className="rounded-xl border border-border bg-card p-5">
+                <h3 className="font-semibold text-foreground mb-3">Статьи блога (RU)</h3>
+                <ul className="space-y-2 text-sm">
+                  {ruClusterPosts.map((post) => (
+                    <li key={post.slug}>
+                      <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-5">
+                <h3 className="font-semibold text-foreground mb-3">Blog posts (EN)</h3>
+                <ul className="space-y-2 text-sm">
+                  {enClusterPosts.map((post) => (
+                    <li key={post.slug}>
+                      <Link href={`/en/blog/${post.slug}`} className="text-primary hover:underline">
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* CTA */}
         <section className="py-16 md:py-24 bg-primary/5">

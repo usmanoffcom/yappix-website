@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, MessageCircle, Clock } from "lucide-react"
 import { TelegramLeadLink } from "@/components/telegram-lead-link"
+import { BookingCallBlock } from "@/components/booking-call-block"
 
 export const metadata: Metadata = {
   title: "Contact YappiX — Get in Touch | IT Studio",
@@ -281,6 +282,10 @@ export default function ContactEnPage() {
                       </div>
                     </Link>
                   ))}
+                </div>
+
+                <div className="mt-8">
+                  <BookingCallBlock locale="en" />
                 </div>
 
                 {/* Payment Methods */}

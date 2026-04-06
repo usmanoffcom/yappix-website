@@ -37,7 +37,6 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "yappix-ru-v0"
+    "node_modules"
   ]
 }

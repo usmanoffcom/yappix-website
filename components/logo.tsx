@@ -19,6 +19,7 @@ export function Logo({ className, width = 140, height = 40, href = "/" }: LogoPr
         height={height}
         priority
         className="h-8 md:h-10 w-auto max-w-none shrink-0"
+        style={{ height: "auto" }}
       />
     </Link>
   )

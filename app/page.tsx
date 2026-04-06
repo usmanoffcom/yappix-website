@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
+import { ScrollAnimations } from "@/components/scroll-animations"
 import { TargetAudienceSection } from "@/components/target-audience-section"
 import { WhatWeDoSection } from "@/components/what-we-do-section"
 import { WhyYappixSection } from "@/components/why-yappix-section"
@@ -20,7 +21,8 @@ const Footer = dynamic(() => import("@/components/footer").then((m) => ({ defaul
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="relative z-0 min-h-screen bg-background">
+      <ScrollAnimations />
       <Header />
       <HeroSection />
       <TrustBadges />

@@ -1,12 +1,7 @@
 "use client"
 
-import dynamic from "next/dynamic"
 import { useEffect, useState } from "react"
-
-const ChatWidget = dynamic(
-  () => import("@/components/chat-widget").then((mod) => mod.ChatWidget),
-  { ssr: false, loading: () => null }
-)
+import { ChatWidget } from "@/components/chat-widget"
 
 export function ChatWidgetWrapper() {
   const [shouldLoad, setShouldLoad] = useState(false)

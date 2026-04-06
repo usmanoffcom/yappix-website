@@ -98,7 +98,7 @@ const founderMetricsEn = [
   { value: "250+", label: "projects delivered" },
   { value: "6", label: "locations (USA, Russia, Germany, Turkey, Serbia, Kazakhstan)" },
   { value: "AI-first", label: "approach to every project" },
-  { value: "7-12×", label: "acceleration with AI tools" },
+  { value: "Tighter timelines", label: "with AI tooling" },
   { value: "Skolkovo", label: "fund resident" },
 ]
 

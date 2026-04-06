@@ -39,7 +39,7 @@ function LazyGifItem({ src, alt, index }: { src: string; alt: string; index: num
   return (
     <div
       ref={ref}
-      className="flex-shrink-0 relative rounded-xl overflow-hidden bg-background border border-border hover:border-primary/50 transition-colors group"
+      className="flex-shrink-0 relative rounded-xl overflow-hidden glass hover:border-primary/50 transition-all group"
     >
       <div className="relative w-[300px] sm:w-[350px] md:w-[400px] aspect-[4/3] bg-muted">
         {/* Placeholder skeleton */}
@@ -53,6 +53,7 @@ function LazyGifItem({ src, alt, index }: { src: string; alt: string; index: num
             src={src}
             alt={alt || "Демонстрация интерфейса YappiX"}
             fill
+            sizes="(max-width: 640px) 300px, (max-width: 768px) 350px, 400px"
             className={`object-cover group-hover:scale-105 transition-all duration-500 ${
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
@@ -95,7 +96,7 @@ export function ShowcaseGallery({ locale = "ru" }: { locale?: "ru" | "en" }) {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-card overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-24 glass-subtle overflow-hidden">
       <div className="container mx-auto px-4 mb-12">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -122,7 +123,7 @@ export function ShowcaseGallery({ locale = "ru" }: { locale?: "ru" | "en" }) {
           Array.from({ length: 6 }).map((_, index) => (
             <div
               key={index}
-              className="flex-shrink-0 relative rounded-xl overflow-hidden bg-muted border border-border"
+              className="flex-shrink-0 relative rounded-xl overflow-hidden glass"
             >
               <div className="w-[300px] sm:w-[350px] md:w-[400px] aspect-[4/3]" />
             </div>

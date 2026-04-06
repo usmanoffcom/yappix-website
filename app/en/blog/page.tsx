@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: "Blog — Development, AI & Technology | YappiX",
   description:
     "Articles on web development, mobile apps, AI, DevOps, SEO. Practical guides and cases from YappiX.",
+  keywords: [
+    "web development blog",
+    "AI implementation",
+    "MVP development",
+    "SaaS development",
+    "Next.js",
+    "YappiX",
+  ],
   alternates: {
     canonical: "https://yappix.ru/en/blog",
     languages: { "ru-RU": "https://yappix.ru/blog" },
@@ -93,6 +101,71 @@ export default function EnBlogPage() {
                   </article>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-12 md:py-16 border-t border-border bg-card/30">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Guides by topic</h2>
+            <p className="text-muted-foreground mb-6 max-w-3xl">
+              Curated English guides aligned with our services and pillar pages.
+            </p>
+            <div className="rounded-xl border border-border bg-background p-5 max-w-2xl">
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link className="text-primary hover:underline" href="/en/blog/custom-website-development-guide-2026">
+                    Custom website development
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/en/blog/corporate-website-development-playbook">
+                    Corporate website development
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/en/blog/ecommerce-development-nextjs-guide">
+                    E-commerce website development
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/en/blog/custom-mobile-app-development-guide">
+                    Custom mobile app development
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/en/blog/mvp-development-roadmap">
+                    MVP development services
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/en/blog/saas-development-for-b2b-guide">
+                    SaaS development services
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/en/blog/ai-implementation-in-business-guide">
+                    AI implementation in business
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/en/blog/ai-chatbot-development-for-business">
+                    AI chatbot development
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-primary hover:underline" href="/en/blog/business-process-automation-with-ai">
+                    Business process automation
+                  </Link>
+                </li>
+              </ul>
+              <p className="mt-5 pt-5 border-t border-border text-sm text-muted-foreground">
+                <span lang="ru">Полная версия блога на русском — </span>
+                <Link href="/blog" className="text-primary hover:underline">
+                  yappix.ru/blog
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </section>

@@ -64,7 +64,7 @@ const milestones = [
 const values = [
   {
     title: "Speed",
-    description: "We use AI for 7x-12x development acceleration. MVP in 7 days is a reality, not marketing.",
+    description: "We use AI to compress delivery cycles. A one-week MVP sprint is a process, not a slogan.",
   },
   {
     title: "Quality",
@@ -306,7 +306,7 @@ export default function AboutEnPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 "10+ years of experience — proven solutions",
-                "AI tools — 7-12x faster and cheaper development",
+                "AI tools — shorter cycles without cutting quality",
                 "MVP in 7 days — trial week with money-back guarantee",
                 "Offices in 6 countries — convenient time zones",
                 "All payment methods — including crypto",

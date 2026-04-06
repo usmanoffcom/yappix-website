@@ -35,6 +35,64 @@ export const blogCategories: BlogCategory[] = [
   { name: "Бизнес", slug: "biznes" },
 ]
 
+const blogCoverByCategory: Record<string, string> = {
+  "mvp-zapusk": "/images/blog-covers/mvp-launch.png",
+  "ai-avtomatizaciya": "/images/blog-covers/ai-automation.png",
+  "cto-delivery": "/images/blog-covers/cto-delivery.png",
+  "stoimost-ekonomika": "/images/blog-covers/cost-economics.png",
+  "oae-biznes-za-rubezhom": "/images/blog-covers/international-business.png",
+  "kejsy-metodologiya": "/images/blog-covers/cases-methodology.png",
+}
+
+/** Уникальные обложки для SEO-кластерных статей (не дублируем один файл на разные slug). */
+const blogClusterCoverBySlug: Record<string, string> = {
+  "kak-ponyat-nuzhen-li-mvp": "/images/blog-covers/mvp-launch.png",
+  "skolko-stoit-mvp-v-2026": "/images/blog-covers/ai-automation.png",
+  "pochemu-startapy-teryayut-vremya-do-zapuska": "/images/blog-covers/cto-delivery.png",
+  "chto-podgotovit-do-starta-razrabotki": "/images/blog-covers/cost-economics.png",
+  "kogda-sayt-stanovitsya-produktom": "/images/blog-covers/international-business.png",
+  "kak-zapuskat-produkt-bez-bolshoy-komandy": "/images/blog-covers/cases-methodology.png",
+  "kogda-biznesu-realno-nuzhen-ai": "/images/blog-covers/web-development.png",
+  "chto-takoe-rag-prostymi-slovami": "/images/blog-covers/ecommerce.png",
+  "kak-vnedrit-vnutrennego-ai-pomoshchnika": "/images/blog-covers/mobile-apps.png",
+  "kakie-dannye-nuzhny-dlya-ai-assistenta": "/images/blog-covers/saas-platform.png",
+  "kak-schitat-effekt-ot-ai-proekta": "/images/blog-covers/ai-chatbot.png",
+  "gde-ai-realno-razgruzhaet-protsessy": "/images/blog-covers/process-automation.png",
+  "kogda-nuzhen-cto-as-a-service": "/images/coinpulse/cover.png",
+  "kak-ponyat-chto-podryadchik-ne-stroit-produkt": "/images/coinpulse/dashboard.png",
+  "pochemu-proekty-sryvayutsya-dazhe-s-bolshoy-komandoy": "/images/coinpulse/details.png",
+  "kak-perestroit-haotichnuyu-razrabotku": "/images/coinpulse/tokens.png",
+  "kogda-pora-perezapuskat-produkt": "/cryptopulse_assets/public/assets/Dashboard-1.png",
+  "kak-zayti-v-chuzhoy-problemnyy-proekt": "/cryptopulse_assets/public/assets/Dashboard.png",
+  "skolko-stoit-razrabotka-sayta-v-2026": "/cryptopulse_assets/public/assets/Details Page.png",
+  "pochemu-deshevyy-podryad-dorozhe": "/cryptopulse_assets/public/assets/Tokens Page.png",
+  "kak-schitat-stoimost-ai-avtomatizacii": "/Dashboard_crypto.png",
+  "iz-chego-skladyvayutsya-sroki-saas": "/Robot.png",
+  "pochemu-bystro-i-deshevo-lomaet-produkt": "/abstract-background-4480x2520-11615.png",
+  "kogda-sobirat-produkt-poetapno": "/images/2ceefb137491185.63bb560c97aec.png",
+  "kak-vybrat-russkoyazychnuyu-it-komandu-v-oae": "/images/Multiple-Isometric-iPhone-MockUps.png",
+  "chto-nuzhno-biznesu-v-oae-ot-digital-komandy": "/images/Screenshot 2026-01-08 at 19.12.21.png",
+  "kak-zapuskat-mvp-dlya-rynka-oae": "/images/Screenshot 2026-01-08 at 19.12.35.png",
+  "kogda-biznesu-v-evrope-nuzhen-product-partner": "/images/Screenshot 2026-01-08 at 19.12.59.png",
+  "kak-sobrat-digital-kontur-dlya-mezhdunarodnoy-kompanii": "/images/Screenshot 2026-01-11 at 11.39.49.png",
+  "pochemu-founderam-za-rubezhom-nuzhna-produktovaya-komanda": "/images/Screenshot 2026-01-11 at 11.40.54.png",
+  "kak-my-ocenivaem-proekt-do-starta": "/images/Screenshot 2026-01-11 at 11.41.43.png",
+  "chto-dolzhno-byt-v-normalnom-keyse": "/images/mediamodifier_image.png",
+  "pochemu-keysy-bez-metodiki-malo-chto-znachat": "/images/image.png",
+  "kak-my-schitaem-impact-ot-pererabotki-produkta": "/images/image1.png",
+  "kakie-artefakty-poluchaet-klient": "/images/portal.startups.microsoft.png",
+  "chem-otlichaetsya-ai-first-delivery": "/images/Cover3 1.jpg",
+  "razrabotka-sajtov-na-zakaz-2026": "/images/1765791666409-Qwl2eN6NaWQvwvcVj32lG6Vw_width_2880_height_1800.avif",
+  "korporativnye-sajty-dlya-biznesa": "/images/1765791581257-yJhYOoAv5rNuaqBK66Kdsw73Xg.avif",
+  "internet-magaziny-na-nextjs": "/images/1765791715753-akppqeDKMhBDLRyBcnGi33oLFx8_width_2880_height_1800.avif",
+  "mobilnye-prilozheniya-na-zakaz-pod-klyuch": "/Jupid/j1.png",
+  "razrabotka-mvp-poshagovo": "/Jupid/Social preview.png",
+  "razrabotka-saas-platform-dlya-b2b": "/images/olive/Screenshot 2026-04-05 at 23.27.21.png",
+  "vnedrenie-ii-v-biznes-protsessy": "/images/olive/Screenshot 2026-04-05 at 23.28.03.png",
+  "ai-chat-boty-dlya-kompaniy": "/images/usmanoff-cases/1765729149320-1D4c6ILkjRy9czuGXT6J1whhgSw.png",
+  "avtomatizaciya-biznes-processov-s-ai": "/images/usmanoff-cases/1765729356037-WZ36X6mtS9bdRftIcKUWTFNKxSQ.png",
+}
+
 export const blogPosts: BlogPost[] = [
   {
     slug: "pochemu-ai-proekty-ne-okupayutsya-i-kak-etogo-izbezhat",
@@ -241,7 +299,7 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Среднее внедрение</strong> (RAG-система, автоматизация документов) — от 400 000 ₽</li>
         <li><strong>Сложное внедрение</strong> (AI-агенты, интеграция с ERP, кастомные модели) — от 800 000 ₽</li>
       </ul>
-      <p>В YappiX мы используем AI-first подход: внедряем решения в 7-12 раз быстрее благодаря Cursor AI и готовым компонентам.</p>
+      <p>В YappiX мы используем AI-first подход: внедряем решения заметно быстрее за счёт Cursor AI и готовых компонентов.</p>
       
       <h2>Типичные ошибки при внедрении ИИ</h2>
       <ol>
@@ -378,7 +436,7 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Используйте готовые шаблоны</strong> — экономия 30-50% на дизайне</li>
         <li><strong>Готовьте контент сами</strong> — тексты, фото, видео</li>
         <li><strong>Начните с MVP</strong> — базовый функционал, расширение позже</li>
-        <li><strong>Выбирайте AI-first студии</strong> — разработка в 7-12 раз быстрее = ниже цена</li>
+        <li><strong>Выбирайте AI-first студии</strong> — короче цикл разработки и ниже итоговая стоимость</li>
       </ul>
       
       <h2>Типичные ошибки при заказе сайта</h2>
@@ -391,7 +449,7 @@ export const blogPosts: BlogPost[] = [
       </ol>
       
       <h2>Заказать сайт в YappiX</h2>
-      <p>YappiX — IT-студия с 10+ летним опытом. Мы используем AI-first подход: разрабатываем сайты в 7-12 раз быстрее конкурентов при том же качестве.</p>
+      <p>YappiX — IT-студия с 10+ летним опытом. Мы используем AI-first подход и укладываемся в короткие сроки при том же качестве.</p>
       <p><strong>Почему заказывают сайт у нас:</strong></p>
       <ul>
         <li>Прозрачные цены — фиксированная стоимость в договоре</li>
@@ -454,7 +512,7 @@ export const blogPosts: BlogPost[] = [
       <p>Благодаря <strong>AI-first подходу</strong> мы используем:</p>
       <ul>
         <li><strong>v0.dev</strong> — генерация UI за часы вместо дней</li>
-        <li><strong>Cursor</strong> — AI-ассистент пишет код в 7-12 раз быстрее</li>
+        <li><strong>Cursor</strong> — AI-ассистент ускоряет написание кода</li>
         <li><strong>Готовые компоненты</strong> — библиотека из 200+ проектов</li>
       </ul>
       <p>Экономия времени = экономия денег клиента.</p>
@@ -551,7 +609,7 @@ export const blogPosts: BlogPost[] = [
       <p>В YappiX используем AI-first подход:</p>
       <ul>
         <li><strong>Генерация UI</strong> — v0.dev создаёт экраны за часы</li>
-        <li><strong>AI-кодинг</strong> — Cursor ускоряет разработку в 7-12 раз</li>
+        <li><strong>AI-кодинг</strong> — Cursor ускоряет разработку</li>
         <li><strong>Готовые модули</strong> — авторизация, платежи, чаты из библиотеки</li>
       </ul>
       <p>Результат: MVP за 300 000 ₽ вместо 600 000 ₽ при традиционном подходе.</p>
@@ -632,7 +690,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Почему MVP за 300 000 ₽ — это реально</h2>
       <p>В YappiX мы создаём MVP за 2-4 недели благодаря:</p>
       <ul>
-        <li><strong>AI-генерация кода</strong> — Cursor пишет код в 7-12 раз быстрее</li>
+        <li><strong>AI-генерация кода</strong> — Cursor ускоряет вывод кода</li>
         <li><strong>Готовые компоненты</strong> — не изобретаем велосипед</li>
         <li><strong>No-code для админки</strong> — Retool, Airtable вместо кастомной разработки</li>
         <li><strong>Cloud-first</strong> — Vercel, Supabase вместо настройки серверов</li>
@@ -879,7 +937,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Почему это стало возможным</h2>
       <p>Традиционная разработка такой системы заняла бы 6-12 месяцев и стоила бы 15-30 миллионов рублей. Мы сделали MVP за 7 дней благодаря:</p>
       <ol>
-        <li><strong>AI-first подход</strong> — AI пишет код в 7-12 раз быстрее человека</li>
+        <li><strong>AI-first подход</strong> — AI помогает писать код быстрее ручного цикла</li>
         <li><strong>Готовые компоненты</strong> — библиотека из 200+ проектов YappiX</li>
         <li><strong>Cloud-native архитектура</strong> — serverless = без времени на DevOps</li>
         <li><strong>Опытная команда</strong> — 10+ лет разработки сложных систем</li>
@@ -1567,7 +1625,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a>.</p>
     `,
-    image: "/blog/kak-ponyat-nuzhen-li-mvp.webp",
+    image: blogClusterCoverBySlug["kak-ponyat-nuzhen-li-mvp"],
     category: "mvp-zapusk",
     tags: ["MVP", "запуск продукта", "стартап", "стратегия"],
     author: "YappiX Team",
@@ -1589,7 +1647,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/stoimost-i-sroki-razrabotki">Стоимость и сроки разработки</a>.</p>
     `,
-    image: "/blog/skolko-stoit-mvp-v-2026.webp",
+    image: blogClusterCoverBySlug["skolko-stoit-mvp-v-2026"],
     category: "mvp-zapusk",
     tags: ["MVP", "стоимость", "бюджет", "разработка"],
     author: "YappiX Team",
@@ -1611,7 +1669,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a>.</p>
     `,
-    image: "/blog/pochemu-startapy-teryayut-vremya-do-zapuska.webp",
+    image: blogClusterCoverBySlug["pochemu-startapy-teryayut-vremya-do-zapuska"],
     category: "mvp-zapusk",
     tags: ["стартап", "MVP", "запуск", "time-to-market"],
     author: "YappiX Team",
@@ -1633,7 +1691,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
     `,
-    image: "/blog/chto-podgotovit-do-starta-razrabotki.webp",
+    image: blogClusterCoverBySlug["chto-podgotovit-do-starta-razrabotki"],
     category: "mvp-zapusk",
     tags: ["фаундер", "подготовка", "разработка", "процесс"],
     author: "YappiX Team",
@@ -1655,7 +1713,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/uslugi/razrabotka-sajtov">Разработка сайтов</a>.</p>
     `,
-    image: "/blog/kogda-sayt-stanovitsya-produktom.webp",
+    image: blogClusterCoverBySlug["kogda-sayt-stanovitsya-produktom"],
     category: "mvp-zapusk",
     tags: ["сайт", "продукт", "разработка сайтов", "трансформация"],
     author: "YappiX Team",
@@ -1677,7 +1735,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/eu/cto-as-a-service-dlya-startapa">CTO as a Service для стартапа</a>.</p>
     `,
-    image: "/blog/kak-zapuskat-produkt-bez-bolshoy-komandy.webp",
+    image: blogClusterCoverBySlug["kak-zapuskat-produkt-bez-bolshoy-komandy"],
     category: "mvp-zapusk",
     tags: ["запуск продукта", "CTO as a Service", "аутстафф", "стартап"],
     author: "YappiX Team",
@@ -1701,7 +1759,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/vnedrenie-ai-i-rag">Внедрение AI и RAG</a>.</p>
     `,
-    image: "/blog/kogda-biznesu-realno-nuzhen-ai.webp",
+    image: blogClusterCoverBySlug["kogda-biznesu-realno-nuzhen-ai"],
     category: "ai-avtomatizaciya",
     tags: ["AI", "бизнес", "внедрение", "автоматизация"],
     author: "YappiX Team",
@@ -1723,7 +1781,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/usa/rag-i-vnutrenniy-ai-pomoshchnik">RAG и внутренний AI-помощник</a>.</p>
     `,
-    image: "/blog/chto-takoe-rag-prostymi-slovami.webp",
+    image: blogClusterCoverBySlug["chto-takoe-rag-prostymi-slovami"],
     category: "ai-avtomatizaciya",
     tags: ["RAG", "AI", "LLM", "автоматизация"],
     author: "YappiX Team",
@@ -1745,7 +1803,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/usa/rag-i-vnutrenniy-ai-pomoshchnik">RAG и внутренний AI-помощник</a>.</p>
     `,
-    image: "/blog/kak-vnedrit-vnutrennego-ai-pomoshchnika.webp",
+    image: blogClusterCoverBySlug["kak-vnedrit-vnutrennego-ai-pomoshchnika"],
     category: "ai-avtomatizaciya",
     tags: ["AI-помощник", "RAG", "автоматизация", "команда"],
     author: "YappiX Team",
@@ -1767,7 +1825,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/security-compliance">Безопасность и compliance</a>.</p>
     `,
-    image: "/blog/kakie-dannye-nuzhny-dlya-ai-assistenta.webp",
+    image: blogClusterCoverBySlug["kakie-dannye-nuzhny-dlya-ai-assistenta"],
     category: "ai-avtomatizaciya",
     tags: ["данные", "AI-ассистент", "безопасность", "подготовка"],
     author: "YappiX Team",
@@ -1789,7 +1847,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/roi-methodology">Методология ROI</a>.</p>
     `,
-    image: "/blog/kak-schitat-effekt-ot-ai-proekta.webp",
+    image: blogClusterCoverBySlug["kak-schitat-effekt-ot-ai-proekta"],
     category: "ai-avtomatizaciya",
     tags: ["AI", "ROI", "метрики", "эффективность"],
     author: "YappiX Team",
@@ -1811,7 +1869,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/vnedrenie-ai-i-rag">Внедрение AI и RAG</a>.</p>
     `,
-    image: "/blog/gde-ai-realno-razgruzhaet-protsessy.webp",
+    image: blogClusterCoverBySlug["gde-ai-realno-razgruzhaet-protsessy"],
     category: "ai-avtomatizaciya",
     tags: ["AI", "поддержка", "продажи", "автоматизация"],
     author: "YappiX Team",
@@ -1835,7 +1893,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/cto-as-a-service">CTO as a Service</a>.</p>
     `,
-    image: "/blog/kogda-nuzhen-cto-as-a-service.webp",
+    image: blogClusterCoverBySlug["kogda-nuzhen-cto-as-a-service"],
     category: "cto-delivery",
     tags: ["CTO as a Service", "delivery", "управление", "продукт"],
     author: "YappiX Team",
@@ -1857,7 +1915,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/kejsy-i-metodologiya">Кейсы и методология</a>.</p>
     `,
-    image: "/blog/kak-ponyat-chto-podryadchik-ne-stroit-produkt.webp",
+    image: blogClusterCoverBySlug["kak-ponyat-chto-podryadchik-ne-stroit-produkt"],
     category: "cto-delivery",
     tags: ["подрядчик", "delivery", "кейсы", "методология"],
     author: "YappiX Team",
@@ -1879,7 +1937,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
     `,
-    image: "/blog/pochemu-proekty-sryvayutsya-dazhe-s-bolshoy-komandoy.webp",
+    image: blogClusterCoverBySlug["pochemu-proekty-sryvayutsya-dazhe-s-bolshoy-komandoy"],
     category: "cto-delivery",
     tags: ["управление", "команда", "delivery", "процесс"],
     author: "YappiX Team",
@@ -1901,7 +1959,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
     `,
-    image: "/blog/kak-perestroit-haotichnuyu-razrabotku.webp",
+    image: blogClusterCoverBySlug["kak-perestroit-haotichnuyu-razrabotku"],
     category: "cto-delivery",
     tags: ["delivery", "процесс", "управление", "разработка"],
     author: "YappiX Team",
@@ -1923,7 +1981,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/eu/perezapusk-digital-produkta">Перезапуск digital-продукта</a>.</p>
     `,
-    image: "/blog/kogda-pora-perezapuskat-produkt.webp",
+    image: blogClusterCoverBySlug["kogda-pora-perezapuskat-produkt"],
     category: "cto-delivery",
     tags: ["перезапуск", "rebuild", "технический долг", "продукт"],
     author: "YappiX Team",
@@ -1945,7 +2003,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/eu/cto-as-a-service-dlya-startapa">CTO as a Service для стартапа</a>.</p>
     `,
-    image: "/blog/kak-zayti-v-chuzhoy-problemnyy-proekt.webp",
+    image: blogClusterCoverBySlug["kak-zayti-v-chuzhoy-problemnyy-proekt"],
     category: "cto-delivery",
     tags: ["проблемный проект", "аудит", "CTO as a Service", "стабилизация"],
     author: "YappiX Team",
@@ -1969,7 +2027,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/uslugi/razrabotka-sajtov">Разработка сайтов</a>.</p>
     `,
-    image: "/blog/skolko-stoit-razrabotka-sayta-v-2026.webp",
+    image: blogClusterCoverBySlug["skolko-stoit-razrabotka-sayta-v-2026"],
     category: "stoimost-ekonomika",
     tags: ["стоимость", "разработка сайтов", "бюджет", "2026"],
     author: "YappiX Team",
@@ -1991,7 +2049,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/kejsy-i-metodologiya">Кейсы и методология</a>.</p>
     `,
-    image: "/blog/pochemu-deshevyy-podryad-dorozhe.webp",
+    image: blogClusterCoverBySlug["pochemu-deshevyy-podryad-dorozhe"],
     category: "stoimost-ekonomika",
     tags: ["стоимость", "подряд", "технический долг", "качество"],
     author: "YappiX Team",
@@ -2013,7 +2071,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/roi-methodology">Методология ROI</a>.</p>
     `,
-    image: "/blog/kak-schitat-stoimost-ai-avtomatizacii.webp",
+    image: blogClusterCoverBySlug["kak-schitat-stoimost-ai-avtomatizacii"],
     category: "stoimost-ekonomika",
     tags: ["AI", "стоимость", "ROI", "автоматизация"],
     author: "YappiX Team",
@@ -2035,7 +2093,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/usa/razrabotka-saas-i-lichnyh-kabinetov">Разработка SaaS и личных кабинетов</a>.</p>
     `,
-    image: "/blog/iz-chego-skladyvayutsya-sroki-saas.webp",
+    image: blogClusterCoverBySlug["iz-chego-skladyvayutsya-sroki-saas"],
     category: "stoimost-ekonomika",
     tags: ["SaaS", "сроки", "личный кабинет", "планирование"],
     author: "YappiX Team",
@@ -2057,7 +2115,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a>.</p>
     `,
-    image: "/blog/pochemu-bystro-i-deshevo-lomaet-produkt.webp",
+    image: blogClusterCoverBySlug["pochemu-bystro-i-deshevo-lomaet-produkt"],
     category: "stoimost-ekonomika",
     tags: ["качество", "стоимость", "MVP", "технический долг"],
     author: "YappiX Team",
@@ -2079,7 +2137,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a>.</p>
     `,
-    image: "/blog/kogda-sobirat-produkt-poetapno.webp",
+    image: blogClusterCoverBySlug["kogda-sobirat-produkt-poetapno"],
     category: "stoimost-ekonomika",
     tags: ["поэтапная разработка", "MVP", "time-to-market", "стратегия"],
     author: "YappiX Team",
@@ -2103,7 +2161,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/oae/russkaya-komanda-razrabotki-v-oae">Русская команда разработки в ОАЭ</a>.</p>
     `,
-    image: "/blog/kak-vybrat-russkoyazychnuyu-it-komandu-v-oae.webp",
+    image: blogClusterCoverBySlug["kak-vybrat-russkoyazychnuyu-it-komandu-v-oae"],
     category: "oae-biznes-za-rubezhom",
     tags: ["ОАЭ", "IT-команда", "русскоязычный бизнес", "Дубай"],
     author: "YappiX Team",
@@ -2125,7 +2183,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/oae/razrabotka-mvp-v-dubae">Разработка MVP в Дубае</a>.</p>
     `,
-    image: "/blog/chto-nuzhno-biznesu-v-oae-ot-digital-komandy.webp",
+    image: blogClusterCoverBySlug["chto-nuzhno-biznesu-v-oae-ot-digital-komandy"],
     category: "oae-biznes-za-rubezhom",
     tags: ["ОАЭ", "digital", "старт бизнеса", "MVP"],
     author: "YappiX Team",
@@ -2147,7 +2205,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/oae/razrabotka-mvp-v-dubae">Разработка MVP в Дубае</a>.</p>
     `,
-    image: "/blog/kak-zapuskat-mvp-dlya-rynka-oae.webp",
+    image: blogClusterCoverBySlug["kak-zapuskat-mvp-dlya-rynka-oae"],
     category: "oae-biznes-za-rubezhom",
     tags: ["ОАЭ", "MVP", "Дубай", "запуск"],
     author: "YappiX Team",
@@ -2169,7 +2227,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/eu/perezapusk-digital-produkta">Перезапуск digital-продукта</a>.</p>
     `,
-    image: "/blog/kogda-biznesu-v-evrope-nuzhen-product-partner.webp",
+    image: blogClusterCoverBySlug["kogda-biznesu-v-evrope-nuzhen-product-partner"],
     category: "oae-biznes-za-rubezhom",
     tags: ["Европа", "product partner", "русскоязычный бизнес", "подрядчик"],
     author: "YappiX Team",
@@ -2191,7 +2249,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
     `,
-    image: "/blog/kak-sobrat-digital-kontur-dlya-mezhdunarodnoy-kompanii.webp",
+    image: blogClusterCoverBySlug["kak-sobrat-digital-kontur-dlya-mezhdunarodnoy-kompanii"],
     category: "oae-biznes-za-rubezhom",
     tags: ["международный бизнес", "digital", "инфраструктура", "процесс"],
     author: "YappiX Team",
@@ -2213,7 +2271,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/cto-as-a-service">CTO as a Service</a>.</p>
     `,
-    image: "/blog/pochemu-founderam-za-rubezhom-nuzhna-produktovaya-komanda.webp",
+    image: blogClusterCoverBySlug["pochemu-founderam-za-rubezhom-nuzhna-produktovaya-komanda"],
     category: "oae-biznes-za-rubezhom",
     tags: ["фаундер", "за рубежом", "продуктовая команда", "CTO as a Service"],
     author: "YappiX Team",
@@ -2237,7 +2295,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
     `,
-    image: "/blog/kak-my-ocenivaem-proekt-do-starta.webp",
+    image: blogClusterCoverBySlug["kak-my-ocenivaem-proekt-do-starta"],
     category: "kejsy-metodologiya",
     tags: ["оценка", "discovery", "процесс", "roadmap"],
     author: "YappiX Team",
@@ -2259,7 +2317,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/kejsy-i-metodologiya">Кейсы и методология</a>.</p>
     `,
-    image: "/blog/chto-dolzhno-byt-v-normalnom-keyse.webp",
+    image: blogClusterCoverBySlug["chto-dolzhno-byt-v-normalnom-keyse"],
     category: "kejsy-metodologiya",
     tags: ["кейсы", "методология", "портфолио", "метрики"],
     author: "YappiX Team",
@@ -2281,7 +2339,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/roi-methodology">Методология ROI</a>.</p>
     `,
-    image: "/blog/pochemu-keysy-bez-metodiki-malo-chto-znachat.webp",
+    image: blogClusterCoverBySlug["pochemu-keysy-bez-metodiki-malo-chto-znachat"],
     category: "kejsy-metodologiya",
     tags: ["кейсы", "ROI", "методология", "измерение"],
     author: "YappiX Team",
@@ -2303,7 +2361,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/roi-methodology">Методология ROI</a>.</p>
     `,
-    image: "/blog/kak-my-schitaem-impact-ot-pererabotki-produkta.webp",
+    image: blogClusterCoverBySlug["kak-my-schitaem-impact-ot-pererabotki-produkta"],
     category: "kejsy-metodologiya",
     tags: ["impact", "ROI", "метрики", "переработка"],
     author: "YappiX Team",
@@ -2325,7 +2383,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/process">Наш процесс</a>.</p>
     `,
-    image: "/blog/kakie-artefakty-poluchaet-klient.webp",
+    image: blogClusterCoverBySlug["kakie-artefakty-poluchaet-klient"],
     category: "kejsy-metodologiya",
     tags: ["артефакты", "процесс", "прозрачность", "delivery"],
     author: "YappiX Team",
@@ -2347,13 +2405,337 @@ export const blogPosts: BlogPost[] = [
       <h2>Как это связано с вашим продуктом</h2>
       <p>Подробнее о нашем подходе — на странице <a href="/ai-first-razrabotka">AI-first разработка</a>.</p>
     `,
-    image: "/blog/chem-otlichaetsya-ai-first-delivery.webp",
+    image: blogClusterCoverBySlug["chem-otlichaetsya-ai-first-delivery"],
     category: "kejsy-metodologiya",
     tags: ["AI-first", "delivery", "разработка", "методология"],
     author: "YappiX Team",
     authorRole: "Product Engineering",
     publishedAt: "2026-04-05",
     readingTime: "8 мин",
+  },
+  {
+    slug: "razrabotka-sajtov-na-zakaz-2026",
+    title: "Разработка сайтов на заказ в 2026: как выбрать подрядчика и не потерять бюджет",
+    metaTitle: "Разработка сайтов на заказ в 2026 — чек-лист выбора подрядчика | YappiX",
+    metaDescription:
+      "Практическое руководство по разработке сайтов на заказ: бриф, структура, MVP-сценарии, контроль сроков и рисков.",
+    keywords: ["разработка сайтов на заказ", "заказать сайт", "веб-разработка под ключ", "сайт для бизнеса"],
+    excerpt:
+      "Пошагово разбираем, как запускать разработку сайтов на заказ: от брифа до релиза, с понятной экономикой и сроками.",
+    content: `
+      <h2>Когда бизнесу действительно нужна разработка сайтов на заказ</h2>
+      <p>Сайт на заказ нужен, когда у вас есть конкретная бизнес-задача: лидогенерация, продажи, запуск новой услуги, партнерский портал или личный кабинет. В этом случае шаблонные решения быстро упираются в ограничения.</p>
+      <h3>Минимальный план запуска</h3>
+      <ul>
+        <li>зафиксировать целевые действия пользователя;</li>
+        <li>описать структуру страниц и воронку;</li>
+        <li>оценить интеграции (CRM, платежи, аналитика);</li>
+        <li>собрать MVP-версию и проверить конверсию.</li>
+      </ul>
+      <p>Для запуска связанной продуктовой логики полезно опираться на страницу <a href="/mvp-i-zapusk-produkta">разработка MVP</a>.</p>
+      <h3>Связанные страницы</h3>
+      <ul>
+        <li><a href="/uslugi/razrabotka-sajtov">Разработка сайтов и веб-систем</a></li>
+        <li><a href="/uslugi/saas-paas">Разработка SaaS</a></li>
+        <li><a href="/blog/korporativnye-sajty-dlya-biznesa">Корпоративные сайты</a></li>
+        <li><a href="/en/blog/custom-website-development-guide-2026">English version</a></li>
+      </ul>
+    `,
+    image: blogClusterCoverBySlug["razrabotka-sajtov-na-zakaz-2026"],
+    category: "mvp-zapusk",
+    tags: ["сайт на заказ", "веб-разработка", "MVP", "B2B"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "9 мин",
+  },
+  {
+    slug: "korporativnye-sajty-dlya-biznesa",
+    title: "Корпоративные сайты: архитектура, контент и SEO, которые работают на продажи",
+    metaTitle: "Корпоративные сайты для бизнеса — структура и SEO-модель | YappiX",
+    metaDescription:
+      "Как проектировать корпоративные сайты, чтобы они усиливали бренд и давали лиды: структура, E-E-A-T, SEO и аналитика.",
+    keywords: ["корпоративные сайты", "сайт компании", "корпоративный сайт заказать", "B2B сайт"],
+    excerpt:
+      "Разбираем, как корпоративные сайты превращаются в канал продаж: структура, контентные блоки, trust-сигналы и SEO.",
+    content: `
+      <h2>Почему корпоративные сайты часто не работают</h2>
+      <p>Большинство корпоративных сайтов описывают компанию, но не помогают клиенту принять решение. Нужна продуктовая структура: проблемы клиента, решение, доказательства, кейсы и понятный CTA.</p>
+      <h3>Что обязательно должно быть</h3>
+      <ul>
+        <li>страницы услуг с коммерческим интентом;</li>
+        <li>кейсы с цифрами и артефактами;</li>
+        <li>раздел с процессом и SLA;</li>
+        <li>контентный кластер под ключевые запросы.</li>
+      </ul>
+      <p>Подход к trust-артефактам описан на странице <a href="/evidence">Evidence Hub</a>.</p>
+      <h3>Связанные страницы</h3>
+      <ul>
+        <li><a href="/uslugi/razrabotka-sajtov">Разработка сайтов</a></li>
+        <li><a href="/kejsy">Кейсы</a></li>
+        <li><a href="/blog/internet-magaziny-na-nextjs">Интернет-магазины</a></li>
+        <li><a href="/en/blog/corporate-website-development-playbook">English version</a></li>
+      </ul>
+    `,
+    image: blogClusterCoverBySlug["korporativnye-sajty-dlya-biznesa"],
+    category: "stoimost-ekonomika",
+    tags: ["корпоративный сайт", "B2B", "SEO", "лидогенерация"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "internet-magaziny-na-nextjs",
+    title: "Интернет-магазины в 2026: как запустить e-commerce без технического долга",
+    metaTitle: "Интернет-магазины в 2026 — запуск e-commerce на современном стеке | YappiX",
+    metaDescription:
+      "Практика запуска интернет-магазинов: каталог, корзина, оплата, SEO и интеграции с CRM/ERP.",
+    keywords: ["интернет-магазины", "разработка интернет-магазина", "e-commerce разработка", "магазин на Next.js"],
+    excerpt:
+      "Пошаговый подход к запуску интернет-магазина: архитектура, SEO-категории, интеграции и контроль unit-экономики.",
+    content: `
+      <h2>Интернет-магазин — это операционная система продаж</h2>
+      <p>В e-commerce важен не только витринный дизайн. Критичны скорость каталога, фильтрация, оплата, интеграции и корректная SEO-индексация карточек и категорий.</p>
+      <h3>Базовые блоки e-commerce</h3>
+      <ul>
+        <li>каталог + фильтры + поиск;</li>
+        <li>корзина и checkout;</li>
+        <li>интеграции с CRM/ERP и складом;</li>
+        <li>автоматизация маркетинга и поддержки.</li>
+      </ul>
+      <p>Для автоматизации клиентского сервиса смотрите <a href="/uslugi/ai-chat-boty">AI чат-боты</a>.</p>
+      <h3>Связанные страницы</h3>
+      <ul>
+        <li><a href="/uslugi/razrabotka-sajtov">Разработка сайтов</a></li>
+        <li><a href="/uslugi/integracii-i-api">Интеграции и API</a></li>
+        <li><a href="/blog/ai-chat-boty-dlya-kompaniy">AI чат-боты для компаний</a></li>
+        <li><a href="/en/blog/ecommerce-development-nextjs-guide">English version</a></li>
+      </ul>
+    `,
+    image: blogClusterCoverBySlug["internet-magaziny-na-nextjs"],
+    category: "stoimost-ekonomika",
+    tags: ["интернет-магазин", "e-commerce", "интеграции", "SEO"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "9 мин",
+  },
+  {
+    slug: "mobilnye-prilozheniya-na-zakaz-pod-klyuch",
+    title: "Мобильные приложения на заказ: когда действительно нужен mobile-first сценарий",
+    metaTitle: "Мобильные приложения на заказ — product-first подход | YappiX",
+    metaDescription:
+      "Когда бизнесу нужны мобильные приложения на заказ и как избежать лишних затрат: продуктовая логика, стек, релиз.",
+    keywords: ["мобильные приложения на заказ", "разработка мобильных приложений", "приложение под ключ", "mobile MVP"],
+    excerpt:
+      "Объясняем, как принимать решение о мобильной разработке и запускать продукт без избыточного функционала.",
+    content: `
+      <h2>Не каждый продукт должен начинаться с мобильного приложения</h2>
+      <p>Мы начинаем с проверки сценариев: где мобильный формат даёт реальное преимущество над web. Если преимущества нет — сначала запускаем web/MVP, затем расширяем в mobile.</p>
+      <h3>Критерии для mobile-first</h3>
+      <ul>
+        <li>частое использование «в поле»;</li>
+        <li>push-уведомления как часть unit-экономики;</li>
+        <li>геолокация, камера, офлайн-режим;</li>
+        <li>операционные задачи команды в движении.</li>
+      </ul>
+      <p>Подход к раннему запуску описан в разделе <a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a>.</p>
+      <h3>Связанные страницы</h3>
+      <ul>
+        <li><a href="/uslugi/mobilnye-prilozheniya">Мобильные приложения</a></li>
+        <li><a href="/uslugi/razrabotka-sajtov">Веб-разработка</a></li>
+        <li><a href="/blog/razrabotka-mvp-poshagovo">Разработка MVP</a></li>
+        <li><a href="/en/blog/custom-mobile-app-development-guide">English version</a></li>
+      </ul>
+    `,
+    image: blogClusterCoverBySlug["mobilnye-prilozheniya-na-zakaz-pod-klyuch"],
+    category: "mvp-zapusk",
+    tags: ["мобильные приложения", "mobile MVP", "product-first", "разработка на заказ"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "razrabotka-mvp-poshagovo",
+    title: "Разработка MVP: пошаговый план запуска за 4–8 недель",
+    metaTitle: "Разработка MVP — пошаговый план и типовые ошибки | YappiX",
+    metaDescription:
+      "Как запускать MVP без перерасхода бюджета: scope, метрики, приоритизация и delivery-подход.",
+    keywords: ["разработка MVP", "MVP запуск", "MVP для стартапа", "как сделать MVP"],
+    excerpt:
+      "Практическая схема разработки MVP: что включать в первую версию, как контролировать сроки и как измерять эффект.",
+    content: `
+      <h2>MVP — инструмент проверки гипотез, а не уменьшенная копия финального продукта</h2>
+      <p>Главная ошибка — пытаться уложить в MVP весь roadmap. Рабочий подход: гипотеза, метрика, минимальный функционал, запуск, цикл обратной связи.</p>
+      <h3>Структура MVP-итерации</h3>
+      <ul>
+        <li>описать целевой пользовательский сценарий;</li>
+        <li>ограничить scope до 1-2 критичных потоков;</li>
+        <li>запустить аналитику и базовые интеграции;</li>
+        <li>принять решение о масштабировании на основе данных.</li>
+      </ul>
+      <p>После MVP чаще всего следующий этап — <a href="/uslugi/saas-paas">разработка SaaS</a>.</p>
+      <h3>Связанные страницы</h3>
+      <ul>
+        <li><a href="/mvp-i-zapusk-produkta">MVP и запуск продукта</a></li>
+        <li><a href="/stoimost-i-sroki-razrabotki">Стоимость и сроки разработки</a></li>
+        <li><a href="/blog/razrabotka-saas-platform-dlya-b2b">Разработка SaaS</a></li>
+        <li><a href="/en/blog/mvp-development-roadmap">English version</a></li>
+      </ul>
+    `,
+    image: blogClusterCoverBySlug["razrabotka-mvp-poshagovo"],
+    category: "mvp-zapusk",
+    tags: ["MVP", "запуск продукта", "delivery", "планирование"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "9 мин",
+  },
+  {
+    slug: "razrabotka-saas-platform-dlya-b2b",
+    title: "Разработка SaaS для B2B: от архитектуры до коммерческой эксплуатации",
+    metaTitle: "Разработка SaaS-платформ для B2B — архитектура и запуск | YappiX",
+    metaDescription:
+      "Как строить SaaS-платформы для B2B: мультитенантность, роли, биллинг, безопасность и процесс релиза.",
+    keywords: ["разработка SaaS", "SaaS платформа", "B2B SaaS", "разработка SaaS под ключ"],
+    excerpt:
+      "Разбор архитектуры и delivery-модели для SaaS: как запускать платформу с масштабируемой экономикой.",
+    content: `
+      <h2>SaaS — это не только код, но и эксплуатационная модель</h2>
+      <p>Устойчивый SaaS требует мультитенантной архитектуры, биллинга, ролей доступа, SLA и прозрачной аналитики продукта.</p>
+      <h3>Что нужно продумать на старте</h3>
+      <ul>
+        <li>модель арендаторов (tenants) и изоляцию данных;</li>
+        <li>роли, разрешения и аудит действий;</li>
+        <li>платежи и подписки;</li>
+        <li>план масштабирования инфраструктуры.</li>
+      </ul>
+      <p>AI-компоненты в SaaS лучше внедрять после базовой стабильности, подробнее — <a href="/vnedrenie-ai-i-rag">внедрение ИИ в бизнес</a>.</p>
+      <h3>Связанные страницы</h3>
+      <ul>
+        <li><a href="/uslugi/saas-paas">SaaS / PaaS разработка</a></li>
+        <li><a href="/cto-as-a-service">CTO as a Service</a></li>
+        <li><a href="/blog/vnedrenie-ii-v-biznes-protsessy">Внедрение ИИ в бизнес</a></li>
+        <li><a href="/en/blog/saas-development-for-b2b-guide">English version</a></li>
+      </ul>
+    `,
+    image: blogClusterCoverBySlug["razrabotka-saas-platform-dlya-b2b"],
+    category: "cto-delivery",
+    tags: ["SaaS", "B2B", "архитектура", "CTO"],
+    author: "YappiX Team",
+    authorRole: "Product Engineering",
+    publishedAt: "2026-04-06",
+    readingTime: "9 мин",
+  },
+  {
+    slug: "vnedrenie-ii-v-biznes-protsessy",
+    title: "Внедрение ИИ в бизнес-процессы: где ROI появляется быстрее всего",
+    metaTitle: "Внедрение ИИ в бизнес-процессы — сценарии с быстрым ROI | YappiX",
+    metaDescription:
+      "Какие процессы стоит автоматизировать в первую очередь: поддержка, документооборот, внутренний поиск знаний и контроль качества.",
+    keywords: ["внедрение ИИ в бизнес", "AI для бизнеса", "AI автоматизация", "ROI внедрения ИИ"],
+    excerpt:
+      "Разбираем приоритетные сценарии внедрения ИИ в бизнес-процессы и показываем, как считать экономический эффект.",
+    content: `
+      <h2>Как выбирать процесс для внедрения ИИ</h2>
+      <p>Начинать лучше с операций, где много повторяемых действий и понятная стоимость часа. В таких процессах эффект от автоматизации быстро становится измеримым.</p>
+      <h3>Приоритетные сценарии</h3>
+      <ul>
+        <li>обработка клиентских обращений;</li>
+        <li>поиск информации в документах и регламентах;</li>
+        <li>проверка типовых документов;</li>
+        <li>подготовка черновиков ответов и отчетов.</li>
+      </ul>
+      <p>Базовые паттерны и архитектура описаны на странице <a href="/uslugi/ai-chat-boty">AI-ассистенты, RAG и автоматизация</a>.</p>
+      <h3>Связанные страницы</h3>
+      <ul>
+        <li><a href="/vnedrenie-ai-i-rag">Внедрение AI и RAG</a></li>
+        <li><a href="/avtomatizaciya-s-roi">Автоматизация с ROI</a></li>
+        <li><a href="/blog/ai-chat-boty-dlya-kompaniy">AI чат-боты для компаний</a></li>
+        <li><a href="/en/blog/ai-implementation-in-business-guide">English version</a></li>
+      </ul>
+    `,
+    image: blogClusterCoverBySlug["vnedrenie-ii-v-biznes-protsessy"],
+    category: "ai-avtomatizaciya",
+    tags: ["внедрение ИИ", "автоматизация", "ROI", "бизнес-процессы"],
+    author: "YappiX Team",
+    authorRole: "AI Lab",
+    publishedAt: "2026-04-06",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "ai-chat-boty-dlya-kompaniy",
+    title: "AI чат-боты для компаний: как перейти от FAQ-бота к рабочему ассистенту",
+    metaTitle: "AI чат-боты для компаний — архитектура и внедрение | YappiX",
+    metaDescription:
+      "Практический подход к внедрению AI чат-ботов: RAG, контроль качества ответов, интеграции и эксплуатация.",
+    keywords: ["AI чат-боты", "чат-бот для бизнеса", "RAG чат-бот", "AI ассистент для компании"],
+    excerpt:
+      "Почему большинство чат-ботов не дают эффекта и как строить корпоративного AI-ассистента с контролем качества и ROI.",
+    content: `
+      <h2>FAQ-бот и AI-ассистент — это разные уровни зрелости</h2>
+      <p>FAQ-бот отвечает по скриптам. AI-ассистент работает с базой знаний, контекстом запроса и правилами доступа, а также умеет эскалировать сложные случаи.</p>
+      <h3>Компоненты рабочего решения</h3>
+      <ul>
+        <li>RAG-слой для поиска по базе знаний;</li>
+        <li>логирование и оценка качества ответов;</li>
+        <li>интеграции с CRM/тикет-системой;</li>
+        <li>SLA и контур поддержки после запуска.</li>
+      </ul>
+      <p>Для оценки бизнес-эффекта рекомендуем страницу <a href="/roi-methodology">ROI Methodology</a>.</p>
+      <h3>Связанные страницы</h3>
+      <ul>
+        <li><a href="/uslugi/ai-chat-boty">AI-ассистенты, RAG и автоматизация</a></li>
+        <li><a href="/rag-poisk-po-baze-znanij">RAG-поиск по базе знаний</a></li>
+        <li><a href="/blog/avtomatizaciya-biznes-processov-s-ai">Автоматизация бизнес-процессов</a></li>
+        <li><a href="/en/blog/ai-chatbot-development-for-business">English version</a></li>
+      </ul>
+    `,
+    image: blogClusterCoverBySlug["ai-chat-boty-dlya-kompaniy"],
+    category: "ai-avtomatizaciya",
+    tags: ["AI чат-бот", "RAG", "автоматизация", "поддержка"],
+    author: "YappiX Team",
+    authorRole: "AI Lab",
+    publishedAt: "2026-04-06",
+    readingTime: "8 мин",
+  },
+  {
+    slug: "avtomatizaciya-biznes-processov-s-ai",
+    title: "Автоматизация бизнес-процессов с AI: roadmap для руководителя",
+    metaTitle: "Автоматизация бизнес-процессов с AI — roadmap внедрения | YappiX",
+    metaDescription:
+      "Как выстроить roadmap AI-автоматизации: аудит процессов, пилот, метрики, масштабирование и операционная модель.",
+    keywords: ["автоматизация бизнес-процессов", "AI автоматизация", "цифровизация процессов", "автоматизация компании"],
+    excerpt:
+      "Пошаговый roadmap для автоматизации бизнес-процессов с AI: от аудита до масштабирования по подразделениям.",
+    content: `
+      <h2>Автоматизация бизнес-процессов начинается с приоритизации</h2>
+      <p>Чтобы автоматизация работала, сначала ранжируйте процессы по потенциалу экономии и рискам. Не нужно автоматизировать всё сразу.</p>
+      <h3>Roadmap в 4 этапа</h3>
+      <ol>
+        <li>аудит текущих потерь времени и денег;</li>
+        <li>пилот на одном процессе с чётким KPI;</li>
+        <li>оценка ROI и доработка контуров качества;</li>
+        <li>масштабирование на соседние процессы.</li>
+      </ol>
+      <p>Подход YappiX к управляемой автоматизации описан на странице <a href="/upravlyaemyj-ai-kontur">Управляемый AI-контур</a>.</p>
+      <h3>Связанные страницы</h3>
+      <ul>
+        <li><a href="/avtomatizaciya-s-roi">Автоматизация с ROI</a></li>
+        <li><a href="/vnedrenie-ai-i-rag">Внедрение AI и RAG</a></li>
+        <li><a href="/blog/vnedrenie-ii-v-biznes-protsessy">Внедрение ИИ в бизнес</a></li>
+        <li><a href="/en/blog/business-process-automation-with-ai">English version</a></li>
+      </ul>
+    `,
+    image: blogClusterCoverBySlug["avtomatizaciya-biznes-processov-s-ai"],
+    category: "ai-avtomatizaciya",
+    tags: ["автоматизация процессов", "AI", "операции", "ROI"],
+    author: "YappiX Team",
+    authorRole: "AI Lab",
+    publishedAt: "2026-04-06",
+    readingTime: "9 мин",
   },
 ]
 

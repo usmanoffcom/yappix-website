@@ -8,24 +8,24 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.098 0.005 285);
+  --background: oklch(0.06 0.005 285);
   --foreground: oklch(0.98 0 0);
-  --card: oklch(0.13 0.005 285);
+  --card: oklch(1 0 0 / 0.05);
   --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.13 0.005 285);
+  --popover: oklch(0.12 0.005 285 / 0.9);
   --popover-foreground: oklch(0.98 0 0);
   --primary: oklch(0.6 0.22 340);
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.18 0.005 285);
+  --secondary: oklch(1 0 0 / 0.06);
   --secondary-foreground: oklch(0.9 0 0);
-  --muted: oklch(0.2 0.005 285);
+  --muted: oklch(1 0 0 / 0.08);
   --muted-foreground: oklch(0.65 0 0);
   --accent: oklch(0.6 0.22 340);
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.25 0.01 285);
-  --input: oklch(0.18 0.005 285);
+  --border: oklch(1 0 0 / 0.08);
+  --input: oklch(1 0 0 / 0.06);
   --ring: oklch(0.6 0.22 340);
   --chart-1: oklch(0.6 0.22 340);
   --chart-2: oklch(0.65 0.15 200);
@@ -33,55 +33,29 @@
   --chart-4: oklch(0.8 0.15 85);
   --chart-5: oklch(0.6 0.2 30);
   --radius: 0.75rem;
-  --sidebar: oklch(0.12 0.005 285);
+  --sidebar: oklch(0.08 0.005 285);
   --sidebar-foreground: oklch(0.98 0 0);
   --sidebar-primary: oklch(0.6 0.22 340);
   --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.2 0.005 285);
+  --sidebar-accent: oklch(1 0 0 / 0.06);
   --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.25 0.01 285);
+  --sidebar-border: oklch(1 0 0 / 0.08);
   --sidebar-ring: oklch(0.6 0.22 340);
 }
 
-.dark {
-  --background: oklch(0.098 0.005 285);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.13 0.005 285);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.13 0.005 285);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.6 0.22 340);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.18 0.005 285);
-  --secondary-foreground: oklch(0.9 0 0);
-  --muted: oklch(0.2 0.005 285);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.6 0.22 340);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.25 0.01 285);
-  --input: oklch(0.18 0.005 285);
-  --ring: oklch(0.6 0.22 340);
-  --chart-1: oklch(0.6 0.22 340);
-  --chart-2: oklch(0.65 0.15 200);
-  --chart-3: oklch(0.7 0.12 280);
-  --chart-4: oklch(0.8 0.15 85);
-  --chart-5: oklch(0.6 0.2 30);
-  --sidebar: oklch(0.12 0.005 285);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.6 0.22 340);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.2 0.005 285);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.25 0.01 285);
-  --sidebar-ring: oklch(0.6 0.22 340);
-}
 
 @theme inline {
-  /* См. app/layout.tsx: body получает ${_onest.variable} — без var(--font-onest) шрифт Next.js не подставлялся в font-sans */
   --font-sans: var(--font-onest, ui-sans-serif), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono, ui-monospace), ui-monospace, monospace;
+
+  --breakpoint-3xl: 1400px;
+  --breakpoint-4xl: 1600px;
+
+  --color-accent-violet: oklch(0.55 0.22 280);
+  --color-accent-pink: oklch(0.6 0.24 350);
+  --color-accent-emerald: oklch(0.62 0.17 160);
+  --color-accent-cyan: oklch(0.65 0.15 210);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -147,12 +121,62 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
+/* ── Glassmorphism utility classes ── */
+/* rgba fallbacks: Chrome <111 и прочие без oklch в border/background */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  background: oklch(1 0 0 / 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 8px 32px oklch(0 0 0 / 0.2),
+    inset 0 1px 0 oklch(1 0 0 / 0.04);
+}
+.glass-strong {
+  background: rgba(255, 255, 255, 0.07);
+  background: oklch(1 0 0 / 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 8px 32px oklch(0 0 0 / 0.25),
+    inset 0 1px 0 oklch(1 0 0 / 0.06);
+}
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.02);
+  background: oklch(1 0 0 / 0.02);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 ::selection {
+  background: rgba(214, 90, 180, 0.3);
   background: oklch(0.6 0.22 340 / 0.3);
+}
+
+/* Hero GSAP: скрыть до старта таймлайна (класс снимается в HeroAnimations / prefers-reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-gsap-hide [data-hero-badges],
+  .hero-gsap-hide [data-hero-headline],
+  .hero-gsap-hide [data-hero-desc],
+  .hero-gsap-hide [data-hero-ctas],
+  .hero-gsap-hide [data-hero-stats],
+  .hero-gsap-hide [data-scroll-indicator] {
+    visibility: hidden;
+  }
 }
 
 /* Утилитарные классы для типографики */

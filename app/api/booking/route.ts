@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import nodemailer from "nodemailer"
+import { escapeTelegramHtml } from "@/lib/telegram-html"
 
 // Telegram Bot Config
 const TELEGRAM_BOT_TOKEN = "8317760178:AAEUGZWwyAWBaHVW-umTrV29V3FcCTCIRyQ"
@@ -34,7 +35,9 @@ async function sendToTelegram(message: string): Promise<boolean> {
       }
     )
     const data = await response.json()
-    console.log("Telegram response:", data)
+    if (!data.ok) {
+      console.error("Telegram sendMessage failed:", JSON.stringify(data))
+    }
     return data.ok === true
   } catch (error) {
     console.error("Telegram error:", error)
@@ -126,16 +129,21 @@ export async function POST(request: NextRequest) {
       month: "long",
     })
 
-    // Format message for Telegram
+    const safeName = escapeTelegramHtml(String(name))
+    const safeEmail = escapeTelegramHtml(String(email))
+    const safePhone = escapeTelegramHtml(String(phone))
+    const safeDateLine = escapeTelegramHtml(`${formattedDate} в ${time}`)
+
+    // Format message for Telegram (все пользовательские поля — escape для HTML parse_mode)
     const telegramMessage = `
 📞 <b>Новая заявка на звонок!</b>
 
-👤 <b>Имя:</b> ${name}
-📧 <b>Email:</b> ${email}
-📱 <b>Телефон:</b> ${phone}
+👤 <b>Имя:</b> ${safeName}
+📧 <b>Email:</b> ${safeEmail}
+📱 <b>Телефон:</b> ${safePhone}
 
 📅 <b>Дата и время:</b>
-${formattedDate} в ${time}
+${safeDateLine}
 
 🌐 Источник: yappix.ru
 ⏰ Заявка создана: ${new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" })}

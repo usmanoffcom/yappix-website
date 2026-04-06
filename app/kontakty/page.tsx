@@ -300,7 +300,7 @@ export default function ContactsPage() {
 
                 {/* Booking Call Block */}
                 <div className="mt-8">
-                  <BookingCallBlock />
+                  <BookingCallBlock locale="ru" />
                 </div>
 
                 {/* Payment Methods */}

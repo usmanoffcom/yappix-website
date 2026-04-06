@@ -51,7 +51,7 @@ export function GeoLandingPage({ geo, locale }: Props) {
   })
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="relative z-0 min-h-screen bg-background">
       {isRu ? <Header /> : <HeaderEn />}
       <HeroSection locale={locale} geoHeadline={headline} geoDesc={desc} />
       {faqItems.length > 0 ? <GeoFaqSection geo={geo} locale={locale} items={faqItems} /> : null}

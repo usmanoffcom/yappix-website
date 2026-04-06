@@ -15,9 +15,9 @@ const buttonVariants = cva(
         destructive:
           'bg-destructive text-white hover:bg-destructive/90 active:bg-destructive/80 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
         outline:
-          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground active:bg-accent/90 active:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 dark:active:bg-input/40',
+          'border border-white/10 bg-white/[0.05] backdrop-blur-sm shadow-xs hover:bg-white/[0.1] hover:text-accent-foreground active:bg-white/[0.08]',
         secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary/70',
+          'bg-white/[0.06] backdrop-blur-sm border border-white/[0.08] text-secondary-foreground hover:bg-white/[0.1] active:bg-white/[0.08]',
         ghost:
           'hover:bg-accent hover:text-accent-foreground active:bg-accent/90 active:text-accent-foreground dark:hover:bg-accent/50 dark:active:bg-accent/40',
         link: 'text-primary underline-offset-4 hover:underline active:text-primary/80',
@@ -38,25 +38,25 @@ const buttonVariants = cva(
   },
 )
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<'button'> &
+export type ButtonProps = React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot : 'button'
+  }
 
-  return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  )
-}
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : 'button'
+
+    return (
+      <Comp
+        data-slot="button"
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  },
+)
+Button.displayName = 'Button'
 
 export { Button, buttonVariants }

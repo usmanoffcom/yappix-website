@@ -118,7 +118,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   const t = textByLocale[locale]
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="glass-subtle border-t border-white/[0.06]">
       <div className="container mx-auto py-10 sm:py-12 md:py-16">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10">
           <div className="col-span-2 sm:col-span-3 lg:col-span-1">
@@ -234,7 +234,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+        <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
           <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground text-center sm:text-left" suppressHydrationWarning>
             © {new Date().getFullYear()} YappiX. {t.rights}
           </p>

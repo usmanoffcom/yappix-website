@@ -324,10 +324,10 @@ export const casesData: CaseStudy[] = [
       "/images/usmanoff-cases/1765726788099-Olive.mp4",
     ],
     gallery: [
-      "/images/Screenshot 2026-01-11 at 11.39.49.png",
-      "/images/Screenshot 2026-01-11 at 11.40.54.png",
-      "/images/Screenshot 2026-01-11 at 11.41.43.png",
-      "/images/Screenshot 2026-01-11 at 11.43.07.png",
+      "/images/olive/Screenshot 2026-04-05 at 23.27.21.png",
+      "/images/olive/Screenshot 2026-04-05 at 23.28.03.png",
+      "/images/olive/Screenshot 2026-04-05 at 23.28.30.png",
+      "/images/olive/Screenshot 2026-04-05 at 23.28.58.png",
     ],
     results: [
       { label: "Конверсия", value: "+35%" },

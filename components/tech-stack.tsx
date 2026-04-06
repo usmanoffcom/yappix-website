@@ -30,7 +30,7 @@ export function TechStack({ locale = "ru" }: { locale?: "ru" | "en" }) {
   const techCategories = techCategoriesByLocale[locale]
   const head = techHeadByLocale[locale]
   return (
-    <section id="tech" className="py-20 md:py-32 bg-card/30">
+    <section id="tech" className="py-20 md:py-32 glass-subtle">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -53,7 +53,7 @@ export function TechStack({ locale = "ru" }: { locale?: "ru" | "en" }) {
               
               
               
-              className="p-6 rounded-2xl bg-card border border-border animate-in fade-in slide-in-from-bottom-4 duration-500">
+              className="p-6 rounded-2xl glass animate-in fade-in slide-in-from-bottom-4 duration-500">
               <h3 className="text-lg font-semibold text-foreground mb-4">{category.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.techs.map((tech, tIndex) => (
