@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
 import { useState, useEffect, useRef, type ComponentType } from "react"
@@ -15,11 +16,15 @@ function HeroMobileRobotBg() {
   if (!mounted) return null
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.15] xl:hidden" aria-hidden>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src="/Robot.png"
         alt=""
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[85%] w-auto max-w-none origin-bottom scale-150 object-contain object-bottom"
+        width={900}
+        height={1200}
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className="absolute bottom-0 left-1/2 h-[85%] w-auto max-w-none origin-bottom -translate-x-1/2 scale-150 object-contain object-bottom"
       />
     </div>
   )
@@ -49,13 +54,13 @@ function LazySpline({ scene, className = "" }: { scene: string; className?: stri
   return (
     <div className={`relative h-full min-h-[1px] w-full min-w-[1px] ${className}`.trim()}>
       <div className={`absolute inset-0 flex items-end justify-center transition-opacity duration-1000 ${splineLoaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/Robot.png"
           alt="YappiX Robot"
           width={900}
           height={900}
-          className="w-auto h-[120%] max-h-[900px] object-contain object-bottom align-bottom drop-shadow-[0_0_40px_rgba(236,72,153,0.3)]"
+          sizes="(min-width: 1280px) 45vw, 0px"
+          className="h-[120%] max-h-[900px] w-auto object-contain object-bottom align-bottom drop-shadow-[0_0_40px_rgba(236,72,153,0.3)]"
         />
       </div>
       {SplineComp && (
