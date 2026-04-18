@@ -20,6 +20,12 @@ Allow: /karera/
 # Sitemap
 Sitemap: https://yappix.ru/sitemap.xml
 
+# LLMs / AI crawlers (https://llmstxt.org)
+# Структурированное описание сайта для AI-агентов и LLM
+Allow: /llms.txt
+# Ссылка на LLMs.txt (аналог Sitemap для AI)
+# LLMs: https://yappix.ru/llms.txt
+
 # Настройки для Яндекс
 User-agent: Yandex
 Allow: /

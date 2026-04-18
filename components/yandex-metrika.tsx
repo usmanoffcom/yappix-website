@@ -26,17 +26,6 @@ export function YandexMetrika() {
           });
         `}
       </Script>
-      <noscript>
-        <div>
-          <img
-            src={`https://mc.yandex.ru/watch/${YM_ID}`}
-            width={1}
-            height={1}
-            alt="Yandex Metrika"
-            className="absolute left-[-9999px]"
-          />
-        </div>
-      </noscript>
     </>
   )
 }

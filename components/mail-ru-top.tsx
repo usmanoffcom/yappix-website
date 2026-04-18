@@ -24,15 +24,6 @@ export function MailRuTop() {
           })(document, window, "tmr-code");
         `}
       </Script>
-      <noscript>
-        <div>
-          <img
-            src={`https://top-fwz1.mail.ru/counter?id=${TMR_ID};js=na`}
-            className="absolute left-[-9999px]"
-            alt="Top.Mail.Ru"
-          />
-        </div>
-      </noscript>
     </>
   )
 }

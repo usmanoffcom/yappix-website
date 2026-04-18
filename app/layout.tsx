@@ -13,11 +13,13 @@ const _onest = Onest({
   subsets: ["latin", "cyrillic"],
   variable: "--font-onest",
   display: "swap",
+  preload: false,
 })
 const _geistMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-geist-mono",
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -125,6 +127,10 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://cdn.yappix.ru" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.yappix.ru" />
+        <link rel="dns-prefetch" href="https://mc.yandex.ru" />
+        <link rel="dns-prefetch" href="https://top-fwz1.mail.ru" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="YappiX" />
