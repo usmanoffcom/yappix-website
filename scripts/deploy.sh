@@ -18,15 +18,15 @@ git fetch origin main
 git reset --hard origin/main
 echo "==> checkout: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
 
-# ─── Remove CDN from all .env files ───
-for f in .env .env.local .env.production .env.production.local; do
-  if [ -f "$f" ] && grep -q 'NEXT_PUBLIC_CDN_URL\|cdn\.yappix' "$f" 2>/dev/null; then
-    echo "==> cleaning CDN from $f"
-    sed -i '/NEXT_PUBLIC_CDN_URL/d;/cdn\.yappix/d' "$f"
-  fi
-done
-unset NEXT_PUBLIC_CDN_URL 2>/dev/null || true
-unset ENABLE_CDN_ASSETPREFIX 2>/dev/null || true
+# ─── CDN mode (Selectel cdn.yappix.ru) ───
+# Override via env when running: CDN_OFF=1 bash scripts/deploy.sh
+if [ "${CDN_OFF:-0}" = "1" ]; then
+  export NEXT_PUBLIC_CDN_URL=""
+  echo "==> CDN: OFF (static served from origin yappix.ru)"
+else
+  export NEXT_PUBLIC_CDN_URL="${NEXT_PUBLIC_CDN_URL:-https://cdn.yappix.ru}"
+  echo "==> CDN: ${NEXT_PUBLIC_CDN_URL}"
+fi
 
 [ -z "${NODE_OPTIONS:-}" ] && export NODE_OPTIONS="--max-old-space-size=4096"
 
@@ -55,7 +55,6 @@ pnpm run build
 
 echo "==> build check:"
 node -e "const c=JSON.parse(require('fs').readFileSync('.next/required-server-files.json','utf8')); console.log('assetPrefix:', JSON.stringify(c.config.assetPrefix))"
-grep -rq "cdn\.yappix\.ru" .next/server/app/index.html 2>/dev/null && echo "WARN: cdn in index.html" || echo "OK: index.html clean"
 
 # ─── Ensure port 3001 is STILL free before starting ───
 echo "==> pre-start port check:"
@@ -117,8 +116,13 @@ fi
 SMOKE=$(curl -s --max-time 30 http://127.0.0.1:3001/ 2>&1 || true)
 CDN_COUNT=$(echo "$SMOKE" | grep -c "cdn\.yappix\.ru" || true)
 echo "==> cdn refs in HTML: $CDN_COUNT"
-if [ "$CDN_COUNT" -gt 0 ]; then
-  echo "==> DEPLOY FAILED: HTML still references cdn.yappix.ru"
+if [ "${CDN_OFF:-0}" != "1" ] && [ "$CDN_COUNT" = "0" ]; then
+  echo "==> DEPLOY FAILED: CDN mode ON but HTML has no cdn.yappix.ru refs"
+  echo "$SMOKE" | head -c 1500
+  exit 1
+fi
+if [ "${CDN_OFF:-0}" = "1" ] && [ "$CDN_COUNT" -gt 0 ]; then
+  echo "==> DEPLOY FAILED: CDN_OFF=1 but HTML still has cdn.yappix.ru refs"
   exit 1
 fi
 

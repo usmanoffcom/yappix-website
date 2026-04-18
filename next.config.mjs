@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  assetPrefix: '',
+  assetPrefix: process.env.NEXT_PUBLIC_CDN_URL || '',
 
   /** Three.js / R3F ship modern ESM — без transpile Webpack иногда даёт runtime `reading 'call'` на чанках */
   transpilePackages: ['@splinetool/react-spline', '@splinetool/runtime', 'gsap', 'react-google-recaptcha-v3'],
@@ -32,6 +32,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'yappix.ru',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.yappix.ru',
       },
       {
         protocol: 'https',
