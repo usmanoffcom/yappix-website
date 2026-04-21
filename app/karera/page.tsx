@@ -4,18 +4,32 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { MapPin, Briefcase, Clock, Users, Zap, Heart, Globe, GraduationCap, Calendar } from "lucide-react"
+import { careerPlainDescription, careersListOrdered } from "@/lib/careers-data"
 
 export const metadata: Metadata = {
-  title: "Карьера в YappiX — вакансии IT-студии",
+  title: "Карьера в YappiX — вакансии AI Research, ML Systems, Data & Evaluation",
   description:
-    "Вакансии в YappiX: разработчики, дизайнеры, менеджеры. Работа в Сколково, удалённо или из локаций в США, Германии, Турции, Сербии, Казахстане.",
-  keywords: ["вакансии разработчик", "работа в IT", "вакансии Сколково", "удалённая работа программист"],
+    "YappiX ищет Senior AI Research Engineer, ML Systems / Infrastructure Engineer и AI Data & Evaluation Engineer: новые архитектуры ИИ, LLM, GPU-инфраструктура, датасеты и evaluation. Удалённо / Сколково.",
+  keywords: [
+    "вакансии AI",
+    "ML engineer",
+    "LLM",
+    "PyTorch",
+    "YappiX",
+    "удалённая работа",
+    "Сколково",
+  ],
   alternates: {
     canonical: "https://yappix.ru/karera",
+    languages: {
+      ru: "https://yappix.ru/karera",
+      en: "https://yappix.ru/en/career",
+    },
   },
   openGraph: {
-    title: "Карьера в YappiX — вакансии IT-студии",
-    description: "Вакансии: разработчики, дизайнеры, менеджеры. Работа в Сколково, удалённо, из 6 локаций.",
+    title: "Карьера в YappiX — вакансии AI Research, ML Systems, Data & Evaluation",
+    description:
+      "Три направления: AI Research, ML Infrastructure, AI Data & Evaluation. Удалённо / Сколково.",
     type: "website",
     url: "https://yappix.ru/karera",
     siteName: "YappiX",
@@ -31,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Карьера в YappiX — вакансии IT-студии",
-    description: "Вакансии в YappiX. Работа в Сколково, удалённо или из 6 локаций.",
+    title: "Карьера в YappiX — вакансии AI Research, ML Systems, Data & Evaluation",
+    description: "AI-first R&D: архитектуры ИИ, инфраструктура LLM, датасеты и evaluation.",
   },
 }
 
@@ -49,82 +63,9 @@ const benefits = [
   { icon: Users, title: "Сильная команда", description: "Работайте с экспертами из топовых компаний" },
 ]
 
-const vacancies = [
-  {
-    title: "Senior Frontend Developer",
-    department: "Разработка",
-    location: "Удалённо / Москва",
-    type: "Полная занятость",
-    salary: "от 350 000 ₽",
-    salaryValue: 350000,
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    description: "Разработка клиентской части SaaS-продуктов, работа с AI-инструментами, код-ревью.",
-    datePosted: "2025-01-06",
-    validThrough: "2025-03-31",
-  },
-  {
-    title: "Middle/Senior Backend Developer",
-    department: "Разработка",
-    location: "Удалённо / Москва",
-    type: "Полная занятость",
-    salary: "от 300 000 ₽",
-    salaryValue: 300000,
-    skills: ["Node.js", "Python", "PostgreSQL", "Redis"],
-    description: "Разработка API, интеграции, оптимизация производительности.",
-    datePosted: "2025-01-06",
-    validThrough: "2025-03-31",
-  },
-  {
-    title: "AI/ML Engineer",
-    department: "AI",
-    location: "Удалённо",
-    type: "Полная занятость",
-    salary: "от 400 000 ₽",
-    salaryValue: 400000,
-    skills: ["Python", "LangChain", "RAG", "Fine-tuning"],
-    description: "Разработка AI-агентов, интеграция LLM, построение RAG-систем.",
-    datePosted: "2025-01-08",
-    validThrough: "2025-03-31",
-  },
-  {
-    title: "DevOps Engineer",
-    department: "Инфраструктура",
-    location: "Удалённо",
-    type: "Полная занятость",
-    salary: "от 280 000 ₽",
-    salaryValue: 280000,
-    skills: ["Kubernetes", "Terraform", "AWS/GCP", "GitLab CI"],
-    description: "Настройка CI/CD, управление инфраструктурой, мониторинг.",
-    datePosted: "2025-01-05",
-    validThrough: "2025-03-31",
-  },
-  {
-    title: "Product Designer",
-    department: "Дизайн",
-    location: "Удалённо / Москва",
-    type: "Полная занятость",
-    salary: "от 250 000 ₽",
-    salaryValue: 250000,
-    skills: ["Figma", "UI/UX", "Design Systems", "Prototyping"],
-    description: "Проектирование интерфейсов SaaS-продуктов, работа с дизайн-системами.",
-    datePosted: "2025-01-03",
-    validThrough: "2025-03-31",
-  },
-  {
-    title: "Project Manager",
-    department: "Управление",
-    location: "Удалённо / Москва",
-    type: "Полная занятость",
-    salary: "от 200 000 ₽",
-    salaryValue: 200000,
-    skills: ["Agile", "Jira", "Коммуникации", "Технический бэкграунд"],
-    description: "Управление IT-проектами, коммуникация с клиентами, планирование.",
-    datePosted: "2025-01-02",
-    validThrough: "2025-03-31",
-  },
-]
-
 export default function CareerPage() {
+  const vacancies = careersListOrdered
+
   return (
     <>
       <Header />
@@ -137,11 +78,17 @@ export default function CareerPage() {
                 Присоединяйтесь к команде YappiX
               </h1>
               <p className="text-body-lg mb-8 text-pretty">
-                Создаём продукты будущего с AI-инструментами. Ищем тех, кто хочет работать на передовой технологий.
+                Строим AI-first продукты и R&D: новые архитектуры ИИ, LLM, инфраструктура и честная evaluation. Ищем
+                инженеров, которые доводят гипотезы до работающих систем.
               </p>
-              <Button size="lg" asChild>
-                <a href="#vacancies">Смотреть вакансии</a>
-              </Button>
+              <div className="flex flex-wrap gap-3">
+                <Button size="lg" asChild>
+                  <a href="#vacancies">Смотреть вакансии</a>
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <Link href="/en/career">Careers in English</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -170,55 +117,67 @@ export default function CareerPage() {
           <div className="container mx-auto px-4">
             <h2 className="text-headline text-foreground mb-4">Открытые вакансии</h2>
             <p className="text-lg text-muted-foreground mb-12">
-              {vacancies.length} позиций в разных направлениях. Не нашли подходящую? Напишите нам.
+              {vacancies.length} позиции в AI / R&D. Подробные описания — на отдельных страницах (SEO). Не подошло?
+              Напишите нам.
             </p>
             <div className="space-y-4">
-              {vacancies.map((vacancy, idx) => (
-                <div
-                  key={idx}
-                  className="p-6 bg-background border border-border rounded-xl hover:border-primary/50 transition-colors"
-                >
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h3 className="text-xl font-semibold text-foreground">{vacancy.title}</h3>
-                        <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded">
-                          {vacancy.department}
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground text-sm mb-3">{vacancy.description}</p>
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-3">
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-4 h-4" />
-                          {vacancy.location}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Briefcase className="w-4 h-4" />
-                          {vacancy.type}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {new Date(vacancy.datePosted).toLocaleDateString("ru-RU", { day: "numeric", month: "short", year: "numeric" })}
-                        </span>
-                        <span className="font-medium text-primary">{vacancy.salary}</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {vacancy.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="px-2 py-1 text-xs bg-secondary text-secondary-foreground rounded"
-                          >
-                            {skill}
+              {vacancies.map((job) => {
+                const summary = job.ru.metaDescription
+                return (
+                  <div
+                    key={job.slug}
+                    className="p-6 bg-background border border-border rounded-xl hover:border-primary/50 transition-colors"
+                  >
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          <h3 className="text-xl font-semibold text-foreground">{job.ru.h1}</h3>
+                          <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded">
+                            {job.department.ru}
                           </span>
-                        ))}
+                        </div>
+                        <p className="text-muted-foreground text-sm mb-3 leading-relaxed">{summary}</p>
+                        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-3">
+                          <span className="flex items-center gap-1">
+                            <MapPin className="w-4 h-4 shrink-0" />
+                            Сколково / удалённо
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Briefcase className="w-4 h-4 shrink-0" />
+                            Полная занятость
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-4 h-4 shrink-0" />
+                            {new Date(job.datePosted).toLocaleDateString("ru-RU", {
+                              day: "numeric",
+                              month: "short",
+                              year: "numeric",
+                            })}
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {job.skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className="px-2 py-1 text-xs bg-secondary text-secondary-foreground rounded"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-2 shrink-0">
+                        <Button variant="outline" asChild>
+                          <Link href={`/karera/${job.slug}`}>Подробнее</Link>
+                        </Button>
+                        <Button asChild>
+                          <Link href={`/kontakty?vacancy=${encodeURIComponent(job.ru.h1)}`}>Откликнуться</Link>
+                        </Button>
                       </div>
                     </div>
-                    <Button asChild className="shrink-0">
-                      <Link href={`/kontakty?vacancy=${encodeURIComponent(vacancy.title)}`}>Откликнуться</Link>
-                    </Button>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </section>
@@ -266,15 +225,15 @@ export default function CareerPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ItemList",
-            itemListElement: vacancies.map((vacancy, idx) => ({
+            itemListElement: vacancies.map((job, idx) => ({
               "@type": "ListItem",
               position: idx + 1,
               item: {
                 "@type": "JobPosting",
-                title: vacancy.title,
-                description: vacancy.description,
-                datePosted: vacancy.datePosted,
-                validThrough: vacancy.validThrough,
+                title: job.ru.h1,
+                description: careerPlainDescription(job, "ru").slice(0, 8000),
+                datePosted: job.datePosted,
+                validThrough: job.validThrough,
                 hiringOrganization: {
                   "@type": "Organization",
                   name: "YappiX",
@@ -285,23 +244,15 @@ export default function CareerPage() {
                   "@type": "Place",
                   address: {
                     "@type": "PostalAddress",
-                    addressLocality: vacancy.location.includes("Москва") ? "Москва" : "Удалённо",
+                    addressLocality: "Москва",
                     addressCountry: "RU",
                   },
                 },
-                jobLocationType: vacancy.location.includes("Удалённо") ? "TELECOMMUTE" : undefined,
+                jobLocationType: "TELECOMMUTE",
                 employmentType: "FULL_TIME",
-                baseSalary: {
-                  "@type": "MonetaryAmount",
-                  currency: "RUB",
-                  value: {
-                    "@type": "QuantitativeValue",
-                    value: vacancy.salaryValue,
-                    unitText: "MONTH",
-                  },
-                },
-                skills: vacancy.skills.join(", "),
+                skills: job.skills.join(", "),
                 industry: "Information Technology",
+                url: `https://yappix.ru/karera/${job.slug}`,
               },
             })),
           }),

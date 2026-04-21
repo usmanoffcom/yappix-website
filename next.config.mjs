@@ -319,6 +319,9 @@ const nextConfig = {
       { source: '/en/razrabotka-sajtov-turciya', destination: '/en/software-development-turkey', permanent: true },
       { source: '/en/razrabotka-sajtov-serbiya', destination: '/en/software-development-serbia', permanent: true },
       { source: '/en/razrabotka-sajtov-kazahstan', destination: '/en/software-development-kazakhstan', permanent: true },
+      // Careers: SEO slug aliases → фактические маршруты App Router
+      { source: '/ru/careers/:slug', destination: '/karera/:slug', permanent: true },
+      { source: '/en/careers/:slug', destination: '/en/career/:slug', permanent: true },
     ]
   },
 }

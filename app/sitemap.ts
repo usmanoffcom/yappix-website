@@ -6,6 +6,7 @@ import { casesDataEn } from '@/lib/cases-data-en'
 import { geoCities } from '@/lib/geo-landing-data'
 import { geoMoneyPages } from '@/lib/geo-money-pages-data'
 import { geoMoneyPagesEn } from '@/lib/geo-money-pages-data-en'
+import { CAREER_SLUGS } from '@/lib/careers-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://yappix.ru'
@@ -230,6 +231,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }))
 
+  const careerJobPages: MetadataRoute.Sitemap = CAREER_SLUGS.flatMap((slug) => [
+    {
+      url: `${baseUrl}/karera/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.65,
+    },
+    {
+      url: `${baseUrl}/en/career/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.65,
+    },
+  ])
+
   return [
     ...mainPages,
     ...servicesPages,
@@ -241,5 +257,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...geoPages,
     ...geoMoneyPagesUrls,
     ...geoMoneyPagesEnUrls,
+    ...careerJobPages,
   ]
 }
