@@ -14,7 +14,14 @@ export function ScrollAnimations() {
     let innerCleanup: (() => void) | undefined
 
     const run = async () => {
-      const { registerGSAP, gsap, ScrollTrigger } = await import("@/lib/gsap-init")
+      let registerGSAP: typeof import("@/lib/gsap-init")["registerGSAP"]
+      let gsap: typeof import("@/lib/gsap-init")["gsap"]
+      let ScrollTrigger: typeof import("@/lib/gsap-init")["ScrollTrigger"]
+      try {
+        ;({ registerGSAP, gsap, ScrollTrigger } = await import("@/lib/gsap-init"))
+      } catch {
+        return
+      }
       if (cancelled) return
 
       registerGSAP()

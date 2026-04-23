@@ -39,9 +39,13 @@ function LazySpline({ scene, className = "" }: { scene: string; className?: stri
     mounted.current = true
     const load = () => {
       if (!mounted.current) return
-      import("@splinetool/react-spline").then((mod) => {
-        if (mounted.current) setSplineComp(() => mod.default)
-      })
+      import("@splinetool/react-spline")
+        .then((mod) => {
+          if (mounted.current) setSplineComp(() => mod.default)
+        })
+        .catch(() => {
+          /* chunk / CDN недоступны — остаётся fallback Robot.png */
+        })
     }
     if ("requestIdleCallback" in window) {
       const id = window.requestIdleCallback(load, { timeout: 3000 })

@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
+import { execSync } from "node:child_process"
+import { dirname } from "node:path"
+import { fileURLToPath } from "node:url"
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+function gitShortHead() {
+  try {
+    return execSync("git rev-parse --short HEAD", { cwd: __dirname, encoding: "utf8" }).trim()
+  } catch {
+    return process.env.NEXT_BUILD_ID?.trim() || "dev"
+  }
+}
 
 const nextConfig = {
   assetPrefix: process.env.NEXT_PUBLIC_CDN_URL || '',
@@ -75,10 +88,8 @@ const nextConfig = {
   // Strict mode for better development
   reactStrictMode: true,
 
-  // Generate unique build ID
-  generateBuildId: async () => {
-    return `build-${Date.now()}`
-  },
+  // Стабильный build id по коммиту: меньше «рассинхрона» HTML (кэш) vs чанки после деплоя, чем build-${Date.now()}
+  generateBuildId: async () => gitShortHead(),
 
   // Headers for caching and security
   async headers() {

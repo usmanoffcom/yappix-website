@@ -1,51 +1,15 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { RECAPTCHA_SITE_KEY } from "@/lib/validation"
 
-// Отложенная загрузка снижает TBT на десктопе (reCAPTCHA ~41 KB CSS блокирует поток)
-const DEFER_MS = 5000
-
+/**
+ * reCAPTCHA оборачивает дерево с первого кадра.
+ * Раньше провайдер включался через 5s / по жесту — из‑за смены типа родителя React
+ * полностью remount’ил страницу и ловил краши в клиентских компонентах (error.tsx).
+ * Скрипт grecaptcha по‑прежнему async/defer — см. scriptProps.
+ */
 export function DeferredRecaptchaWrapper({ children }: { children: React.ReactNode }) {
-  const [ready, setReady] = useState(false)
-
-  useEffect(() => {
-    let cancelled = false
-
-    const trigger = () => {
-      if (!cancelled) setReady(true)
-    }
-
-    const t = setTimeout(trigger, DEFER_MS)
-
-    const onInteraction = () => {
-      trigger()
-      window.removeEventListener("scroll", onInteraction, { capture: true })
-      window.removeEventListener("mousemove", onInteraction, { capture: true })
-      window.removeEventListener("touchstart", onInteraction, { capture: true })
-      window.removeEventListener("keydown", onInteraction, { capture: true })
-    }
-
-    window.addEventListener("scroll", onInteraction, { once: true, passive: true, capture: true })
-    window.addEventListener("mousemove", onInteraction, { once: true, passive: true, capture: true })
-    window.addEventListener("touchstart", onInteraction, { once: true, passive: true, capture: true })
-    window.addEventListener("keydown", onInteraction, { once: true, passive: true, capture: true })
-
-    return () => {
-      cancelled = true
-      clearTimeout(t)
-      window.removeEventListener("scroll", onInteraction, { capture: true })
-      window.removeEventListener("mousemove", onInteraction, { capture: true })
-      window.removeEventListener("touchstart", onInteraction, { capture: true })
-      window.removeEventListener("keydown", onInteraction, { capture: true })
-    }
-  }, [])
-
-  if (!ready) {
-    return <>{children}</>
-  }
-
   if (!RECAPTCHA_SITE_KEY) {
     return <>{children}</>
   }
