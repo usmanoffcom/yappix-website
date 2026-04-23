@@ -54,12 +54,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       siteName: "YappiX",
       locale: "en_US",
-      images: [{ url: "/icon-512x512.png", width: 512, height: 512, alt: c.h1 }],
+      images: [{ url: "/icon-512x512.png", width: 512, height: 512, alt: "YappiX — open position" }],
     },
     twitter: {
       card: "summary_large_image",
       title: c.seoTitle,
       description: c.metaDescription,
+      images: ["/icon-512x512.png"],
     },
   }
 }

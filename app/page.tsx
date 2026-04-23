@@ -1,4 +1,5 @@
 import nextDynamic from "next/dynamic"
+import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { ScrollAnimations } from "@/components/scroll-animations"
@@ -9,6 +10,15 @@ import { FinalCtaSection } from "@/components/final-cta-section"
 
 /** Статическая страница: один цельный HTML без долгого RSC-стрима — меньше обрывов через Cloudflare/nginx. */
 export const dynamic = "force-static"
+
+/** Подтверждение сайта в Дзене (метатег только на главной). */
+export const metadata: Metadata = {
+  verification: {
+    other: {
+      "zen-verification": "gxCJ5AJ2zfZ0UQpIUydvz3MK1KYOz5n8kcTKeXFVYS9sk8g0SL1uIB74gLnlkik5",
+    },
+  },
+}
 
 const TrustBadges = nextDynamic(() => import("@/components/trust-badges").then((m) => ({ default: m.TrustBadges })), { ssr: true })
 const FounderGreeting = nextDynamic(() => import("@/components/founder-greeting").then((m) => ({ default: m.FounderGreeting })), { ssr: true })

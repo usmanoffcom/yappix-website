@@ -322,6 +322,9 @@ const nextConfig = {
       // Careers: SEO slug aliases → фактические маршруты App Router
       { source: '/ru/careers/:slug', destination: '/karera/:slug', permanent: true },
       { source: '/en/careers/:slug', destination: '/en/career/:slug', permanent: true },
+      // Опечатки переключателя языка (исторически давали 404 в Вебмастере)
+      { source: '/en/karera/:path*', destination: '/en/career/:path*', permanent: true },
+      { source: '/career/:path*', destination: '/karera/:path*', permanent: true },
     ]
   },
 }

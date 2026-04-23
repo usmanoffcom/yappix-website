@@ -211,6 +211,10 @@ const ruToEnPath: Record<string, string> = {
 function getRuHref(pathname: string): string {
   const exact = enToRuPath[pathname]
   if (exact) return exact
+  if (pathname.startsWith("/en/career/")) {
+    return pathname.replace(/^\/en\/career\//, "/karera/")
+  }
+  if (pathname === "/en/career") return "/karera"
   if (pathname.startsWith("/en/cases/")) return pathname.replace(/^\/en\/cases/, "/kejsy")
   if (pathname.startsWith("/en/blog/")) return "/blog"
   const geoRu = geoEnPathToRu(pathname)
@@ -224,6 +228,9 @@ function getRuHref(pathname: string): string {
 function getEnHref(pathname: string): string {
   const exact = ruToEnPath[pathname]
   if (exact) return exact
+  if (pathname.startsWith("/karera/")) {
+    return pathname.replace(/^\/karera\//, "/en/career/")
+  }
   if (pathname.startsWith("/kejsy/")) return pathname.replace(/^\/kejsy/, "/en/cases")
   if (pathname.startsWith("/blog/")) return "/en/blog"
   if (pathname === "/uslugi" || pathname.startsWith("/uslugi/")) return "/en/services"

@@ -55,12 +55,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       siteName: "YappiX",
       locale: "ru_RU",
-      images: [{ url: "/icon-512x512.png", width: 512, height: 512, alt: c.h1 }],
+      // alt не дублируем с текстом H1 — иначе часть аудиторов/Вебмастер считает «два H1»
+      images: [{ url: "/icon-512x512.png", width: 512, height: 512, alt: "YappiX — вакансия" }],
     },
     twitter: {
       card: "summary_large_image",
       title: c.seoTitle,
       description: c.metaDescription,
+      images: ["/icon-512x512.png"],
     },
   }
 }
