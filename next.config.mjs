@@ -17,7 +17,7 @@ const nextConfig = {
   assetPrefix: process.env.NEXT_PUBLIC_CDN_URL || '',
 
   /** Three.js / R3F ship modern ESM — без transpile Webpack иногда даёт runtime `reading 'call'` на чанках */
-  transpilePackages: ['@splinetool/react-spline', '@splinetool/runtime', 'gsap', 'react-google-recaptcha-v3'],
+  transpilePackages: ['@splinetool/react-spline', '@splinetool/runtime', 'react-google-recaptcha-v3'],
 
   // TypeScript configuration
   typescript: {

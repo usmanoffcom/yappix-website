@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic"
 import { HeaderEn } from "@/components/header-en"
 import { HeroSection } from "@/components/hero-section"
-import { ScrollAnimations } from "@/components/scroll-animations"
 import { TargetAudienceSection } from "@/components/target-audience-section"
 import { WhatWeDoSection } from "@/components/what-we-do-section"
 import { WhyYappixSection } from "@/components/why-yappix-section"
@@ -22,7 +21,6 @@ const FooterEn = dynamic(() => import("@/components/footer-en").then((m) => ({ d
 export default function HomeEnPage() {
   return (
     <main className="relative z-0 min-h-screen bg-background">
-      <ScrollAnimations />
       <HeaderEn />
       <HeroSection locale="en" />
       <TrustBadges locale="en" />

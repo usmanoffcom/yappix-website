@@ -167,18 +167,6 @@
   background: oklch(0.6 0.22 340 / 0.3);
 }
 
-/* Hero GSAP: скрыть до старта таймлайна (класс снимается в HeroAnimations / prefers-reduced-motion) */
-@media (prefers-reduced-motion: no-preference) {
-  .hero-gsap-hide [data-hero-badges],
-  .hero-gsap-hide [data-hero-headline],
-  .hero-gsap-hide [data-hero-desc],
-  .hero-gsap-hide [data-hero-ctas],
-  .hero-gsap-hide [data-hero-stats],
-  .hero-gsap-hide [data-scroll-indicator] {
-    visibility: hidden;
-  }
-}
-
 /* Утилитарные классы для типографики */
 .text-display {
   @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08];
