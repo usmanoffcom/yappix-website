@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Запуск на VDS из каталога репозитория. SSH и ключ myunion-vds: см. deploy/VDS.md
 set -euo pipefail
 
 cd /var/www/yappix.ru

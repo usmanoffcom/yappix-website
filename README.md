@@ -16,6 +16,10 @@ Your project is live at:
 
 **[https://vercel.com/renats-projects-23a1d113/v0-yappi-x-website-seo](https://vercel.com/renats-projects-23a1d113/v0-yappi-x-website-seo)**
 
+### Продакшен на VDS (yappix.ru)
+
+Ручной деплой по SSH и ключу **`myunion-vds`**: полная инструкция в **[`deploy/VDS.md`](deploy/VDS.md)**.
+
 ## Build your app
 
 Continue building your app on:
