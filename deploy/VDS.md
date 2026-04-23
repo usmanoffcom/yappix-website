@@ -4,7 +4,7 @@
 
 ## SSH
 
-- **Хост:** `89.23.102.48` (или актуальный IP в панели хостинга).
+- **Хост:** `80.249.150.154` (или актуальный IP в панели хостинга).
 - **Пользователь:** `root` (или твой deploy-user с правами на каталог и `pm2`).
 - **Ключ:** приватный ключ **`myunion-vds`** — ожидаемый путь на машине, с которой заходишь:
   - **`~/.ssh/myunion-vds`** (имя с **дефисом** — так и задумано).
@@ -17,7 +17,7 @@
 Проверка входа:
 
 ```bash
-ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new root@89.23.102.48 'hostname'
+ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new root@80.249.150.154 'hostname'
 ```
 
 ## Каталог приложения на сервере
@@ -44,7 +44,7 @@ bash scripts/deploy.sh
 С **Mac** без ручного входа на сервер (подставь свой путь к репо на VDS, если не `/var/www/yappix.ru`):
 
 ```bash
-ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes root@89.23.102.48 \
+ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes root@80.249.150.154 \
   'cd /var/www/yappix.ru && git fetch origin main && git reset --hard origin/main && bash scripts/deploy.sh'
 ```
 

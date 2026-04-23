@@ -38,14 +38,14 @@ npm run dev
 
 После пуша в main, зайди на сервер и выполни:
 ```bash
-ssh root@89.23.102.48
+ssh root@80.249.150.154
 cd /var/www/yappix.ru
 ./deploy.sh
 ```
 
 ### Ручной деплой
 ```bash
-ssh root@89.23.102.48
+ssh root@80.249.150.154
 cd /var/www/yappix.ru
 git pull origin main
 npm install --legacy-peer-deps
@@ -58,10 +58,10 @@ pm2 restart yappix-ru
 ## 🔑 Доступы
 
 ### VDS Сервер
-- **IP:** 89.23.102.48
+- **IP:** 80.249.150.154
 - **User:** root
 - **Password:** wR_DUF3Ays3kVu
-- **SSH:** `ssh root@89.23.102.48`
+- **SSH:** `ssh root@80.249.150.154`
 
 ### Пути на сервере
 - **Проект:** /var/www/yappix.ru
