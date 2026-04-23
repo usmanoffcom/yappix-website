@@ -24,6 +24,10 @@ yarn-error.log*
 !.env.production.example
 deploy/vds.env
 
+# Сторонние репозитории отелей на том же сервере — не добавлять в yappix-website
+Priboy-hotel3/
+Priboy-hotel4/
+
 # vercel
 .vercel
 
