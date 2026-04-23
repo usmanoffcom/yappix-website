@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button, buttonVariants } from "@/components/ui/button"
-import { blogPostsEn } from "@/lib/blog-data-en"
+import { curatedBlogPathEnToRu, curatedBlogPathRuToEn } from "@/lib/blog-locale-slugs"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import {
   NavigationMenu,
@@ -182,30 +182,18 @@ const staticEnToRuPath: Record<string, string> = {
   "/en/privacy-policy": "/politika-konfidencialnosti",
 }
 
-const blogPathPairs = blogPostsEn.reduce(
-  (acc, post) => {
-    if (!post.ruSlug) return acc
-
-    acc.enToRu[`/en/blog/${post.slug}`] = `/blog/${post.ruSlug}`
-    acc.ruToEn[`/blog/${post.ruSlug}`] = `/en/blog/${post.slug}`
-
-    return acc
-  },
-  { enToRu: {} as Record<string, string>, ruToEn: {} as Record<string, string> },
-)
-
 const staticRuToEnPath: Record<string, string> = Object.fromEntries(
   Object.entries(staticEnToRuPath).map(([enPath, ruPath]) => [ruPath, enPath]),
 ) as Record<string, string>
 
 const enToRuPath: Record<string, string> = {
   ...staticEnToRuPath,
-  ...blogPathPairs.enToRu,
+  ...curatedBlogPathEnToRu,
 }
 
 const ruToEnPath: Record<string, string> = {
   ...staticRuToEnPath,
-  ...blogPathPairs.ruToEn,
+  ...curatedBlogPathRuToEn,
 }
 
 function getRuHref(pathname: string): string {
@@ -216,7 +204,11 @@ function getRuHref(pathname: string): string {
   }
   if (pathname === "/en/career") return "/karera"
   if (pathname.startsWith("/en/cases/")) return pathname.replace(/^\/en\/cases/, "/kejsy")
-  if (pathname.startsWith("/en/blog/")) return "/blog"
+  if (pathname.startsWith("/en/blog/")) {
+    const mapped = enToRuPath[pathname]
+    if (mapped) return mapped
+    return `/blog/${pathname.slice("/en/blog/".length)}`
+  }
   const geoRu = geoEnPathToRu(pathname)
   if (geoRu) return geoRu
   if (pathname.startsWith("/en/") && pathname.length > 4) {
@@ -232,7 +224,13 @@ function getEnHref(pathname: string): string {
     return pathname.replace(/^\/karera\//, "/en/career/")
   }
   if (pathname.startsWith("/kejsy/")) return pathname.replace(/^\/kejsy/, "/en/cases")
-  if (pathname.startsWith("/blog/")) return "/en/blog"
+  if (pathname.startsWith("/blog/")) {
+    const mapped = ruToEnPath[pathname]
+    if (mapped) return mapped
+    const slug = pathname.slice("/blog/".length)
+    if (slug && !slug.includes("/")) return `/en/blog/${slug}`
+    return "/en/blog"
+  }
   if (pathname === "/uslugi" || pathname.startsWith("/uslugi/")) return "/en/services"
   if (pathname === "/politika-konfidencialnosti") return "/en/privacy-policy"
   const geoEn = geoRuPathToEn(pathname)

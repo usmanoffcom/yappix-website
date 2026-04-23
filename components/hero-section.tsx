@@ -11,7 +11,22 @@ import { useState, useEffect, useRef, type ComponentType } from "react"
 function HeroMobileRobotBg() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
-    setMounted(true)
+    let cancelled = false
+    const run = () => {
+      if (!cancelled) setMounted(true)
+    }
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(run, { timeout: 2500 })
+      return () => {
+        cancelled = true
+        window.cancelIdleCallback(id)
+      }
+    }
+    const t = setTimeout(run, 1800)
+    return () => {
+      cancelled = true
+      clearTimeout(t)
+    }
   }, [])
   if (!mounted) return null
   return (
@@ -21,9 +36,9 @@ function HeroMobileRobotBg() {
         alt=""
         width={900}
         height={1200}
-        priority
-        fetchPriority="high"
         sizes="100vw"
+        loading="lazy"
+        decoding="async"
         className="absolute bottom-0 left-1/2 h-[85%] w-auto max-w-none origin-bottom -translate-x-1/2 scale-150 object-contain object-bottom"
       />
     </div>

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ChatWidgetWrapper } from "@/components/chat-widget-wrapper"
 import { DeferredRecaptchaWrapper } from "@/components/deferred-recaptcha-wrapper"
 import { GoogleAnalytics } from "@/components/google-analytics"
+import { YandexMetrika } from "@/components/yandex-metrika"
 import { MailRuTop } from "@/components/mail-ru-top"
 import "./layout.css"
 
@@ -12,7 +13,8 @@ const _onest = Onest({
   subsets: ["latin", "cyrillic"],
   variable: "--font-onest",
   display: "swap",
-  preload: false,
+  preload: true,
+  adjustFontFallback: true,
 })
 const _geistMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -108,7 +110,6 @@ export const metadata: Metadata = {
       "en-US": "https://yappix.ru/en",
     },
   },
-  generator: "v0.app",
 }
 
 export const viewport: Viewport = {
@@ -212,12 +213,6 @@ export default function RootLayout({
             }),
           }}
         />
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(${YANDEX_METRIKA_ID},"init",{webvisor:true,clickmap:true,referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});`,
-          }}
-        />
       </head>
       <body
         className={`${_onest.variable} ${_geistMono.variable} ${_onest.className} font-sans antialiased`}
@@ -229,6 +224,7 @@ export default function RootLayout({
           }}
         />
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
+          <YandexMetrika />
           <GoogleAnalytics />
           <MailRuTop />
           <DeferredRecaptchaWrapper>
