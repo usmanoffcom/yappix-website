@@ -97,3 +97,7 @@ bash /var/www/yappix.ru/deploy/fix-priboy-systemd-on-vds.sh
 2. SSH с **`~/.ssh/myunion-vds`**
 3. `cd /var/www/yappix.ru && bash scripts/deploy.sh`
 4. В браузере: главная + инкогнито; при CDN — проверка статики с `cdn.yappix.ru`
+
+### Счётчики (GA4)
+
+Яндекс.Метрика и Top.Mail.Ru подключены в разметке. **Google Analytics** рендерится только если на сервере перед сборкой задан `NEXT_PUBLIC_GA_ID` (см. `.env.production.example`): положи `/var/www/yappix.ru/.env.production` с `NEXT_PUBLIC_GA_ID=G-…` и пересобери (`deploy.sh` уже делает `pnpm build`).

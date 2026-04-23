@@ -7,13 +7,13 @@ const TMR_ID = "3749570"
 export function MailRuTop() {
   return (
     <>
-      <Script id="mail-ru-top-init" strategy="lazyOnload">
+      <Script id="mail-ru-top-init" strategy="afterInteractive">
         {`
           var _tmr = window._tmr || (window._tmr = []);
           _tmr.push({id: "${TMR_ID}", type: "pageView", start: (new Date()).getTime()});
         `}
       </Script>
-      <Script id="mail-ru-top-code" strategy="lazyOnload">
+      <Script id="mail-ru-top-code" strategy="afterInteractive">
         {`
           (function (d, w, id) {
             if (d.getElementById(id)) return;

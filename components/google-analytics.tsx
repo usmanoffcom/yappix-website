@@ -9,9 +9,8 @@ export function GoogleAnalytics() {
 
   return (
     <>
-      {/* lazyOnload: не конкурирует с LCP / первым рендером на мобильных */}
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="lazyOnload" />
-      <Script id="google-analytics" strategy="lazyOnload">
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
