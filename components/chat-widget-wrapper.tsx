@@ -10,7 +10,7 @@ export function ChatWidgetWrapper() {
     // Откладываем загрузку чата на 3 секунды после загрузки страницы
     const timer = setTimeout(() => {
       setShouldLoad(true)
-    }, 3000)
+    }, 8000)
 
     // Или загружаем при взаимодействии пользователя
     const handleInteraction = () => {

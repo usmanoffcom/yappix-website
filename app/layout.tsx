@@ -13,7 +13,8 @@ const _onest = Onest({
   subsets: ["latin", "cyrillic"],
   variable: "--font-onest",
   display: "swap",
-  preload: true,
+  /** preload: false — меньше конкуренции с LCP-ресурсами на мобильных (PSI / медленные сети). */
+  preload: false,
   adjustFontFallback: true,
 })
 const _geistMono = JetBrains_Mono({

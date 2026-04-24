@@ -1,97 +1,7 @@
-"use client"
-
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
-import { useState, useEffect, useRef, type ComponentType } from "react"
-
-/** Фоновый робот только после mount — без расхождения SSR/HTML и клиентского бандла (классы Tailwind). */
-function HeroMobileRobotBg({ locale }: { locale: "ru" | "en" }) {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => {
-    let cancelled = false
-    const run = () => {
-      if (!cancelled) setMounted(true)
-    }
-    if (typeof window.requestIdleCallback === "function") {
-      const id = window.requestIdleCallback(run, { timeout: 2500 })
-      return () => {
-        cancelled = true
-        window.cancelIdleCallback(id)
-      }
-    }
-    const t = setTimeout(run, 1800)
-    return () => {
-      cancelled = true
-      clearTimeout(t)
-    }
-  }, [])
-  if (!mounted) return null
-  const robotAlt =
-    locale === "en" ? "YappiX robot brand illustration" : "Фирменная иллюстрация робота YappiX"
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.15] xl:hidden">
-      <Image
-        src="/Robot.png"
-        alt={robotAlt}
-        width={900}
-        height={1200}
-        sizes="100vw"
-        loading="lazy"
-        decoding="async"
-        className="absolute bottom-0 left-1/2 h-[85%] w-auto max-w-none origin-bottom -translate-x-1/2 scale-150 object-contain object-bottom"
-      />
-    </div>
-  )
-}
-
-function LazySpline({ scene, className = "" }: { scene: string; className?: string }) {
-  const [SplineComp, setSplineComp] = useState<ComponentType<any> | null>(null)
-  const [splineLoaded, setSplineLoaded] = useState(false)
-  const mounted = useRef(true)
-
-  useEffect(() => {
-    mounted.current = true
-    const load = () => {
-      if (!mounted.current) return
-      import("@splinetool/react-spline")
-        .then((mod) => {
-          if (mounted.current) setSplineComp(() => mod.default)
-        })
-        .catch(() => {
-          /* chunk / CDN недоступны — остаётся fallback Robot.png */
-        })
-    }
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(load, { timeout: 3000 })
-      return () => { mounted.current = false; window.cancelIdleCallback(id) }
-    }
-    const timer = setTimeout(load, 1500)
-    return () => { mounted.current = false; clearTimeout(timer) }
-  }, [])
-
-  return (
-    <div className={`relative h-full min-h-[1px] w-full min-w-[1px] ${className}`.trim()}>
-      <div className={`absolute inset-0 flex items-end justify-center transition-opacity duration-1000 ${splineLoaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
-        <Image
-          src="/Robot.png"
-          alt="YappiX Robot"
-          width={900}
-          height={900}
-          sizes="(min-width: 1280px) 45vw, 0px"
-          className="h-[120%] max-h-[900px] w-auto object-contain object-bottom align-bottom drop-shadow-[0_0_40px_rgba(236,72,153,0.3)]"
-        />
-      </div>
-      {SplineComp && (
-        <div className={`absolute inset-0 transition-opacity duration-1000 ${splineLoaded ? "opacity-100" : "opacity-0"}`}>
-          <SplineComp scene={scene} onLoad={() => setSplineLoaded(true)} />
-        </div>
-      )}
-    </div>
-  )
-}
+import { cn } from "@/lib/utils"
+import { HeroDesktopSpline, HeroMobileRobotBg } from "@/components/hero-client"
 
 const content = {
   ru: {
@@ -114,13 +24,26 @@ const content = {
   },
 } as const
 
-export function HeroSection({ locale = "ru", geoHeadline, geoDesc }: { locale?: "ru" | "en"; geoHeadline?: string; geoDesc?: string }) {
+const heroBtnBase =
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] [&_svg]:pointer-events-none [&_svg]:shrink-0 text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14"
+
+export function HeroSection({
+  locale = "ru",
+  geoHeadline,
+  geoDesc,
+}: {
+  locale?: "ru" | "en"
+  geoHeadline?: string
+  geoDesc?: string
+}) {
   const base = content[locale]
   const t = geoHeadline ? { ...base, headline: geoHeadline, desc: geoDesc ?? base.desc } : base
-  return (
-    <section className="relative min-h-[100svh] flex items-center pt-28 sm:pt-32 md:pt-36 pb-12 overflow-hidden bg-black" data-hero-section suppressHydrationWarning>
 
-      {/* Мобильный / планшет (< xl): робот — только на клиенте, см. HeroMobileRobotBg */}
+  return (
+    <section
+      className="relative min-h-[100svh] flex items-center pt-28 sm:pt-32 md:pt-36 pb-12 overflow-hidden bg-black"
+      data-hero-section
+    >
       <HeroMobileRobotBg locale={locale} />
 
       <div className="container mx-auto relative z-10">
@@ -130,51 +53,56 @@ export function HeroSection({ locale = "ru", geoHeadline, geoDesc }: { locale?: 
               className="flex flex-wrap justify-center xl:justify-start gap-2 sm:gap-3 mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500"
               data-hero-badges
             >
-              <Badge variant="outline" className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm bg-primary/10 border-primary/30 text-primary backdrop-blur-sm">
-                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1.5 sm:mr-2" />
+              <span
+                className={cn(
+                  "inline-flex items-center border px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-md",
+                  "bg-primary/10 border-primary/30 text-primary backdrop-blur-sm",
+                )}
+              >
+                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1.5 sm:mr-2" aria-hidden />
                 {t.badge1}
-              </Badge>
+              </span>
             </div>
+
             <h1
               className="text-headline text-foreground mb-5 sm:mb-6 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100"
               data-hero-headline
             >
               {t.headline}
             </h1>
-            <p
-              className="text-body-lg max-w-2xl xl:max-w-none mx-auto xl:mx-0 mb-8 sm:mb-10 text-pretty animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200"
-              data-hero-desc
-            >
+
+            <p className="text-body-lg max-w-2xl xl:max-w-none mx-auto xl:mx-0 mb-8 sm:mb-10 text-pretty animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
               {t.desc}
             </p>
-            <div
-              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center xl:justify-start animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300"
-              data-hero-ctas
-            >
-              <Button size="lg" asChild className="text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14">
-                <Link href={t.contactHref}>
-                  {t.cta1}
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14 bg-transparent">
-                <Link href={t.casesHref}>
-                  <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  {t.cta2}
-                </Link>
-              </Button>
+
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center xl:justify-start animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
+              <Link
+                href={t.contactHref}
+                className={cn(
+                  heroBtnBase,
+                  "bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80",
+                )}
+              >
+                {t.cta1}
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" aria-hidden />
+              </Link>
+              <Link
+                href={t.casesHref}
+                className={cn(
+                  heroBtnBase,
+                  "border border-white/10 bg-white/[0.05] backdrop-blur-sm shadow-xs hover:bg-white/[0.1] hover:text-accent-foreground active:bg-white/[0.08] bg-transparent",
+                )}
+              >
+                <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" aria-hidden />
+                {t.cta2}
+              </Link>
             </div>
           </div>
 
-          {/* Right column: Spline + placeholder (desktop xl+) */}
           <div className="hidden xl:block relative w-full h-[560px] min-[1280px]:h-[700px] 2xl:h-[800px] xl:self-end">
-            <div className="absolute -inset-x-20 2xl:-inset-x-32 -top-10 -bottom-20 overflow-hidden animate-in fade-in zoom-in-90 duration-800 delay-200">
-              <LazySpline scene="https://prod.spline.design/YsrhGK1AHO4x8zaQ/scene.splinecode" />
-              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-background to-transparent pointer-events-none" />
-            </div>
+            <HeroDesktopSpline />
           </div>
         </div>
-
       </div>
     </section>
   )
