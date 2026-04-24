@@ -4,17 +4,13 @@ import { Onest, JetBrains_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ChatWidgetWrapper } from "@/components/chat-widget-wrapper"
 import { DeferredRecaptchaWrapper } from "@/components/deferred-recaptcha-wrapper"
-import { GoogleAnalytics } from "@/components/google-analytics"
-import { YandexMetrika } from "@/components/yandex-metrika"
-import { MailRuTop } from "@/components/mail-ru-top"
 import "./layout.css"
 
 const _onest = Onest({
   subsets: ["latin", "cyrillic"],
   variable: "--font-onest",
   display: "swap",
-  /** preload: false — меньше конкуренции с LCP-ресурсами на мобильных (PSI / медленные сети). */
-  preload: false,
+  preload: true,
   adjustFontFallback: true,
 })
 const _geistMono = JetBrains_Mono({
@@ -120,8 +116,14 @@ export const viewport: Viewport = {
   maximumScale: 5,
 }
 
-/** Счётчик в разметке (не только client Script + lazyOnload), чтобы аудиторы/сканеры видели Метрику в исходном HTML. */
+/** Яндекс.Метрика + Top.Mail.Ru в раннем &lt;head&gt; (строки видны аудиторам без JS-отложенной вставки next/script). */
 const YANDEX_METRIKA_ID = 95481194
+const MAILRU_TOP_ID = "3749570"
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID?.trim() || ""
+
+const yandexMetrikaHeadScript = `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(${YANDEX_METRIKA_ID},"init",{webvisor:true,clickmap:true,referrer:document.referrer,url:typeof location!=="undefined"?location.href:"",accurateTrackBounce:true,trackLinks:true});`
+
+const mailRuTopHeadScript = `var _tmr=window._tmr||(window._tmr=[]);_tmr.push({id:"${MAILRU_TOP_ID}",type:"pageView",start:(new Date()).getTime()});(function(d,w,id){if(d.getElementById(id))return;var ts=d.createElement("script");ts.type="text/javascript";ts.async=true;ts.id=id;ts.src="https://top-fwz1.mail.ru/js/code.js";var f=function(){var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(ts,s)};if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",f,false)}else{f()}})(document,window,"tmr-code");`
 
 export default function RootLayout({
   children,
@@ -135,6 +137,20 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://cdn.yappix.ru" />
         <link rel="dns-prefetch" href="https://mc.yandex.ru" />
         <link rel="dns-prefetch" href="https://top-fwz1.mail.ru" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: yandexMetrikaHeadScript }} />
+        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: mailRuTopHeadScript }} />
+        {GA_MEASUREMENT_ID ? (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`} />
+            <script
+              type="text/javascript"
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',${JSON.stringify(GA_MEASUREMENT_ID)});`,
+              }}
+            />
+          </>
+        ) : null}
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="YappiX" />
@@ -225,9 +241,6 @@ export default function RootLayout({
           }}
         />
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
-          <YandexMetrika />
-          <GoogleAnalytics />
-          <MailRuTop />
           <DeferredRecaptchaWrapper>
             {children}
             <ChatWidgetWrapper />
