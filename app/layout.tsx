@@ -220,7 +220,7 @@ export default function RootLayout({
       >
         <noscript
           dangerouslySetInnerHTML={{
-            __html: `<div><img src="https://mc.yandex.ru/watch/${YANDEX_METRIKA_ID}" style="position:absolute;left:-9999px" alt="" /></div>`,
+            __html: `<div><img src="https://mc.yandex.ru/watch/${YANDEX_METRIKA_ID}" style="position:absolute;left:-9999px" alt="Yandex Metrica" width="1" height="1" /></div>`,
           }}
         />
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>

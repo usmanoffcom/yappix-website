@@ -71,7 +71,7 @@ export const careersBySlug: Record<CareerSlug, CareerJob> = {
         "Senior AI Research Engineer / Research ML Architect — вакансия в YappiX",
       metaDescription:
         "YappiX ищет Senior AI Research Engineer / Research ML Architect для разработки новых AI-архитектур, LLM, evaluation pipelines и AI-first R&D. Удалённо / Сколково.",
-      h1: "Senior AI Research Engineer / Research ML Architect",
+      h1: "Ведущий исследовательский AI-инженер / архитектор ML (R&D)",
       about: [
         `${CAREER_COMPANY} ищет Senior AI Research Engineer / Research ML Architect для разработки новых архитектур ИИ, алгоритмов, LLM-систем и AI-first продуктов.`,
         "Это не позиция для человека, который просто интегрирует готовые API или пишет обвязки вокруг чужих моделей. Нам нужен сильный инженер-исследователь, который умеет формулировать гипотезы, проектировать архитектуру, проверять её экспериментом и доводить до рабочего результата.",
@@ -198,7 +198,7 @@ export const careersBySlug: Record<CareerSlug, CareerJob> = {
       seoTitle: "ML Systems / Infrastructure Engineer (AI / LLM) — вакансия в YappiX",
       metaDescription:
         "YappiX ищет ML Systems / Infrastructure Engineer для AI/LLM-инфраструктуры, GPU, distributed training, inference optimization и AI-first engineering. Удалённо / Сколково.",
-      h1: "ML Systems / Infrastructure Engineer (AI / LLM)",
+      h1: "Инженер ML-систем и инфраструктуры (AI / LLM)",
       about: [
         `${CAREER_COMPANY} ищет ML Systems / Infrastructure Engineer для разработки и поддержки инфраструктуры под AI, LLM, новые архитектуры ИИ и высоконагруженные inference / training workflows.`,
         "Нам нужен инженер, который понимает не только код, но и то, как реально работают GPU, память, latency, batching, inference, контейнеры, reproducibility и distributed systems.",
@@ -319,7 +319,7 @@ export const careersBySlug: Record<CareerSlug, CareerJob> = {
       seoTitle: "AI Data & Evaluation Engineer — вакансия в YappiX",
       metaDescription:
         "YappiX ищет AI Data & Evaluation Engineer для датасетов, LLM evaluation, benchmark design, data pipelines и AI-first R&D. Удалённо / Сколково.",
-      h1: "AI Data & Evaluation Engineer",
+      h1: "Инженер по данным и оценке качества AI-моделей",
       about: [
         `${CAREER_COMPANY} ищет AI Data & Evaluation Engineer для работы с данными, датасетами, разметкой, benchmark design, LLM evaluation и quality control в AI-first продуктах и новых архитектурах ИИ.`,
         "Нам нужен человек, который понимает, что модель становится лучше не от красивых обещаний, а от правильных данных, честных тестов и сильной evaluation-системы.",

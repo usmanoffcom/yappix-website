@@ -8,7 +8,7 @@ import { ArrowRight, Play, Sparkles } from "lucide-react"
 import { useState, useEffect, useRef, type ComponentType } from "react"
 
 /** Фоновый робот только после mount — без расхождения SSR/HTML и клиентского бандла (классы Tailwind). */
-function HeroMobileRobotBg() {
+function HeroMobileRobotBg({ locale }: { locale: "ru" | "en" }) {
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
     let cancelled = false
@@ -29,11 +29,13 @@ function HeroMobileRobotBg() {
     }
   }, [])
   if (!mounted) return null
+  const robotAlt =
+    locale === "en" ? "YappiX robot brand illustration" : "Фирменная иллюстрация робота YappiX"
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.15] xl:hidden" aria-hidden>
+    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.15] xl:hidden">
       <Image
         src="/Robot.png"
-        alt=""
+        alt={robotAlt}
         width={900}
         height={1200}
         sizes="100vw"
@@ -119,7 +121,7 @@ export function HeroSection({ locale = "ru", geoHeadline, geoDesc }: { locale?: 
     <section className="relative min-h-[100svh] flex items-center pt-28 sm:pt-32 md:pt-36 pb-12 overflow-hidden bg-black" data-hero-section suppressHydrationWarning>
 
       {/* Мобильный / планшет (< xl): робот — только на клиенте, см. HeroMobileRobotBg */}
-      <HeroMobileRobotBg />
+      <HeroMobileRobotBg locale={locale} />
 
       <div className="container mx-auto relative z-10">
         <div className="grid xl:grid-cols-2 gap-8 xl:gap-12 items-center">
