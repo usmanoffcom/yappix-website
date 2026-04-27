@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, ArrowRight, Clock, Users, Calendar, Quote, ExternalLink } from "lucide-react"
-import { getCaseBySlugEn, getAllCaseSlugsEn, casesDataEn } from "@/lib/cases-data-en"
+import { allCaseSlugsEn, getCaseEn, listCasesEn } from "@/lib/cms/content-repository"
 import { GalleryWithLightbox } from "@/components/gallery-lightbox"
 
 interface Props {
@@ -16,12 +16,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getAllCaseSlugsEn().map((slug) => ({ slug }))
+  const slugs = await allCaseSlugsEn()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const caseStudy = getCaseBySlugEn(slug)
+  const caseStudy = await getCaseEn(slug)
 
   if (!caseStudy) {
     return {
@@ -97,12 +98,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CaseStudyEnPage({ params }: Props) {
   const { slug } = await params
-  const caseStudy = getCaseBySlugEn(slug)
+  const caseStudy = await getCaseEn(slug)
 
   if (!caseStudy) {
     notFound()
   }
 
+  const casesDataEn = await listCasesEn()
   const currentIndex = casesDataEn.findIndex((c) => c.slug === slug)
   const prevCase = currentIndex > 0 ? casesDataEn[currentIndex - 1] : null
   const nextCase = currentIndex < casesDataEn.length - 1 ? casesDataEn[currentIndex + 1] : null

@@ -6,7 +6,7 @@ import { HeaderEn } from "@/components/header-en"
 import { FooterEn } from "@/components/footer-en"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, TrendingUp, Clock, Users } from "lucide-react"
-import { casesDataEn } from "@/lib/cases-data-en"
+import { listCasesEn } from "@/lib/cms/content-repository"
 
 const ShowcaseGallery = dynamic(
   () => import("@/components/showcase-gallery").then((m) => ({ default: m.ShowcaseGallery })),
@@ -33,7 +33,8 @@ export const metadata: Metadata = {
 
 const categories = ["All", "FinTech", "AI", "E-commerce", "SaaS", "Marketing", "Enterprise"]
 
-export default function CasesEnPage() {
+export default async function CasesEnPage() {
+  const casesDataEn = await listCasesEn()
   return (
     <>
       <HeaderEn />

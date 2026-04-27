@@ -22,6 +22,13 @@ yarn-error.log*
 # env files
 .env*
 !.env.production.example
+!.env.example
+
+# local Prisma SQLite (любая вложенность, например prisma/prisma/dev.db при ошибке URL)
+prisma/**/*.db
+prisma/**/*.db-journal
+/prisma/*.db
+/prisma/*.db-journal
 deploy/vds.env
 
 # Сторонние репозитории отелей на том же сервере — не добавлять в yappix-website

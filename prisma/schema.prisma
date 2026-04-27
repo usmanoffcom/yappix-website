@@ -1,0 +1,28 @@
+// CMS: блог, кейсы, шаблоны — i18n через поле locale (ru | en).
+// payload — JSON, совместимый с прежними TS-типами (BlogPost, BlogPostEn, CaseStudy, TemplateCard).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ContentDocument {
+  id          String    @id @default(cuid())
+  locale      String
+  kind        String
+  slug        String
+  title       String
+  category    String?
+  publishedAt DateTime?
+  /** Порядок в списках (кейсы/шаблоны), блог сортируется по publishedAt. */
+  sortOrder   Int       @default(0)
+  payload     Json
+
+  @@unique([locale, kind, slug])
+  @@index([locale, kind, publishedAt])
+  @@index([locale, kind, sortOrder])
+}

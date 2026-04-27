@@ -50,10 +50,18 @@ ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes root@80.249.150.154 \
 
 Скрипт `scripts/deploy.sh`:
 
+- при отсутствии **`/var/www/yappix.ru/.env.production`** копирует его из **`.env.production.example`** в репозитории (первый запуск), затем подгружает переменные из **`.env.production`**;
+- задаёт по умолчанию **`USE_CMS_DB=1`** и **`DATABASE_URL=file:./prisma/production.db`** (если в `.env.production` не переопределено), создаёт каталог **`prisma/`**;
 - останавливает только **`yappix-ru`** в PM2, чистит порт **3001** от зомби `next`;
-- делает `pnpm install`, `pnpm build`;
-- стартует **`pm2 start npm --name yappix-ru -- start`**;
+- делает `pnpm install`, **`prisma migrate deploy`**, **`prisma db seed`** (пропуск: **`SKIP_DB_SEED=1`**), **`pnpm build`**;
+- стартует **`pm2 start npm --name yappix-ru -- start`** (процесс наследует то же окружение, что и сборка — БД по тому же пути доступна **`next start`**);
 - смоук-тест на `http://127.0.0.1:3001/` и проверка CDN-ссылок в HTML (см. ниже).
+
+## Prisma / CMS (SQLite на VDS)
+
+1. После первого деплоя с новым кодом на сервере появится **`.env.production`** (копия примера) с **`USE_CMS_DB=1`** и **`DATABASE_URL="file:./prisma/production.db"`** — путь относительный к **`/var/www/yappix.ru`**, файл **`prisma/production.db`** не в git (см. `.gitignore`).
+2. Если нужен другой путь к БД (например отдельный диск), в **`.env.production`** задайте абсолютный URL, например: **`DATABASE_URL="file:/var/lib/yappix/cms.db"`** и убедитесь, что пользователь, от которого крутится Node (часто **root** под PM2), имеет права чтения/записи.
+3. Сид при каждом деплое **перезаполняет** таблицу контента из исходников в репозитории (`deleteMany` в `prisma/seed.ts`). Чтобы один раз пропустить сид: **`SKIP_DB_SEED=1 bash scripts/deploy.sh`**.
 
 ## CDN
 
@@ -97,8 +105,9 @@ bash /var/www/yappix.ru/deploy/fix-priboy-systemd-on-vds.sh
 
 1. `git push origin main`
 2. SSH с **`~/.ssh/myunion-vds`**
-3. `cd /var/www/yappix.ru && bash scripts/deploy.sh`
+3. `cd /var/www/yappix.ru && bash scripts/deploy.sh` (миграции + сид + сборка выполняются в скрипте; см. раздел **Prisma / CMS**)
 4. В браузере: главная + инкогнито; при CDN — проверка статики с `cdn.yappix.ru`
+5. Если на сервере уже был старый **`.env.production`** без CMS — добавьте в него строки **`USE_CMS_DB=1`** и **`DATABASE_URL="file:./prisma/production.db"`** (или свой путь), иначе при ручном **`pm2 restart`** без оболочки деплоя переменные могут не совпасть с тем, что читает Next из файла.
 
 ### Счётчики (GA4)
 

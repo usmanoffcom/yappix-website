@@ -5,8 +5,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Check, ArrowLeft } from "lucide-react"
-import { blogPosts } from "@/lib/blog-data"
-import { blogPostsEn } from "@/lib/blog-data-en"
+import { listBlogPostsEn, listBlogPostsRu } from "@/lib/cms/content-repository"
 
 const servicesData: Record<
   string,
@@ -1154,12 +1153,13 @@ export default async function ServicePage({ params }: { params: Params }) {
   const service = servicesData[slug]
   if (!service) notFound()
   const related = relatedPagesByServiceSlug[slug] ?? relatedPagesByServiceSlug.default
+  const [allRu, allEn] = await Promise.all([listBlogPostsRu(), listBlogPostsEn()])
   const ruClusterPosts = related.ruBlogSlugs
-    .map((postSlug) => blogPosts.find((post) => post.slug === postSlug))
-    .filter((post): post is (typeof blogPosts)[number] => Boolean(post))
+    .map((postSlug) => allRu.find((post) => post.slug === postSlug))
+    .filter((post): post is (typeof allRu)[number] => Boolean(post))
   const enClusterPosts = related.enBlogSlugs
-    .map((postSlug) => blogPostsEn.find((post) => post.slug === postSlug))
-    .filter((post): post is (typeof blogPostsEn)[number] => Boolean(post))
+    .map((postSlug) => allEn.find((post) => post.slug === postSlug))
+    .filter((post): post is (typeof allEn)[number] => Boolean(post))
 
   return (
     <>

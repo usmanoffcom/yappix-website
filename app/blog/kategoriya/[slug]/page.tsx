@@ -5,13 +5,12 @@ import { notFound } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
-import { blogPosts, blogCategories } from "@/lib/blog-data"
+import { blogCategories } from "@/lib/blog-data"
+import { listBlogPostsRu } from "@/lib/cms/content-repository"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 
 interface CategoryPageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{ slug: string }>
 }
 
 /** Уникальные meta + текст раздела по slug категории (посты хранят category как slug, не как name). */
@@ -93,7 +92,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for each category
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  const category = blogCategories.find((cat) => cat.slug === params.slug)
+  const { slug } = await params
+  const category = blogCategories.find((cat) => cat.slug === slug)
 
   if (!category) {
     return {
@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     }
   }
 
-  const seo = CATEGORY_SEO[params.slug]
+  const seo = CATEGORY_SEO[slug]
   const description =
     seo?.metaDescription ??
     `Статьи и разборы в категории «${category.name}» в блоге YappiX: практические рекомендации по разработке продуктов, AI и запуску для бизнеса в ОАЭ, Европе и США.`
@@ -111,25 +111,28 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     description,
     keywords: [category.name, "YappiX блог", "IT статьи", "разработка продуктов", "AI"],
     alternates: {
-      canonical: `https://yappix.ru/blog/kategoriya/${params.slug}`,
+      canonical: `https://yappix.ru/blog/kategoriya/${slug}`,
     },
     openGraph: {
       title: `${category.name} — блог YappiX`,
       description,
       type: "website",
-      url: `https://yappix.ru/blog/kategoriya/${params.slug}`,
+      url: `https://yappix.ru/blog/kategoriya/${slug}`,
       siteName: "YappiX",
       images: [{ url: "/og.png", width: 1200, height: 630, alt: "YappiX" }],
     },
   }
 }
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  const category = blogCategories.find((cat) => cat.slug === params.slug)
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const { slug } = await params
+  const category = blogCategories.find((cat) => cat.slug === slug)
 
   if (!category) {
     notFound()
   }
+
+  const blogPosts = await listBlogPostsRu()
 
   // Посты хранят category как slug (например mvp-zapusk), а не как отображаемое имя
   const categoryPosts = blogPosts.filter(
@@ -166,7 +169,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               {category.name}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl">
-              {getCategoryIntro(params.slug)}
+              {getCategoryIntro(slug)}
             </p>
 
             {/* Category Navigation */}
@@ -181,7 +184,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 .map((cat) => (
                   <Link key={cat.slug} href={`/blog/kategoriya/${cat.slug}`}>
                     <Badge
-                      variant={cat.slug === params.slug ? "default" : "outline"}
+                      variant={cat.slug === slug ? "default" : "outline"}
                       className="hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
                     >
                       {cat.name}
@@ -275,7 +278,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             <h2 className="text-2xl font-bold text-foreground mb-6">Другие категории</h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {blogCategories
-                .filter((cat) => cat.slug !== "" && cat.slug !== params.slug)
+                .filter((cat) => cat.slug !== "" && cat.slug !== slug)
                 .map((cat) => {
                   const count = blogPosts.filter(
                     (post) => post.category === cat.slug || post.category === cat.name,
@@ -305,8 +308,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             name: `${category.name} — Блог YappiX`,
-            description: getCategoryIntro(params.slug),
-            url: `https://yappix.ru/blog/kategoriya/${params.slug}`,
+            description: getCategoryIntro(slug),
+            url: `https://yappix.ru/blog/kategoriya/${slug}`,
             isPartOf: {
               "@type": "Blog",
               name: "Блог YappiX",

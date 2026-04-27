@@ -6,7 +6,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, TrendingUp, Clock, Users } from "lucide-react"
-import { getCaseBySlug } from "@/lib/cases-data"
+import { listCasesRu } from "@/lib/cms/content-repository"
 
 const ShowcaseGallery = dynamic(
   () => import("@/components/showcase-gallery").then((m) => ({ default: m.ShowcaseGallery })),
@@ -44,155 +44,10 @@ export const metadata: Metadata = {
   },
 }
 
-const myunionCase = getCaseBySlug("myunion-platform")
-const myunionListImage = myunionCase?.image ?? "/images/16_9.webp"
-
-const cases = [
-  {
-    slug: "myunion-platform",
-    title: "MyUnion Pro — платформа управления профсоюзами",
-    client: "MyUnion",
-    category: "SaaS",
-    description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ.",
-    image: myunionListImage,
-    results: [
-      { label: "Команда", value: "1 чел" },
-      { label: "Срок", value: "3 мес" },
-      { label: "Пользователей", value: "50K+" },
-    ],
-    tags: ["Next.js", "GPT-4", "PostgreSQL", "LangChain"],
-  },
-  {
-    slug: "reallaw-ai",
-    title: "realLaw AI — Legal Tech SaaS для ОАЭ",
-    client: "realLaw",
-    category: "SaaS",
-    description: "Legal-tech SaaS для бизнеса и юристов ОАЭ. Полный цикл: исследование, бренд, дизайн-система, фронтенд на Next.js/Framer.",
-    image: "/images/usmanoff-cases/1765729581244-00001.avif",
-    results: [
-      { label: "Год", value: "2025" },
-      { label: "Платформа", value: "Web" },
-      { label: "Стек", value: "Next.js + Framer" },
-    ],
-    tags: ["Legal Tech", "SaaS", "Next.js", "Framer", "UAE"],
-  },
-  {
-    slug: "jupid-platform",
-    title: "Jupid — AI бухгалтер для запуска LLC",
-    client: "Jupid",
-    category: "FinTech",
-    description: "AI-бухгалтер для основателей из США. Создание и ведение LLC через чат. Продуктовые флоу, интерфейс, дизайн-система.",
-    image: "/images/usmanoff-cases/1765730706302-j1.png",
-    results: [
-      { label: "Год", value: "2025" },
-      { label: "Регион", value: "USA" },
-      { label: "AI", value: "GPT-4" },
-    ],
-    tags: ["AI", "FinTech", "SaaS", "Accounting", "Framer"],
-  },
-  {
-    slug: "priboy-hotels",
-    title: "Grand Hotels & SPA Priboy — сеть отелей",
-    client: "Группа отелей Прибой",
-    category: "Marketing",
-    description: "Комплексная разработка, техническая поддержка, SEO-продвижение и SMM для сети премиальных отелей.",
-    image: "/images/priboy.avif",
-    results: [
-      { label: "Рост трафика", value: "+180%" },
-      { label: "Прямые брони", value: "+65%" },
-      { label: "ТОП-3 Яндекс", value: "85%" },
-    ],
-    tags: ["Next.js", "SEO", "SMM", "VK Ads"],
-  },
-  {
-    slug: "bridgeinto-platform",
-    title: "BridgeInto — Приватная бизнес-платформа",
-    client: "BridgeInto",
-    category: "Enterprise",
-    description: "Безопасная бизнес-платформа для приватности и контроля данных. Бренд, UX/UI, дизайн-система, продуктовый сайт.",
-    image: "/images/usmanoff-cases/1765731821927-b1.mp4",
-    results: [
-      { label: "Год", value: "2024" },
-      { label: "Блокчейн", value: "Да" },
-      { label: "Статус", value: "Продакшн" },
-    ],
-    tags: ["SaaS", "Blockchain", "Security", "File Manager"],
-  },
-  {
-    slug: "global-olive-corporation",
-    title: "Global Olive Corporation",
-    client: "Global Olive",
-    category: "E-commerce",
-    description: "E-commerce платформа для инвестирования в оливковые деревья с сертификатами владения.",
-    image: "/images/goc.webp",
-    results: [
-      { label: "Конверсия", value: "+35%" },
-      { label: "Деревьев", value: "500+" },
-      { label: "Средний чек", value: "$180" },
-    ],
-    tags: ["React", "Node.js", "Stripe", "PostgreSQL"],
-  },
-  {
-    slug: "my-buyer-crm",
-    title: "MY BUYER — CRM для маркетплейсов",
-    client: "MY BUYER",
-    category: "E-commerce",
-    description: "CRM для работы с товарами с китайских и СНГ маркетплейсов. UX/UI для веб и мобильных приложений.",
-    image: "/images/usmanoff-cases/1765752539773-m1.png",
-    results: [
-      { label: "Год", value: "2023" },
-      { label: "Платформы", value: "Web + iOS" },
-      { label: "Пользователей", value: "5K+" },
-    ],
-    tags: ["CRM", "E-commerce", "iOS", "Web App"],
-  },
-  {
-    slug: "fintech-marketplace",
-    title: "Card2Card — MVP мобильного приложения",
-    client: "NDA",
-    category: "FinTech",
-    description: "Мобильное приложение для переводов с карты на карту по всему миру. Автоматическая комиссия, простой перевод.",
-    image: "/images/05f1e332931093.589da5ec81ead.gif",
-    results: [
-      { label: "Разработчиков", value: "14" },
-      { label: "Шлюзы", value: "VISA, MC, USDT" },
-      { label: "Регионы", value: "4" },
-    ],
-    tags: ["React Native", "Node.js", "VISA API", "Mastercard"],
-  },
-  {
-    slug: "ai-food-assistant",
-    title: "Ассистент заявок — голосовой заказ еды",
-    client: "Food Delivery",
-    category: "AI",
-    description: "Голосовой AI-ассистент для заказа еды без касания экрана. Идеально для водителей за рулём.",
-    image: "/images/checkout_ai_2.mp4",
-    results: [
-      { label: "Конверсия", value: "+40%" },
-      { label: "Hands-free", value: "100%" },
-      { label: "Время заказа", value: "30 сек" },
-    ],
-    tags: ["GPT-4", "Voice AI", "Speech Recognition", "Stripe"],
-  },
-  {
-    slug: "yappix-cms",
-    title: "YappiX CMS — конструктор мобильных приложений",
-    client: "YappiX (собственный продукт)",
-    category: "SaaS",
-    description: "No-code конструктор нативных мобильных приложений с CMS. Поддержан Microsoft for Startups.",
-    image: "/images/yappix.png",
-    results: [
-      { label: "Гранты", value: "ФСИ + MS" },
-      { label: "Инвестиции", value: "2 раунда" },
-      { label: "Резидент", value: "Сколково" },
-    ],
-    tags: ["React", "Node.js", "Swift", "Kotlin", "No-code"],
-  },
-]
-
 const categories = ["Все", "FinTech", "AI", "E-commerce", "SaaS", "Marketing", "Enterprise"]
 
-export default function CasesPage() {
+export default async function CasesPage() {
+  const cases = await listCasesRu()
   return (
     <>
       <Header />

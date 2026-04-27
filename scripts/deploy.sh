@@ -19,6 +19,25 @@ git fetch origin main
 git reset --hard origin/main
 echo "==> checkout: $(git rev-parse --short HEAD) $(git log -1 --oneline)"
 
+# ─── Production env (VDS): .env.production not in git; первый раз — копия из репо ───
+if [ ! -f .env.production ] && [ -f .env.production.example ]; then
+  cp .env.production.example .env.production
+  echo "==> created .env.production from .env.production.example (add NEXT_PUBLIC_GA_ID etc. if needed)"
+fi
+if [ -f .env.production ]; then
+  echo "==> loading .env.production"
+  set -a
+  # shellcheck disable=SC1091
+  . ./.env.production
+  set +a
+fi
+
+# CMS (Prisma SQLite): тот же cwd для migrate, build и next start — относительный file: ок
+export USE_CMS_DB="${USE_CMS_DB:-1}"
+export DATABASE_URL="${DATABASE_URL:-file:./prisma/production.db}"
+mkdir -p prisma
+echo "==> CMS: USE_CMS_DB=${USE_CMS_DB} DATABASE_URL=${DATABASE_URL}"
+
 # ─── CDN mode (Selectel cdn.yappix.ru) ───
 # Override via env when running: CDN_OFF=1 bash scripts/deploy.sh
 if [ "${CDN_OFF:-0}" = "1" ]; then
@@ -54,6 +73,16 @@ rm -rf .next node_modules/.cache
 pnpm install --frozen-lockfile
 # pnpm 10: onlyBuiltDependencies в package.json; на старых node_modules — добираем нативный бинд для /_next/image
 pnpm rebuild sharp 2>/dev/null || true
+
+echo "==> prisma migrate deploy"
+pnpm exec prisma migrate deploy
+if [ "${SKIP_DB_SEED:-0}" = "1" ]; then
+  echo "==> SKIP_DB_SEED=1 — prisma db seed skipped"
+else
+  echo "==> prisma db seed"
+  pnpm exec prisma db seed
+fi
+
 pnpm run build
 
 echo "==> build check:"

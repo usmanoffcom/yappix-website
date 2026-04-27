@@ -4,8 +4,8 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { getBlogPostBySlug, blogPosts } from "@/lib/blog-data"
 import { getEnSlugByRuSlug } from "@/lib/blog-data-en"
+import { allBlogSlugsRu, getBlogPostRu, listBlogPostsRu } from "@/lib/cms/content-repository"
 import { Calendar, Clock, ArrowLeft, Share2, ArrowRight, Globe, Smartphone, Bot, Server, Search, CreditCard, Rocket } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -62,7 +62,7 @@ type Params = Promise<{ slug: string }>
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params
-  const post = getBlogPostBySlug(slug)
+  const post = await getBlogPostRu(slug)
   if (!post) return { title: "Статья не найдена" }
 
   return {
@@ -107,15 +107,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }))
+  return allBlogSlugsRu()
 }
 
 export default async function BlogPostPage({ params }: { params: Params }) {
   const { slug } = await params
-  const post = getBlogPostBySlug(slug)
+  const post = await getBlogPostRu(slug)
   if (!post) notFound()
 
-  const relatedPosts = blogPosts.filter((p) => p.slug !== slug && p.category === post.category).slice(0, 3)
+  const allPosts = await listBlogPostsRu()
+  const relatedPosts = allPosts.filter((p) => p.slug !== slug && p.category === post.category).slice(0, 3)
   const enAlternateSlug = getEnSlugByRuSlug(slug)
 
   return (

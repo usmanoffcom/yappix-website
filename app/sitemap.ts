@@ -1,15 +1,19 @@
 import { MetadataRoute } from 'next'
-import { blogPosts, blogCategories } from '@/lib/blog-data'
-import { blogPostsEn } from '@/lib/blog-data-en'
-import { casesData } from '@/lib/cases-data'
-import { casesDataEn } from '@/lib/cases-data-en'
+import { blogCategories } from '@/lib/blog-data'
+import { listBlogPostsEn, listBlogPostsRu, listCasesEn, listCasesRu } from '@/lib/cms/content-repository'
 import { geoCities } from '@/lib/geo-landing-data'
 import { geoMoneyPages } from '@/lib/geo-money-pages-data'
 import { geoMoneyPagesEn } from '@/lib/geo-money-pages-data-en'
 import { CAREER_SLUGS } from '@/lib/careers-data'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://yappix.ru'
+  const [blogPosts, blogPostsEn, casesData, casesDataEn] = await Promise.all([
+    listBlogPostsRu(),
+    listBlogPostsEn(),
+    listCasesRu(),
+    listCasesEn(),
+  ])
 
   // Main pages
   const mainPages: MetadataRoute.Sitemap = [

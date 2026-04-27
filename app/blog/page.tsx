@@ -3,7 +3,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { blogPosts, blogCategories } from "@/lib/blog-data"
+import { blogCategories } from "@/lib/blog-data"
+import { listBlogPostsRu } from "@/lib/cms/content-repository"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -44,7 +45,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const blogPosts = await listBlogPostsRu()
   const featuredPost = blogPosts[0]
   const otherPosts = blogPosts.slice(1)
 

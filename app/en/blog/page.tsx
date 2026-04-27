@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { HeaderEn } from "@/components/header-en"
 import { FooterEn } from "@/components/footer-en"
-import { blogPostsEn } from "@/lib/blog-data-en"
+import { listBlogPostsEn } from "@/lib/cms/content-repository"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -38,7 +38,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function EnBlogPage() {
+export default async function EnBlogPage() {
+  const blogPostsEn = await listBlogPostsEn()
   return (
     <>
       <HeaderEn />
