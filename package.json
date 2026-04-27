@@ -15,6 +15,8 @@
     "start": "next start -p 3001",
     "generate-icons": "node scripts/generate-icons.js",
     "convert-icons": "node scripts/convert-icons-to-png.js",
+    "images:optimize": "node scripts/optimize-public-images.mjs",
+    "images:optimize:write": "node scripts/optimize-public-images.mjs --write",
     "deploy": "ssh ${DEPLOY_USER:-deploy}@${DEPLOY_HOST} 'set -euo pipefail && cd /var/www/yappix.ru && bash scripts/deploy.sh'"
   },
   "dependencies": {
@@ -78,7 +80,9 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "sharp",
-      "@tailwindcss/oxide"
+      "@tailwindcss/oxide",
+      "prisma",
+      "@prisma/client"
     ]
   },
   "devDependencies": {

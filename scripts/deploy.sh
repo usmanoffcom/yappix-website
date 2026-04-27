@@ -74,6 +74,9 @@ pnpm install --frozen-lockfile
 # pnpm 10: onlyBuiltDependencies в package.json; на старых node_modules — добираем нативный бинд для /_next/image
 pnpm rebuild sharp 2>/dev/null || true
 
+echo "==> prisma generate (нужен до seed/build, если postinstall Prisma был пропущен)"
+pnpm exec prisma generate
+
 echo "==> prisma migrate deploy"
 pnpm exec prisma migrate deploy
 if [ "${SKIP_DB_SEED:-0}" = "1" ]; then
