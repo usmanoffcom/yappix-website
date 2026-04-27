@@ -57,7 +57,9 @@ ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes root@80.249.150.154 \
 
 ## CDN
 
-По умолчанию деплой ожидает, что в HTML есть ссылки на **`cdn.yappix.ru`**. Если отдаёшь статику только с origin:
+По умолчанию деплой ожидает, что в HTML есть ссылки на **`cdn.yappix.ru`** (только `/_next/static` — чанки и CSS). Файлы из **`public/`** (`/images/`, `placeholder.svg` и т.д.) **всегда** с **origin** (yappix.ru), иначе при префиксе на CDN без зеркалирования `public` на edge будут 404.
+
+Если отдаёшь **всю** статику только с origin (без отдельного хоста для чанков):
 
 ```bash
 CDN_OFF=1 bash scripts/deploy.sh

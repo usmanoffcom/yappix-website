@@ -13,7 +13,7 @@ const showcaseItems = [
   { src: "/images/ezgif-7c88f3d1be0e62.gif", altRu: "Демонстрация анимации интерфейса продукта", altEn: "Product interface animation demonstration" },
 ]
 
-// Секция подгружается по IntersectionObserver; URL через publicAssetUrl → CDN в проде.
+// public/ грузится с origin; publicAssetUrl нормализует path (см. lib/cdn-asset).
 function LazyGifItem({ src, alt }: { src: string; alt: string }) {
   const [isLoaded, setIsLoaded] = useState(false)
   const isGif = src.endsWith(".gif")

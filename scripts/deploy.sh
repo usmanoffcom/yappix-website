@@ -52,6 +52,8 @@ echo "==> clean .next + caches"
 rm -rf .next node_modules/.cache
 
 pnpm install --frozen-lockfile
+# pnpm 10: onlyBuiltDependencies в package.json; на старых node_modules — добираем нативный бинд для /_next/image
+pnpm rebuild sharp 2>/dev/null || true
 pnpm run build
 
 echo "==> build check:"

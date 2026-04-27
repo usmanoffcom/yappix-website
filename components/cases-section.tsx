@@ -136,7 +136,6 @@ function LazyImage({ src, alt, eager }: { src: string; alt: string; eager?: bool
           key={src}
           src={src}
           alt={alt || "Кейс YappiX"}
-          loading={eager ? "eager" : "lazy"}
           decoding="async"
           onLoad={() => setIsLoaded(true)}
           onError={() => setIsLoaded(true)}
