@@ -28,14 +28,17 @@ const casesHeadByLocale = {
 }
 
 // Lazy loading video component
-function VideoCard({ src, title }: { src: string; title: string }) {
+function VideoCard({ src, title, eager }: { src: string; title: string; eager?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isMuted, setIsMuted] = useState(true)
   const [isHovered, setIsHovered] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(!!eager)
 
   useEffect(() => {
+    if (eager) return
+    const el = containerRef.current
+    if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -43,15 +46,11 @@ function VideoCard({ src, title }: { src: string; title: string }) {
           observer.disconnect()
         }
       },
-      { rootMargin: "100px", threshold: 0.1 }
+      { rootMargin: "200px", threshold: 0.01 }
     )
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current)
-    }
-
+    observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [eager])
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -75,7 +74,7 @@ function VideoCard({ src, title }: { src: string; title: string }) {
           loop
           muted
           playsInline
-          preload="none"
+          preload={eager ? "auto" : "metadata"}
           title={title}
           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
         />
@@ -100,13 +99,16 @@ function VideoCard({ src, title }: { src: string; title: string }) {
   )
 }
 
-// Lazy loading image component
-function LazyImage({ src, alt }: { src: string; alt: string }) {
+// Lazy loading image component (eager = above-the-fold: skip IO, avoids blank cards if observer never fires in prod)
+function LazyImage({ src, alt, eager }: { src: string; alt: string; eager?: boolean }) {
   const ref = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(!!eager)
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
+    if (eager) return
+    const el = ref.current
+    if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -114,15 +116,11 @@ function LazyImage({ src, alt }: { src: string; alt: string }) {
           observer.disconnect()
         }
       },
-      { rootMargin: "100px", threshold: 0.1 }
+      { rootMargin: "200px", threshold: 0.01 }
     )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
+    observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [eager])
 
   return (
     <div ref={ref} className="relative aspect-video overflow-hidden bg-muted">
@@ -133,8 +131,10 @@ function LazyImage({ src, alt }: { src: string; alt: string }) {
         <img
           src={src}
           alt={alt || "Кейс YappiX"}
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
           onLoad={() => setIsLoaded(true)}
+          onError={() => setIsLoaded(true)}
           className={`object-cover w-full h-full group-hover:scale-105 transition-all duration-500 ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
@@ -171,11 +171,15 @@ export function CasesSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
           {cases.map((caseItem, index) => (
             <Link key={index} href={`${casesBase}/${caseItem.slug}`} className="block">
               <Card className="overflow-hidden glass hover:border-primary/30 transition-all group !p-0 !gap-0 cursor-pointer h-full">
-                {/* Image or Video */}
+                {/* Image or Video — eager first row (md:2 cols) so LCP/IO flakiness never leaves cards blank in prod */}
                 {caseItem.video ? (
-                  <VideoCard src={caseItem.video} title={caseItem.title} />
+                  <VideoCard src={caseItem.video} title={caseItem.title} eager={index < 2} />
                 ) : (
-                  <LazyImage src={caseItem.image || "/placeholder.svg"} alt={caseItem.title || "Кейс YappiX"} />
+                  <LazyImage
+                    src={caseItem.image || "/placeholder.svg"}
+                    alt={caseItem.title || "Кейс YappiX"}
+                    eager={index < 2}
+                  />
                 )}
 
                 <CardContent className="p-6">

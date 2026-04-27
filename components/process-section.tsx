@@ -53,11 +53,9 @@ export function ProcessSection({ locale = "ru" }: { locale?: "ru" | "en" }) {
               controlsList="nodownload"
               preload="metadata"
               playsInline
-              crossOrigin="anonymous"
-              title="Формат работы YappiX — от анализа до внедрения"
+              title={locale === "en" ? "YappiX workflow — from analysis to implementation" : "Формат работы YappiX — от анализа до внедрения"}
             >
               <source src="/YappiX.mp4" type="video/mp4" />
-              <track kind="captions" />
               {fallback}
             </video>
           </div>

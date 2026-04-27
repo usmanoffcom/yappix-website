@@ -12,56 +12,33 @@ const showcaseItems = [
   { src: "/images/ezgif-7c88f3d1be0e62.gif", altRu: "Демонстрация анимации интерфейса продукта", altEn: "Product interface animation demonstration" },
 ]
 
-// Компонент для lazy loading отдельного GIF
+// Горизонтальный ряд: нельзя вешать IO с root=viewport на каждую карточку — уехавшие вправо
+// не «пересекают» экран и <Image> никогда не монтировались (вечные серые плейсхолдеры).
+// Первый приоритет: native loading="lazy" (и при необходимости priority на первых слайдах).
 function LazyGifItem({ src, alt, index }: { src: string; alt: string; index: number }) {
-  const [isVisible, setIsVisible] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { rootMargin: "100px", threshold: 0.1 }
-    )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const isGif = src.endsWith(".gif")
+  const firstStrip = index < 2
 
   return (
-    <div
-      ref={ref}
-      className="flex-shrink-0 relative rounded-xl overflow-hidden glass hover:border-primary/50 transition-all group"
-    >
+    <div className="flex-shrink-0 relative rounded-xl overflow-hidden glass hover:border-primary/50 transition-all group">
       <div className="relative w-[300px] sm:w-[350px] md:w-[400px] aspect-[4/3] bg-muted">
-        {/* Placeholder skeleton */}
         {!isLoaded && (
           <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted-foreground/10 to-muted animate-pulse" />
         )}
-        
-        {/* Загружаем изображение только когда элемент виден */}
-        {isVisible && (
-          <Image
-            src={src}
-            alt={alt || "Демонстрация интерфейса YappiX"}
-            fill
-            sizes="(max-width: 640px) 300px, (max-width: 768px) 350px, 400px"
-            className={`object-cover group-hover:scale-105 transition-all duration-500 ${
-              isLoaded ? "opacity-100" : "opacity-0"
-            }`}
-            unoptimized={src.endsWith('.gif')}
-            loading="lazy"
-            onLoad={() => setIsLoaded(true)}
-          />
-        )}
+        <Image
+          src={src}
+          alt={alt || "Демонстрация интерфейса YappiX"}
+          fill
+          sizes="(max-width: 640px) 300px, (max-width: 768px) 350px, 400px"
+          className={`object-cover group-hover:scale-105 transition-all duration-500 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          unoptimized={isGif}
+          priority={firstStrip}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setIsLoaded(true)}
+        />
       </div>
     </div>
   )
@@ -78,6 +55,8 @@ export function ShowcaseGallery({ locale = "ru" }: { locale?: "ru" | "en" }) {
   const head = showcaseHeadByLocale[locale]
 
   useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -85,15 +64,18 @@ export function ShowcaseGallery({ locale = "ru" }: { locale?: "ru" | "en" }) {
           observer.disconnect()
         }
       },
-      { rootMargin: "200px", threshold: 0 }
+      { rootMargin: "320px", threshold: 0 }
     )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
+    observer.observe(el)
     return () => observer.disconnect()
   }, [])
+
+  // На случай, если IO не сработал (встраиваемые WebView и т.п.) — не оставляем пустой ряд навсегда
+  useEffect(() => {
+    if (isInView) return
+    const t = window.setTimeout(() => setIsInView(true), 2500)
+    return () => clearTimeout(t)
+  }, [isInView])
 
   return (
     <section ref={sectionRef} className="py-16 md:py-24 glass-subtle overflow-hidden">
