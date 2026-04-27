@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -139,17 +140,19 @@ function LazyImage({ src, alt, eager }: { src: string; alt: string; eager?: bool
         <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted-foreground/10 to-muted animate-pulse" />
       )}
       {isVisible && (
-        <img
+        <Image
           key={src}
           src={src}
           alt={alt || "Кейс YappiX"}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          quality={65}
           fetchPriority={eager ? "high" : "auto"}
-          decoding="async"
-          onLoad={() => setIsLoaded(true)}
-          onError={() => setIsLoaded(true)}
-          className={`object-cover w-full h-full group-hover:scale-105 transition-all duration-500 ${
+          className={`object-cover group-hover:scale-105 transition-all duration-500 ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setIsLoaded(true)}
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />

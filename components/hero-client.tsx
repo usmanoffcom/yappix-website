@@ -35,6 +35,7 @@ export function HeroMobileRobotBg({ locale }: { locale: "ru" | "en" }) {
         width={900}
         height={1200}
         sizes="100vw"
+        quality={68}
         loading="lazy"
         decoding="async"
         className="absolute bottom-0 left-1/2 h-[85%] w-auto max-w-none origin-bottom -translate-x-1/2 scale-150 object-contain object-bottom"
@@ -83,6 +84,8 @@ function LazySpline({ scene, className = "" }: { scene: string; className?: stri
           width={900}
           height={900}
           sizes="(min-width: 1280px) 45vw, 0px"
+          quality={68}
+          loading="lazy"
           className="h-[120%] max-h-[900px] w-auto object-contain object-bottom align-bottom drop-shadow-[0_0_40px_rgba(236,72,153,0.3)]"
         />
       </div>

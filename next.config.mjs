@@ -31,14 +31,12 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
 
-  // Image optimization - включаем оптимизацию
+  // Image optimization — на VDS on-the-fly AVIF сильно грузит CPU; WebP быстрее кодировать.
   images: {
-    // Включаем оптимизацию изображений
     unoptimized: false,
-    // Форматы для оптимизации
-    formats: ['image/avif', 'image/webp'],
-    // Размеры для responsive изображений
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    formats: ['image/webp'],
+    // Без 2048/3840: меньше вариантов ресайза и трафик при fill + sizes
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Domains для внешних изображений
     remotePatterns: [

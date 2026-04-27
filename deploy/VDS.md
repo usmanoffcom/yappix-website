@@ -63,6 +63,12 @@ ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes root@80.249.150.154 \
 2. Если нужен другой путь к БД (например отдельный диск), в **`.env.production`** задайте абсолютный URL, например: **`DATABASE_URL="file:/var/lib/yappix/cms.db"`** и убедитесь, что пользователь, от которого крутится Node (часто **root** под PM2), имеет права чтения/записи.
 3. Сид при каждом деплое **перезаполняет** таблицу контента из исходников в репозитории (`deleteMany` в `prisma/seed.ts`). Чтобы один раз пропустить сид: **`SKIP_DB_SEED=1 bash scripts/deploy.sh`**.
 
+## Скорость картинок (`/_next/image`)
+
+Ресайз и WebP делаются на Node — при трафике это заметно. В репозитории по умолчанию **только WebP** (без AVIF) и урезанный набор ширин в `next.config.mjs`.
+
+Чтобы повторные запросы не били в Node, на nginx можно включить **диск-кэш** для `/_next/image`: см. **`deploy/nginx-next-image-cache.conf`** (нужен `proxy_cache_path` в `http { }` и каталог кэша).
+
 ## CDN
 
 По умолчанию деплой ожидает, что в HTML есть ссылки на **`cdn.yappix.ru`** (только `/_next/static` — чанки и CSS). Файлы из **`public/`** (`/images/`, `placeholder.svg` и т.д.) **всегда** с **origin** (yappix.ru), иначе при префиксе на CDN без зеркалирования `public` на edge будут 404.
