@@ -26,7 +26,6 @@ const ProcessSection = nextDynamic(() => import("@/components/process-section").
 const CasesSection = nextDynamic(() => import("@/components/cases-section").then((m) => ({ default: m.CasesSection })), { ssr: true })
 const TechStack = nextDynamic(() => import("@/components/tech-stack").then((m) => ({ default: m.TechStack })), { ssr: true })
 const PricingSection = nextDynamic(() => import("@/components/pricing-section").then((m) => ({ default: m.PricingSection })), { ssr: true })
-const ShowcaseGallery = nextDynamic(() => import("@/components/showcase-gallery").then((m) => ({ default: m.ShowcaseGallery })), { ssr: true })
 const TemplatesSection = nextDynamic(() => import("@/components/templates-section").then((m) => ({ default: m.TemplatesSection })), { ssr: true })
 const ContactSection = nextDynamic(() => import("@/components/contact-section").then((m) => ({ default: m.ContactSection })), { ssr: true })
 const Footer = nextDynamic(() => import("@/components/footer").then((m) => ({ default: m.Footer })), { ssr: true })
@@ -46,7 +45,6 @@ export default function HomePage() {
       <CasesSection />
       <TechStack />
       <PricingSection />
-      <ShowcaseGallery />
       <TemplatesSection excludeSlugs={["yandex-go-scooters"]} />
       <FinalCtaSection />
       <ContactSection />

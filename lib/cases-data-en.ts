@@ -14,7 +14,7 @@ export const casesDataEn: CaseStudy[] = [
       "Trade unions used fragmented systems for member records, documents, and communications. Processing requests took days and member engagement was minimal. A single platform with modern technology was needed.",
     solution:
       "Built a unified platform with an AI assistant for automated request handling, document generation, and personalized recommendations. Implemented partner discount system, news feed, and chats to boost member engagement.",
-    image: "/myunion/Cover2.png",
+    image: "/images/16_9.png",
     videos: [
       "/images/usmanoff-cases/1765719152722-MyUnion.mp4",
       "/images/Презентация платформы MyUnion_ новые возможности для профсоюзов 🚀 (1).mp4",
@@ -255,7 +255,7 @@ export const casesDataEn: CaseStudy[] = [
       "The client needed a digital platform to sell olive trees as an investment. A transparent ownership system with certificates, gifting, and a dashboard for assets and harvest was required.",
     solution:
       "Built a full eCommerce platform in React with an intuitive purchase flow, personalized ownership certificates (PDF with QR), gifting with activation codes, and a dashboard with ownership history and harvest stats. Integrated Stripe and nodemailer.",
-    image: "/images/image copy.png",
+    image: "/images/goc.jpg",
     videos: ["/images/usmanoff-cases/1765726788099-Olive.mp4"],
     gallery: [
       "/images/olive/Screenshot 2026-04-05 at 23.27.21.png",

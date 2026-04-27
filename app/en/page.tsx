@@ -13,7 +13,6 @@ const ProcessSection = dynamic(() => import("@/components/process-section").then
 const CasesSection = dynamic(() => import("@/components/cases-section").then((m) => ({ default: m.CasesSection })), { ssr: true })
 const TechStack = dynamic(() => import("@/components/tech-stack").then((m) => ({ default: m.TechStack })), { ssr: true })
 const PricingSection = dynamic(() => import("@/components/pricing-section").then((m) => ({ default: m.PricingSection })), { ssr: true })
-const ShowcaseGallery = dynamic(() => import("@/components/showcase-gallery").then((m) => ({ default: m.ShowcaseGallery })), { ssr: true })
 const TemplatesSection = dynamic(() => import("@/components/templates-section").then((m) => ({ default: m.TemplatesSection })), { ssr: true })
 const ContactSection = dynamic(() => import("@/components/contact-section").then((m) => ({ default: m.ContactSection })), { ssr: true })
 const FooterEn = dynamic(() => import("@/components/footer-en").then((m) => ({ default: m.FooterEn })), { ssr: true })
@@ -33,7 +32,6 @@ export default function HomeEnPage() {
       <CasesSection locale="en" />
       <TechStack locale="en" />
       <PricingSection locale="en" />
-      <ShowcaseGallery locale="en" />
       <TemplatesSection locale="en" excludeSlugs={["yandex-go-scooters"]} />
       <FinalCtaSection locale="en" />
       <ContactSection locale="en" />

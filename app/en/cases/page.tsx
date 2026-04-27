@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
 import { HeaderEn } from "@/components/header-en"
@@ -6,6 +7,11 @@ import { FooterEn } from "@/components/footer-en"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, TrendingUp, Clock, Users } from "lucide-react"
 import { casesDataEn } from "@/lib/cases-data-en"
+
+const ShowcaseGallery = dynamic(
+  () => import("@/components/showcase-gallery").then((m) => ({ default: m.ShowcaseGallery })),
+  { ssr: true }
+)
 
 export const metadata: Metadata = {
   title: "Case Studies & Portfolio — YappiX Projects",
@@ -70,7 +76,7 @@ export default function CasesEnPage() {
                 <Link key={caseItem.slug} href={`/en/cases/${caseItem.slug}`} className="group">
                   <article className="h-full bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors">
                     <div className="relative aspect-video bg-black overflow-hidden">
-                      {caseItem.image?.endsWith('.mp4') ? (
+                      {caseItem.image?.endsWith(".mp4") ? (
                         <video
                           src={caseItem.image}
                           autoPlay
@@ -85,6 +91,7 @@ export default function CasesEnPage() {
                           src={caseItem.image || "/placeholder.svg"}
                           alt={caseItem.title || "YappiX case study"}
                           fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       )}
@@ -163,6 +170,8 @@ export default function CasesEnPage() {
             </Button>
           </div>
         </section>
+
+        <ShowcaseGallery locale="en" />
       </main>
       <FooterEn />
     </>

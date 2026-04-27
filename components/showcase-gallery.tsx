@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useRef, useState, useEffect } from "react"
+import { publicAssetUrl } from "@/lib/cdn-asset"
 
 const showcaseItems = [
   { src: "/images/4cc28332931093.5c18cb73b0830.gif", altRu: "Анимация интерфейса веб-приложения", altEn: "Web application interface animation" },
@@ -12,13 +13,11 @@ const showcaseItems = [
   { src: "/images/ezgif-7c88f3d1be0e62.gif", altRu: "Демонстрация анимации интерфейса продукта", altEn: "Product interface animation demonstration" },
 ]
 
-// Горизонтальный ряд: нельзя вешать IO с root=viewport на каждую карточку — уехавшие вправо
-// не «пересекают» экран и <Image> никогда не монтировались (вечные серые плейсхолдеры).
-// Первый приоритет: native loading="lazy" (и при необходимости priority на первых слайдах).
-function LazyGifItem({ src, alt, index }: { src: string; alt: string; index: number }) {
+// Секция подгружается по IntersectionObserver; URL через publicAssetUrl → CDN в проде.
+function LazyGifItem({ src, alt }: { src: string; alt: string }) {
   const [isLoaded, setIsLoaded] = useState(false)
   const isGif = src.endsWith(".gif")
-  const firstStrip = index < 2
+  const resolvedSrc = publicAssetUrl(src)
 
   return (
     <div className="flex-shrink-0 relative rounded-xl overflow-hidden glass hover:border-primary/50 transition-all group">
@@ -27,15 +26,16 @@ function LazyGifItem({ src, alt, index }: { src: string; alt: string; index: num
           <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted-foreground/10 to-muted animate-pulse" />
         )}
         <Image
-          src={src}
+          src={resolvedSrc}
           alt={alt || "Демонстрация интерфейса YappiX"}
           fill
           sizes="(max-width: 640px) 300px, (max-width: 768px) 350px, 400px"
-          className={`object-cover group-hover:scale-105 transition-all duration-500 ${
+          className={`object-cover w-full h-full group-hover:scale-105 transition-all duration-500 ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
           unoptimized={isGif}
-          priority={firstStrip}
+          priority={false}
+          loading="lazy"
           onLoad={() => setIsLoaded(true)}
           onError={() => setIsLoaded(true)}
         />
@@ -97,7 +97,6 @@ export function ShowcaseGallery({ locale = "ru" }: { locale?: "ru" | "en" }) {
               key={index}
               src={item.src}
               alt={locale === "ru" ? item.altRu : item.altEn}
-              index={index}
             />
           ))
         ) : (

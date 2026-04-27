@@ -1,10 +1,17 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, TrendingUp, Clock, Users } from "lucide-react"
+import { getCaseBySlug } from "@/lib/cases-data"
+
+const ShowcaseGallery = dynamic(
+  () => import("@/components/showcase-gallery").then((m) => ({ default: m.ShowcaseGallery })),
+  { ssr: true }
+)
 
 export const metadata: Metadata = {
   title: "Кейсы и портфолио — проекты YappiX",
@@ -37,6 +44,9 @@ export const metadata: Metadata = {
   },
 }
 
+const myunionCase = getCaseBySlug("myunion-platform")
+const myunionListImage = myunionCase?.image ?? "/images/16_9.png"
+
 const cases = [
   {
     slug: "myunion-platform",
@@ -44,7 +54,7 @@ const cases = [
     client: "MyUnion",
     category: "SaaS",
     description: "Полнофункциональное веб-приложение для управления профсоюзами с чат-ботами на базе ИИ.",
-    image: "/images/image.png",
+    image: myunionListImage,
     results: [
       { label: "Команда", value: "1 чел" },
       { label: "Срок", value: "3 мес" },
@@ -114,7 +124,7 @@ const cases = [
     client: "Global Olive",
     category: "E-commerce",
     description: "E-commerce платформа для инвестирования в оливковые деревья с сертификатами владения.",
-    image: "/images/image copy.png",
+    image: "/images/goc.jpg",
     results: [
       { label: "Конверсия", value: "+35%" },
       { label: "Деревьев", value: "500+" },
@@ -226,7 +236,7 @@ export default function CasesPage() {
                 <Link key={caseItem.slug} href={`/kejsy/${caseItem.slug}`} className="group">
                   <article className="h-full bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors">
                     <div className="relative aspect-video bg-black overflow-hidden">
-                      {caseItem.image?.endsWith('.mp4') ? (
+                      {caseItem.image?.endsWith(".mp4") ? (
                         <video
                           src={caseItem.image}
                           autoPlay
@@ -237,12 +247,14 @@ export default function CasesPage() {
                           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                      <Image
-                        src={caseItem.image || "/placeholder.svg"}
-                        alt={caseItem.title || "Кейс YappiX"}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                        <Image
+                          key={caseItem.image}
+                          src={caseItem.image || "/placeholder.svg"}
+                          alt={caseItem.title || "Кейс YappiX"}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                       )}
                       <span className="absolute top-4 left-4 px-3 py-1 text-xs font-medium bg-primary text-primary-foreground rounded-full">
                         {caseItem.category}
@@ -319,6 +331,8 @@ export default function CasesPage() {
             </Button>
           </div>
         </section>
+
+        <ShowcaseGallery />
       </main>
       <Footer />
     </>

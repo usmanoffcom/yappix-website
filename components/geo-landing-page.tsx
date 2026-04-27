@@ -15,7 +15,6 @@ const ProcessSection = dynamic(() => import("@/components/process-section").then
 const CasesSection = dynamic(() => import("@/components/cases-section").then((m) => ({ default: m.CasesSection })), { ssr: true })
 const TechStack = dynamic(() => import("@/components/tech-stack").then((m) => ({ default: m.TechStack })), { ssr: true })
 const PricingSection = dynamic(() => import("@/components/pricing-section").then((m) => ({ default: m.PricingSection })), { ssr: true })
-const ShowcaseGallery = dynamic(() => import("@/components/showcase-gallery").then((m) => ({ default: m.ShowcaseGallery })), { ssr: true })
 const TemplatesSection = dynamic(() => import("@/components/templates-section").then((m) => ({ default: m.TemplatesSection })), { ssr: true })
 const ContactSection = dynamic(() => import("@/components/contact-section").then((m) => ({ default: m.ContactSection })), { ssr: true })
 const Footer = dynamic(() => import("@/components/footer").then((m) => ({ default: m.Footer })), { ssr: true })
@@ -63,7 +62,6 @@ export function GeoLandingPage({ geo, locale }: Props) {
       <CasesSection locale={locale} />
       <TechStack locale={locale} />
       <PricingSection locale={locale} />
-      <ShowcaseGallery locale={locale} />
       <TemplatesSection locale={locale} excludeSlugs={["yandex-go-scooters"]} />
       <ContactSection locale={locale} geoPhone={geo.phone} geoSlug={geoSlug} />
       {isRu ? <Footer /> : <FooterEn />}
