@@ -31,7 +31,11 @@ if [ -f .env.production ]; then
   . ./.env.production
   set +a
   echo "==> env presence (без значений):"
-  [ -n "${OPENROUTER_API_KEY:-}" ] && echo "    OPENROUTER_API_KEY=set" || echo "    OPENROUTER_API_KEY=MISSING"
+  if [ -n "${OPENROUTER_API_KEY:-}" ] || [ -n "${OPENROUTER_KEY:-}" ]; then
+    echo "    OpenRouter chat key=set (OPENROUTER_API_KEY или OPENROUTER_KEY)"
+  else
+    echo "    OpenRouter chat=MISSING (/api/chat → 503 без ключа)"
+  fi
   if [ -n "${SMTP_EMAIL:-}" ] || [ -n "${SMTP_USER:-}" ]; then
     echo "    SMTP login=set (SMTP_EMAIL или SMTP_USER)"
   else
