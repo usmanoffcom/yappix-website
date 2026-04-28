@@ -6,18 +6,19 @@
 
 - **Хост:** `80.249.150.154` (или актуальный IP в панели хостинга).
 - **Пользователь:** `root` (или твой deploy-user с правами на каталог и `pm2`).
-- **Ключ:** приватный ключ **`myunion-vds`** — ожидаемый путь на машине, с которой заходишь:
-  - **`~/.ssh/myunion-vds`** (имя с **дефисом** — так и задумано).
-  - Если файл лежит как **`~/.ssh/myunion_vds`** (подчёркивание), один раз сделай ссылку, чтобы не путаться:
+- **Ключ:** приватный ключ в **`~/.ssh/`** — подойдёт любое из имён:
+  - **`~/.ssh/myunion-vds`** (дефис) или **`~/.ssh/myunion_vds`** (подчёркивание).
+  - Скрипт **`scripts/upload-env-to-vds.sh`** сам выберет существующий файл. Вручную в командах ниже подставь свой путь (`-i ~/.ssh/myunion_vds` и т.д.).
+  - По желанию можно сделать ссылку с одного имени на другое:
     ```bash
     ln -sf ~/.ssh/myunion_vds ~/.ssh/myunion-vds
     chmod 600 ~/.ssh/myunion-vds
     ```
 
-Проверка входа:
+Проверка входа (подставь имя ключа: **`myunion-vds`** или **`myunion_vds`**):
 
 ```bash
-ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new root@80.249.150.154 'hostname'
+ssh -i ~/.ssh/myunion_vds -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new root@80.249.150.154 'hostname'
 ```
 
 ## Каталог приложения на сервере
@@ -57,7 +58,7 @@ bash scripts/deploy.sh
 С **Mac** без ручного входа на сервер (подставь свой путь к репо на VDS, если не `/var/www/yappix.ru`):
 
 ```bash
-ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes root@80.249.150.154 \
+ssh -i ~/.ssh/myunion_vds -o IdentitiesOnly=yes root@80.249.150.154 \
   'cd /var/www/yappix.ru && git fetch origin main && git reset --hard origin/main && bash scripts/deploy.sh'
 ```
 
@@ -123,7 +124,7 @@ bash /var/www/yappix.ru/deploy/fix-priboy-systemd-on-vds.sh
 ## Быстрый чеклист
 
 1. `git push origin main`
-2. SSH с **`~/.ssh/myunion-vds`**
+2. SSH с ключом **`~/.ssh/myunion_vds`** или **`~/.ssh/myunion-vds`**
 3. `cd /var/www/yappix.ru && bash scripts/deploy.sh` (миграции + сид + сборка выполняются в скрипте; см. раздел **Prisma / CMS**)
 4. В браузере: главная + инкогнито; при CDN — проверка статики с `cdn.yappix.ru`
 5. Если на сервере уже был старый **`.env.production`** без CMS — добавьте в него строки **`USE_CMS_DB=1`** и **`DATABASE_URL="file:./prisma/production.db"`** (или свой путь), иначе при ручном **`pm2 restart`** без оболочки деплоя переменные могут не совпасть с тем, что читает Next из файла.

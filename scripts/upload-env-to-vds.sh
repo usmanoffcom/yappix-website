@@ -9,7 +9,7 @@
 #
 # Переменные (опционально):
 #   VDS_SSH         по умолчанию root@80.249.150.154
-#   VDS_SSH_KEY     по умолчанию ~/.ssh/myunion-vds
+#   VDS_SSH_KEY     иначе: ~/.ssh/myunion-vds или ~/.ssh/myunion_vds (что найдётся)
 #   VDS_APP_DIR     по умолчанию /var/www/yappix.ru
 #   PROD_ENV_SOURCE по умолчанию ./.env
 set -euo pipefail
@@ -19,7 +19,15 @@ cd "$ROOT"
 
 SOURCE="${PROD_ENV_SOURCE:-$ROOT/.env}"
 REMOTE="${VDS_SSH:-root@80.249.150.154}"
-KEY="${VDS_SSH_KEY:-$HOME/.ssh/myunion-vds}"
+if [ -n "${VDS_SSH_KEY:-}" ]; then
+  KEY="$VDS_SSH_KEY"
+elif [ -f "$HOME/.ssh/myunion-vds" ]; then
+  KEY="$HOME/.ssh/myunion-vds"
+elif [ -f "$HOME/.ssh/myunion_vds" ]; then
+  KEY="$HOME/.ssh/myunion_vds"
+else
+  KEY="$HOME/.ssh/myunion-vds"
+fi
 REMOTE_DIR="${VDS_APP_DIR:-/var/www/yappix.ru}"
 REMOTE_PATH="${REMOTE_DIR}/.env.production"
 TMP_REMOTE="${REMOTE_PATH}.upload.$$"
@@ -34,6 +42,7 @@ if [ ! -f "$KEY" ]; then
 fi
 
 echo "Источник:     $SOURCE"
+echo "SSH-ключ:     $KEY"
 echo "Назначение:   $REMOTE:$REMOTE_PATH"
 echo ""
 if [ "${FORCE:-}" != "1" ]; then
