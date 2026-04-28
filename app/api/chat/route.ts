@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 
-const OPENROUTER_API_KEY = "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"
+import { serverEnv } from "@/lib/server-env"
+
+export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
 
 const SYSTEM_PROMPT = `Ты — AI-ассистент компании YappiX, IT-студии полного цикла. Резиденты Сколково с 2020 года.
 
@@ -54,6 +57,15 @@ function sanitizeAssistantReply(reply: string): string {
 
 export async function POST(request: NextRequest) {
   try {
+    const apiKey = serverEnv("OPENROUTER_API_KEY")
+    if (!apiKey) {
+      console.error("chat: OPENROUTER_API_KEY is not set")
+      return NextResponse.json(
+        { error: "Чат временно недоступен. Обратитесь через форму или по телефону." },
+        { status: 503 },
+      )
+    }
+
     const { messages, collectLead } = await request.json()
 
     if (collectLead) {
@@ -61,20 +73,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true })
     }
 
+    const appUrl = serverEnv("NEXT_PUBLIC_APP_URL") || "https://yappix.ru"
+
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://yappix.ru",
+        "HTTP-Referer": appUrl,
         "X-Title": "YappiX Chat Assistant",
       },
       body: JSON.stringify({
         model: "openai/gpt-4o-mini",
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          ...messages,
-        ],
+        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
         max_tokens: 500,
         temperature: 0.7,
       }),
@@ -83,23 +94,17 @@ export async function POST(request: NextRequest) {
     if (!response.ok) {
       const error = await response.text()
       console.error("OpenRouter error:", error)
-      return NextResponse.json(
-        { error: "Ошибка AI. Попробуйте позже." },
-        { status: 500 }
-      )
+      return NextResponse.json({ error: "Ошибка AI. Попробуйте позже." }, { status: 500 })
     }
 
     const data = await response.json()
-    const rawReply = data.choices?.[0]?.message?.content || "Извините, произошла ошибка. Попробуйте снова."
+    const rawReply =
+      data.choices?.[0]?.message?.content || "Извините, произошла ошибка. Попробуйте снова."
     const reply = sanitizeAssistantReply(rawReply)
 
     return NextResponse.json({ reply })
   } catch (error) {
     console.error("Chat error:", error)
-    return NextResponse.json(
-      { error: "Внутренняя ошибка сервера" },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: "Внутренняя ошибка сервера" }, { status: 500 })
   }
 }
-

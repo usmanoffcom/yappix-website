@@ -1,3 +1,6 @@
+"use client"
+
+import { useRef, useState, useEffect } from "react"
 import Link from "next/link"
 import { Rocket, Monitor, Bot, Palette, Users } from "lucide-react"
 
@@ -28,6 +31,50 @@ const copy: Record<Locale, { h2: string; items: { icon: typeof Rocket; title: st
   },
 }
 
+/** Видео не тянет ~1.4MB до появления блока в зоне просмотра */
+function WhatWeDoVideo() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [play, setPlay] = useState(false)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const o = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setPlay(true)
+          o.disconnect()
+        }
+      },
+      { rootMargin: "160px", threshold: 0.01 }
+    )
+    o.observe(el)
+    return () => o.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative aspect-video w-full overflow-hidden rounded-2xl glass"
+      aria-hidden
+    >
+      {play ? (
+        <video
+          className="h-full w-full object-cover"
+          src={VIDEO_SRC}
+          muted
+          loop
+          playsInline
+          autoPlay
+          preload="metadata"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-muted animate-pulse" />
+      )}
+    </div>
+  )
+}
+
 export function WhatWeDoSection({ locale = "ru" }: { locale?: Locale }) {
   const t = copy[locale]
   return (
@@ -54,20 +101,7 @@ export function WhatWeDoSection({ locale = "ru" }: { locale?: Locale }) {
             ))}
           </ul>
 
-          <div
-            className="relative aspect-video w-full overflow-hidden rounded-2xl glass"
-            aria-hidden
-          >
-            <video
-              className="h-full w-full object-cover"
-              src={VIDEO_SRC}
-              muted
-              loop
-              playsInline
-              autoPlay
-              preload="metadata"
-            />
-          </div>
+          <WhatWeDoVideo />
         </div>
       </div>
     </section>

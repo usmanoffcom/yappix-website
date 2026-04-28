@@ -1,39 +1,29 @@
 import { NextRequest, NextResponse } from "next/server"
-import nodemailer from "nodemailer"
+import {
+  createLeadMailTransport,
+  getSmtpFromAddress,
+  getSmtpToAddress,
+} from "@/lib/smtp-config"
 import { escapeTelegramHtml } from "@/lib/telegram-html"
-
-// Telegram Bot Config
-const TELEGRAM_BOT_TOKEN = "8317760178:AAEUGZWwyAWBaHVW-umTrV29V3FcCTCIRyQ"
-// TODO: Заменить на ID канала "yappix leads" после его создания
-const TELEGRAM_CHAT_ID = "-1002757127968" // Временно используется существующий чат
-
-// SMTP Config for Mail.ru
-const transporter = nodemailer.createTransport({
-  host: "smtp.mail.ru",
-  port: 587,
-  secure: false,
-  auth: {
-    user: "sales@yappix.ru",
-    pass: "vfMac3fWX7ElJT71waA6",
-  },
-  connectionTimeout: 10000,
-  greetingTimeout: 5000,
-})
+import { getTelegramBotToken, getTelegramLeadsChatId } from "@/lib/telegram-config"
 
 async function sendToTelegram(message: string): Promise<boolean> {
+  const token = getTelegramBotToken()
+  const chatId = getTelegramLeadsChatId()
+  if (!token || !chatId) {
+    console.error("Telegram: задайте TELEGRAM_BOT_TOKEN и TELEGRAM_LEADS_CHAT_ID или TELEGRAM_CHAT_ID в .env.production")
+    return false
+  }
   try {
-    const response = await fetch(
-      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: message,
-          parse_mode: "HTML",
-        }),
-      }
-    )
+    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+        parse_mode: "HTML",
+      }),
+    })
     const data = await response.json()
     if (!data.ok) {
       console.error("Telegram sendMessage failed:", JSON.stringify(data))
@@ -52,10 +42,17 @@ async function sendEmailToCompany(data: {
   date: string
   time: string
 }): Promise<boolean> {
+  const transport = createLeadMailTransport()
+  const from = getSmtpFromAddress()
+  const to = getSmtpToAddress()
+  if (!transport || !from || !to) {
+    console.warn("SMTP: задайте SMTP_PASSWORD и SMTP_EMAIL или SMTP_USER — письмо в компанию пропущено")
+    return false
+  }
   try {
-    await transporter.sendMail({
-      from: "sales@yappix.ru",
-      to: "sales@yappix.ru",
+    await transport.sendMail({
+      from,
+      to,
       subject: `Новая заявка на звонок: ${data.name}`,
       html: `
         <h2>Новая заявка на звонок</h2>
@@ -80,9 +77,15 @@ async function sendConfirmationEmail(data: {
   date: string
   time: string
 }): Promise<boolean> {
+  const transport = createLeadMailTransport()
+  const from = getSmtpFromAddress()
+  if (!transport || !from) {
+    console.warn("SMTP: задайте SMTP_PASSWORD и SMTP_EMAIL или SMTP_USER — подтверждение клиенту пропущено")
+    return false
+  }
   try {
-    await transporter.sendMail({
-      from: "sales@yappix.ru",
+    await transport.sendMail({
+      from,
       to: data.email,
       subject: "Подтверждение бронирования звонка — YappiX",
       html: `
@@ -115,10 +118,7 @@ export async function POST(request: NextRequest) {
     const { name, email, phone, date, time } = data
 
     if (!name || !email || !phone || !date || !time) {
-      return NextResponse.json(
-        { error: "Заполните все обязательные поля" },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: "Заполните все обязательные поля" }, { status: 400 })
     }
 
     // Форматируем дату для читаемости
@@ -170,7 +170,7 @@ ${safeDateLine}
     if (!telegramResult) {
       return NextResponse.json(
         { error: "Ошибка отправки. Позвоните: +7 995 095 55 93" },
-        { status: 500 }
+        { status: 500 },
       )
     }
 
@@ -180,9 +180,6 @@ ${safeDateLine}
     })
   } catch (error) {
     console.error("Booking error:", error)
-    return NextResponse.json(
-      { error: "Внутренняя ошибка сервера" },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: "Внутренняя ошибка сервера" }, { status: 500 })
   }
 }

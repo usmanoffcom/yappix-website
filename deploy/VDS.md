@@ -30,6 +30,19 @@ ssh -i ~/.ssh/myunion-vds -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-
 
 Если репозиторий клонирован под другим именем — подставь свой путь во всех командах ниже.
 
+## Залить секреты с Mac на прод (`.env.production`)
+
+Файл **`.env.production`** на сервере **не в git**. Чтобы один раз или после смены ключей залить локальный `.env` (где уже есть `OPENROUTER_API_KEY`, `SMTP_*`, Telegram и т.д.):
+
+```bash
+cd /path/to/yappix-website-seo
+bash scripts/upload-env-to-vds.sh
+```
+
+Скрипт спросит подтверждение, скопирует файл в **`/var/www/yappix.ru/.env.production`** и выставит права **`600`**. Без вопросов: **`FORCE=1 bash scripts/upload-env-to-vds.sh`**. Другой источник: **`PROD_ENV_SOURCE=./.env.local`**.
+
+После заливки обязательно **`bash scripts/deploy.sh`** на VDS (или удалённо одной строкой из раздела ниже), чтобы подхватить **`NEXT_PUBLIC_*`** при сборке.
+
 ## Полный деплой (после push в `main`)
 
 На **VDS** (или одной строкой с Mac):
@@ -118,3 +131,7 @@ bash /var/www/yappix.ru/deploy/fix-priboy-systemd-on-vds.sh
 ### Счётчики (GA4)
 
 Яндекс.Метрика и Top.Mail.Ru подключены в разметке. **Google Analytics** рендерится только если на сервере перед сборкой задан `NEXT_PUBLIC_GA_ID` (см. `.env.production.example`): положи `/var/www/yappix.ru/.env.production` с `NEXT_PUBLIC_GA_ID=G-…` и пересобери (`deploy.sh` уже делает `pnpm build`).
+
+### Чат, почта, Telegram
+
+Секреты читаются из **`/var/www/yappix.ru/.env.production`** при работе **`next start`** (и при **`pnpm build`** для `NEXT_PUBLIC_*`). Имена переменных — в **`.env.production.example`**: `OPENROUTER_API_KEY`, `SMTP_EMAIL` или **`SMTP_USER`** (логин ящика), `SMTP_PASSWORD` (опционально `SMTP_HOST`, `SMTP_TO`), `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` или `TELEGRAM_LEADS_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET` (должен совпадать с `secret_token` в setWebhook). После правки `.env.production` выполни **`bash scripts/deploy.sh`** или как минимум **`pm2 restart yappix-ru`**; для **`NEXT_PUBLIC_APP_URL`** нужна пересборка.

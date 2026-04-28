@@ -30,6 +30,22 @@ if [ -f .env.production ]; then
   # shellcheck disable=SC1091
   . ./.env.production
   set +a
+  echo "==> env presence (без значений):"
+  [ -n "${OPENROUTER_API_KEY:-}" ] && echo "    OPENROUTER_API_KEY=set" || echo "    OPENROUTER_API_KEY=MISSING"
+  if [ -n "${SMTP_EMAIL:-}" ] || [ -n "${SMTP_USER:-}" ]; then
+    echo "    SMTP login=set (SMTP_EMAIL или SMTP_USER)"
+  else
+    echo "    SMTP login=MISSING (нужны SMTP_EMAIL или SMTP_USER + SMTP_PASSWORD)"
+  fi
+  [ -n "${SMTP_PASSWORD:-}" ] && echo "    SMTP_PASSWORD=set" || echo "    SMTP_PASSWORD=MISSING"
+  if [ -n "${TELEGRAM_BOT_TOKEN:-}" ] && { [ -n "${TELEGRAM_LEADS_CHAT_ID:-}" ] || [ -n "${TELEGRAM_CHAT_ID:-}" ]; }; then
+    echo "    Telegram bot + chat=set"
+  else
+    echo "    Telegram=MISSING (TELEGRAM_BOT_TOKEN и TELEGRAM_LEADS_CHAT_ID или TELEGRAM_CHAT_ID)"
+  fi
+  [ -n "${TELEGRAM_WEBHOOK_SECRET:-}" ] && echo "    TELEGRAM_WEBHOOK_SECRET=set" || echo "    TELEGRAM_WEBHOOK_SECRET=MISSING (нужен для /api/telegram/webhook)"
+  [ -n "${NEXT_PUBLIC_APP_URL:-}" ] && echo "    NEXT_PUBLIC_APP_URL=set" || echo "    NEXT_PUBLIC_APP_URL=MISSING (рекомендуется https://yappix.ru для прода)"
+  [ -n "${NEXT_PUBLIC_GA_ID:-}" ] && echo "    NEXT_PUBLIC_GA_ID=set" || echo "    NEXT_PUBLIC_GA_ID=MISSING (опционально, GA4)"
 fi
 
 # CMS (Prisma SQLite): тот же cwd для migrate, build и next start — относительный file: ок

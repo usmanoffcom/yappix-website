@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from "next/server"
 import { promises as fs } from "fs"
 import path from "path"
+import {
+  getTelegramBotToken,
+  getTelegramLeadsChatId,
+  getTelegramWebhookSecret,
+} from "@/lib/telegram-config"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
-
-const TELEGRAM_BOT_TOKEN = "8317760178:AAEUGZWwyAWBaHVW-umTrV29V3FcCTCIRyQ"
-const TELEGRAM_LEADS_CHAT_ID = "-1002757127968"
-const TELEGRAM_WEBHOOK_SECRET = "yappix-telegram-webhook-2026"
 const STORE_FILE = path.join(process.cwd(), ".data", "telegram-bot-sessions.json")
 
 type SessionState = "idle" | "awaiting_name" | "awaiting_contact" | "awaiting_project" | "done"
@@ -59,8 +60,10 @@ function dialogId(chatId: number): string {
 }
 
 async function sendTelegramMessage(chatId: string | number, text: string): Promise<boolean> {
+  const token = getTelegramBotToken()
+  if (!token) return false
   try {
-    const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -69,7 +72,14 @@ async function sendTelegramMessage(chatId: string | number, text: string): Promi
         parse_mode: "HTML",
       }),
     })
-    const data = await response.json()
+    const data = (await response.json()) as {
+      ok?: boolean
+      description?: string
+      error_code?: number
+    }
+    if (!data.ok) {
+      console.error("Telegram sendMessage failed:", data.error_code, data.description)
+    }
     return data?.ok === true
   } catch (error) {
     console.error("Telegram sendMessage error:", error)
@@ -166,7 +176,7 @@ async function mirrorToLeadsChannel(chatId: number, userLabel: string, direction
   const who = direction === "IN" ? "Клиент" : "Бот"
   const toClient = direction === "OUT" ? " → клиенту" : ""
   const message = `🕐 ${ts} · диалог #${id}\n<b>${who}</b>${toClient} ${escapeHtml(userLabel)}\n\n${escapeHtml(text)}`
-  await sendTelegramMessage(TELEGRAM_LEADS_CHAT_ID, message)
+  await sendTelegramMessage(getTelegramLeadsChatId(), message)
 }
 
 async function finalizeLead(chatId: number, userLabel: string, session: Session): Promise<void> {
@@ -179,13 +189,27 @@ async function finalizeLead(chatId: number, userLabel: string, session: Session)
     `🧑 <b>Имя:</b> ${escapeHtml(session.lead.name || "—")}\n` +
     `📞 <b>Контакт:</b> ${escapeHtml(session.lead.contact || "—")}\n` +
     `📝 <b>Задача:</b> ${escapeHtml(session.lead.project || "—")}`
-  await sendTelegramMessage(TELEGRAM_LEADS_CHAT_ID, leadMessage)
+  await sendTelegramMessage(getTelegramLeadsChatId(), leadMessage)
+}
+
+function webhookSecretFromRequest(request: NextRequest): string | null {
+  const v = request.headers.get("x-telegram-bot-api-secret-token")
+  return v?.trim() ? v.trim() : null
+}
+
+/** Health for мониторинг; Telegram шлёт только POST. */
+export async function GET() {
+  return NextResponse.json({ ok: true, service: "telegram-webhook" })
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const secret = request.headers.get("x-telegram-bot-api-secret-token")
-    if (secret !== TELEGRAM_WEBHOOK_SECRET) {
+    const secret = webhookSecretFromRequest(request)
+    const expected = getTelegramWebhookSecret()
+    if (!expected || secret !== expected) {
+      console.warn(
+        `[telegram webhook] Unauthorized: secret ${secret === null ? "missing" : "mismatch"} (убедитесь, что setWebhook с secret_token совпадает с TELEGRAM_WEBHOOK_SECRET в .env.production)`,
+      )
       return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 })
     }
 
@@ -200,7 +224,12 @@ export async function POST(request: NextRequest) {
     const userLabel = `@${user?.username || "no_username"} (id:${user?.id || "unknown"})`
     const text = msg.text.trim()
 
-    const store = await readStore()
+    let store: SessionStore = {}
+    try {
+      store = await readStore()
+    } catch (e) {
+      console.error("telegram sessions read failed (начинаем с пустого стора):", e)
+    }
     const session = getOrCreateSession(store, chatId)
     pushHistory(session, "user", text)
     await mirrorToLeadsChannel(chatId, userLabel, "IN", text)
@@ -263,7 +292,11 @@ export async function POST(request: NextRequest) {
     }
 
     pushHistory(session, "bot", reply)
-    await writeStore(store)
+    try {
+      await writeStore(store)
+    } catch (e) {
+      console.error("telegram sessions write failed (ответ пользователю всё равно отправим):", e)
+    }
 
     await sendTelegramMessage(chatId, reply)
     await mirrorToLeadsChannel(chatId, userLabel, "OUT", reply)

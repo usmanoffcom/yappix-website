@@ -17,7 +17,8 @@
     "convert-icons": "node scripts/convert-icons-to-png.js",
     "images:optimize": "node scripts/optimize-public-images.mjs",
     "images:optimize:write": "node scripts/optimize-public-images.mjs --write",
-    "deploy": "ssh ${DEPLOY_USER:-deploy}@${DEPLOY_HOST} 'set -euo pipefail && cd /var/www/yappix.ru && bash scripts/deploy.sh'"
+    "deploy": "ssh ${DEPLOY_USER:-deploy}@${DEPLOY_HOST} 'set -euo pipefail && cd /var/www/yappix.ru && bash scripts/deploy.sh'",
+    "deploy:upload-env": "bash scripts/upload-env-to-vds.sh"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
