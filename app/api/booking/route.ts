@@ -6,6 +6,7 @@ import {
 } from "@/lib/smtp-config"
 import { escapeTelegramHtml } from "@/lib/telegram-html"
 import { getTelegramBotToken, getTelegramLeadsChatId } from "@/lib/telegram-config"
+import { telegramBotFetch } from "@/lib/proxy-fetch"
 
 async function sendToTelegram(message: string): Promise<boolean> {
   const token = getTelegramBotToken()
@@ -15,16 +16,16 @@ async function sendToTelegram(message: string): Promise<boolean> {
     return false
   }
   try {
-    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    const response = await telegramBotFetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        chat_id: chatId,
+        chat_id: String(chatId),
         text: message,
         parse_mode: "HTML",
       }),
     })
-    const data = await response.json()
+    const data = (await response.json()) as { ok?: boolean }
     if (!data.ok) {
       console.error("Telegram sendMessage failed:", JSON.stringify(data))
     }
@@ -66,7 +67,13 @@ async function sendEmailToCompany(data: {
     })
     return true
   } catch (error) {
-    console.error("Email error:", error)
+    const err = error as Error & { response?: string; responseCode?: string }
+    console.error(
+      "Email sendMail (company) failed:",
+      err?.message || String(error),
+      err?.responseCode ? `code=${err.responseCode}` : "",
+      err?.response ? `response=${err.response.slice(0, 200)}` : "",
+    )
     return false
   }
 }
@@ -107,7 +114,13 @@ async function sendConfirmationEmail(data: {
     })
     return true
   } catch (error) {
-    console.error("Confirmation email error:", error)
+    const err = error as Error & { response?: string; responseCode?: string }
+    console.error(
+      "Email sendMail (confirmation) failed:",
+      err?.message || String(error),
+      err?.responseCode ? `code=${err.responseCode}` : "",
+      err?.response ? `response=${err.response.slice(0, 200)}` : "",
+    )
     return false
   }
 }

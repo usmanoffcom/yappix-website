@@ -4,6 +4,7 @@ import {
   getTelegramWebhookSecret,
   getTelegramWebhookUrl,
 } from "@/lib/telegram-config"
+import { telegramBotFetch, proxyConfigured } from "@/lib/proxy-fetch"
 
 export async function GET() {
   try {
@@ -15,27 +16,36 @@ export async function GET() {
       )
     }
     const WEBHOOK_URL = getTelegramWebhookUrl()
-    const [webhookInfoRes, meRes, updatesRes] = await Promise.all([
-      fetch(`https://api.telegram.org/bot${token}/getWebhookInfo`),
-      fetch(`https://api.telegram.org/bot${token}/getMe`),
-      fetch(`https://api.telegram.org/bot${token}/getUpdates?limit=5`),
+    const [webhookInfoRes, meRes] = await Promise.all([
+      telegramBotFetch(`https://api.telegram.org/bot${token}/getWebhookInfo`),
+      telegramBotFetch(`https://api.telegram.org/bot${token}/getMe`),
     ])
 
-    const webhookInfo = await webhookInfoRes.json()
-    const me = await meRes.json()
-    const updates = await updatesRes.json()
+    const webhookInfo = (await webhookInfoRes.json()) as { ok?: boolean; result?: unknown }
+    const me = (await meRes.json()) as { ok?: boolean; result?: unknown }
 
     return NextResponse.json({
       success: true,
       webhook_url: WEBHOOK_URL,
+      proxy: proxyConfigured("telegram"),
       webhook_secret_set: Boolean(getTelegramWebhookSecret()),
       webhook_info: webhookInfo.result,
       bot: me.result,
-      updates: updates.result,
       setup_hint: "Для установки webhook вызовите POST /api/telegram-setup",
     })
   } catch (error) {
-    return NextResponse.json({ error: "Ошибка получения данных" }, { status: 500 })
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error("telegram-setup GET:", msg)
+    return NextResponse.json(
+      {
+        error: "Не удалось достучаться до api.telegram.org (часто таймаут с РФ-VDS).",
+        detail: msg,
+        hint: proxyConfigured("telegram")
+          ? "Проверьте TELEGRAM_HTTPS_PROXY / HTTPS_PROXY"
+          : "Добавьте TELEGRAM_HTTPS_PROXY в .env.production — см. deploy/VDS.md",
+      },
+      { status: 500 },
+    )
   }
 }
 
@@ -60,12 +70,12 @@ export async function POST() {
       allowed_updates: JSON.stringify(["message"]),
     })
 
-    const response = await fetch(`https://api.telegram.org/bot${token}/setWebhook`, {
+    const response = await telegramBotFetch(`https://api.telegram.org/bot${token}/setWebhook`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body,
     })
-    const data = await response.json()
+    const data = (await response.json()) as { ok?: boolean }
     return NextResponse.json(data, { status: data.ok ? 200 : 500 })
   } catch (error) {
     return NextResponse.json({ ok: false, error: "Ошибка установки webhook" }, { status: 500 })

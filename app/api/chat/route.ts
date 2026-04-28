@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 
 import { serverEnv } from "@/lib/server-env"
+import { openRouterFetch } from "@/lib/proxy-fetch"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -120,7 +121,7 @@ export async function POST(request: NextRequest) {
     const appUrl = serverEnv("NEXT_PUBLIC_APP_URL") || "https://yappix.ru"
     const model = serverEnv("OPENROUTER_MODEL") || DEFAULT_MODEL
 
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const response = await openRouterFetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
       headers: {

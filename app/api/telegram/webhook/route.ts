@@ -6,6 +6,7 @@ import {
   getTelegramLeadsChatId,
   getTelegramWebhookSecret,
 } from "@/lib/telegram-config"
+import { telegramBotFetch } from "@/lib/proxy-fetch"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -63,7 +64,7 @@ async function sendTelegramMessage(chatId: string | number, text: string): Promi
   const token = getTelegramBotToken()
   if (!token) return false
   try {
-    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    const response = await telegramBotFetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

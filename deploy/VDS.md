@@ -136,3 +136,51 @@ bash /var/www/yappix.ru/deploy/fix-priboy-systemd-on-vds.sh
 ### Чат, почта, Telegram
 
 Секреты читаются из **`/var/www/yappix.ru/.env.production`** при работе **`next start`** (и при **`pnpm build`** для `NEXT_PUBLIC_*`). Имена переменных — в **`.env.production.example`**: `OPENROUTER_API_KEY`, `SMTP_EMAIL` или **`SMTP_USER`** (логин ящика), `SMTP_PASSWORD` (опционально `SMTP_HOST`, `SMTP_TO`), `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` или `TELEGRAM_LEADS_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET` (должен совпадать с `secret_token` в setWebhook). После правки `.env.production` выполни **`bash scripts/deploy.sh`** или как минимум **`pm2 restart yappix-ru`**; для **`NEXT_PUBLIC_APP_URL`** нужна пересборка.
+
+Если форма отвечает ошибкой, смотри логи: **`pm2 logs yappix-ru --lines 80`** — там будут строки `Telegram sendMessage failed:` или `Email sendMail failed:` с текстом от API (без пароля).
+
+### Telegram и OpenRouter: таймауты и прокси
+
+Проверка **с VDS** (если таймаут — исходящий `443` до Telegram не проходит):
+
+```bash
+curl --max-time 15 -sS "https://api.telegram.org/" | head -c 80; echo
+```
+
+Webhook **входящий** (Telegram → `https://yappix.ru/api/telegram/webhook`) может работать, а **исходящие** `sendMessage` / `getMe` — нет: бот «молчит».
+
+В **`.env.production`** задай прокси (HTTP CONNECT, часто `http://user:pass@host:3128`):
+
+- **`HTTPS_PROXY`** — общий для Telegram и OpenRouter;
+- или отдельно **`TELEGRAM_HTTPS_PROXY`** / **`OPENROUTER_HTTPS_PROXY`**.
+
+После правки — **`bash scripts/deploy.sh`** или **`pm2 restart yappix-ru`**.
+
+**OpenRouter `401` / `User not found` в логах** — неверный или отозванный **`OPENROUTER_API_KEY`**: новый ключ в [openrouter.ai](https://openrouter.ai), заливка в `.env.production`, рестарт.
+
+Переустановка webhook (после смены секрета): **`curl -X POST https://yappix.ru/api/telegram-setup`**.
+
+### SMTP: Mail.ru (например sales@yappix.ru)
+
+В [настройках ящика Mail.ru](https://help.mail.ru/mail/mailer/popsmtp) должны быть разрешены почтовые клиенты (IMAP/SMTP). Логин — **полный e-mail**, пароль — **пароль от ящика** или **пароль для внешнего приложения**, если включена защита.
+
+Рекомендуемый блок в **`.env.production`** (значения без лишних кавычек вокруг всей строки — или с кавычками, приложение их снимает):
+
+```env
+SMTP_HOST=smtp.mail.ru
+SMTP_PORT=587
+SMTP_USER=sales@yappix.ru
+SMTP_PASSWORD=ваш-пароль-или-пароль-приложения
+SMTP_FROM=sales@yappix.ru
+SMTP_TO=sales@yappix.ru
+```
+
+Для порта **587** приложение само включает STARTTLS (`secure: false`, `requireTLS: true`). Строку **`SMTP_SECURE=false` можно не указывать** — на стандартных портах она не используется (чтобы не путать с режимом SMTPS на **465**).
+
+Альтернатива — порт **465** (implicit TLS / SMTPS): задайте только **`SMTP_PORT=465`**, без `SMTP_SECURE`.
+
+Важно: поле **From** при отправке через Mail.ru должно совпадать с ящиком авторизации (или с разрешённым алиасом в настройках). Если указан только `SMTP_USER`, **From** по умолчанию будет `"YappiX Leads" <тот же email>`.
+
+### SMTP: Gmail
+
+Нужен **пароль приложения** (не обычный пароль аккаунта): `SMTP_HOST=smtp.gmail.com`, порт **587**, логин — полный Gmail.
