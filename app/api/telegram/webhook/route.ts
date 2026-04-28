@@ -39,9 +39,12 @@ type TelegramUpdate = {
   message?: {
     text?: string
     chat?: { id: number; type?: string }
-    from?: { id: number; first_name?: string; username?: string }
+    /** Имя/фамилия из аккаунта Telegram — нужны, чтобы не путать «Иванов» с именем для обращений */
+    from?: { id: number; first_name?: string; last_name?: string; username?: string }
   }
 }
+
+type TelegramFrom = NonNullable<NonNullable<TelegramUpdate["message"]>["from"]>
 
 function escapeHtml(input: string): string {
   return input
@@ -145,6 +148,10 @@ function extractContact(text: string): string | undefined {
   return digits.length >= 10 ? phoneMatch : undefined
 }
 
+function normalizeSpaces(s: string): string {
+  return s.trim().replace(/\s+/g, " ")
+}
+
 function extractName(text: string): string | undefined {
   const normalized = text.trim()
   const explicitPattern = /(?:меня зовут|я)\s+([A-Za-zА-Яа-яЁё-]{2,40})/i
@@ -155,6 +162,55 @@ function extractName(text: string): string | undefined {
     return normalized
   }
   return undefined
+}
+
+/**
+ * Имя для обращений: если в Telegram указаны имя и фамилия, не подставляем фамилию,
+ * когда пользователь набрал её одной строкой («Петров») или два слова в порядке «Имя Фамилия».
+ */
+function deriveDisplayName(text: string, from?: TelegramFrom): string | undefined {
+  const normalized = normalizeSpaces(text)
+
+  const fn = from?.first_name?.trim()
+  const ln = from?.last_name?.trim()
+  const lnL = ln?.toLowerCase()
+  const fnL = fn?.toLowerCase()
+
+  const words = normalized.split(/\s+/).filter((w) => w.length > 0)
+
+  if (words.length >= 2 && lnL) {
+    const w0 = words[0]!.toLowerCase()
+    const w1 = words[1]!.toLowerCase()
+    /* «Иван Петров»: второе = фамилия в профиле — берём имя */
+    if (w1 === lnL && words[0]) return words[0]
+    /* «Петров Иван» */
+    if (w0 === lnL && fn && words[1]) {
+      if (w1 === fn.toLowerCase()) return fn
+      return words[1]
+    }
+  }
+
+  if (
+    words.length === 2 &&
+    fn &&
+    ln &&
+    words[0]!.toLowerCase() === fnL &&
+    words[1]!.toLowerCase() === lnL
+  ) {
+    return fn
+  }
+
+  if (words.length === 1 && fn && ln && words[0]!.toLowerCase() === lnL) {
+    return fn
+  }
+
+  let fromText = extractName(normalized)
+
+  /* Текст дал только фамилию (совпадает с last_name), в профиле есть имя — обращаемся по first_name */
+  if (fromText && fn && ln && fromText.toLowerCase() === lnL && fromText.toLowerCase() !== fnL) {
+    return fn
+  }
+  return fromText
 }
 
 function getCannedReply(text: string): string | undefined {
@@ -248,7 +304,7 @@ export async function POST(request: NextRequest) {
         "Для старта напишите /start."
     } else {
       if (!session.lead.name) {
-        const guessedName = extractName(text)
+        const guessedName = deriveDisplayName(text, user)
         if (guessedName) session.lead.name = guessedName
       }
 
@@ -258,7 +314,7 @@ export async function POST(request: NextRequest) {
       }
 
       if (session.state === "awaiting_name") {
-        const name = session.lead.name || extractName(text)
+        const name = session.lead.name || deriveDisplayName(text, user)
         if (!name) {
           reply = "Не смог распознать имя. Напишите, пожалуйста, только имя (например: Иван)."
         } else {
