@@ -154,6 +154,8 @@ Webhook **входящий** (Telegram → `https://yappix.ru/api/telegram/webho
 - **`HTTPS_PROXY`** — общий для Telegram и OpenRouter;
 - или отдельно **`TELEGRAM_HTTPS_PROXY`** / **`OPENROUTER_HTTPS_PROXY`**.
 
+На проде сейчас поднят **Squid на `167.99.139.49:3128`** (Ubuntu @ DO Frankfurt): в **iptables/ufw** порт открыт **только для** основного сайта **`80.249.150.154`**. В **`/var/www/yappix.ru/.env.production`** строка: **`HTTPS_PROXY=http://167.99.139.49:3128`** (подставляется приложением через `lib/proxy-fetch.ts`). Если смените IP основного VPS — добавьте его в **`/etc/squid/conf.d/yappix-vds.conf`** на прокси и в **ufw** для порта **3128**, перезагрузите `squid`.
+
 После правки — **`bash scripts/deploy.sh`** или **`pm2 restart yappix-ru`**.
 
 **OpenRouter `401` / `User not found` в логах** — неверный или отозванный **`OPENROUTER_API_KEY`**: новый ключ в [openrouter.ai](https://openrouter.ai), заливка в `.env.production`, рестарт.
