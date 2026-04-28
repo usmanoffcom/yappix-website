@@ -175,19 +175,32 @@ ${recaptchaLine}
     const telegramResult = await sendToTelegram(telegramMessage)
     console.log("Telegram sent:", telegramResult)
 
-    // Try email (may fail)
+    // Try email to company (если есть email клиента — в теле письма; если только телефон — тоже шлём на sales@)
     let emailResult = false
-    if (email) {
+    if (email?.trim()) {
       emailResult = await sendEmail({ name, email, phone: formattedPhone, company, message })
       console.log("Email sent:", emailResult)
+    } else if (formattedPhone?.trim()) {
+      emailResult = await sendEmail({
+        name,
+        email: "",
+        phone: formattedPhone,
+        company,
+        message,
+      })
+      console.log("Email sent (phone-only lead):", emailResult)
     }
 
-    // At least Telegram should work
-    if (!telegramResult) {
+    const delivered = telegramResult || emailResult
+    if (!delivered) {
+      console.error("Contact: ни Telegram, ни SMTP не доставили лид")
       return NextResponse.json(
         { error: "Ошибка отправки. Позвоните: +7 995 095 55 93" },
         { status: 500 },
       )
+    }
+    if (!telegramResult && emailResult) {
+      console.warn("Contact: лид ушёл только на email (Telegram недоступен с сервера)")
     }
 
     return NextResponse.json({

@@ -170,7 +170,7 @@ ${safeDateLine}
     const emailResult = await sendEmailToCompany({ name, email, phone, date, time })
     console.log("Email to company sent:", emailResult)
 
-    // Send confirmation email to customer
+    // Send confirmation email to customer (необязательно для успеха заявки)
     const confirmationResult = await sendConfirmationEmail({
       name,
       email,
@@ -179,12 +179,16 @@ ${safeDateLine}
     })
     console.log("Confirmation email sent:", confirmationResult)
 
-    // At least Telegram should work
-    if (!telegramResult) {
+    const delivered = telegramResult || emailResult
+    if (!delivered) {
+      console.error("Booking: ни Telegram, ни SMTP в компанию не доставили заявку")
       return NextResponse.json(
         { error: "Ошибка отправки. Позвоните: +7 995 095 55 93" },
         { status: 500 },
       )
+    }
+    if (!telegramResult && emailResult) {
+      console.warn("Booking: заявка ушла только на email (Telegram недоступен)")
     }
 
     return NextResponse.json({
