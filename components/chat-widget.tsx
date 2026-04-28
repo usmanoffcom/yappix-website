@@ -142,8 +142,16 @@ export function ChatWidget() {
         }),
       })
 
-      const data = await response.json()
-      
+      const data = await response.json().catch(() => ({} as { reply?: string; error?: string }))
+      if (!response.ok) {
+        const errText =
+          typeof data?.error === "string" && data.error.trim()
+            ? data.error
+            : "Сервис временно недоступен. Напишите в Telegram @yappix_bot или позвоните: +7 995 095 55 93"
+        setMessages((prev) => [...prev, { role: "assistant", content: errText }])
+        return
+      }
+
       if (data.reply) {
         setMessages(prev => [...prev, { role: "assistant", content: data.reply }])
         
@@ -158,6 +166,15 @@ export function ChatWidget() {
         ) {
           setTimeout(() => setShowLeadForm(true), 1000)
         }
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content:
+              "Не удалось получить ответ. Попробуйте ещё раз или напишите в Telegram: @yappix_bot",
+          },
+        ])
       }
     } catch {
       setMessages(prev => [...prev, { 
@@ -286,16 +303,16 @@ export function ChatWidget() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[1100] w-[calc(100vw-2rem)] sm:w-[400px] h-[500px] sm:h-[550px] bg-card border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-primary/10 to-pink-600/10">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[1100] isolate flex h-[500px] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-zinc-700/90 bg-zinc-950 text-zinc-100 shadow-2xl shadow-black/50 animate-in fade-in slide-in-from-bottom-4 duration-300 sm:h-[550px] sm:w-[400px]">
+          {/* Header — непрозрачный слой (theme --card ~5% alpha → «стекло» на всём сайте) */}
+          <div className="flex shrink-0 items-center justify-between border-b border-zinc-700/90 bg-zinc-900 p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-pink-600 flex items-center justify-center">
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <div>
-                <div className="font-semibold text-foreground">YappiX Assistant</div>
-                <div className="text-xs text-green-500 flex items-center gap-1">
+                <div className="font-semibold text-zinc-50">YappiX Assistant</div>
+                <div className="flex items-center gap-1 text-xs text-green-400">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                   Онлайн
                 </div>
@@ -305,14 +322,14 @@ export function ChatWidget() {
               onClick={handleClose}
               aria-label="Закрыть чат"
               title="Закрыть чат"
-              className="p-2 hover:bg-secondary rounded-lg transition-colors"
+              className="rounded-lg p-2 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-100"
             >
-              <X className="w-5 h-5 text-muted-foreground" />
+              <X className="h-5 w-5" />
             </button>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div className="min-h-0 flex-1 space-y-4 overflow-y-auto bg-zinc-950 p-4">
             {messages.map((msg, index) => (
               <div
                 key={index}
@@ -324,17 +341,17 @@ export function ChatWidget() {
                   </div>
                 )}
                 <div
-                  className={`max-w-[80%] p-3 rounded-2xl text-sm whitespace-pre-wrap ${
+                  className={`max-w-[80%] whitespace-pre-wrap rounded-2xl p-3 text-sm ${
                     msg.role === "user"
-                      ? "bg-primary text-primary-foreground rounded-br-md"
-                      : "bg-secondary text-foreground rounded-bl-md"
+                      ? "rounded-br-md bg-gradient-to-br from-primary to-pink-600 text-white"
+                      : "rounded-bl-md border border-zinc-700/80 bg-zinc-900 text-zinc-100"
                   }`}
                 >
                   {msg.content}
                 </div>
                 {msg.role === "user" && (
-                  <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-                    <User className="w-4 h-4 text-muted-foreground" />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-800">
+                    <User className="h-4 w-4 text-zinc-300" />
                   </div>
                 )}
               </div>
@@ -345,16 +362,16 @@ export function ChatWidget() {
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-pink-600 flex items-center justify-center">
                   <Bot className="w-4 h-4 text-white" />
                 </div>
-                <div className="bg-secondary p-3 rounded-2xl rounded-bl-md">
-                  <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                <div className="rounded-2xl rounded-bl-md border border-zinc-700/80 bg-zinc-900 p-3">
+                  <Loader2 className="h-4 w-4 animate-spin text-zinc-400" />
                 </div>
               </div>
             )}
 
             {/* Lead Form */}
             {showLeadForm && !leadSent && (
-              <div className="bg-gradient-to-br from-primary/10 to-pink-600/10 border border-primary/20 rounded-xl p-4 space-y-3 animate-in fade-in slide-in-from-bottom-2 duration-200">
-                <div className="text-sm font-medium text-foreground">
+              <div className="space-y-3 rounded-xl border border-zinc-600/90 bg-zinc-900 p-4 animate-in fade-in slide-in-from-bottom-2 duration-200">
+                <div className="text-sm font-medium text-zinc-50">
                   📝 Оставьте контакты — мы перезвоним!
                 </div>
                 <div>
@@ -366,7 +383,7 @@ export function ChatWidget() {
                       setLeadErrors(prev => ({ ...prev, name: "" }))
                       setLeadSubmitError("")
                     }}
-                    className={`bg-background/50 ${leadErrors.name ? "border-red-500" : ""}`}
+                    className={`border-zinc-600 bg-zinc-950 text-zinc-100 placeholder:text-zinc-500 ${leadErrors.name ? "border-red-500" : ""}`}
                   />
                   {leadErrors.name && (
                     <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
@@ -384,7 +401,7 @@ export function ChatWidget() {
                       setLeadErrors(prev => ({ ...prev, contact: "" }))
                       setLeadSubmitError("")
                     }}
-                    className={`bg-background/50 ${leadErrors.contact ? "border-red-500" : ""}`}
+                    className={`border-zinc-600 bg-zinc-950 text-zinc-100 placeholder:text-zinc-500 ${leadErrors.contact ? "border-red-500" : ""}`}
                   />
                   {leadErrors.contact && (
                     <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
@@ -400,7 +417,7 @@ export function ChatWidget() {
                     setLeadData({ ...leadData, message: e.target.value })
                     setLeadSubmitError("")
                   }}
-                  className="bg-background/50 resize-none h-16"
+                  className="h-16 resize-none border-zinc-600 bg-zinc-950 text-zinc-100 placeholder:text-zinc-500"
                 />
                 <Button
                   onClick={submitLead}
@@ -424,24 +441,30 @@ export function ChatWidget() {
           )}
 
           {/* Quick Actions */}
-          <div className="px-4 pb-2 flex gap-2 overflow-x-auto">
+          <div className="flex shrink-0 gap-2 overflow-x-auto border-zinc-800/90 bg-zinc-900 px-4 pb-2">
             <button
+              type="button"
               onClick={() => window.open("tel:+79950955593")}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-secondary rounded-full text-xs text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+              className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-zinc-600/90 bg-zinc-800 px-3 py-1.5 text-xs text-zinc-200 transition-colors hover:bg-zinc-700 hover:text-white"
             >
               <Phone className="w-3 h-3" />
               Позвонить
             </button>
             <button
-              onClick={() => { reachGoal("lead"); window.open("https://t.me/yappix_bot") }}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-secondary rounded-full text-xs text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+              type="button"
+              onClick={() => {
+                reachGoal("lead")
+                window.open("https://t.me/yappix_bot")
+              }}
+              className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-zinc-600/90 bg-zinc-800 px-3 py-1.5 text-xs text-zinc-200 transition-colors hover:bg-zinc-700 hover:text-white"
             >
               <MessageCircle className="w-3 h-3" />
               Telegram
             </button>
             <button
+              type="button"
               onClick={() => window.open("mailto:sales@yappix.ru")}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-secondary rounded-full text-xs text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+              className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-zinc-600/90 bg-zinc-800 px-3 py-1.5 text-xs text-zinc-200 transition-colors hover:bg-zinc-700 hover:text-white"
             >
               <Mail className="w-3 h-3" />
               Email
@@ -449,7 +472,7 @@ export function ChatWidget() {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-border">
+          <div className="shrink-0 border-t border-zinc-700/90 bg-zinc-900 p-4">
             <form
               onSubmit={(e) => {
                 e.preventDefault()
@@ -462,7 +485,7 @@ export function ChatWidget() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Напишите сообщение..."
-                className="flex-1"
+                className="flex-1 border-zinc-600 bg-zinc-950 text-zinc-100 placeholder:text-zinc-500"
                 disabled={isLoading}
               />
               <Button type="submit" size="icon" disabled={!input.trim() || isLoading}>
